@@ -1,0 +1,7 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "gregtech:items/material_sets/metallic/ore_poor_tfc",
+    "layer1": "gregtech:items/material_sets/metallic/ore_poor_tfc_overlay"
+  }
+}

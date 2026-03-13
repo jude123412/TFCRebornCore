@@ -16,7 +16,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class RCWorldGenOreVeins {
 
     @Inject(
-            method = "generate(Ljava/util/Random;IILnet/minecraft/world/World;Lnet/minecraft/world/gen/IChunkGenerator;Lnet/minecraft/world/chunk/IChunkProvider;)V",
+            method = "generate",
             at = @At("HEAD"),
             cancellable = true,
             remap = false)

@@ -1,11 +1,11 @@
 package tfcreborncore.api.unification.ore;
 
+import static gregtech.api.unification.ore.OrePrefix.Flags.ENABLE_UNIFICATION;
+
 import gregtech.api.unification.material.properties.PropertyKey;
 import gregtech.api.unification.ore.OrePrefix;
 import gregtech.common.items.MetaItems;
 import tfcreborncore.api.unification.material.info.RCMaterialIconType;
-
-import static gregtech.api.unification.ore.OrePrefix.Flags.ENABLE_UNIFICATION;
 
 public class RCOrePrefix {
 

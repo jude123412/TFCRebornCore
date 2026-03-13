@@ -1,11 +1,12 @@
 package tfcreborncore.common;
 
-import gregtech.api.GregTechAPI;
-import gregtech.api.unification.material.event.MaterialEvent;
-import gregtech.api.unification.material.event.MaterialRegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+
+import gregtech.api.GregTechAPI;
+import gregtech.api.unification.material.event.MaterialEvent;
+import gregtech.api.unification.material.event.MaterialRegistryEvent;
 import tfcreborncore.Tags;
 import tfcreborncore.api.unification.material.RCMaterials;
 import tfcreborncore.api.util.RCLogger;

@@ -4,8 +4,7 @@ import gregtech.api.unification.material.info.MaterialIconType;
 
 public class RCMaterialIconType {
 
-    public static final MaterialIconType oreSmallTFC = new MaterialIconType("oreSmallTfc");
-    public static final MaterialIconType orePoorTFC = new MaterialIconType("orePoorTfc");
-    public static final MaterialIconType oreNormalTFC = new MaterialIconType("oreNormalTfc");
-    public static final MaterialIconType oreRichTFC = new MaterialIconType("oreRichTfc");
+    public static final MaterialIconType scrap = new MaterialIconType("scrap");
+    public static final MaterialIconType sheet = new MaterialIconType("sheet");
+    public static final MaterialIconType sheetDouble = new MaterialIconType("sheetDouble");
 }

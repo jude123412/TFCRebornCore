@@ -1,5 +1,5 @@
 # Ore Prefix Names, %s is a material name
-item.material.oreprefix.oreSmall=Small %s Chunk
-item.material.oreprefix.orePoor=Poor %s Chunk
-item.material.oreprefix.oreNormal=Normal %s Chunk
-item.material.oreprefix.oreRich=Rich %s Chunk
+item.material.oreprefix.ingotDouble=Double %s Ingot
+item.material.oreprefix.scrap=%s Scrap
+item.material.oreprefix.sheet=%s Sheet
+item.material.oreprefix.sheetDouble=Double %s Sheet

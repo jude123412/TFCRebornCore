@@ -22,6 +22,7 @@ public class RCMaterialRecipeHandler {
     public static void register() {
         OrePrefix.dust.addProcessingHandler(PropertyKey.DUST, RCMaterialRecipeHandler::processMaterialRecipes);
     }
+
     /*
      * Recipes don't get removed in dev environment
      * Always test outside dev environment
@@ -155,11 +156,11 @@ public class RCMaterialRecipeHandler {
 
         if (OrePrefix.nugget.doGenerateItem(material) && OrePrefix.ingot.doGenerateItem(material)) {
             GTRecipeHandler.removeRecipesByInputs(RecipeMaps.ALLOY_SMELTER_RECIPES,
-                    MetaItems.SHAPE_MOLD_NUGGET.getStackForm(1),
+                    MetaItems.SHAPE_MOLD_INGOT.getStackForm(1),
                     OreDictUnifier.get(OrePrefix.nugget, material, 9));
 
             GTRecipeHandler.removeRecipesByInputs(RecipeMaps.ALLOY_SMELTER_RECIPES,
-                    MetaItems.SHAPE_MOLD_INGOT.getStackForm(1),
+                    MetaItems.SHAPE_MOLD_NUGGET.getStackForm(1),
                     OreDictUnifier.get(OrePrefix.ingot, material, 1));
 
             GTRecipeHandler.removeRecipesByInputs(RecipeMaps.COMPRESSOR_RECIPES,

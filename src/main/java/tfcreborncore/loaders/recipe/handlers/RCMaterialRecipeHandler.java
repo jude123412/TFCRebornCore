@@ -22,7 +22,10 @@ public class RCMaterialRecipeHandler {
     public static void register() {
         OrePrefix.dust.addProcessingHandler(PropertyKey.DUST, RCMaterialRecipeHandler::processMaterialRecipes);
     }
-
+    /*
+     * Recipes don't get removed in dev environment
+     * Always test outside dev environment
+     */
     public static void processMaterialRecipes(OrePrefix ingotPrefix, Material material, DustProperty property) {
         if (OrePrefix.plate.doGenerateItem(material) && material.hasProperty(PropertyKey.FLUID)) {
             GTRecipeHandler.removeRecipesByInputs(RecipeMaps.FLUID_SOLIDFICATION_RECIPES,

@@ -14,5 +14,4 @@ public class RCUtility {
     public static ResourceLocation rcId(@NotNull String path) {
         return new ResourceLocation(Tags.MODID, path);
     }
-
 }

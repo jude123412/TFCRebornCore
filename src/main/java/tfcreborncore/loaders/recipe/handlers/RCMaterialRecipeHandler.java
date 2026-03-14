@@ -1,5 +1,13 @@
 package tfcreborncore.loaders.recipe.handlers;
 
+import static gregtech.api.GTValues.L;
+import static gregtech.api.GTValues.ULV;
+import static gregtech.api.GTValues.VA;
+import static tfcreborncore.api.util.RCUtility.S;
+
+import net.minecraft.item.ItemStack;
+import net.minecraftforge.fluids.FluidStack;
+
 import gregtech.api.recipes.GTRecipeHandler;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.unification.OreDictUnifier;
@@ -8,16 +16,6 @@ import gregtech.api.unification.material.properties.DustProperty;
 import gregtech.api.unification.material.properties.PropertyKey;
 import gregtech.api.unification.ore.OrePrefix;
 import gregtech.common.items.MetaItems;
-import net.minecraft.item.ItemStack;
-import net.minecraftforge.fluids.FluidStack;
-
-import static gregtech.api.GTValues.L;
-import static gregtech.api.GTValues.ULV;
-import static gregtech.api.GTValues.VA;
-import static gregtech.api.unification.material.info.MaterialFlags.GENERATE_PLATE;
-import static gregtech.api.unification.material.info.MaterialFlags.NO_UNIFICATION;
-import static tfcreborncore.api.util.RCUtility.S;
-
 
 public class RCMaterialRecipeHandler {
 
@@ -30,7 +28,8 @@ public class RCMaterialRecipeHandler {
             GTRecipeHandler.removeRecipesByInputs(RecipeMaps.FLUID_SOLIDFICATION_RECIPES,
                     new ItemStack[] {
                             MetaItems.SHAPE_MOLD_PLATE.getStackForm(1)
-                    }, new FluidStack[] {
+                    },
+                    new FluidStack[] {
                             material.getFluid(L)
                     });
 
@@ -47,7 +46,8 @@ public class RCMaterialRecipeHandler {
             GTRecipeHandler.removeRecipesByInputs(RecipeMaps.FLUID_SOLIDFICATION_RECIPES,
                     new ItemStack[] {
                             MetaItems.SHAPE_MOLD_GEAR.getStackForm(1)
-                    }, new FluidStack[] {
+                    },
+                    new FluidStack[] {
                             material.getFluid(L * 4)
                     });
 
@@ -64,7 +64,8 @@ public class RCMaterialRecipeHandler {
             GTRecipeHandler.removeRecipesByInputs(RecipeMaps.FLUID_SOLIDFICATION_RECIPES,
                     new ItemStack[] {
                             MetaItems.SHAPE_MOLD_INGOT.getStackForm(1)
-                    }, new FluidStack[] {
+                    },
+                    new FluidStack[] {
                             material.getFluid(L)
                     });
 
@@ -81,7 +82,8 @@ public class RCMaterialRecipeHandler {
             GTRecipeHandler.removeRecipesByInputs(RecipeMaps.FLUID_SOLIDFICATION_RECIPES,
                     new ItemStack[] {
                             MetaItems.SHAPE_MOLD_BLOCK.getStackForm(1)
-                    }, new FluidStack[] {
+                    },
+                    new FluidStack[] {
                             material.getFluid(L * 9)
                     });
 
@@ -98,7 +100,8 @@ public class RCMaterialRecipeHandler {
             GTRecipeHandler.removeRecipesByInputs(RecipeMaps.FLUID_SOLIDFICATION_RECIPES,
                     new ItemStack[] {
                             MetaItems.SHAPE_MOLD_NUGGET.getStackForm(1)
-                    }, new FluidStack[] {
+                    },
+                    new FluidStack[] {
                             material.getFluid(L)
                     });
 
@@ -115,7 +118,8 @@ public class RCMaterialRecipeHandler {
             GTRecipeHandler.removeRecipesByInputs(RecipeMaps.FLUID_SOLIDFICATION_RECIPES,
                     new ItemStack[] {
                             MetaItems.SHAPE_MOLD_GEAR_SMALL.getStackForm(1)
-                    }, new FluidStack[] {
+                    },
+                    new FluidStack[] {
                             material.getFluid(L)
                     });
 
@@ -132,7 +136,8 @@ public class RCMaterialRecipeHandler {
             GTRecipeHandler.removeRecipesByInputs(RecipeMaps.FLUID_SOLIDFICATION_RECIPES,
                     new ItemStack[] {
                             MetaItems.SHAPE_MOLD_ROTOR.getStackForm(1)
-                    }, new FluidStack[] {
+                    },
+                    new FluidStack[] {
                             material.getFluid(L * 4)
                     });
 
@@ -148,17 +153,14 @@ public class RCMaterialRecipeHandler {
         if (OrePrefix.nugget.doGenerateItem(material) && OrePrefix.ingot.doGenerateItem(material)) {
             GTRecipeHandler.removeRecipesByInputs(RecipeMaps.ALLOY_SMELTER_RECIPES,
                     MetaItems.SHAPE_MOLD_NUGGET.getStackForm(1),
-                    OreDictUnifier.get(OrePrefix.nugget, material, 9)
-            );
+                    OreDictUnifier.get(OrePrefix.nugget, material, 9));
 
             GTRecipeHandler.removeRecipesByInputs(RecipeMaps.ALLOY_SMELTER_RECIPES,
                     MetaItems.SHAPE_MOLD_INGOT.getStackForm(1),
-                    OreDictUnifier.get(OrePrefix.ingot, material, 1)
-            );
+                    OreDictUnifier.get(OrePrefix.ingot, material, 1));
 
             GTRecipeHandler.removeRecipesByInputs(RecipeMaps.COMPRESSOR_RECIPES,
-                    OreDictUnifier.get(OrePrefix.nugget, material, 9)
-            );
+                    OreDictUnifier.get(OrePrefix.nugget, material, 9));
 
             RecipeMaps.ALLOY_SMELTER_RECIPES.recipeBuilder()
                     .notConsumable(MetaItems.SHAPE_MOLD_NUGGET)

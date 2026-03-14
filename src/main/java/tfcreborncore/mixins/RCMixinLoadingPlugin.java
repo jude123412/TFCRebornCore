@@ -10,12 +10,12 @@ import net.minecraftforge.fml.relauncher.IFMLLoadingPlugin.Name;
 
 import org.jetbrains.annotations.Nullable;
 
-import zone.rong.mixinbooter.ILateMixinLoader;
+import zone.rong.mixinbooter.IEarlyMixinLoader;
 
 @Name("RCMixinLoadingPlugin")
 @IFMLLoadingPlugin.MCVersion(ForgeVersion.mcVersion)
 @IFMLLoadingPlugin.SortingIndex(1001)
-public class RCMixinLoadingPlugin implements IFMLLoadingPlugin, ILateMixinLoader {
+public class RCMixinLoadingPlugin implements IFMLLoadingPlugin, IEarlyMixinLoader {
 
     @Override
     public String[] getASMTransformerClass() {
@@ -50,6 +50,6 @@ public class RCMixinLoadingPlugin implements IFMLLoadingPlugin, ILateMixinLoader
 
     @Override
     public boolean shouldMixinConfigQueue(String mixinConfig) {
-        return ILateMixinLoader.super.shouldMixinConfigQueue(mixinConfig);
+        return IEarlyMixinLoader.super.shouldMixinConfigQueue(mixinConfig);
     }
 }

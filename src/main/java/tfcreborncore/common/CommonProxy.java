@@ -1,7 +1,5 @@
 package tfcreborncore.common;
 
-import gregtech.api.unification.material.event.PostMaterialEvent;
-import gregtech.api.unification.stack.ItemMaterialInfo;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
@@ -12,6 +10,8 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import gregtech.api.GregTechAPI;
 import gregtech.api.unification.material.event.MaterialEvent;
 import gregtech.api.unification.material.event.MaterialRegistryEvent;
+import gregtech.api.unification.material.event.PostMaterialEvent;
+import gregtech.api.unification.stack.ItemMaterialInfo;
 import tfcreborncore.Tags;
 import tfcreborncore.api.unification.material.RCMaterials;
 import tfcreborncore.api.unification.ore.RCStoneTypes;

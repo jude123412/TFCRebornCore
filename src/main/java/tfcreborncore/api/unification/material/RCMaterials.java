@@ -28,9 +28,7 @@ public class RCMaterials {
     public static Material RawGneissStone;
     public static Material RawMarbleStone;
 
-
     public static void registerMaterials() {
-
         /*
          * Ranges 0-20
          * All Stone Types go here

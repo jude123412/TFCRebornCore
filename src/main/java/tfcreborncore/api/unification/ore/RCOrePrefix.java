@@ -2,7 +2,6 @@ package tfcreborncore.api.unification.ore;
 
 import static gregtech.api.GTValues.M;
 import static gregtech.api.unification.ore.OrePrefix.Flags.ENABLE_UNIFICATION;
-import static tfcreborncore.api.unification.material.RCMaterials.RawGraniteStone;
 
 import gregtech.api.unification.material.info.MaterialIconType;
 import gregtech.api.unification.material.properties.PropertyKey;
@@ -95,7 +94,7 @@ public class RCOrePrefix {
             MaterialIconType.ore,
             OrePrefix.Flags.ENABLE_UNIFICATION,
             OrePrefix.Conditions.hasOreProperty);
-    
+
     public static final OrePrefix oreRawBasalt = new OrePrefix("oreRawBasalt", -1, null,
             MaterialIconType.ore,
             OrePrefix.Flags.ENABLE_UNIFICATION,
@@ -143,48 +142,68 @@ public class RCOrePrefix {
 
     public static void init() {
         RCOrePrefix.oreRawGranite.addSecondaryMaterial(
-                new MaterialStack(RCMaterials.RawGraniteStone, OrePrefix.dust.getMaterialAmount(RCMaterials.RawGraniteStone)));
+                new MaterialStack(RCMaterials.RawGraniteStone,
+                        OrePrefix.dust.getMaterialAmount(RCMaterials.RawGraniteStone)));
         RCOrePrefix.oreRawDiorite.addSecondaryMaterial(
-                new MaterialStack(RCMaterials.RawDioriteStone, OrePrefix.dust.getMaterialAmount(RCMaterials.RawDioriteStone)));
+                new MaterialStack(RCMaterials.RawDioriteStone,
+                        OrePrefix.dust.getMaterialAmount(RCMaterials.RawDioriteStone)));
         RCOrePrefix.oreRawGabbro.addSecondaryMaterial(
-                new MaterialStack(RCMaterials.RawGabbroStone, OrePrefix.dust.getMaterialAmount(RCMaterials.RawGabbroStone)));
+                new MaterialStack(RCMaterials.RawGabbroStone,
+                        OrePrefix.dust.getMaterialAmount(RCMaterials.RawGabbroStone)));
         RCOrePrefix.oreRawShale.addSecondaryMaterial(
-                new MaterialStack(RCMaterials.RawShaleStone, OrePrefix.dust.getMaterialAmount(RCMaterials.RawShaleStone)));
+                new MaterialStack(RCMaterials.RawShaleStone,
+                        OrePrefix.dust.getMaterialAmount(RCMaterials.RawShaleStone)));
         RCOrePrefix.oreRawClaystone.addSecondaryMaterial(
-                new MaterialStack(RCMaterials.RawClaystoneStone, OrePrefix.dust.getMaterialAmount(RCMaterials.RawClaystoneStone)));
+                new MaterialStack(RCMaterials.RawClaystoneStone,
+                        OrePrefix.dust.getMaterialAmount(RCMaterials.RawClaystoneStone)));
         RCOrePrefix.oreRawRocksalt.addSecondaryMaterial(
-                new MaterialStack(RCMaterials.RawRocksaltStone, OrePrefix.dust.getMaterialAmount(RCMaterials.RawRocksaltStone)));
+                new MaterialStack(RCMaterials.RawRocksaltStone,
+                        OrePrefix.dust.getMaterialAmount(RCMaterials.RawRocksaltStone)));
         RCOrePrefix.oreRawLimestone.addSecondaryMaterial(
-                new MaterialStack(RCMaterials.RawLimestoneStone, OrePrefix.dust.getMaterialAmount(RCMaterials.RawLimestoneStone)));
+                new MaterialStack(RCMaterials.RawLimestoneStone,
+                        OrePrefix.dust.getMaterialAmount(RCMaterials.RawLimestoneStone)));
         RCOrePrefix.oreRawConglomerate.addSecondaryMaterial(
-                new MaterialStack(RCMaterials.RawConglomerateStone, OrePrefix.dust.getMaterialAmount(RCMaterials.RawConglomerateStone)));
+                new MaterialStack(RCMaterials.RawConglomerateStone,
+                        OrePrefix.dust.getMaterialAmount(RCMaterials.RawConglomerateStone)));
         RCOrePrefix.oreRawDolomite.addSecondaryMaterial(
-                new MaterialStack(RCMaterials.RawDolomiteStone, OrePrefix.dust.getMaterialAmount(RCMaterials.RawDolomiteStone)));
+                new MaterialStack(RCMaterials.RawDolomiteStone,
+                        OrePrefix.dust.getMaterialAmount(RCMaterials.RawDolomiteStone)));
         RCOrePrefix.oreRawChert.addSecondaryMaterial(
-                new MaterialStack(RCMaterials.RawChertStone, OrePrefix.dust.getMaterialAmount(RCMaterials.RawChertStone)));
+                new MaterialStack(RCMaterials.RawChertStone,
+                        OrePrefix.dust.getMaterialAmount(RCMaterials.RawChertStone)));
         RCOrePrefix.oreRawChalk.addSecondaryMaterial(
-                new MaterialStack(RCMaterials.RawChalkStone, OrePrefix.dust.getMaterialAmount(RCMaterials.RawChalkStone)));
+                new MaterialStack(RCMaterials.RawChalkStone,
+                        OrePrefix.dust.getMaterialAmount(RCMaterials.RawChalkStone)));
         RCOrePrefix.oreRawRhyolite.addSecondaryMaterial(
-                new MaterialStack(RCMaterials.RawRhyoliteStone, OrePrefix.dust.getMaterialAmount(RCMaterials.RawRhyoliteStone)));
+                new MaterialStack(RCMaterials.RawRhyoliteStone,
+                        OrePrefix.dust.getMaterialAmount(RCMaterials.RawRhyoliteStone)));
         RCOrePrefix.oreRawBasalt.addSecondaryMaterial(
-                new MaterialStack(RCMaterials.RawBasaltStone, OrePrefix.dust.getMaterialAmount(RCMaterials.RawBasaltStone)));
+                new MaterialStack(RCMaterials.RawBasaltStone,
+                        OrePrefix.dust.getMaterialAmount(RCMaterials.RawBasaltStone)));
         RCOrePrefix.oreRawAndesite.addSecondaryMaterial(
-                new MaterialStack(RCMaterials.RawAndesiteStone, OrePrefix.dust.getMaterialAmount(RCMaterials.RawAndesiteStone)));
+                new MaterialStack(RCMaterials.RawAndesiteStone,
+                        OrePrefix.dust.getMaterialAmount(RCMaterials.RawAndesiteStone)));
         RCOrePrefix.oreRawDacite.addSecondaryMaterial(
-                new MaterialStack(RCMaterials.RawDaciteStone, OrePrefix.dust.getMaterialAmount(RCMaterials.RawDaciteStone)));
+                new MaterialStack(RCMaterials.RawDaciteStone,
+                        OrePrefix.dust.getMaterialAmount(RCMaterials.RawDaciteStone)));
         RCOrePrefix.oreRawQuartzite.addSecondaryMaterial(
-                new MaterialStack(RCMaterials.RawQuartziteStone, OrePrefix.dust.getMaterialAmount(RCMaterials.RawQuartziteStone)));
+                new MaterialStack(RCMaterials.RawQuartziteStone,
+                        OrePrefix.dust.getMaterialAmount(RCMaterials.RawQuartziteStone)));
         RCOrePrefix.oreRawSlate.addSecondaryMaterial(
-                new MaterialStack(RCMaterials.RawSlateStone, OrePrefix.dust.getMaterialAmount(RCMaterials.RawSlateStone)));
+                new MaterialStack(RCMaterials.RawSlateStone,
+                        OrePrefix.dust.getMaterialAmount(RCMaterials.RawSlateStone)));
         RCOrePrefix.oreRawPhyllite.addSecondaryMaterial(
-                new MaterialStack(RCMaterials.RawPhylliteStone, OrePrefix.dust.getMaterialAmount(RCMaterials.RawPhylliteStone)));
+                new MaterialStack(RCMaterials.RawPhylliteStone,
+                        OrePrefix.dust.getMaterialAmount(RCMaterials.RawPhylliteStone)));
         RCOrePrefix.oreRawSchist.addSecondaryMaterial(
-                new MaterialStack(RCMaterials.RawSchistStone, OrePrefix.dust.getMaterialAmount(RCMaterials.RawSchistStone)));
+                new MaterialStack(RCMaterials.RawSchistStone,
+                        OrePrefix.dust.getMaterialAmount(RCMaterials.RawSchistStone)));
         RCOrePrefix.oreRawGeneiss.addSecondaryMaterial(
-                new MaterialStack(RCMaterials.RawGneissStone, OrePrefix.dust.getMaterialAmount(RCMaterials.RawGneissStone)));
+                new MaterialStack(RCMaterials.RawGneissStone,
+                        OrePrefix.dust.getMaterialAmount(RCMaterials.RawGneissStone)));
         RCOrePrefix.oreRawMarble.addSecondaryMaterial(
-                new MaterialStack(RCMaterials.RawMarbleStone, OrePrefix.dust.getMaterialAmount(RCMaterials.RawMarbleStone)));
-
+                new MaterialStack(RCMaterials.RawMarbleStone,
+                        OrePrefix.dust.getMaterialAmount(RCMaterials.RawMarbleStone)));
 
         MetaItems.addOrePrefix(ingotDouble);
         MetaItems.addOrePrefix(scrap);

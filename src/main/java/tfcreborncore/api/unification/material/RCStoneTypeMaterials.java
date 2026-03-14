@@ -1,14 +1,15 @@
 package tfcreborncore.api.unification.material;
 
+import static tfcreborncore.api.util.RCUtility.rcId;
+
 import gregtech.api.unification.material.Material;
 import gregtech.api.unification.material.info.MaterialIconSet;
-
-import static tfcreborncore.api.util.RCUtility.rcId;
 
 public class RCStoneTypeMaterials {
 
     private static int startId = 0;
     private static int endId = 21;
+
     public static void register() {
         RCMaterials.RawGraniteStone = new Material.Builder(getMetaItemId(), rcId("raw_granite_stone"))
                 .dust()

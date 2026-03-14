@@ -8,5 +8,5 @@
     "url": "",
     "authorList": ["xXjudeXx"],
     "credits": "The Gregtech CEu dev team for making the build script this mod uses",
-    "dependencies": []
+    "dependencies": ["tfc","gregtech","groovyscript"]
 }]

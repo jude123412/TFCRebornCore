@@ -41,4 +41,5 @@ dependencies {
     implementation rfg.deobf("curse.maven:codechicken-lib-1-8-242818:2779848") // CCL 3.2.3.358
     implementation rfg.deobf("curse.maven:gregtech-ce-unofficial-557242:5519022-deobf-5519023-sources-5519024") // GTCEU 2.8.10
     implementation rfg.deobf("curse.maven:terrafirmacraft-1.7.23.181-302973:3645502") // TFC 1.7.23.181
+    implementation rfg.deobf("curse.maven:groovy-script-1.2.0-hotfix-1-687577:5789690") // Groovy Script 1.2.0-hotfix-1
 }

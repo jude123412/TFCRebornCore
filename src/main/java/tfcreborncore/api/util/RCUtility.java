@@ -8,8 +8,11 @@ import tfcreborncore.Tags;
 
 public class RCUtility {
 
+    public static int S = 20;
+
     @NotNull
     public static ResourceLocation rcId(@NotNull String path) {
         return new ResourceLocation(Tags.MODID, path);
     }
+
 }

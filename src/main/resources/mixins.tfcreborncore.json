@@ -5,12 +5,10 @@
   "minVersion": "0.8",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
-    "terrafirmacraft.RCWorldGenOreVeins"
+    "terrafirmacraft.RCModTypeMixins"
   ],
   "client": [
-
   ],
   "server": [
-
   ]
 }

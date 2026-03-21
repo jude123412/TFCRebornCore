@@ -46,5 +46,4 @@ dependencies {
     implementation rfg.deobf("curse.maven:tfc-metallum-1.4.4-1489345:7777212") // TFC Metallum 1.4.4
     implementation rfg.deobf("curse.maven:jeids-1.0.4-snapshot-thin-296289:3581715") // Just Enough Ids 1.0.4-Snapshot-Thin
     implementation rfg.deobf("curse.maven:mixin-bootstrap-1.1.0-357178:3437402") // Mixin Bootstrap 1.1.0
-
 }

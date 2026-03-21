@@ -1,3 +1,8 @@
+# Ore Processing Items
 item.tfcreborncore.ore_item.pile.name=Pile of %s
 item.tfcreborncore.ore_item.cube.name=Cube of %s
 item.tfcreborncore.ore_item.bar.name=Bar of %s
+
+# Mining Hammer
+item.tfcreborncore.metal_item.unfinished_mining_hammer_head.name=Unfinished %s Mining Hammer Head
+item.tfcreborncore.metal_item.mining_hammer_head.name=%s Mining Hammer Head

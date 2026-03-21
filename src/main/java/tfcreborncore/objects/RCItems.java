@@ -1,6 +1,7 @@
 package tfcreborncore.objects;
 
 import net.dries007.tfc.api.registries.TFCRegistries;
+import net.dries007.tfc.api.types.Metal;
 import net.dries007.tfc.api.types.Ore;
 import net.dries007.tfc.objects.CreativeTabsTFC;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -18,22 +19,26 @@ import net.minecraftforge.registries.IForgeRegistry;
 import com.google.common.collect.ImmutableList;
 
 import tfcreborncore.Tags;
+import tfcreborncore.objects.items.ItemMetal;
 import tfcreborncore.objects.items.ItemOreProcessing;
 
 public class RCItems {
 
     private static ImmutableList<Item> allOreItems;
+    private static ImmutableList<Item> allMetalItems;
 
     public static void registerItems(RegistryEvent.Register<Item> event) {
         registerOreItems(event);
+        registerMetalItems(event);
     }
 
     public static void registerItemColors(final ColorHandlerEvent.Item event) {
         registerOreItemColor(event);
+        registerMetalItemColor(event);
     }
 
     public static void registerItemModels(ModelRegistryEvent event) {
-        registerOreModels(event);
+        registerModels(event);
     }
 
     static void registerOreItems(RegistryEvent.Register<Item> event) {
@@ -43,35 +48,45 @@ public class RCItems {
         for (Ore ore : TFCRegistries.ORES) {
             if (ore.isGraded()) {
                 String base = "ore/" + ore.getRegistryName().getPath().toLowerCase();
-                Item tiny = register(registry, base + "_pile",
-                        ItemOreProcessing.OreItemType.Create(ore, ItemOreProcessing.OreItemType.PILE),
-                        CreativeTabsTFC.CT_ROCK_ITEMS);
-                Item cube = register(registry, base + "_cube",
-                        ItemOreProcessing.OreItemType.Create(ore, ItemOreProcessing.OreItemType.CUBE),
-                        CreativeTabsTFC.CT_ROCK_ITEMS);
-                Item bar = register(registry, base + "_bar",
-                        ItemOreProcessing.OreItemType.Create(ore, ItemOreProcessing.OreItemType.BAR),
-                        CreativeTabsTFC.CT_ROCK_ITEMS);
 
-                ItemOreProcessing oreTiny = (ItemOreProcessing) tiny;
-                ItemOreProcessing oreCube = (ItemOreProcessing) cube;
-                ItemOreProcessing oreBar = (ItemOreProcessing) bar;
+                for (ItemOreProcessing.OreItemType type : ItemOreProcessing.OreItemType.values()) {
+                    Item oreType = register(registry, base + "_" + type.toString().toLowerCase(),
+                            ItemOreProcessing.OreItemType.Create(ore, type),
+                            CreativeTabsTFC.CT_ROCK_ITEMS);
 
-                String pathPile = oreTiny.getOre().getRegistryName().getPath().toLowerCase();
-                String pathCube = oreCube.getOre().getRegistryName().getPath().toLowerCase();
-                String pathBar = oreBar.getOre().getRegistryName().getPath().toLowerCase();
-
-                OreDictionary.registerOre("pile" + toPascalCase(pathPile), oreTiny);
-                OreDictionary.registerOre("cube" + toPascalCase(pathCube), oreCube);
-                OreDictionary.registerOre("bar" + toPascalCase(pathBar), oreBar);
-
-                oreItems.add(tiny);
-                oreItems.add(cube);
-                oreItems.add(bar);
+                    ItemOreProcessing oreItemType = (ItemOreProcessing) oreType;
+                    String path = oreItemType.getOre().getRegistryName().getPath().toLowerCase();
+                    OreDictionary.registerOre(type.toString().toLowerCase() + toPascalCase(path), oreItemType);
+                    oreItems.add(oreType);
+                }
             }
         }
 
         allOreItems = oreItems.build();
+    }
+
+    static void registerMetalItems(RegistryEvent.Register<Item> event){
+        IForgeRegistry<Item> registry = event.getRegistry();
+
+        ImmutableList.Builder<Item> metalItems = ImmutableList.builder();
+        for (Metal metal : TFCRegistries.METALS) {
+            if (metal.isToolMetal()) {
+                String base = "metal/" + metal.getRegistryName().getPath().toLowerCase();
+
+                for (ItemMetal.MetalItemType type : ItemMetal.MetalItemType.values()) {
+                    Item metalType = register(registry, base + "_" + type.toString().toLowerCase(),
+                            ItemMetal.MetalItemType.Create(metal, type),
+                            CreativeTabsTFC.CT_METAL);
+
+                    ItemMetal metalItemType = (ItemMetal) metalType;
+                    String path = metalItemType.getMetal().getRegistryName().getPath().toLowerCase();
+                    OreDictionary.registerOre(toPascalCaseAlt(type.toString().toLowerCase()) + toPascalCase(path), metalItemType);
+                    metalItems.add(metalType);
+                }
+            }
+        }
+
+        allMetalItems = metalItems.build();
     }
 
     static void registerOreItemColor(final ColorHandlerEvent.Item event) {
@@ -92,11 +107,34 @@ public class RCItems {
         }
     }
 
-    static void registerOreModels(ModelRegistryEvent event) {
+    static void registerMetalItemColor(final ColorHandlerEvent.Item event) {
+        ImmutableList<Item> metalItems = getAllMetalItems();
+        if (metalItems == null || metalItems.isEmpty()) return;
+
+        for (Item item : metalItems) {
+            if (!(item instanceof ItemMetal metalItem)) continue;
+
+            int color = getMetalColor(metalItem);
+
+            IItemColor handler = (stack, tintIndex) -> {
+                if (tintIndex != 0) return 0xFFFFFF;
+                return color;
+            };
+
+            event.getItemColors().registerItemColorHandler(handler, item);
+        }
+    }
+
+    static void registerModels(ModelRegistryEvent event) {
         for (Item item : getAllOreItems()) {
             ItemOreProcessing oreItem = (ItemOreProcessing) item;
             ModelLoader.setCustomModelResourceLocation(oreItem, 0, new ModelResourceLocation(
                     new ResourceLocation(Tags.MODID, "ore/" + oreItem.getType().name().toLowerCase()), "inventory"));
+        }
+        for (Item item : getAllMetalItems()) {
+            ItemMetal metalItem = (ItemMetal) item;
+            ModelLoader.setCustomModelResourceLocation(metalItem, 0, new ModelResourceLocation(
+                    new ResourceLocation(Tags.MODID, "metal/" + metalItem.getType().name().toLowerCase()), "inventory"));
         }
     }
 
@@ -104,11 +142,15 @@ public class RCItems {
         return allOreItems;
     }
 
+    public static ImmutableList<Item> getAllMetalItems() {
+        return allMetalItems;
+    }
+
     public static String toPascalCase(String input) {
         if (input == null || input.isEmpty()) return input;
 
         StringBuilder sb = new StringBuilder();
-        boolean capitalizeNext = true; // capitalize first char and any char after '_'
+        boolean capitalizeNext = true;
 
         for (char c : input.toCharArray()) {
             if (c == '_') {
@@ -119,6 +161,26 @@ public class RCItems {
             }
         }
 
+        return sb.toString();
+    }
+
+    public static String toPascalCaseAlt(String input) {
+        if (input == null || input.isEmpty()) return input;
+
+        StringBuilder sb = new StringBuilder();
+        boolean capitalizeNext = true;
+
+        for (char c : input.toCharArray()) {
+            if (c == '_') {
+                capitalizeNext = true;
+            } else {
+                sb.append(capitalizeNext ? Character.toUpperCase(c) : c);
+                capitalizeNext = false;
+            }
+        }
+
+        if (sb.length() == 0) return sb.toString();
+        sb.setCharAt(0, Character.toLowerCase(sb.charAt(0)));
         return sb.toString();
     }
 
@@ -138,6 +200,10 @@ public class RCItems {
             color = ore.getMetal().getColor() & 0xFFFFFF;
         }
         return color;
+    }
+
+    private static int getMetalColor(ItemMetal metalItem) {
+        return metalItem.getMetal().getColor() & 0xFFFFFF;
     }
 
     private static <T extends Item> T register(IForgeRegistry<Item> r, String name, T item, CreativeTabs ct) {

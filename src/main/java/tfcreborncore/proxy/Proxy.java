@@ -8,6 +8,7 @@ import net.minecraft.item.Item;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.registries.IForgeRegistry;
 
 import com.google.common.collect.ImmutableList;
@@ -30,8 +31,8 @@ public class Proxy {
         for (Ore ore : TFCRegistries.ORES) {
             if (ore.isGraded()) {
                 String base = "ore/" + ore.getRegistryName().getPath().toLowerCase();
-                Item tiny = register(registry, base + "_tiny_pile",
-                        ItemOreProcessing.OreItemType.Create(ore, ItemOreProcessing.OreItemType.TINY_PILE),
+                Item tiny = register(registry, base + "_pile",
+                        ItemOreProcessing.OreItemType.Create(ore, ItemOreProcessing.OreItemType.PILE),
                         CreativeTabsTFC.CT_ROCK_ITEMS);
                 Item cube = register(registry, base + "_cube",
                         ItemOreProcessing.OreItemType.Create(ore, ItemOreProcessing.OreItemType.CUBE),
@@ -39,6 +40,18 @@ public class Proxy {
                 Item bar = register(registry, base + "_bar",
                         ItemOreProcessing.OreItemType.Create(ore, ItemOreProcessing.OreItemType.BAR),
                         CreativeTabsTFC.CT_ROCK_ITEMS);
+
+                ItemOreProcessing oreTiny = (ItemOreProcessing) tiny;
+                ItemOreProcessing oreCube = (ItemOreProcessing) cube;
+                ItemOreProcessing oreBar = (ItemOreProcessing) bar;
+
+                String pathPile = oreTiny.getOre().getRegistryName().getPath().toLowerCase();
+                String pathCube = oreCube.getOre().getRegistryName().getPath().toLowerCase();
+                String pathBar = oreBar.getOre().getRegistryName().getPath().toLowerCase();
+
+                OreDictionary.registerOre("pile" + toPascalCase(pathPile), oreTiny);
+                OreDictionary.registerOre("cube" + toPascalCase(pathCube), oreCube);
+                OreDictionary.registerOre("bar" + toPascalCase(pathBar), oreBar);
 
                 oreItems.add(tiny);
                 oreItems.add(cube);
@@ -48,6 +61,25 @@ public class Proxy {
 
         allOreItems = oreItems.build();
     }
+
+    public static String toPascalCase(String input) {
+        if (input == null || input.isEmpty()) return input;
+
+        StringBuilder sb = new StringBuilder();
+        boolean capitalizeNext = true; // capitalize first char and any char after '_'
+
+        for (char c : input.toCharArray()) {
+            if (c == '_') {
+                capitalizeNext = true;
+            } else {
+                sb.append(capitalizeNext ? Character.toUpperCase(c) : c);
+                capitalizeNext = false;
+            }
+        }
+
+        return sb.toString();
+    }
+
 
     public static ImmutableList<Item> getAllOreItems() {
         return allOreItems;

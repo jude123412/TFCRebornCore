@@ -95,7 +95,7 @@ public class ItemOreProcessing extends ItemTFC {
 
     public enum OreItemType {
 
-        TINY_PILE(5),
+        PILE(5),
         CUBE(25),
         BAR(100);
 

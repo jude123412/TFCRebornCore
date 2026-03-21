@@ -43,6 +43,7 @@ dependencies {
     implementation rfg.deobf("curse.maven:tfc-rocks-plus-1.3.6-376298:3260513") // TFC Rocks+ 1.3.6
     implementation rfg.deobf("curse.maven:firmalife-0.5.1-453394:3612887") // TFC Firmalife 0.5.1
     implementation rfg.deobf("curse.maven:tfc-decoration-1.0.9-414667:3510190") // TFC Decoration 1.0.9
+    implementation rfg.deobf("curse.maven:tfc-metallum-1.4.4-1489345:7777212") // TFC Metallum 1.4.4
     implementation rfg.deobf("curse.maven:jeids-1.0.4-snapshot-thin-296289:3581715") // Just Enough Ids 1.0.4-Snapshot-Thin
     implementation rfg.deobf("curse.maven:mixin-bootstrap-1.1.0-357178:3437402") // Mixin Bootstrap 1.1.0
 

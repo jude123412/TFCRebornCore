@@ -1,0 +1,7 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "tfcreborncore:items/ore/tiny_pile",
+    "layer1": "tfcreborncore:items/ore/tiny_pile_overlay"
+  }
+}

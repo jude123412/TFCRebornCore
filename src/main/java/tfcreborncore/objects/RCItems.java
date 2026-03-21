@@ -19,8 +19,8 @@ import net.minecraftforge.registries.IForgeRegistry;
 import com.google.common.collect.ImmutableList;
 
 import tfcreborncore.Tags;
-import tfcreborncore.objects.items.ItemMetal;
 import tfcreborncore.objects.items.ItemOreProcessing;
+import tfcreborncore.objects.items.RCItemMetal;
 
 public class RCItems {
 
@@ -65,7 +65,7 @@ public class RCItems {
         allOreItems = oreItems.build();
     }
 
-    static void registerMetalItems(RegistryEvent.Register<Item> event){
+    static void registerMetalItems(RegistryEvent.Register<Item> event) {
         IForgeRegistry<Item> registry = event.getRegistry();
 
         ImmutableList.Builder<Item> metalItems = ImmutableList.builder();
@@ -73,14 +73,15 @@ public class RCItems {
             if (metal.isToolMetal()) {
                 String base = "metal/" + metal.getRegistryName().getPath().toLowerCase();
 
-                for (ItemMetal.MetalItemType type : ItemMetal.MetalItemType.values()) {
+                for (RCItemMetal.RCMetalItemType type : RCItemMetal.RCMetalItemType.values()) {
                     Item metalType = register(registry, base + "_" + type.toString().toLowerCase(),
-                            ItemMetal.MetalItemType.Create(metal, type),
+                            RCItemMetal.RCMetalItemType.Create(metal, type),
                             CreativeTabsTFC.CT_METAL);
 
-                    ItemMetal metalItemType = (ItemMetal) metalType;
+                    RCItemMetal metalItemType = (RCItemMetal) metalType;
                     String path = metalItemType.getMetal().getRegistryName().getPath().toLowerCase();
-                    OreDictionary.registerOre(toPascalCaseAlt(type.toString().toLowerCase()) + toPascalCase(path), metalItemType);
+                    OreDictionary.registerOre(toPascalCaseAlt(type.toString().toLowerCase()) + toPascalCase(path),
+                            metalItemType);
                     metalItems.add(metalType);
                 }
             }
@@ -112,7 +113,7 @@ public class RCItems {
         if (metalItems == null || metalItems.isEmpty()) return;
 
         for (Item item : metalItems) {
-            if (!(item instanceof ItemMetal metalItem)) continue;
+            if (!(item instanceof RCItemMetal metalItem)) continue;
 
             int color = getMetalColor(metalItem);
 
@@ -132,9 +133,10 @@ public class RCItems {
                     new ResourceLocation(Tags.MODID, "ore/" + oreItem.getType().name().toLowerCase()), "inventory"));
         }
         for (Item item : getAllMetalItems()) {
-            ItemMetal metalItem = (ItemMetal) item;
+            RCItemMetal metalItem = (RCItemMetal) item;
             ModelLoader.setCustomModelResourceLocation(metalItem, 0, new ModelResourceLocation(
-                    new ResourceLocation(Tags.MODID, "metal/" + metalItem.getType().name().toLowerCase()), "inventory"));
+                    new ResourceLocation(Tags.MODID, "metal/" + metalItem.getType().name().toLowerCase()),
+                    "inventory"));
         }
     }
 
@@ -202,7 +204,7 @@ public class RCItems {
         return color;
     }
 
-    private static int getMetalColor(ItemMetal metalItem) {
+    private static int getMetalColor(RCItemMetal metalItem) {
         return metalItem.getMetal().getColor() & 0xFFFFFF;
     }
 

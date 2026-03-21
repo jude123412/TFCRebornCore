@@ -1,5 +1,7 @@
 package tfcreborncore.proxy;
 
+import net.dries007.tfc.api.recipes.WeldingRecipe;
+import net.dries007.tfc.api.recipes.anvil.AnvilRecipe;
 import net.minecraft.item.Item;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -7,6 +9,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import tfcreborncore.Tags;
 import tfcreborncore.objects.RCItems;
+import tfcreborncore.recipe.MetalRecipes;
 
 @Mod.EventBusSubscriber(modid = Tags.MODID)
 public class Proxy {
@@ -16,5 +19,14 @@ public class Proxy {
     @SubscribeEvent
     public static void registerItems(RegistryEvent.Register<Item> event) {
         RCItems.registerItems(event);
+    }
+    @SubscribeEvent
+    public static void registerAnvilRecipe(RegistryEvent.Register<AnvilRecipe> event) {
+        MetalRecipes.registerAnvilRecipes(event);
+    }
+
+    @SubscribeEvent
+    public static void registerWeldingRecipe(RegistryEvent.Register<WeldingRecipe> event) {
+        MetalRecipes.registerWeldingRecipes(event);
     }
 }

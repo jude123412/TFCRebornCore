@@ -6,3 +6,4 @@ item.tfcreborncore.ore_item.bar.name=Bar of %s
 # Mining Hammer
 item.tfcreborncore.metal_item.unfinished_mining_hammer_head.name=Unfinished %s Mining Hammer Head
 item.tfcreborncore.metal_item.mining_hammer_head.name=%s Mining Hammer Head
+item.tfcreborncore.metal_item.excavator_head.name=%s Excavator Head

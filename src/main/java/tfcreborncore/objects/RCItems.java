@@ -1,4 +1,4 @@
-package tfcreborncore.objects.items;
+package tfcreborncore.objects;
 
 import net.dries007.tfc.api.registries.TFCRegistries;
 import net.dries007.tfc.api.types.Ore;
@@ -18,6 +18,7 @@ import net.minecraftforge.registries.IForgeRegistry;
 import com.google.common.collect.ImmutableList;
 
 import tfcreborncore.Tags;
+import tfcreborncore.objects.items.ItemOreProcessing;
 
 public class RCItems {
 

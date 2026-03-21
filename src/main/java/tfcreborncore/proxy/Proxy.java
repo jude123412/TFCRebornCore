@@ -6,7 +6,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import tfcreborncore.Tags;
-import tfcreborncore.objects.items.RCItems;
+import tfcreborncore.objects.RCItems;
 
 @Mod.EventBusSubscriber(modid = Tags.MODID)
 public class Proxy {

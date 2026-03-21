@@ -9,8 +9,10 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import net.dries007.tfc.api.capability.forge.ForgeableHeatableHandler;
+import net.dries007.tfc.api.capability.metal.IMetalItem;
 import net.dries007.tfc.api.capability.size.Size;
 import net.dries007.tfc.api.capability.size.Weight;
+import net.dries007.tfc.api.types.Metal;
 import net.dries007.tfc.api.types.Ore;
 import net.dries007.tfc.objects.items.ItemTFC;
 import net.minecraft.item.Item;
@@ -21,7 +23,7 @@ import net.minecraftforge.common.capabilities.ICapabilityProvider;
 
 import org.jetbrains.annotations.NotNull;
 
-public class ItemOreProcessing extends ItemTFC {
+public class ItemOreProcessing extends ItemTFC implements IMetalItem {
 
     private static final Map<Ore, EnumMap<OreItemType, ItemOreProcessing>> ORE_MAP = new HashMap<>();
 
@@ -86,6 +88,22 @@ public class ItemOreProcessing extends ItemTFC {
     @Override
     public ICapabilityProvider initCapabilities(@Nonnull ItemStack stack, @Nullable NBTTagCompound nbt) {
         return new ForgeableHeatableHandler(nbt, ore.getMetal().getSpecificHeat(), ore.getMetal().getMeltTemp());
+    }
+
+    @Nonnull
+    @Override
+    public Metal getMetal(ItemStack itemStack) {
+        return ore.getMetal();
+    }
+
+    @Override
+    public int getSmeltAmount(ItemStack itemStack) {
+        return type.getMeltingAmount();
+    }
+
+    @Override
+    public boolean canMelt(ItemStack stack) {
+        return ore.canMelt();
     }
 
     public Ore getOre() {

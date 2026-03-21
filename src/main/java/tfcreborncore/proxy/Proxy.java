@@ -20,6 +20,7 @@ public class Proxy {
     public static void registerItems(RegistryEvent.Register<Item> event) {
         RCItems.registerItems(event);
     }
+
     @SubscribeEvent
     public static void registerAnvilRecipe(RegistryEvent.Register<AnvilRecipe> event) {
         MetalRecipes.registerAnvilRecipes(event);

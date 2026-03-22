@@ -1,6 +1,7 @@
 package tfcreborncore.objects;
 
-import com.google.common.collect.ImmutableSet;
+import java.util.Set;
+
 import net.dries007.tfc.api.registries.TFCRegistries;
 import net.dries007.tfc.api.types.Metal;
 import net.dries007.tfc.api.types.Ore;
@@ -18,12 +19,11 @@ import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.registries.IForgeRegistry;
 
 import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSet;
 
 import tfcreborncore.Tags;
-import tfcreborncore.objects.items.ItemRCOre;
 import tfcreborncore.objects.items.ItemRCMetal;
-
-import java.util.Set;
+import tfcreborncore.objects.items.ItemRCOre;
 
 public class RCItems {
 
@@ -211,19 +211,16 @@ public class RCItems {
             "gold", "iron", "constantan", "bronze", "invar",
             "electrum", "steel", "platinum", "nickel",
             "aluminium", "lead", "silver", "tin", "copper",
-            "fluxed_electrum", "nickel_silver", "black_steel", "blue_steel"
-    );
+            "fluxed_electrum", "nickel_silver", "black_steel", "blue_steel");
 
     private static final Set<String> BLOCKED_TOOLS = ImmutableSet.of(
             "red_steel",
-            "hsla_steel", "tungsten_steel", "beryllium_copper"
-    );
+            "hsla_steel", "tungsten_steel", "beryllium_copper");
 
     private static final Set<String> BLOCKED_ORES = ImmutableSet.of(
             "gold", "iron", "constantan", "bronze", "invar",
             "electrum", "steel", "platinum", "nickel",
-            "aluminium", "lead", "silver", "tin", "copper"
-    );
+            "aluminium", "lead", "silver", "tin", "copper");
 
     public static boolean shouldGenerateTool(Metal metal) {
         String name = metal.getRegistryName().getPath().toLowerCase();

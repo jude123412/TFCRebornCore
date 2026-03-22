@@ -58,7 +58,7 @@ public class RCItems {
                             CreativeTabsTFC.CT_ROCK_ITEMS);
 
                     ItemRCOre ItemType = (ItemRCOre) oreType;
-                    String path = ItemType.getOre().getRegistryName().getPath().toLowerCase();
+                    String path = ItemType.getOre().getMetal().getRegistryName().getPath().toLowerCase();
                     OreDictionary.registerOre(type.toString().toLowerCase() + toPascalCase(path), ItemType);
                     oreItems.add(oreType);
                 }
@@ -191,16 +191,7 @@ public class RCItems {
 
     private static int getOreColor(ItemRCOre oreItem) {
         Ore ore = oreItem.getOre();
-        int color;
-        if (ore.getRegistryName().getPath().contains("garnierite")) color = 0x5A664B;
-        else if (ore.getRegistryName().getPath().contains("stibnite")) color = 0x5C607A;
-        else if (ore.getRegistryName().getPath().contains("spodumene")) color = 0x5F447D;
-        else if (ore.getRegistryName().getPath().contains("bauxite")) color = 0xD7652F;
-        else if (ore.getRegistryName().getPath().contains("rutile")) color = 0x50301F;
-        else {
-            color = ore.getMetal().getColor() & 0xFFFFFF;
-        }
-        return color;
+        return ore.getMetal().getColor() & 0xFFFFFF;
     }
 
     private static int getMetalColor(ItemRCMetal metalItem) {
@@ -214,13 +205,10 @@ public class RCItems {
             "fluxed_electrum", "nickel_silver", "black_steel", "blue_steel");
 
     private static final Set<String> BLOCKED_TOOLS = ImmutableSet.of(
-            "red_steel",
-            "hsla_steel", "tungsten_steel", "beryllium_copper");
+            "red_steel", "hsla_steel", "tungsten_steel", "beryllium_copper");
 
     private static final Set<String> BLOCKED_ORES = ImmutableSet.of(
-            "gold", "iron", "constantan", "bronze", "invar",
-            "electrum", "steel", "platinum", "nickel",
-            "aluminium", "lead", "silver", "tin", "copper");
+            "tetrahedrite", "malachite", "magnetite", "limonite");
 
     public static boolean shouldGenerateTool(Metal metal) {
         String name = metal.getRegistryName().getPath().toLowerCase();

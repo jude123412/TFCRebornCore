@@ -24,6 +24,6 @@ public class RCModTypeMixins {
                remap = false)
     private static SoundType replaceRawMudSound(SoundType original) {
         // Only override the sound for raw_mud
-        return SoundType.GROUND;
+        return SoundType.SLIME;
     }
 }

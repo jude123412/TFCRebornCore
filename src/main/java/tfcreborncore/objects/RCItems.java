@@ -20,7 +20,7 @@ import com.google.common.collect.ImmutableList;
 
 import tfcreborncore.Tags;
 import tfcreborncore.objects.items.ItemOreProcessing;
-import tfcreborncore.objects.items.RCItemMetal;
+import tfcreborncore.objects.items.ItemRCMetal;
 
 public class RCItems {
 
@@ -49,14 +49,14 @@ public class RCItems {
             if (ore.isGraded()) {
                 String base = "ore/" + ore.getRegistryName().getPath().toLowerCase();
 
-                for (ItemOreProcessing.OreItemType type : ItemOreProcessing.OreItemType.values()) {
+                for (ItemOreProcessing.ItemType type : ItemOreProcessing.ItemType.values()) {
                     Item oreType = register(registry, base + "_" + type.toString().toLowerCase(),
-                            ItemOreProcessing.OreItemType.Create(ore, type),
+                            ItemOreProcessing.ItemType.Create(ore, type),
                             CreativeTabsTFC.CT_ROCK_ITEMS);
 
-                    ItemOreProcessing oreItemType = (ItemOreProcessing) oreType;
-                    String path = oreItemType.getOre().getRegistryName().getPath().toLowerCase();
-                    OreDictionary.registerOre(type.toString().toLowerCase() + toPascalCase(path), oreItemType);
+                    ItemOreProcessing ItemType = (ItemOreProcessing) oreType;
+                    String path = ItemType.getOre().getRegistryName().getPath().toLowerCase();
+                    OreDictionary.registerOre(type.toString().toLowerCase() + toPascalCase(path), ItemType);
                     oreItems.add(oreType);
                 }
             }
@@ -73,12 +73,12 @@ public class RCItems {
             if (metal.isToolMetal()) {
                 String base = "metal/" + metal.getRegistryName().getPath().toLowerCase();
 
-                for (RCItemMetal.RCMetalItemType type : RCItemMetal.RCMetalItemType.values()) {
+                for (ItemRCMetal.ItemType type : ItemRCMetal.ItemType.values()) {
                     Item metalType = register(registry, base + "_" + type.toString().toLowerCase(),
-                            RCItemMetal.RCMetalItemType.Create(metal, type),
+                            ItemRCMetal.ItemType.Create(metal, type),
                             CreativeTabsTFC.CT_METAL);
 
-                    RCItemMetal metalItemType = (RCItemMetal) metalType;
+                    ItemRCMetal metalItemType = (ItemRCMetal) metalType;
                     String path = metalItemType.getMetal().getRegistryName().getPath().toLowerCase();
                     OreDictionary.registerOre(toPascalCaseAlt(type.toString().toLowerCase()) + toPascalCase(path),
                             metalItemType);
@@ -113,7 +113,7 @@ public class RCItems {
         if (metalItems == null || metalItems.isEmpty()) return;
 
         for (Item item : metalItems) {
-            if (!(item instanceof RCItemMetal metalItem)) continue;
+            if (!(item instanceof ItemRCMetal metalItem)) continue;
 
             int color = getMetalColor(metalItem);
 
@@ -133,7 +133,7 @@ public class RCItems {
                     new ResourceLocation(Tags.MODID, "ore/" + oreItem.getType().name().toLowerCase()), "inventory"));
         }
         for (Item item : getAllMetalItems()) {
-            RCItemMetal metalItem = (RCItemMetal) item;
+            ItemRCMetal metalItem = (ItemRCMetal) item;
             ModelLoader.setCustomModelResourceLocation(metalItem, 0, new ModelResourceLocation(
                     new ResourceLocation(Tags.MODID, "metal/" + metalItem.getType().name().toLowerCase()),
                     "inventory"));
@@ -204,7 +204,7 @@ public class RCItems {
         return color;
     }
 
-    private static int getMetalColor(RCItemMetal metalItem) {
+    private static int getMetalColor(ItemRCMetal metalItem) {
         return metalItem.getMetal().getColor() & 0xFFFFFF;
     }
 

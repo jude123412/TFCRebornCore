@@ -25,23 +25,23 @@ import org.jetbrains.annotations.NotNull;
 
 public class ItemOreProcessing extends ItemTFC implements IMetalItem {
 
-    private static final Map<Ore, EnumMap<OreItemType, ItemOreProcessing>> ORE_MAP = new HashMap<>();
+    private static final Map<Ore, EnumMap<ItemType, ItemOreProcessing>> ORE_MAP = new HashMap<>();
 
     private final Ore ore;
-    private final OreItemType type;
+    private final ItemType type;
 
-    public ItemOreProcessing(Ore ore, OreItemType type) {
+    public ItemOreProcessing(Ore ore, ItemType type) {
         super();
         this.ore = ore;
         this.type = type;
         if (!ORE_MAP.containsKey(ore)) {
-            ORE_MAP.put(ore, new EnumMap<>(OreItemType.class));
+            ORE_MAP.put(ore, new EnumMap<>(ItemType.class));
         }
         ORE_MAP.get(ore).put(type, this);
         setNoRepair();
     }
 
-    public OreItemType getType() {
+    public ItemType getType() {
         return type;
     }
 
@@ -110,25 +110,25 @@ public class ItemOreProcessing extends ItemTFC implements IMetalItem {
         return ore;
     }
 
-    public enum OreItemType {
+    public enum ItemType {
 
         PILE(5),
         CUBE(25),
         BAR(100);
 
-        OreItemType(int meltingAmount) {
+        ItemType(int meltingAmount) {
             this(meltingAmount, ItemOreProcessing::new);
         }
 
-        OreItemType(int meltingAmount, @Nonnull BiFunction<Ore, OreItemType, Item> supplier) {
+        ItemType(int meltingAmount, @Nonnull BiFunction<Ore, ItemType, Item> supplier) {
             this.meltingAmount = meltingAmount;
             this.supplier = supplier;
         }
 
         private final int meltingAmount;
-        private final BiFunction<Ore, OreItemType, Item> supplier;
+        private final BiFunction<Ore, ItemType, Item> supplier;
 
-        public static Item Create(Ore ore, OreItemType type) {
+        public static Item Create(Ore ore, ItemType type) {
             return type.supplier.apply(ore, type);
         }
 

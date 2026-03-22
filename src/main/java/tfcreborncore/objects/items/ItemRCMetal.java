@@ -22,30 +22,30 @@ import net.minecraftforge.common.capabilities.ICapabilityProvider;
 
 import org.jetbrains.annotations.NotNull;
 
-public class RCItemMetal extends ItemTFC implements IMetalItem {
+public class ItemRCMetal extends ItemTFC implements IMetalItem {
 
-    private static final Map<Metal, EnumMap<RCItemMetal.RCMetalItemType, RCItemMetal>> METAL_MAP = new HashMap<>();
+    private static final Map<Metal, EnumMap<ItemRCMetal.ItemType, ItemRCMetal>> METAL_MAP = new HashMap<>();
 
     private final Metal metal;
-    private final RCItemMetal.RCMetalItemType type;
+    private final ItemRCMetal.ItemType type;
 
-    public RCItemMetal(Metal metal, RCItemMetal.RCMetalItemType type) {
+    public ItemRCMetal(Metal metal, ItemRCMetal.ItemType type) {
         super();
         this.metal = metal;
         this.type = type;
         if (!METAL_MAP.containsKey(metal)) {
-            METAL_MAP.put(metal, new EnumMap<>(RCItemMetal.RCMetalItemType.class));
+            METAL_MAP.put(metal, new EnumMap<>(ItemRCMetal.ItemType.class));
         }
         METAL_MAP.get(metal).put(type, this);
         setNoRepair();
     }
 
-    public RCItemMetal.RCMetalItemType getType() {
+    public ItemRCMetal.ItemType getType() {
         return type;
     }
 
     @Nullable
-    public static RCItemMetal get(Metal metal, RCItemMetal.RCMetalItemType type) {
+    public static ItemRCMetal get(Metal metal, ItemRCMetal.ItemType type) {
         return METAL_MAP.get(metal).get(type);
     }
 
@@ -109,25 +109,25 @@ public class RCItemMetal extends ItemTFC implements IMetalItem {
         return metal;
     }
 
-    public enum RCMetalItemType {
+    public enum ItemType {
 
         UNFINISHED_MINING_HAMMER_HEAD(300),
         MINING_HAMMER_HEAD(500),
         EXCAVATOR_HEAD(300);
 
-        RCMetalItemType(int meltingAmount) {
-            this(meltingAmount, RCItemMetal::new);
+        ItemType(int meltingAmount) {
+            this(meltingAmount, ItemRCMetal::new);
         }
 
-        RCMetalItemType(int meltingAmount, @Nonnull BiFunction<Metal, RCItemMetal.RCMetalItemType, Item> supplier) {
+        ItemType(int meltingAmount, @Nonnull BiFunction<Metal, ItemRCMetal.ItemType, Item> supplier) {
             this.meltingAmount = meltingAmount;
             this.supplier = supplier;
         }
 
         private final int meltingAmount;
-        private final BiFunction<Metal, RCItemMetal.RCMetalItemType, Item> supplier;
+        private final BiFunction<Metal, ItemRCMetal.ItemType, Item> supplier;
 
-        public static Item Create(Metal metal, RCItemMetal.RCMetalItemType type) {
+        public static Item Create(Metal metal, ItemRCMetal.ItemType type) {
             return type.supplier.apply(metal, type);
         }
 

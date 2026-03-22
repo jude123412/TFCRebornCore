@@ -13,6 +13,7 @@ import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.registries.IForgeRegistry;
 
 import tfcreborncore.Tags;
+import tfcreborncore.objects.RCItems;
 import tfcreborncore.objects.items.ItemRCMetal;
 import tfctech.objects.items.metal.ItemTechMetal;
 
@@ -41,7 +42,7 @@ public class MetalRecipes {
         IForgeRegistry<WeldingRecipe> r = event.getRegistry();
 
         for (Metal metal : TFCRegistries.METALS.getValuesCollection()) {
-            if (metal.isUsable() && metal.isToolMetal()) {
+            if (metal.isUsable() && metal.isToolMetal() && RCItems.shouldGenerateTool(metal)) {
                 IIngredient<ItemStack> ingredientIngotDouble = IIngredient
                         .of(new ItemStack(ItemMetal.get(metal, Metal.ItemType.DOUBLE_INGOT)));
 

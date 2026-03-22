@@ -1,5 +1,6 @@
 package tfcreborncore.objects;
 
+import com.google.common.collect.ImmutableSet;
 import net.dries007.tfc.api.registries.TFCRegistries;
 import net.dries007.tfc.api.types.Metal;
 import net.dries007.tfc.api.types.Ore;
@@ -19,8 +20,10 @@ import net.minecraftforge.registries.IForgeRegistry;
 import com.google.common.collect.ImmutableList;
 
 import tfcreborncore.Tags;
-import tfcreborncore.objects.items.ItemOreProcessing;
+import tfcreborncore.objects.items.ItemRCOre;
 import tfcreborncore.objects.items.ItemRCMetal;
+
+import java.util.Set;
 
 public class RCItems {
 
@@ -46,15 +49,15 @@ public class RCItems {
 
         ImmutableList.Builder<Item> oreItems = ImmutableList.builder();
         for (Ore ore : TFCRegistries.ORES) {
-            if (ore.isGraded()) {
+            if (ore.isGraded() && shouldGenerateOre(ore)) {
                 String base = "ore/" + ore.getRegistryName().getPath().toLowerCase();
 
-                for (ItemOreProcessing.ItemType type : ItemOreProcessing.ItemType.values()) {
+                for (ItemRCOre.ItemType type : ItemRCOre.ItemType.values()) {
                     Item oreType = register(registry, base + "_" + type.toString().toLowerCase(),
-                            ItemOreProcessing.ItemType.Create(ore, type),
+                            ItemRCOre.ItemType.Create(ore, type),
                             CreativeTabsTFC.CT_ROCK_ITEMS);
 
-                    ItemOreProcessing ItemType = (ItemOreProcessing) oreType;
+                    ItemRCOre ItemType = (ItemRCOre) oreType;
                     String path = ItemType.getOre().getRegistryName().getPath().toLowerCase();
                     OreDictionary.registerOre(type.toString().toLowerCase() + toPascalCase(path), ItemType);
                     oreItems.add(oreType);
@@ -70,7 +73,7 @@ public class RCItems {
 
         ImmutableList.Builder<Item> metalItems = ImmutableList.builder();
         for (Metal metal : TFCRegistries.METALS) {
-            if (metal.isToolMetal()) {
+            if (metal.isToolMetal() && shouldGenerateTool(metal)) {
                 String base = "metal/" + metal.getRegistryName().getPath().toLowerCase();
 
                 for (ItemRCMetal.ItemType type : ItemRCMetal.ItemType.values()) {
@@ -95,7 +98,7 @@ public class RCItems {
         if (oreItems == null || oreItems.isEmpty()) return;
 
         for (Item item : oreItems) {
-            if (!(item instanceof ItemOreProcessing oreItem)) continue;
+            if (!(item instanceof ItemRCOre oreItem)) continue;
 
             int color = getOreColor(oreItem);
 
@@ -128,7 +131,7 @@ public class RCItems {
 
     static void registerModels(ModelRegistryEvent event) {
         for (Item item : getAllOreItems()) {
-            ItemOreProcessing oreItem = (ItemOreProcessing) item;
+            ItemRCOre oreItem = (ItemRCOre) item;
             ModelLoader.setCustomModelResourceLocation(oreItem, 0, new ModelResourceLocation(
                     new ResourceLocation(Tags.MODID, "ore/" + oreItem.getType().name().toLowerCase()), "inventory"));
         }
@@ -186,14 +189,10 @@ public class RCItems {
         return sb.toString();
     }
 
-    private static int getOreColor(ItemOreProcessing oreItem) {
+    private static int getOreColor(ItemRCOre oreItem) {
         Ore ore = oreItem.getOre();
         int color;
-        if (ore.getRegistryName().getPath().contains("malachite")) color = 0x53ff92;
-        else if (ore.getRegistryName().getPath().contains("tetrahedrite")) color = 0x848484;
-        else if (ore.getRegistryName().getPath().contains("hematite")) color = 0x994F51;
-        else if (ore.getRegistryName().getPath().contains("limonite")) color = 0x4D2F27;
-        else if (ore.getRegistryName().getPath().contains("garnierite")) color = 0x5A664B;
+        if (ore.getRegistryName().getPath().contains("garnierite")) color = 0x5A664B;
         else if (ore.getRegistryName().getPath().contains("stibnite")) color = 0x5C607A;
         else if (ore.getRegistryName().getPath().contains("spodumene")) color = 0x5F447D;
         else if (ore.getRegistryName().getPath().contains("bauxite")) color = 0xD7652F;
@@ -206,6 +205,51 @@ public class RCItems {
 
     private static int getMetalColor(ItemRCMetal metalItem) {
         return metalItem.getMetal().getColor() & 0xFFFFFF;
+    }
+
+    private static final Set<String> ALLOWED_TOOLS = ImmutableSet.of(
+            "gold", "iron", "constantan", "bronze", "invar",
+            "electrum", "steel", "platinum", "nickel",
+            "aluminium", "lead", "silver", "tin", "copper",
+            "fluxed_electrum", "nickel_silver", "black_steel", "blue_steel"
+    );
+
+    private static final Set<String> BLOCKED_TOOLS = ImmutableSet.of(
+            "red_steel",
+            "hsla_steel", "tungsten_steel", "beryllium_copper"
+    );
+
+    private static final Set<String> BLOCKED_ORES = ImmutableSet.of(
+            "gold", "iron", "constantan", "bronze", "invar",
+            "electrum", "steel", "platinum", "nickel",
+            "aluminium", "lead", "silver", "tin", "copper"
+    );
+
+    public static boolean shouldGenerateTool(Metal metal) {
+        String name = metal.getRegistryName().getPath().toLowerCase();
+
+        // Blocked always wins
+        for (String s : BLOCKED_TOOLS)
+            if (name.contains(s))
+                return false;
+
+        // Allowed metals
+        for (String s : ALLOWED_TOOLS)
+            if (name.contains(s))
+                return true;
+
+        return false;
+    }
+
+    public static boolean shouldGenerateOre(Ore ore) {
+        String name = ore.getRegistryName().getPath().toLowerCase();
+
+        // Blocked always wins
+        for (String s : BLOCKED_ORES)
+            if (name.contains(s))
+                return false;
+
+        return true;
     }
 
     private static <T extends Item> T register(IForgeRegistry<Item> r, String name, T item, CreativeTabs ct) {

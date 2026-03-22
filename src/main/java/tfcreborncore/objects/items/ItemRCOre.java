@@ -23,14 +23,14 @@ import net.minecraftforge.common.capabilities.ICapabilityProvider;
 
 import org.jetbrains.annotations.NotNull;
 
-public class ItemOreProcessing extends ItemTFC implements IMetalItem {
+public class ItemRCOre extends ItemTFC implements IMetalItem {
 
-    private static final Map<Ore, EnumMap<ItemType, ItemOreProcessing>> ORE_MAP = new HashMap<>();
+    private static final Map<Ore, EnumMap<ItemType, ItemRCOre>> ORE_MAP = new HashMap<>();
 
     private final Ore ore;
     private final ItemType type;
 
-    public ItemOreProcessing(Ore ore, ItemType type) {
+    public ItemRCOre(Ore ore, ItemType type) {
         super();
         this.ore = ore;
         this.type = type;
@@ -79,7 +79,7 @@ public class ItemOreProcessing extends ItemTFC implements IMetalItem {
     @Nonnull
     public String getItemStackDisplayName(@Nonnull ItemStack stack) {
         String metalName = (new TextComponentTranslation(
-                "item.tfc.ore." + ore.getRegistryName().getPath().toLowerCase() + ".name")).getFormattedText();
+                "tfc.types.metal." + ore.getMetal().getRegistryName().getPath().toLowerCase())).getFormattedText();
         return (new TextComponentTranslation("item.tfcreborncore.ore_item." + type.name().toLowerCase() + ".name",
                 metalName)).getFormattedText();
     }
@@ -117,7 +117,7 @@ public class ItemOreProcessing extends ItemTFC implements IMetalItem {
         BAR(100);
 
         ItemType(int meltingAmount) {
-            this(meltingAmount, ItemOreProcessing::new);
+            this(meltingAmount, ItemRCOre::new);
         }
 
         ItemType(int meltingAmount, @Nonnull BiFunction<Ore, ItemType, Item> supplier) {

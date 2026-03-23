@@ -37,9 +37,9 @@ import org.jetbrains.annotations.Nullable;
 import mcp.MethodsReturnNonnullByDefault;
 
 /*
- * Original code from ItemMetalTool (EUPL v1.2)
+ * Original code from Terrafirmacraft's ItemMetalTool (EUPL v1.2)
  * Modified to create ItemRCTool
- * Modified by Jude on 2026-03-23
+ * Modified by xXjudeXx on 2026-03-23
  */
 @ParametersAreNonnullByDefault
 @MethodsReturnNonnullByDefault

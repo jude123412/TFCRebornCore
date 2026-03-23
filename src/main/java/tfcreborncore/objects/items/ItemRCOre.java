@@ -23,6 +23,11 @@ import net.minecraftforge.common.capabilities.ICapabilityProvider;
 
 import org.jetbrains.annotations.NotNull;
 
+/*
+ * Original code from TFC Tech's ItemTechMetal (EUPL v1.2)
+ * Modified to create ItemRCTool
+ * Modified by xXjudeXx on 2026-03-21
+ */
 public class ItemRCOre extends ItemTFC implements IMetalItem {
 
     private static final Map<Ore, EnumMap<ItemType, ItemRCOre>> ORE_MAP = new HashMap<>();

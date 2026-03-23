@@ -19,9 +19,9 @@ import net.minecraftforge.oredict.ShapedOreRecipe;
 import javax.annotation.Nonnull;
 
 /*
- * Original code from ShapedSkillRecipe (EUPL v1.2)
+ * Original code from Terrafirmacraft's ShapedSkillRecipe (EUPL v1.2)
  * Modified to create a publicly accessible recipe class
- * Modified by Jude on 2026-03-23
+ * Modified by xXjudeXx on 2026-03-23
  */
 
 public class ShapedSkillRecipe extends ShapedOreRecipe {

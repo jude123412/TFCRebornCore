@@ -22,6 +22,7 @@ import net.minecraftforge.common.capabilities.ICapabilityProvider;
 
 import org.jetbrains.annotations.NotNull;
 
+
 public class ItemRCToolHead extends ItemTFC implements IMetalItem {
 
     private static final Map<Metal, EnumMap<ItemRCToolHead.ItemType, ItemRCToolHead>> METAL_MAP = new HashMap<>();

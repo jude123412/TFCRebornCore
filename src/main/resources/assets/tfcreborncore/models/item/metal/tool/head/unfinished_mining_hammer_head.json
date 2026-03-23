@@ -1,6 +1,0 @@
-{
-  "parent": "item/generated",
-  "textures": {
-    "layer0": "tfcreborncore:items/metal/tool/head/unfinished_mining_hammer_head"
-  }
-}

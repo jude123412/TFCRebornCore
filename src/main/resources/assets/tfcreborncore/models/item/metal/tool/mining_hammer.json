@@ -1,0 +1,7 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "tfcreborncore:items/metal/tool/mining_hammer",
+    "layer1": "tfcreborncore:items/metal/tool/mining_hammer_overlay"
+  }
+}

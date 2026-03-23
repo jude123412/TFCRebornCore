@@ -1,0 +1,7 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "tfcreborncore:items/metal/tool/excavator",
+    "layer1": "tfcreborncore:items/metal/tool/excavator_overlay"
+  }
+}

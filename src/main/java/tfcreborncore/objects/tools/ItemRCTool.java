@@ -27,6 +27,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
@@ -93,16 +94,20 @@ public class ItemRCTool extends ItemTFC implements IMetalItem {
 
     public boolean onBlockDestroyed(ItemStack stack, World world, IBlockState state, BlockPos pos,
                                     EntityLivingBase entityLiving) {
-
         if (world.isRemote) return true;
 
         int area = (this.areaOfEffect - 1) / 2;
 
         EnumFacing face = entityLiving.getHorizontalFacing();
 
-        // Detect vertical mining
-        if (entityLiving.rotationPitch < -60) face = EnumFacing.UP;
-        if (entityLiving.rotationPitch > 60)  face = EnumFacing.DOWN;
+        // Detect Mining Face
+        if (entityLiving instanceof EntityPlayer) {
+            RayTraceResult hit = ((EntityPlayer) entityLiving).rayTrace(5.0D, 1.0F);
+
+            if (hit != null && hit.typeOfHit == RayTraceResult.Type.BLOCK) {
+                face = hit.sideHit;
+            }
+        }
 
         int minX = pos.getX();
         int minY = pos.getY();
@@ -114,21 +119,18 @@ public class ItemRCTool extends ItemTFC implements IMetalItem {
         switch (face) {
             case UP:
             case DOWN:
-                // XZ plane
                 minX -= area; maxX += area;
                 minZ -= area; maxZ += area;
                 break;
 
             case NORTH:
             case SOUTH:
-                // XY plane
                 minX -= area; maxX += area;
                 minY -= area; maxY += area;
                 break;
 
             case EAST:
             case WEST:
-                // YZ plane
                 minY -= area; maxY += area;
                 minZ -= area; maxZ += area;
                 break;

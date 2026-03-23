@@ -7,6 +7,8 @@ import net.dries007.tfc.api.types.Metal;
 import net.dries007.tfc.objects.inventory.ingredient.IIngredient;
 import net.dries007.tfc.objects.items.metal.ItemMetal;
 import net.dries007.tfc.util.forge.ForgeRule;
+import net.dries007.tfc.util.skills.SmithingSkill;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;
@@ -14,6 +16,9 @@ import net.minecraftforge.registries.IForgeRegistry;
 
 import tfcreborncore.Tags;
 import tfcreborncore.objects.items.ItemRCToolHead;
+import tfcreborncore.objects.recipe.CraftingRecipeManager;
+import tfcreborncore.objects.recipe.ShapedSkillRecipe;
+import tfcreborncore.objects.tools.ItemRCTool;
 import tfctech.objects.items.metal.ItemTechMetal;
 
 @SuppressWarnings({ "ConstantConditions", "unused" })
@@ -55,7 +60,7 @@ public class MetalRecipes {
                                             ItemRCToolHead.ItemType.UNFINISHED_MINING_HAMMER_HEAD),
                             ingredientIngotDouble,
                             IIngredient.of(new ItemStack(ItemMetal.get(metal, Metal.ItemType.HAMMER_HEAD))),
-                            miningHammerHeadUnfinished, metal.getTier(), null));
+                            miningHammerHeadUnfinished, metal.getTier(), SmithingSkill.Type.TOOLS));
 
                 // Mining Hammer Head
                 ItemStack miningHammerHead = new ItemStack(
@@ -68,7 +73,7 @@ public class MetalRecipes {
                             ingredientIngotDouble,
                             IIngredient.of(new ItemStack(
                                     ItemRCToolHead.get(metal, ItemRCToolHead.ItemType.UNFINISHED_MINING_HAMMER_HEAD))),
-                            miningHammerHead, metal.getTier(), null));
+                            miningHammerHead, metal.getTier(), SmithingSkill.Type.TOOLS));
 
                 // Excavator Head
                 ItemStack excavatorHead = new ItemStack(
@@ -80,8 +85,32 @@ public class MetalRecipes {
                                             ItemRCToolHead.ItemType.EXCAVATOR_HEAD),
                             ingredientIngotDouble,
                             IIngredient.of(new ItemStack(ItemMetal.get(metal, Metal.ItemType.SHOVEL_HEAD))),
-                            excavatorHead, metal.getTier(), null));
+                            excavatorHead, metal.getTier(), SmithingSkill.Type.TOOLS));
 
+            }
+        }
+    }
+
+    public static void registerShapedSkillRecipe() {
+        for (Metal metal : TFCRegistries.METALS.getValuesCollection()) {
+            if (metal.isToolMetal()) {
+                CraftingRecipeManager.addShapedSkillRecipe(
+                        new ResourceLocation(Tags.MODID, "metal/tool/" + ItemRCTool.ItemType.EXCAVATOR + "/" + metal),
+                        ItemRCTool.get(metal, ItemRCTool.ItemType.EXCAVATOR).getDefaultInstance(),
+                        " H ",
+                        " S ",
+                        "   ",
+                        'S', "stickWood",
+                        'H', ItemRCToolHead.get(metal, ItemRCToolHead.ItemType.EXCAVATOR_HEAD).getDefaultInstance());
+
+                CraftingRecipeManager.addShapedSkillRecipe(
+                        new ResourceLocation(Tags.MODID, "metal/tool/" + ItemRCTool.ItemType.MINING_HAMMER + "/" + metal),
+                        ItemRCTool.get(metal, ItemRCTool.ItemType.MINING_HAMMER).getDefaultInstance(),
+                        " H ",
+                        " S ",
+                        "   ",
+                        'S', "stickWood",
+                        'H', ItemRCToolHead.get(metal, ItemRCToolHead.ItemType.MINING_HAMMER_HEAD).getDefaultInstance());
             }
         }
     }

@@ -25,6 +25,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
@@ -70,13 +71,13 @@ public class ItemRCTool extends ItemTFC implements IMetalItem {
                 case EXCAVATOR:
                     this.setHarvestLevel("shovel", harvestLevel);
                     this.setMaxDamage(this.material.getMaxUses() * 9);
-                    this.areaOfEffect = 2;
+                    this.areaOfEffect = 3;
                     OreDictionaryHelper.registerDamageType(this, DamageType.PIERCING);
                     break;
                 case MINING_HAMMER:
                     this.setHarvestLevel("pickaxe", harvestLevel);
                     this.setMaxDamage(this.material.getMaxUses() * 9);
-                    this.areaOfEffect = 2;
+                    this.areaOfEffect = 3;
                     OreDictionaryHelper.registerDamageType(this, DamageType.CRUSHING);
                     break;
                 default:
@@ -92,25 +93,64 @@ public class ItemRCTool extends ItemTFC implements IMetalItem {
 
     public boolean onBlockDestroyed(ItemStack stack, World world, IBlockState state, BlockPos pos,
                                     EntityLivingBase entityLiving) {
-        if (state.getBlockHardness(world, pos) > 0.0F && !world.isRemote) {
-            stack.damageItem(1, entityLiving);
+
+        if (world.isRemote) return true;
+
+        int area = (this.areaOfEffect - 1) / 2;
+
+        EnumFacing face = entityLiving.getHorizontalFacing();
+
+        // Detect vertical mining
+        if (entityLiving.rotationPitch < -60) face = EnumFacing.UP;
+        if (entityLiving.rotationPitch > 60)  face = EnumFacing.DOWN;
+
+        int minX = pos.getX();
+        int minY = pos.getY();
+        int minZ = pos.getZ();
+        int maxX = pos.getX();
+        int maxY = pos.getY();
+        int maxZ = pos.getZ();
+
+        switch (face) {
+            case UP:
+            case DOWN:
+                // XZ plane
+                minX -= area; maxX += area;
+                minZ -= area; maxZ += area;
+                break;
+
+            case NORTH:
+            case SOUTH:
+                // XY plane
+                minX -= area; maxX += area;
+                minY -= area; maxY += area;
+                break;
+
+            case EAST:
+            case WEST:
+                // YZ plane
+                minY -= area; maxY += area;
+                minZ -= area; maxZ += area;
+                break;
         }
 
-        if (this.areaOfEffect > 1 && entityLiving instanceof EntityPlayer player && !world.isRemote) {
-            int area = this.areaOfEffect - 1;
+        for (BlockPos.MutableBlockPos extraPos :
+                BlockPos.getAllInBoxMutable(minX, minY, minZ, maxX, maxY, maxZ)) {
 
-            for (BlockPos.MutableBlockPos extraPos : BlockPos.getAllInBoxMutable(pos.add(-area, -area, -area),
-                    pos.add(area, area, area))) {
-                IBlockState iBlockState = world.getBlockState(extraPos);
-                if (!extraPos.equals(pos) && !world.isAirBlock(extraPos) && this.canHarvestBlock(iBlockState)) {
-                    iBlockState.getBlock().onPlayerDestroy(world, extraPos, iBlockState);
-                    iBlockState.getBlock().harvestBlock(world, player, extraPos, iBlockState,
-                            world.getTileEntity(extraPos), stack);
-                    world.setBlockToAir(extraPos);
-                    stack.damageItem(1, entityLiving);
-                }
+            if (extraPos.equals(pos)) continue;
+            if (entityLiving.isSneaking()) continue;
+
+            IBlockState extraState = world.getBlockState(extraPos);
+
+            if (!world.isAirBlock(extraPos) && this.canHarvestBlock(extraState)) {
+                extraState.getBlock().onPlayerDestroy(world, extraPos, extraState);
+                extraState.getBlock().harvestBlock(world, (EntityPlayer) entityLiving,
+                        extraPos, extraState, world.getTileEntity(extraPos), stack);
+                world.setBlockToAir(extraPos);
+                stack.damageItem(1, entityLiving);
             }
         }
+
         return true;
     }
 

@@ -22,7 +22,7 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
 
 import tfcreborncore.Tags;
-import tfcreborncore.objects.items.ItemRCMetal;
+import tfcreborncore.objects.items.ItemRCToolHead;
 import tfcreborncore.objects.items.ItemRCOre;
 
 public class RCItems {
@@ -32,12 +32,12 @@ public class RCItems {
 
     public static void registerItems(RegistryEvent.Register<Item> event) {
         registerOreItems(event);
-        registerMetalItems(event);
+        registerToolHeadItems(event);
     }
 
     public static void registerItemColors(final ColorHandlerEvent.Item event) {
         registerOreItemColor(event);
-        registerMetalItemColor(event);
+        registerToolHeadItemColor(event);
     }
 
     public static void registerItemModels(ModelRegistryEvent event) {
@@ -68,20 +68,20 @@ public class RCItems {
         allOreItems = oreItems.build();
     }
 
-    static void registerMetalItems(RegistryEvent.Register<Item> event) {
+    static void registerToolHeadItems(RegistryEvent.Register<Item> event) {
         IForgeRegistry<Item> registry = event.getRegistry();
 
         ImmutableList.Builder<Item> metalItems = ImmutableList.builder();
         for (Metal metal : TFCRegistries.METALS) {
             if (metal.isToolMetal() && shouldGenerateTool(metal)) {
-                String base = "metal/" + metal.getRegistryName().getPath().toLowerCase();
+                String base = "metal/tool/head/" + metal.getRegistryName().getPath().toLowerCase();
 
-                for (ItemRCMetal.ItemType type : ItemRCMetal.ItemType.values()) {
+                for (ItemRCToolHead.ItemType type : ItemRCToolHead.ItemType.values()) {
                     Item metalType = register(registry, base + "_" + type.toString().toLowerCase(),
-                            ItemRCMetal.ItemType.Create(metal, type),
+                            ItemRCToolHead.ItemType.Create(metal, type),
                             CreativeTabsTFC.CT_METAL);
 
-                    ItemRCMetal metalItemType = (ItemRCMetal) metalType;
+                    ItemRCToolHead metalItemType = (ItemRCToolHead) metalType;
                     String path = metalItemType.getMetal().getRegistryName().getPath().toLowerCase();
                     OreDictionary.registerOre(toPascalCaseAlt(type.toString().toLowerCase()) + toPascalCase(path),
                             metalItemType);
@@ -111,12 +111,12 @@ public class RCItems {
         }
     }
 
-    static void registerMetalItemColor(final ColorHandlerEvent.Item event) {
+    static void registerToolHeadItemColor(final ColorHandlerEvent.Item event) {
         ImmutableList<Item> metalItems = getAllMetalItems();
         if (metalItems == null || metalItems.isEmpty()) return;
 
         for (Item item : metalItems) {
-            if (!(item instanceof ItemRCMetal metalItem)) continue;
+            if (!(item instanceof ItemRCToolHead metalItem)) continue;
 
             int color = getMetalColor(metalItem);
 
@@ -136,9 +136,9 @@ public class RCItems {
                     new ResourceLocation(Tags.MODID, "ore/" + oreItem.getType().name().toLowerCase()), "inventory"));
         }
         for (Item item : getAllMetalItems()) {
-            ItemRCMetal metalItem = (ItemRCMetal) item;
+            ItemRCToolHead metalItem = (ItemRCToolHead) item;
             ModelLoader.setCustomModelResourceLocation(metalItem, 0, new ModelResourceLocation(
-                    new ResourceLocation(Tags.MODID, "metal/" + metalItem.getType().name().toLowerCase()),
+                    new ResourceLocation(Tags.MODID, "metal/tool/head/" + metalItem.getType().name().toLowerCase()),
                     "inventory"));
         }
     }
@@ -194,7 +194,7 @@ public class RCItems {
         return ore.getMetal().getColor() & 0xFFFFFF;
     }
 
-    private static int getMetalColor(ItemRCMetal metalItem) {
+    private static int getMetalColor(ItemRCToolHead metalItem) {
         return metalItem.getMetal().getColor() & 0xFFFFFF;
     }
 

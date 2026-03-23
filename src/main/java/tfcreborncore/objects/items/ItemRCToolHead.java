@@ -22,30 +22,30 @@ import net.minecraftforge.common.capabilities.ICapabilityProvider;
 
 import org.jetbrains.annotations.NotNull;
 
-public class ItemRCMetal extends ItemTFC implements IMetalItem {
+public class ItemRCToolHead extends ItemTFC implements IMetalItem {
 
-    private static final Map<Metal, EnumMap<ItemRCMetal.ItemType, ItemRCMetal>> METAL_MAP = new HashMap<>();
+    private static final Map<Metal, EnumMap<ItemRCToolHead.ItemType, ItemRCToolHead>> METAL_MAP = new HashMap<>();
 
     private final Metal metal;
-    private final ItemRCMetal.ItemType type;
+    private final ItemRCToolHead.ItemType type;
 
-    public ItemRCMetal(Metal metal, ItemRCMetal.ItemType type) {
+    public ItemRCToolHead(Metal metal, ItemRCToolHead.ItemType type) {
         super();
         this.metal = metal;
         this.type = type;
         if (!METAL_MAP.containsKey(metal)) {
-            METAL_MAP.put(metal, new EnumMap<>(ItemRCMetal.ItemType.class));
+            METAL_MAP.put(metal, new EnumMap<>(ItemRCToolHead.ItemType.class));
         }
         METAL_MAP.get(metal).put(type, this);
         setNoRepair();
     }
 
-    public ItemRCMetal.ItemType getType() {
+    public ItemRCToolHead.ItemType getType() {
         return type;
     }
 
     @Nullable
-    public static ItemRCMetal get(Metal metal, ItemRCMetal.ItemType type) {
+    public static ItemRCToolHead get(Metal metal, ItemRCToolHead.ItemType type) {
         return METAL_MAP.get(metal).get(type);
     }
 
@@ -84,7 +84,7 @@ public class ItemRCMetal extends ItemTFC implements IMetalItem {
     public String getItemStackDisplayName(@Nonnull ItemStack stack) {
         String metalName = (new TextComponentTranslation(
                 "tfc.types.metal." + metal.getRegistryName().getPath().toLowerCase())).getFormattedText();
-        return (new TextComponentTranslation("item.tfcreborncore.metal_item." + type.name().toLowerCase() + ".name",
+        return (new TextComponentTranslation("item.tfcreborncore.tool_head." + type.name().toLowerCase() + ".name",
                 metalName)).getFormattedText();
     }
 
@@ -116,18 +116,18 @@ public class ItemRCMetal extends ItemTFC implements IMetalItem {
         EXCAVATOR_HEAD(300);
 
         ItemType(int meltingAmount) {
-            this(meltingAmount, ItemRCMetal::new);
+            this(meltingAmount, ItemRCToolHead::new);
         }
 
-        ItemType(int meltingAmount, @Nonnull BiFunction<Metal, ItemRCMetal.ItemType, Item> supplier) {
+        ItemType(int meltingAmount, @Nonnull BiFunction<Metal, ItemRCToolHead.ItemType, Item> supplier) {
             this.meltingAmount = meltingAmount;
             this.supplier = supplier;
         }
 
         private final int meltingAmount;
-        private final BiFunction<Metal, ItemRCMetal.ItemType, Item> supplier;
+        private final BiFunction<Metal, ItemRCToolHead.ItemType, Item> supplier;
 
-        public static Item Create(Metal metal, ItemRCMetal.ItemType type) {
+        public static Item Create(Metal metal, ItemRCToolHead.ItemType type) {
             return type.supplier.apply(metal, type);
         }
 

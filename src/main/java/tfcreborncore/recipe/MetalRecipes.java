@@ -14,7 +14,7 @@ import net.minecraftforge.registries.IForgeRegistry;
 
 import tfcreborncore.Tags;
 import tfcreborncore.objects.RCItems;
-import tfcreborncore.objects.items.ItemRCMetal;
+import tfcreborncore.objects.items.ItemRCToolHead;
 import tfctech.objects.items.metal.ItemTechMetal;
 
 @SuppressWarnings({ "ConstantConditions", "unused" })
@@ -48,37 +48,37 @@ public class MetalRecipes {
 
                 // Unfinished Mining Hammer Head
                 ItemStack miningHammerHeadUnfinished = new ItemStack(
-                        ItemRCMetal.get(metal, ItemRCMetal.ItemType.UNFINISHED_MINING_HAMMER_HEAD));
+                        ItemRCToolHead.get(metal, ItemRCToolHead.ItemType.UNFINISHED_MINING_HAMMER_HEAD));
                 if (!miningHammerHeadUnfinished.isEmpty())
                     r.register(new WeldingRecipe(
                             new ResourceLocation(Tags.MODID,
                                     metal.getRegistryName().getPath().toLowerCase() + "_" +
-                                            ItemRCMetal.ItemType.UNFINISHED_MINING_HAMMER_HEAD),
+                                            ItemRCToolHead.ItemType.UNFINISHED_MINING_HAMMER_HEAD),
                             ingredientIngotDouble,
                             IIngredient.of(new ItemStack(ItemMetal.get(metal, Metal.ItemType.HAMMER_HEAD))),
                             miningHammerHeadUnfinished, metal.getTier(), null));
 
                 // Mining Hammer Head
                 ItemStack miningHammerHead = new ItemStack(
-                        ItemRCMetal.get(metal, ItemRCMetal.ItemType.MINING_HAMMER_HEAD));
+                        ItemRCToolHead.get(metal, ItemRCToolHead.ItemType.MINING_HAMMER_HEAD));
                 if (!miningHammerHead.isEmpty())
                     r.register(new WeldingRecipe(
                             new ResourceLocation(Tags.MODID,
                                     metal.getRegistryName().getPath().toLowerCase() +
-                                            "_" + ItemRCMetal.ItemType.MINING_HAMMER_HEAD),
+                                            "_" + ItemRCToolHead.ItemType.MINING_HAMMER_HEAD),
                             ingredientIngotDouble,
                             IIngredient.of(new ItemStack(
-                                    ItemRCMetal.get(metal, ItemRCMetal.ItemType.UNFINISHED_MINING_HAMMER_HEAD))),
+                                    ItemRCToolHead.get(metal, ItemRCToolHead.ItemType.UNFINISHED_MINING_HAMMER_HEAD))),
                             miningHammerHead, metal.getTier(), null));
 
                 // Excavator Head
                 ItemStack excavatorHead = new ItemStack(
-                        ItemRCMetal.get(metal, ItemRCMetal.ItemType.EXCAVATOR_HEAD));
+                        ItemRCToolHead.get(metal, ItemRCToolHead.ItemType.EXCAVATOR_HEAD));
                 if (!excavatorHead.isEmpty())
                     r.register(new WeldingRecipe(
                             new ResourceLocation(Tags.MODID,
                                     metal.getRegistryName().getPath().toLowerCase() + "_" +
-                                            ItemRCMetal.ItemType.EXCAVATOR_HEAD),
+                                            ItemRCToolHead.ItemType.EXCAVATOR_HEAD),
                             ingredientIngotDouble,
                             IIngredient.of(new ItemStack(ItemMetal.get(metal, Metal.ItemType.SHOVEL_HEAD))),
                             excavatorHead, metal.getTier(), null));

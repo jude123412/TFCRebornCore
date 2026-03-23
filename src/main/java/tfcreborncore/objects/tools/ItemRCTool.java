@@ -28,6 +28,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
@@ -299,8 +300,13 @@ public class ItemRCTool extends ItemTFC implements IMetalItem {
     }
 
     @Override
-    public int getSmeltAmount(ItemStack itemStack) {
-        return type.getMeltingAmount();
+    public int getSmeltAmount(ItemStack stack) {
+        if (this.isDamageable() && stack.isItemDamaged()) {
+            double d = (double) (stack.getMaxDamage() - stack.getItemDamage()) / (double) stack.getMaxDamage() - 0.1;
+            return d < (double) 0.0F ? 0 : MathHelper.floor((double) this.type.getMeltingAmount() * d);
+        } else {
+            return this.type.getMeltingAmount();
+        }
     }
 
     public Metal getMetal() {

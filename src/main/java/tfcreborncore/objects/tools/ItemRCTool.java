@@ -70,13 +70,13 @@ public class ItemRCTool extends ItemTFC implements IMetalItem {
             switch (type) {
                 case EXCAVATOR:
                     this.setHarvestLevel("shovel", harvestLevel);
-                    this.setMaxDamage(this.material.getMaxUses() * 9);
+                    this.setMaxDamage(this.material.getMaxUses());
                     this.areaOfEffect = 3;
                     OreDictionaryHelper.registerDamageType(this, DamageType.PIERCING);
                     break;
                 case MINING_HAMMER:
                     this.setHarvestLevel("pickaxe", harvestLevel);
-                    this.setMaxDamage(this.material.getMaxUses() * 9);
+                    this.setMaxDamage(this.material.getMaxUses());
                     this.areaOfEffect = 3;
                     OreDictionaryHelper.registerDamageType(this, DamageType.CRUSHING);
                     break;

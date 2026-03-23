@@ -18,6 +18,8 @@ import net.dries007.tfc.objects.items.ItemTFC;
 import net.dries007.tfc.util.OreDictionaryHelper;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.enchantment.Enchantment;
+import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -148,6 +150,18 @@ public class ItemRCTool extends ItemTFC implements IMetalItem {
 
     public int getItemEnchantability() {
         return this.material.getEnchantability();
+    }
+
+    public boolean canApplyAtEnchantingTable(@Nonnull ItemStack stack, @Nonnull Enchantment enchantment) {
+        switch (this.type) {
+            case EXCAVATOR, MINING_HAMMER -> {
+                return enchantment.type == EnumEnchantmentType.DIGGER;
+            }
+            default -> {
+                return false;
+            }
+        }
+
     }
 
     public ItemRCTool.ItemType getType() {

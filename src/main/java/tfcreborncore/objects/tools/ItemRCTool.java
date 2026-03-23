@@ -8,20 +8,21 @@ import java.util.function.BiFunction;
 import javax.annotation.Nonnull;
 import javax.annotation.ParametersAreNonnullByDefault;
 
-import net.dries007.tfc.api.capability.damage.DamageType;
 import net.dries007.tfc.api.capability.forge.ForgeableHeatableHandler;
 import net.dries007.tfc.api.capability.metal.IMetalItem;
 import net.dries007.tfc.api.capability.size.Size;
 import net.dries007.tfc.api.capability.size.Weight;
 import net.dries007.tfc.api.types.Metal;
 import net.dries007.tfc.objects.items.ItemTFC;
-import net.dries007.tfc.util.OreDictionaryHelper;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -34,6 +35,9 @@ import net.minecraftforge.common.capabilities.ICapabilityProvider;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+
+import com.google.common.collect.HashMultimap;
+import com.google.common.collect.Multimap;
 
 import mcp.MethodsReturnNonnullByDefault;
 
@@ -49,6 +53,8 @@ public class ItemRCTool extends ItemTFC implements IMetalItem {
     public final Item.ToolMaterial material;
     private final int areaOfEffect;
     private final float efficiency;
+    private final double attackDamage;
+    private final float attackSpeed;
 
     private static final Map<Metal, EnumMap<ItemRCTool.ItemType, ItemRCTool>> TOOL_MAP = new HashMap<>();
 
@@ -67,23 +73,28 @@ public class ItemRCTool extends ItemTFC implements IMetalItem {
             this.efficiency = this.material.getEfficiency();
 
             int harvestLevel = this.material.getHarvestLevel();
+            float typeDamage;
 
             switch (type) {
                 case EXCAVATOR:
+                    typeDamage = 0.875F;
                     this.setHarvestLevel("shovel", harvestLevel);
                     this.setMaxDamage(this.material.getMaxUses());
                     this.areaOfEffect = 3;
-                    OreDictionaryHelper.registerDamageType(this, DamageType.PIERCING);
+                    this.attackSpeed = -3.0F;
                     break;
                 case MINING_HAMMER:
+                    typeDamage = 1.0F;
                     this.setHarvestLevel("pickaxe", harvestLevel);
                     this.setMaxDamage(this.material.getMaxUses());
                     this.areaOfEffect = 3;
-                    OreDictionaryHelper.registerDamageType(this, DamageType.CRUSHING);
+                    this.attackSpeed = -3.0F;
                     break;
                 default:
                     throw new IllegalArgumentException("Tool from non tool type.");
             }
+
+            this.attackDamage = (double) (typeDamage * this.material.getAttackDamage());
 
             if (!TOOL_MAP.containsKey(metal)) {
                 TOOL_MAP.put(metal, new EnumMap<>(ItemRCTool.ItemType.class));
@@ -208,6 +219,22 @@ public class ItemRCTool extends ItemTFC implements IMetalItem {
                 return false;
             }
         }
+    }
+
+    public Multimap<String, AttributeModifier> getAttributeModifiers(EntityEquipmentSlot slot, ItemStack stack) {
+        Multimap<String, AttributeModifier> multimap = HashMultimap.create();
+        if (slot == EntityEquipmentSlot.MAINHAND) {
+            multimap.put(SharedMonsterAttributes.ATTACK_DAMAGE.getName(),
+                    new AttributeModifier(ATTACK_DAMAGE_MODIFIER, "Tool modifier", this.attackDamage, 0));
+            multimap.put(SharedMonsterAttributes.ATTACK_SPEED.getName(),
+                    new AttributeModifier(ATTACK_SPEED_MODIFIER, "Tool modifier", (double) this.attackSpeed, 0));
+        }
+
+        return multimap;
+    }
+
+    public double getAttackDamage() {
+        return this.attackDamage;
     }
 
     public ItemRCTool.ItemType getType() {

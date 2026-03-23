@@ -1,12 +1,12 @@
 package tfcreborncore.objects.recipe;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.crafting.CraftingHelper;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class CraftingRecipeManager {
 

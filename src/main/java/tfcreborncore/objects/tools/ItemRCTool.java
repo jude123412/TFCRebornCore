@@ -119,25 +119,30 @@ public class ItemRCTool extends ItemTFC implements IMetalItem {
         switch (face) {
             case UP:
             case DOWN:
-                minX -= area; maxX += area;
-                minZ -= area; maxZ += area;
+                minX -= area;
+                maxX += area;
+                minZ -= area;
+                maxZ += area;
                 break;
 
             case NORTH:
             case SOUTH:
-                minX -= area; maxX += area;
-                minY -= area; maxY += area;
+                minX -= area;
+                maxX += area;
+                minY -= area;
+                maxY += area;
                 break;
 
             case EAST:
             case WEST:
-                minY -= area; maxY += area;
-                minZ -= area; maxZ += area;
+                minY -= area;
+                maxY += area;
+                minZ -= area;
+                maxZ += area;
                 break;
         }
 
-        for (BlockPos.MutableBlockPos extraPos :
-                BlockPos.getAllInBoxMutable(minX, minY, minZ, maxX, maxY, maxZ)) {
+        for (BlockPos.MutableBlockPos extraPos : BlockPos.getAllInBoxMutable(minX, minY, minZ, maxX, maxY, maxZ)) {
 
             if (extraPos.equals(pos)) continue;
             if (entityLiving.isSneaking()) continue;
@@ -203,7 +208,6 @@ public class ItemRCTool extends ItemTFC implements IMetalItem {
                 return false;
             }
         }
-
     }
 
     public ItemRCTool.ItemType getType() {

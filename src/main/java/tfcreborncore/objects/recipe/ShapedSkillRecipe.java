@@ -1,22 +1,13 @@
 package tfcreborncore.objects.recipe;
 
+import javax.annotation.Nonnull;
 
-import com.google.gson.JsonObject;
-import net.dries007.tfc.objects.recipes.RecipeUtils;
 import net.dries007.tfc.util.skills.SmithingSkill;
 import net.minecraft.inventory.InventoryCrafting;
-
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.IRecipe;
-import net.minecraft.util.JsonUtils;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.crafting.CraftingHelper;
-import net.minecraftforge.common.crafting.IRecipeFactory;
-import net.minecraftforge.common.crafting.JsonContext;
-import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.oredict.ShapedOreRecipe;
-
-import javax.annotation.Nonnull;
 
 /*
  * Original code from Terrafirmacraft's ShapedSkillRecipe (EUPL v1.2)
@@ -32,7 +23,7 @@ public class ShapedSkillRecipe extends ShapedOreRecipe {
 
     @Nonnull
     public ItemStack getCraftingResult(@Nonnull InventoryCrafting inventory) {
-        for(int i = 0; i < inventory.getSizeInventory(); ++i) {
+        for (int i = 0; i < inventory.getSizeInventory(); ++i) {
             ItemStack inputStack = inventory.getStackInSlot(i);
             float skillBonus = SmithingSkill.getSkillBonus(inputStack);
             if (skillBonus > 0.0F) {

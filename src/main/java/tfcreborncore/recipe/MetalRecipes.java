@@ -8,7 +8,6 @@ import net.dries007.tfc.objects.inventory.ingredient.IIngredient;
 import net.dries007.tfc.objects.items.metal.ItemMetal;
 import net.dries007.tfc.util.forge.ForgeRule;
 import net.dries007.tfc.util.skills.SmithingSkill;
-import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;
@@ -17,7 +16,6 @@ import net.minecraftforge.registries.IForgeRegistry;
 import tfcreborncore.Tags;
 import tfcreborncore.objects.items.ItemRCToolHead;
 import tfcreborncore.objects.recipe.CraftingRecipeManager;
-import tfcreborncore.objects.recipe.ShapedSkillRecipe;
 import tfcreborncore.objects.tools.ItemRCTool;
 import tfctech.objects.items.metal.ItemTechMetal;
 
@@ -36,8 +34,8 @@ public class MetalRecipes {
                         new ResourceLocation(Tags.MODID,
                                 (metal.getRegistryName().getPath()).toLowerCase() + "_" +
                                         ItemTechMetal.ItemType.RACKWHEEL_PIECE),
-                        ingredientIngot, rackwheelPiece, metal.getTier(), null, ForgeRule.DRAW_THIRD_LAST,
-                        ForgeRule.HIT_SECOND_LAST, ForgeRule.DRAW_LAST));
+                        ingredientIngot, rackwheelPiece, metal.getTier(), null, ForgeRule.UPSET_THIRD_LAST,
+                        ForgeRule.DRAW_SECOND_LAST, ForgeRule.UPSET_LAST));
             }
         }
     }
@@ -104,13 +102,15 @@ public class MetalRecipes {
                         'H', ItemRCToolHead.get(metal, ItemRCToolHead.ItemType.EXCAVATOR_HEAD).getDefaultInstance());
 
                 CraftingRecipeManager.addShapedSkillRecipe(
-                        new ResourceLocation(Tags.MODID, "metal/tool/" + ItemRCTool.ItemType.MINING_HAMMER + "/" + metal),
+                        new ResourceLocation(Tags.MODID,
+                                "metal/tool/" + ItemRCTool.ItemType.MINING_HAMMER + "/" + metal),
                         ItemRCTool.get(metal, ItemRCTool.ItemType.MINING_HAMMER).getDefaultInstance(),
                         " H ",
                         " S ",
                         "   ",
                         'S', "stickWood",
-                        'H', ItemRCToolHead.get(metal, ItemRCToolHead.ItemType.MINING_HAMMER_HEAD).getDefaultInstance());
+                        'H',
+                        ItemRCToolHead.get(metal, ItemRCToolHead.ItemType.MINING_HAMMER_HEAD).getDefaultInstance());
             }
         }
     }

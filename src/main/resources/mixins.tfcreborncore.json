@@ -5,6 +5,7 @@
   "minVersion": "0.8",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
+    "terrafirmacraft.RCFurnaceManager",
     "terrafirmacraft.RCModTypeMixins"
   ],
   "client": [

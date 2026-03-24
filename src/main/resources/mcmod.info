@@ -8,5 +8,5 @@
     "url": "",
     "authorList": ["xXjudeXx"],
     "credits": "The Gregtech CEu dev team for making the build script this mod uses",
-    "dependencies": ["tfc", "tfctech", "tfc_decoration"]
+    "dependencies": ["tfc", "tfctech", "tfc_decoration", "thermalexpansion", "cofhcore", "redstoneflux"]
 }]

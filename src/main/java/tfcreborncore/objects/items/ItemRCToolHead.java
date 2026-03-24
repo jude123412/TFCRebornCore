@@ -114,6 +114,13 @@ public class ItemRCToolHead extends ItemTFC implements IMetalItem {
         return metal;
     }
 
+    public boolean canStack(@Nonnull ItemStack stack) {
+        return switch (this.type) {
+            case MINING_HAMMER_HEAD, EXCAVATOR_HEAD -> true;
+            default -> false;
+        };
+    }
+
     public enum ItemType {
 
         UNFINISHED_MINING_HAMMER_HEAD(300),

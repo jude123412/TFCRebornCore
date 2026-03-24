@@ -250,11 +250,8 @@ public class ItemRCTool extends ItemTFC implements IMetalItem {
     @Override
     public @NotNull Size getSize(@NotNull ItemStack itemStack) {
         switch (type) {
-            case EXCAVATOR -> {
-                return Size.VERY_LARGE;
-            }
-            case MINING_HAMMER -> {
-                return Size.HUGE;
+            case EXCAVATOR, MINING_HAMMER -> {
+                return Size.LARGE;
             }
             default -> {
                 return Size.VERY_SMALL;

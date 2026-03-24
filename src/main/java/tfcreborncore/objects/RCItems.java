@@ -48,7 +48,7 @@ public class RCItems {
         registerModels(event);
     }
 
-    static void registerOreItems(RegistryEvent.Register<Item> event) {
+    private static void registerOreItems(RegistryEvent.Register<Item> event) {
         IForgeRegistry<Item> registry = event.getRegistry();
 
         ImmutableList.Builder<Item> oreItems = ImmutableList.builder();
@@ -72,7 +72,7 @@ public class RCItems {
         allOreItems = oreItems.build();
     }
 
-    static void registerToolHeadItems(RegistryEvent.Register<Item> event) {
+    private static void registerToolHeadItems(RegistryEvent.Register<Item> event) {
         IForgeRegistry<Item> registry = event.getRegistry();
 
         ImmutableList.Builder<Item> metalItems = ImmutableList.builder();
@@ -97,7 +97,7 @@ public class RCItems {
         allToolHeadItems = metalItems.build();
     }
 
-    static void registerToolItems(RegistryEvent.Register<Item> event) {
+    private static void registerToolItems(RegistryEvent.Register<Item> event) {
         IForgeRegistry<Item> registry = event.getRegistry();
 
         ImmutableList.Builder<Item> metalItems = ImmutableList.builder();
@@ -122,7 +122,7 @@ public class RCItems {
         allToolItems = metalItems.build();
     }
 
-    static void registerOreItemColor(final ColorHandlerEvent.Item event) {
+    private static void registerOreItemColor(final ColorHandlerEvent.Item event) {
         ImmutableList<Item> oreItems = getAllOreItems();
         if (oreItems == null || oreItems.isEmpty()) return;
 
@@ -140,7 +140,7 @@ public class RCItems {
         }
     }
 
-    static void registerToolHeadItemColor(final ColorHandlerEvent.Item event) {
+    private static void registerToolHeadItemColor(final ColorHandlerEvent.Item event) {
         ImmutableList<Item> metalItems = getAllToolHeadItems();
         if (metalItems == null || metalItems.isEmpty()) return;
 
@@ -158,7 +158,7 @@ public class RCItems {
         }
     }
 
-    static void registerToolItemColor(final ColorHandlerEvent.Item event) {
+    private static void registerToolItemColor(final ColorHandlerEvent.Item event) {
         ImmutableList<Item> metalItems = getAllToolItems();
         if (metalItems == null || metalItems.isEmpty()) return;
 
@@ -176,7 +176,7 @@ public class RCItems {
         }
     }
 
-    static void registerModels(ModelRegistryEvent event) {
+    private static void registerModels(ModelRegistryEvent event) {
         for (Item item : getAllOreItems()) {
             ItemRCOre oreItem = (ItemRCOre) item;
             ModelLoader.setCustomModelResourceLocation(oreItem, 0, new ModelResourceLocation(

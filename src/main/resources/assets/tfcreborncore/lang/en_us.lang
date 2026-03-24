@@ -9,5 +9,6 @@ item.tfcreborncore.tool_head.mining_hammer_head.name=%s Mining Hammer Head
 item.tfcreborncore.tool.mining_hammer.name=%s Mining Hammer
 
 # Excavator
+item.tfcreborncore.tool_head.unfinished_excavator_head.name=Unfinished %s Excavator Head
 item.tfcreborncore.tool_head.excavator_head.name=%s Excavator Head
 item.tfcreborncore.tool.excavator.name=%s Excavator

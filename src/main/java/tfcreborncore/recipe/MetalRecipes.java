@@ -48,6 +48,9 @@ public class MetalRecipes {
                 IIngredient<ItemStack> ingredientIngotDouble = IIngredient
                         .of(new ItemStack(ItemMetal.get(metal, Metal.ItemType.DOUBLE_INGOT)));
 
+                IIngredient<ItemStack> ingredientIngot = IIngredient
+                        .of(new ItemStack(ItemMetal.get(metal, Metal.ItemType.INGOT)));
+
                 // Unfinished Mining Hammer Head
                 ItemStack miningHammerHeadUnfinished = new ItemStack(
                         ItemRCToolHead.get(metal, ItemRCToolHead.ItemType.UNFINISHED_MINING_HAMMER_HEAD));
@@ -73,6 +76,18 @@ public class MetalRecipes {
                                     ItemRCToolHead.get(metal, ItemRCToolHead.ItemType.UNFINISHED_MINING_HAMMER_HEAD))),
                             miningHammerHead, metal.getTier(), SmithingSkill.Type.TOOLS));
 
+                // Unfinished Excavator Head
+                ItemStack excavatorHeadUnfinished = new ItemStack(
+                        ItemRCToolHead.get(metal, ItemRCToolHead.ItemType.UNFINISHED_EXCAVATOR_HEAD));
+                if (!excavatorHeadUnfinished.isEmpty())
+                    r.register(new WeldingRecipe(
+                            new ResourceLocation(Tags.MODID,
+                                    metal.getRegistryName().getPath().toLowerCase() + "_" +
+                                            ItemRCToolHead.ItemType.UNFINISHED_EXCAVATOR_HEAD),
+                            ingredientIngot,
+                            IIngredient.of(new ItemStack(ItemMetal.get(metal, Metal.ItemType.SHOVEL_HEAD))),
+                            excavatorHeadUnfinished, metal.getTier(), SmithingSkill.Type.TOOLS));
+
                 // Excavator Head
                 ItemStack excavatorHead = new ItemStack(
                         ItemRCToolHead.get(metal, ItemRCToolHead.ItemType.EXCAVATOR_HEAD));
@@ -81,8 +96,9 @@ public class MetalRecipes {
                             new ResourceLocation(Tags.MODID,
                                     metal.getRegistryName().getPath().toLowerCase() + "_" +
                                             ItemRCToolHead.ItemType.EXCAVATOR_HEAD),
-                            ingredientIngotDouble,
-                            IIngredient.of(new ItemStack(ItemMetal.get(metal, Metal.ItemType.SHOVEL_HEAD))),
+                            ingredientIngot,
+                            IIngredient.of(new ItemStack(
+                                    ItemRCToolHead.get(metal, ItemRCToolHead.ItemType.UNFINISHED_EXCAVATOR_HEAD))),
                             excavatorHead, metal.getTier(), SmithingSkill.Type.TOOLS));
 
             }

@@ -122,6 +122,7 @@ public class ItemRCToolHead extends ItemTFC implements IMetalItem {
 
         UNFINISHED_MINING_HAMMER_HEAD(300),
         MINING_HAMMER_HEAD(500),
+        UNFINISHED_EXCAVATOR_HEAD(200),
         EXCAVATOR_HEAD(300);
 
         ItemType(int meltingAmount) {

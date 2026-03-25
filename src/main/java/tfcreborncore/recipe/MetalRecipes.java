@@ -111,9 +111,8 @@ public class MetalRecipes {
                 CraftingRecipeManager.addShapedSkillRecipe(
                         new ResourceLocation(Tags.MODID, "metal/tool/" + ItemRCTool.ItemType.EXCAVATOR + "/" + metal),
                         ItemRCTool.get(metal, ItemRCTool.ItemType.EXCAVATOR).getDefaultInstance(),
-                        " H ",
-                        " S ",
-                        "   ",
+                        "H",
+                        "S",
                         'S', "stickWood",
                         'H', ItemRCToolHead.get(metal, ItemRCToolHead.ItemType.EXCAVATOR_HEAD).getDefaultInstance());
 
@@ -121,9 +120,8 @@ public class MetalRecipes {
                         new ResourceLocation(Tags.MODID,
                                 "metal/tool/" + ItemRCTool.ItemType.MINING_HAMMER + "/" + metal),
                         ItemRCTool.get(metal, ItemRCTool.ItemType.MINING_HAMMER).getDefaultInstance(),
-                        " H ",
-                        " S ",
-                        "   ",
+                        "H",
+                        "S",
                         'S', "stickWood",
                         'H',
                         ItemRCToolHead.get(metal, ItemRCToolHead.ItemType.MINING_HAMMER_HEAD).getDefaultInstance());

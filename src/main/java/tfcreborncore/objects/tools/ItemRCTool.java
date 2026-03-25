@@ -108,6 +108,9 @@ public class ItemRCTool extends ItemTFC implements IMetalItem {
                                     EntityLivingBase entityLiving) {
         if (world.isRemote) return true;
 
+        // Prevent AoE when breaking plants or other non-target blocks
+        if (!this.canHarvestBlock(state, stack)) return true;
+
         int area = (this.areaOfEffect - 1) / 2;
 
         EnumFacing face = entityLiving.getHorizontalFacing();

@@ -42,6 +42,7 @@ dependencies {
     implementation rfg.deobf("curse.maven:tfc-tech-unofficial-1.2.16-340660:3209033") // TFC Tech Unofficial 1.2.16
     implementation rfg.deobf("curse.maven:tfc-decoration-1.0.9-414667:3510190") // TFC Decoration 1.0.9
     implementation rfg.deobf("curse.maven:journey-map-5.7.1p3-32274:5172461") // Journey Map 5.7.1p3
+    implementation rfg.deobf("curse.maven:immersive-engineering-0.12.98-231951:2974106") // Immersive Engineering 0.12.98
 
     runtimeOnlyNonPublishable rfg.deobf("curse.maven:tfc-rocks-plus-1.3.6-376298:3260513") // TFC Rocks+ 1.3.6
     runtimeOnlyNonPublishable rfg.deobf("curse.maven:firmalife-0.5.1-453394:3612887") // TFC Firmalife 0.5.1

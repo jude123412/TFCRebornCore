@@ -1,12 +1,12 @@
 [{
     "modid": "${modid}",
     "name": "${modname}",
-    "description": "Adds integration between Gregtech & Terrafirmacraft",
+    "description": "Adds integration between Many Other mods & Terrafirmacraft",
     "version": "${version}",
     "mcversion": "${mcversion}",
     "logoFile": "",
     "url": "",
     "authorList": ["xXjudeXx"],
     "credits": "The Gregtech CEu dev team for making the build script this mod uses",
-    "dependencies": ["tfc", "tfctech", "tfc_decoration"]
+    "dependencies": ["tfc", "tfctech", "tfc_decoration", "immersiveengineering"]
 }]

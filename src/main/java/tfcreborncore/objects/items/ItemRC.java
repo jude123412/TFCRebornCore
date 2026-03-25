@@ -39,7 +39,7 @@ public class ItemRC extends ItemTFC {
     @Override
     public @NotNull Size getSize(@NotNull ItemStack itemStack) {
         switch (type) {
-            case METAL_PRESS_SLEEVE, METAL_PRESS_RACKWHEEL_PART, METAL_PRESS_RACKWHEEL, METAL_PRESS_LONG_ROD, METAL_PRESS_BOLT, METAL_PRESS_SCREW -> {
+            case METAL_PRESS_SLEEVE, METAL_PRESS_RACKWHEEL_PIECE, METAL_PRESS_RACKWHEEL, METAL_PRESS_LONG_ROD, METAL_PRESS_BOLT, METAL_PRESS_SCREW -> {
                 return Size.NORMAL;
             }
             default -> {
@@ -51,7 +51,7 @@ public class ItemRC extends ItemTFC {
     @Override
     public @NotNull Weight getWeight(@NotNull ItemStack itemStack) {
         switch (type) {
-            case METAL_PRESS_SLEEVE, METAL_PRESS_RACKWHEEL_PART, METAL_PRESS_RACKWHEEL, METAL_PRESS_LONG_ROD, METAL_PRESS_BOLT, METAL_PRESS_SCREW -> {
+            case METAL_PRESS_SLEEVE, METAL_PRESS_RACKWHEEL_PIECE, METAL_PRESS_RACKWHEEL, METAL_PRESS_LONG_ROD, METAL_PRESS_BOLT, METAL_PRESS_SCREW -> {
                 return Weight.MEDIUM;
             }
             default -> {
@@ -63,7 +63,7 @@ public class ItemRC extends ItemTFC {
     @Override
     public boolean canStack(@NotNull ItemStack stack) {
         switch (type) {
-            case METAL_PRESS_SLEEVE, METAL_PRESS_RACKWHEEL_PART, METAL_PRESS_RACKWHEEL, METAL_PRESS_LONG_ROD, METAL_PRESS_BOLT, METAL_PRESS_SCREW -> {
+            case METAL_PRESS_SLEEVE, METAL_PRESS_RACKWHEEL_PIECE, METAL_PRESS_RACKWHEEL, METAL_PRESS_LONG_ROD, METAL_PRESS_BOLT, METAL_PRESS_SCREW -> {
                 return false;
             }
             default -> {
@@ -75,7 +75,7 @@ public class ItemRC extends ItemTFC {
     public enum ItemType {
 
         METAL_PRESS_SLEEVE,
-        METAL_PRESS_RACKWHEEL_PART,
+        METAL_PRESS_RACKWHEEL_PIECE,
         METAL_PRESS_RACKWHEEL,
         METAL_PRESS_LONG_ROD,
         METAL_PRESS_BOLT,

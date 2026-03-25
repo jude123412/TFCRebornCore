@@ -18,7 +18,7 @@ itemGroup.tfcreborncore.items=TFC: Reborn Core Items
 
 # Regular Items
 item.tfcreborncore.item.metal_press_sleeve.name=Metal Press Mold: Sleeve
-item.tfcreborncore.item.metal_press_rackwheel_part.name=Metal Press Mold: Rackwheel Part
+item.tfcreborncore.item.metal_press_rackwheel_piece.name=Metal Press Mold: Rackwheel Piece
 item.tfcreborncore.item.metal_press_rackwheel.name=Metal Press Mold: Rackwheel
 item.tfcreborncore.item.metal_press_long_rod.name=Metal Press Mold: Long Rod
 item.tfcreborncore.item.metal_press_bolt.name=Metal Press Mold: Bolt

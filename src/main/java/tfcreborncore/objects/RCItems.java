@@ -5,7 +5,6 @@ import java.util.Set;
 import net.dries007.tfc.api.registries.TFCRegistries;
 import net.dries007.tfc.api.types.Metal;
 import net.dries007.tfc.api.types.Ore;
-import net.dries007.tfc.objects.CreativeTabsTFC;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.renderer.color.IItemColor;
 import net.minecraft.creativetab.CreativeTabs;
@@ -22,6 +21,7 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
 
 import tfcreborncore.Tags;
+import tfcreborncore.objects.items.ItemRC;
 import tfcreborncore.objects.items.ItemRCOre;
 import tfcreborncore.objects.items.ItemRCToolHead;
 import tfcreborncore.objects.tools.ItemRCTool;
@@ -31,11 +31,13 @@ public class RCItems {
     private static ImmutableList<Item> allOreItems;
     private static ImmutableList<Item> allToolHeadItems;
     private static ImmutableList<Item> allToolItems;
+    private static ImmutableList<Item> allRegularItems;
 
     public static void registerItems(RegistryEvent.Register<Item> event) {
         registerOreItems(event);
         registerToolHeadItems(event);
         registerToolItems(event);
+        registerRegularItems(event);
     }
 
     public static void registerItemColors(final ColorHandlerEvent.Item event) {
@@ -59,7 +61,7 @@ public class RCItems {
                 for (ItemRCOre.ItemType type : ItemRCOre.ItemType.values()) {
                     Item oreType = register(registry, base + "_" + type.toString().toLowerCase(),
                             ItemRCOre.ItemType.Create(ore, type),
-                            CreativeTabsTFC.CT_ROCK_ITEMS);
+                            CreativeTabsRC.CT_ITEMS);
 
                     ItemRCOre ItemType = (ItemRCOre) oreType;
                     String path = ItemType.getOre().getMetal().getRegistryName().getPath().toLowerCase();
@@ -83,7 +85,7 @@ public class RCItems {
                 for (ItemRCToolHead.ItemType type : ItemRCToolHead.ItemType.values()) {
                     Item metalType = register(registry, base + "_" + type.toString().toLowerCase(),
                             ItemRCToolHead.ItemType.Create(metal, type),
-                            CreativeTabsTFC.CT_METAL);
+                            CreativeTabsRC.CT_ITEMS);
 
                     ItemRCToolHead metalItemType = (ItemRCToolHead) metalType;
                     String path = metalItemType.getMetal().getRegistryName().getPath().toLowerCase();
@@ -108,7 +110,7 @@ public class RCItems {
 
                     Item metalType = register(registry, base + "_" + type.toString().toLowerCase(),
                             ItemRCTool.ItemType.Create(metal, type),
-                            CreativeTabsTFC.CT_METAL);
+                            CreativeTabsRC.CT_ITEMS);
 
                     ItemRCTool metalItemType = (ItemRCTool) metalType;
                     String path = metalItemType.getMetal().getRegistryName().getPath().toLowerCase();
@@ -120,6 +122,20 @@ public class RCItems {
         }
 
         allToolItems = metalItems.build();
+    }
+
+    public static void registerRegularItems(RegistryEvent.Register<Item> event) {
+        IForgeRegistry<Item> registry = event.getRegistry();
+
+        ImmutableList.Builder<Item> regularItems = ImmutableList.builder();
+        for (ItemRC.ItemType type : ItemRC.ItemType.values()) {
+            String base = "item/" + type.toString().toLowerCase();
+
+            Item regularItemType = register(registry, base, ItemRC.ItemType.Create(type), CreativeTabsRC.CT_ITEMS);
+            regularItems.add(regularItemType);
+        }
+
+        allRegularItems = regularItems.build();
     }
 
     private static void registerOreItemColor(final ColorHandlerEvent.Item event) {
@@ -196,6 +212,13 @@ public class RCItems {
                     new ResourceLocation(Tags.MODID, "metal/tool/" + metalItem.getType().name().toLowerCase()),
                     "inventory"));
         }
+
+        for (Item item : getAllRegularItems()) {
+            ItemRC regularItem = (ItemRC) item;
+            ModelLoader.setCustomModelResourceLocation(regularItem, 0, new ModelResourceLocation(
+                    new ResourceLocation(Tags.MODID, "regular/" + regularItem.getType().name().toLowerCase()),
+                    "inventory"));
+        }
     }
 
     public static ImmutableList<Item> getAllOreItems() {
@@ -208,6 +231,10 @@ public class RCItems {
 
     public static ImmutableList<Item> getAllToolItems() {
         return allToolItems;
+    }
+
+    public static ImmutableList<Item> getAllRegularItems() {
+        return allRegularItems;
     }
 
     public static String toPascalCase(String input) {
@@ -275,7 +302,7 @@ public class RCItems {
         return true;
     }
 
-    private static <T extends Item> T register(IForgeRegistry<Item> r, String name, T item, CreativeTabs ct) {
+    protected static <T extends Item> T register(IForgeRegistry<Item> r, String name, T item, CreativeTabs ct) {
         item.setRegistryName(Tags.MODID, name);
         item.setTranslationKey(Tags.MODID + "." + name.replace('/', '.'));
         item.setCreativeTab(ct);

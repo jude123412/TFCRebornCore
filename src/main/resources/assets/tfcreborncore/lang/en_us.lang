@@ -12,3 +12,14 @@ item.tfcreborncore.tool.mining_hammer.name=%s Mining Hammer
 item.tfcreborncore.tool_head.unfinished_excavator_head.name=Unfinished %s Excavator Head
 item.tfcreborncore.tool_head.excavator_head.name=%s Excavator Head
 item.tfcreborncore.tool.excavator.name=%s Excavator
+
+# Creative Tabs
+itemGroup.tfcreborncore.items=TFC: Reborn Core Items
+
+# Regular Items
+item.tfcreborncore.item.metal_press_sleeve.name=Metal Press Mold: Sleeve
+item.tfcreborncore.item.metal_press_rackwheel_part.name=Metal Press Mold: Rackwheel Part
+item.tfcreborncore.item.metal_press_rackwheel.name=Metal Press Mold: Rackwheel
+item.tfcreborncore.item.metal_press_long_rod.name=Metal Press Mold: Long Rod
+item.tfcreborncore.item.metal_press_bolt.name=Metal Press Mold: Bolt
+item.tfcreborncore.item.metal_press_screw.name=Metal Press Mold: Screw

@@ -160,7 +160,7 @@ public class ItemRCTool extends ItemTFC implements IMetalItem {
         for (BlockPos.MutableBlockPos extraPos : BlockPos.getAllInBoxMutable(minX, minY, minZ, maxX, maxY, maxZ)) {
 
             if (extraPos.equals(pos)) continue;
-            
+
             // Disable AOE without breaking functionality
             if (entityLiving.isSneaking()) {
                 stack.damageItem(1, entityLiving);

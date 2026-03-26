@@ -1,7 +1,5 @@
 package tfcreborncore.objects;
 
-import java.util.Set;
-
 import net.dries007.tfc.api.registries.TFCRegistries;
 import net.dries007.tfc.api.types.Metal;
 import net.dries007.tfc.api.types.Ore;
@@ -18,7 +16,6 @@ import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.registries.IForgeRegistry;
 
 import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
 
 import tfcreborncore.Tags;
 import tfcreborncore.objects.items.ItemRC;
@@ -55,7 +52,7 @@ public class RCItems {
 
         ImmutableList.Builder<Item> oreItems = ImmutableList.builder();
         for (Ore ore : TFCRegistries.ORES) {
-            if (ore.isGraded() && shouldGenerateOre(ore)) {
+            if (ore.isGraded()) {
                 String base = "ore/" + ore.getRegistryName().getPath().toLowerCase();
 
                 for (ItemRCOre.ItemType type : ItemRCOre.ItemType.values()) {
@@ -64,7 +61,7 @@ public class RCItems {
                             CreativeTabsRC.CT_ITEMS);
 
                     ItemRCOre ItemType = (ItemRCOre) oreType;
-                    String path = ItemType.getOre().getMetal().getRegistryName().getPath().toLowerCase();
+                    String path = ItemType.getOre().getRegistryName().getPath().toLowerCase();
                     OreDictionary.registerOre(type.toString().toLowerCase() + toPascalCase(path), ItemType);
                     oreItems.add(oreType);
                 }
@@ -286,7 +283,22 @@ public class RCItems {
     }
 
     private static int getOreColor(ItemRCOre oreItem) {
-        return oreItem.getOre().getMetal().getColor() & 0xFFFFFF;
+        Ore ore = oreItem.getOre();
+        int color;
+        if (ore.getRegistryName().getPath().contains("garnierite")) color = 0x5A664B;
+        else if (ore.getRegistryName().getPath().contains("stibnite")) color = 0xA0A7D3;
+        else if (ore.getRegistryName().getPath().contains("spodumene")) color = 0xECD3FF;
+        else if (ore.getRegistryName().getPath().contains("bauxite")) color = 0xD7652F;
+        else if (ore.getRegistryName().getPath().contains("rutile")) color = 0x915638;
+        else if (ore.getRegistryName().getPath().contains("malachite")) color = 0x78C9AF;
+        else if (ore.getRegistryName().getPath().contains("tetrahedrite")) color = 0x938CA5;
+        else if (ore.getRegistryName().getPath().contains("magnetite")) color = 0x7F8E8A;
+        else if (ore.getRegistryName().getPath().contains("hematite")) color = 0xC96266;
+        else if (ore.getRegistryName().getPath().contains("limonite")) color = 0x4D2F27;
+        else {
+            color = ore.getMetal().getColor() & 0xFFFFFF;
+        }
+        return color;
     }
 
     private static int getMetalColor(ItemRCMetal metalItem) {
@@ -295,20 +307,6 @@ public class RCItems {
 
     private static int getToolColor(ItemRCTool metalItem) {
         return metalItem.getMetal().getColor() & 0xFFFFFF;
-    }
-
-    private static final Set<String> BLOCKED_ORES = ImmutableSet.of(
-            "tetrahedrite", "malachite", "magnetite", "limonite");
-
-    public static boolean shouldGenerateOre(Ore ore) {
-        String name = ore.getRegistryName().getPath().toLowerCase();
-
-        // Blocked always wins
-        for (String s : BLOCKED_ORES)
-            if (name.contains(s))
-                return false;
-
-        return true;
     }
 
     protected static <T extends Item> T register(IForgeRegistry<Item> r, String name, T item, CreativeTabs ct) {

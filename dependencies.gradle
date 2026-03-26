@@ -43,15 +43,19 @@ dependencies {
     implementation rfg.deobf("curse.maven:tfc-decoration-1.0.9-414667:3510190") // TFC Decoration 1.0.9
     implementation rfg.deobf("curse.maven:journey-map-5.7.1p3-32274:5172461") // Journey Map 5.7.1p3
     implementation rfg.deobf("curse.maven:immersive-engineering-0.12.98-231951:2974106") // Immersive Engineering 0.12.98
+    implementation rfg.deobf("curse.maven:groovy-script-1.4.1-687577:7813868") // Groovy Script 1.4.1
+
+    compileOnly rfg.deobf("curse.maven:thermal-expansion-5.5.7.1-69163:2926431") // Thermal Expansion 5.5.7.1
+    compileOnly rfg.deobf("curse.maven:cofh-core-4.6.6.1-69162:2920433") // Code Chicken Lib 3.2.3.358
 
     runtimeOnlyNonPublishable rfg.deobf("curse.maven:tfc-rocks-plus-1.3.6-376298:3260513") // TFC Rocks+ 1.3.6
     runtimeOnlyNonPublishable rfg.deobf("curse.maven:firmalife-0.5.1-453394:3612887") // TFC Firmalife 0.5.1
     runtimeOnlyNonPublishable rfg.deobf("curse.maven:tfc-metallum-1.4.4-1489345:7777212") // TFC Metallum 1.4.4
     runtimeOnlyNonPublishable rfg.deobf("curse.maven:jeids-1.0.4-snapshot-thin-296289:3581715") // Just Enough Ids 1.0.4-Snapshot-Thin
     runtimeOnlyNonPublishable rfg.deobf("curse.maven:mixin-bootstrap-1.1.0-357178:3437402") // Mixin Bootstrap 1.1.0
-    runtimeOnlyNonPublishable rfg.deobf("curse.maven:thermal-expansion-5.5.7.1-69163:2926431") // Thermal Expansion 5.5.7.1
     runtimeOnlyNonPublishable rfg.deobf("curse.maven:thermal-foundation-2.6.7.1-222880:2926428") // Thermal Foundation 2.6.7.1
     runtimeOnlyNonPublishable rfg.deobf("curse.maven:redstone-flux-2.1.1.1-270789:2920436") // Redstone Flux 2.1.1.1
+    runtimeOnlyNonPublishable rfg.deobf("curse.maven:thermal-expansion-5.5.7.1-69163:2926431") // Thermal Expansion 5.5.7.1
     runtimeOnlyNonPublishable rfg.deobf("curse.maven:code-chicken-lib-3.2.3.358-242818:2779848") // Code Chicken Lib 3.2.3.358
     runtimeOnlyNonPublishable rfg.deobf("curse.maven:cofh-core-4.6.6.1-69162:2920433") // Code Chicken Lib 3.2.3.358
     runtimeOnlyNonPublishable rfg.deobf("curse.maven:cofh-world-1.4.9.1-271384:2920434") // Code Chicken Lib 1.4.9.1

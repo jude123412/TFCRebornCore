@@ -42,8 +42,11 @@ public class ItemRC extends ItemTFC {
             case METAL_PRESS_SLEEVE, METAL_PRESS_RACKWHEEL_PIECE, METAL_PRESS_RACKWHEEL, METAL_PRESS_LONG_ROD, METAL_PRESS_BOLT, METAL_PRESS_SCREW -> {
                 return Size.NORMAL;
             }
+            case RF_CONTROL_CIRCUIT -> {
+                return Size.LARGE;
+            }
             default -> {
-                return Size.VERY_SMALL;
+                return Size.SMALL;
             }
         }
     }
@@ -53,6 +56,9 @@ public class ItemRC extends ItemTFC {
         switch (type) {
             case METAL_PRESS_SLEEVE, METAL_PRESS_RACKWHEEL_PIECE, METAL_PRESS_RACKWHEEL, METAL_PRESS_LONG_ROD, METAL_PRESS_BOLT, METAL_PRESS_SCREW -> {
                 return Weight.MEDIUM;
+            }
+            case RF_CONTROL_CIRCUIT -> {
+                return Weight.HEAVY;
             }
             default -> {
                 return Weight.VERY_LIGHT;
@@ -79,7 +85,9 @@ public class ItemRC extends ItemTFC {
         METAL_PRESS_RACKWHEEL,
         METAL_PRESS_LONG_ROD,
         METAL_PRESS_BOLT,
-        METAL_PRESS_SCREW;
+        METAL_PRESS_SCREW,
+        RF_CONTROL_CIRCUIT,
+        HARDENED_GLASS_MIX;
 
         ItemType() {
             this(ItemRC::new);

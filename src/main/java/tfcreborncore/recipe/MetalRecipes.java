@@ -6,13 +6,16 @@ import net.dries007.tfc.api.registries.TFCRegistries;
 import net.dries007.tfc.api.types.Metal;
 import net.dries007.tfc.objects.inventory.ingredient.IIngredient;
 import net.dries007.tfc.objects.items.metal.ItemMetal;
+import net.dries007.tfc.objects.recipes.RecipeUtils;
 import net.dries007.tfc.util.forge.ForgeRule;
 import net.dries007.tfc.util.skills.SmithingSkill;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.registries.IForgeRegistry;
 
+import net.minecraftforge.registries.IForgeRegistryModifiable;
 import tfcreborncore.Tags;
 import tfcreborncore.objects.items.ItemRCMetal;
 import tfcreborncore.objects.recipe.CraftingRecipeManager;
@@ -101,6 +104,36 @@ public class MetalRecipes {
                                     ItemRCMetal.get(metal, ItemRCMetal.ItemType.UNFINISHED_EXCAVATOR_HEAD))),
                             excavatorHead, metal.getTier(), SmithingSkill.Type.TOOLS));
 
+            }
+
+            if (metal.isUsable()) {
+                IIngredient<ItemStack> ingredientRackwheelPiece = IIngredient
+                        .of(new ItemStack(ItemTechMetal.get(metal, ItemTechMetal.ItemType.RACKWHEEL_PIECE)));
+
+                ItemStack rackwheelHalf = new ItemStack(
+                        ItemRCMetal.get(metal, ItemRCMetal.ItemType.RACKWHEEL_HALF));
+
+                IIngredient<ItemStack> ingredientRackwheelHalf = IIngredient
+                        .of(rackwheelHalf);
+
+                ItemStack rackwheel = new ItemStack(
+                        ItemTechMetal.get(metal, ItemTechMetal.ItemType.RACKWHEEL));
+
+                r.register(new WeldingRecipe(
+                        new ResourceLocation(Tags.MODID,
+                                metal.getRegistryName().getPath().toLowerCase() + "_" +
+                                        ItemRCMetal.ItemType.RACKWHEEL_HALF),
+                        ingredientRackwheelPiece,
+                        ingredientRackwheelPiece,
+                        rackwheelHalf, metal.getTier(), null));
+
+                r.register(new WeldingRecipe(
+                        new ResourceLocation(Tags.MODID,
+                                metal.getRegistryName().getPath().toLowerCase() + "_" +
+                                        ItemTechMetal.ItemType.RACKWHEEL),
+                        ingredientRackwheelHalf,
+                        ingredientRackwheelHalf,
+                        rackwheel, metal.getTier(), null));
             }
         }
     }

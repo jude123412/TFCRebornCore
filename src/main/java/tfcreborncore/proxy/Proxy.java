@@ -36,7 +36,6 @@ public class Proxy {
     @SubscribeEvent
     public static void registerRecipes(RegistryEvent.Register<IRecipe> event) {
         MetalRecipes.registerShapedSkillRecipe();
-
         CraftingRecipeManager.SKILL_RECIPES.forEach(event.getRegistry()::register);
     }
 }

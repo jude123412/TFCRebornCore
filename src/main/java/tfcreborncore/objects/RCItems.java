@@ -286,8 +286,7 @@ public class RCItems {
     }
 
     private static int getOreColor(ItemRCOre oreItem) {
-        Ore ore = oreItem.getOre();
-        return ore.getMetal().getColor() & 0xFFFFFF;
+        return oreItem.getOre().getMetal().getColor() & 0xFFFFFF;
     }
 
     private static int getMetalColor(ItemRCMetal metalItem) {

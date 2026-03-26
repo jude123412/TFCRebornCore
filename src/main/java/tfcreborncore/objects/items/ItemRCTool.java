@@ -1,4 +1,4 @@
-package tfcreborncore.objects.tools;
+package tfcreborncore.objects.items;
 
 import java.util.EnumMap;
 import java.util.HashMap;

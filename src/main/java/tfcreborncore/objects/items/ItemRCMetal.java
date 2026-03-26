@@ -27,30 +27,30 @@ import org.jetbrains.annotations.NotNull;
  * Modified to create ItemRCTool
  * Modified by xXjudeXx on 2026-03-21
  */
-public class ItemRCToolHead extends ItemTFC implements IMetalItem {
+public class ItemRCMetal extends ItemTFC implements IMetalItem {
 
-    private static final Map<Metal, EnumMap<ItemRCToolHead.ItemType, ItemRCToolHead>> METAL_MAP = new HashMap<>();
+    private static final Map<Metal, EnumMap<ItemRCMetal.ItemType, ItemRCMetal>> METAL_MAP = new HashMap<>();
 
     private final Metal metal;
-    private final ItemRCToolHead.ItemType type;
+    private final ItemRCMetal.ItemType type;
 
-    public ItemRCToolHead(Metal metal, ItemRCToolHead.ItemType type) {
+    public ItemRCMetal(Metal metal, ItemRCMetal.ItemType type) {
         super();
         this.metal = metal;
         this.type = type;
         if (!METAL_MAP.containsKey(metal)) {
-            METAL_MAP.put(metal, new EnumMap<>(ItemRCToolHead.ItemType.class));
+            METAL_MAP.put(metal, new EnumMap<>(ItemRCMetal.ItemType.class));
         }
         METAL_MAP.get(metal).put(type, this);
         setNoRepair();
     }
 
-    public ItemRCToolHead.ItemType getType() {
+    public ItemRCMetal.ItemType getType() {
         return type;
     }
 
     @Nullable
-    public static ItemRCToolHead get(Metal metal, ItemRCToolHead.ItemType type) {
+    public static ItemRCMetal get(Metal metal, ItemRCMetal.ItemType type) {
         return METAL_MAP.get(metal).get(type);
     }
 
@@ -59,6 +59,9 @@ public class ItemRCToolHead extends ItemTFC implements IMetalItem {
         switch (type) {
             case UNFINISHED_MINING_HAMMER_HEAD, EXCAVATOR_HEAD, MINING_HAMMER_HEAD, UNFINISHED_EXCAVATOR_HEAD -> {
                 return Size.LARGE;
+            }
+            case RACKWHEEL_HALF -> {
+                return Size.NORMAL;
             }
             default -> {
                 return Size.VERY_SMALL;
@@ -69,7 +72,7 @@ public class ItemRCToolHead extends ItemTFC implements IMetalItem {
     @Override
     public @NotNull Weight getWeight(@NotNull ItemStack itemStack) {
         switch (type) {
-            case UNFINISHED_EXCAVATOR_HEAD -> {
+            case UNFINISHED_EXCAVATOR_HEAD, RACKWHEEL_HALF -> {
                 return Weight.MEDIUM;
             }
             case UNFINISHED_MINING_HAMMER_HEAD, EXCAVATOR_HEAD -> {
@@ -89,7 +92,7 @@ public class ItemRCToolHead extends ItemTFC implements IMetalItem {
     public String getItemStackDisplayName(@Nonnull ItemStack stack) {
         String metalName = (new TextComponentTranslation(
                 "tfc.types.metal." + metal.getRegistryName().getPath().toLowerCase())).getFormattedText();
-        return (new TextComponentTranslation("item.tfcreborncore.tool_head." + type.name().toLowerCase() + ".name",
+        return (new TextComponentTranslation("item.tfcreborncore.metal." + type.name().toLowerCase() + ".name",
                 metalName)).getFormattedText();
     }
 
@@ -116,7 +119,14 @@ public class ItemRCToolHead extends ItemTFC implements IMetalItem {
 
     public boolean canStack(@Nonnull ItemStack stack) {
         return switch (this.type) {
-            case MINING_HAMMER_HEAD, EXCAVATOR_HEAD -> true;
+            case UNFINISHED_MINING_HAMMER_HEAD, UNFINISHED_EXCAVATOR_HEAD -> false;
+            default -> true;
+        };
+    }
+
+    public static boolean isToolHead(ItemRCMetal.ItemType type) {
+        return switch (type) {
+            case UNFINISHED_MINING_HAMMER_HEAD, UNFINISHED_EXCAVATOR_HEAD, MINING_HAMMER_HEAD, EXCAVATOR_HEAD -> true;
             default -> false;
         };
     }
@@ -126,21 +136,22 @@ public class ItemRCToolHead extends ItemTFC implements IMetalItem {
         UNFINISHED_MINING_HAMMER_HEAD(300),
         MINING_HAMMER_HEAD(500),
         UNFINISHED_EXCAVATOR_HEAD(200),
-        EXCAVATOR_HEAD(300);
+        EXCAVATOR_HEAD(300),
+        RACKWHEEL_HALF(200);
 
         ItemType(int meltingAmount) {
-            this(meltingAmount, ItemRCToolHead::new);
+            this(meltingAmount, ItemRCMetal::new);
         }
 
-        ItemType(int meltingAmount, @Nonnull BiFunction<Metal, ItemRCToolHead.ItemType, Item> supplier) {
+        ItemType(int meltingAmount, @Nonnull BiFunction<Metal, ItemRCMetal.ItemType, Item> supplier) {
             this.meltingAmount = meltingAmount;
             this.supplier = supplier;
         }
 
         private final int meltingAmount;
-        private final BiFunction<Metal, ItemRCToolHead.ItemType, Item> supplier;
+        private final BiFunction<Metal, ItemRCMetal.ItemType, Item> supplier;
 
-        public static Item Create(Metal metal, ItemRCToolHead.ItemType type) {
+        public static Item Create(Metal metal, ItemRCMetal.ItemType type) {
             return type.supplier.apply(metal, type);
         }
 

@@ -186,7 +186,7 @@ public class ItemRCTool extends ItemTFC implements IMetalItem {
         return switch (this.type) {
             case MINING_HAMMER -> material == Material.IRON || material == Material.ANVIL || material == Material.ROCK;
             case EXCAVATOR -> material == Material.SNOW || material == Material.CRAFTED_SNOW ||
-                    material == Material.GRASS || material == Material.GROUND;
+                    material == Material.GRASS || material == Material.GROUND || material == Material.SAND;
             default -> false;
         };
     }

@@ -80,7 +80,7 @@ public class RCItems {
         ImmutableList.Builder<Item> metalItems = ImmutableList.builder();
         for (Metal metal : TFCRegistries.METALS) {
             String metalName = metal.getRegistryName().getPath().toLowerCase();
-            String base = metal.isToolMetal() ? "metal/tool/" + metalName : "metal/" + metalName;
+            String base = metal.isToolMetal() ? "metal/tool/head/" + metalName : "metal/" + metalName;
 
             for (ItemRCMetal.ItemType type : ItemRCMetal.ItemType.values()) {
 

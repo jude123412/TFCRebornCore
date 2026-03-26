@@ -2,6 +2,7 @@ package tfcreborncore.recipe;
 
 import net.dries007.tfc.api.recipes.WeldingRecipe;
 import net.dries007.tfc.api.recipes.anvil.AnvilRecipe;
+import net.dries007.tfc.api.recipes.quern.QuernRecipe;
 import net.dries007.tfc.api.registries.TFCRegistries;
 import net.dries007.tfc.api.types.Metal;
 import net.dries007.tfc.objects.inventory.ingredient.IIngredient;
@@ -147,6 +148,21 @@ public class MetalRecipes {
                         ingredientRackwheelHalf,
                         ingredientRackwheelHalf,
                         rackwheel, metal.getTier(), null));
+            }
+        }
+    }
+
+    public static void registerQuernRecipes(RegistryEvent.Register<QuernRecipe> event) {
+        IForgeRegistry<QuernRecipe> r = event.getRegistry();
+        for (Metal metal : TFCRegistries.METALS.getValuesCollection()) {
+            if (metal.isUsable()) {
+                IIngredient<ItemStack> ingredientIngot = IIngredient
+                        .of(new ItemStack(ItemMetal.get(metal, Metal.ItemType.INGOT)));
+
+                ItemStack dust = new ItemStack(
+                        ItemMetal.get(metal, Metal.ItemType.DUST));
+                r.register(new QuernRecipe(ingredientIngot, dust).setRegistryName(Tags.MODID,
+                        "ingot_to_dust_" + metal.getRegistryName().getPath().toLowerCase()));
             }
         }
     }

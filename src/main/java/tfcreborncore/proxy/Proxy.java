@@ -2,6 +2,7 @@ package tfcreborncore.proxy;
 
 import net.dries007.tfc.api.recipes.WeldingRecipe;
 import net.dries007.tfc.api.recipes.anvil.AnvilRecipe;
+import net.dries007.tfc.api.recipes.quern.QuernRecipe;
 import net.minecraft.item.Item;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.event.RegistryEvent;
@@ -24,13 +25,18 @@ public class Proxy {
     }
 
     @SubscribeEvent
-    public static void registerAnvilRecipe(RegistryEvent.Register<AnvilRecipe> event) {
+    public static void registerAnvilRecipes(RegistryEvent.Register<AnvilRecipe> event) {
         MetalRecipes.registerAnvilRecipes(event);
     }
 
     @SubscribeEvent
-    public static void registerWeldingRecipe(RegistryEvent.Register<WeldingRecipe> event) {
+    public static void registerWeldingRecipes(RegistryEvent.Register<WeldingRecipe> event) {
         MetalRecipes.registerWeldingRecipes(event);
+    }
+
+    @SubscribeEvent
+    public static void registerQuernRecipes(RegistryEvent.Register<QuernRecipe> event) {
+        MetalRecipes.registerQuernRecipes(event);
     }
 
     @SubscribeEvent

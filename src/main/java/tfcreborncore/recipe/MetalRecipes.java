@@ -28,14 +28,28 @@ public class MetalRecipes {
             if (metal.isUsable()) {
                 IIngredient<ItemStack> ingredientIngot = IIngredient
                         .of(new ItemStack(ItemMetal.get(metal, Metal.ItemType.INGOT)));
+
                 ItemStack rackwheelPiece = new ItemStack(
                         ItemTechMetal.get(metal, ItemTechMetal.ItemType.RACKWHEEL_PIECE));
+
+                // Rackwheel Piece
                 r.register(new AnvilRecipe(
                         new ResourceLocation(Tags.MODID,
                                 (metal.getRegistryName().getPath()).toLowerCase() + "_" +
                                         ItemTechMetal.ItemType.RACKWHEEL_PIECE),
                         ingredientIngot, rackwheelPiece, metal.getTier(), null, ForgeRule.UPSET_THIRD_LAST,
                         ForgeRule.DRAW_SECOND_LAST, ForgeRule.UPSET_LAST));
+
+                ItemStack rod = new ItemStack(
+                        ItemTechMetal.get(metal, ItemTechMetal.ItemType.ROD), 2);
+
+                // Rod
+                r.register(new AnvilRecipe(
+                        new ResourceLocation(Tags.MODID,
+                                (metal.getRegistryName().getPath()).toLowerCase() + "_" +
+                                        ItemTechMetal.ItemType.ROD),
+                        ingredientIngot, rod, metal.getTier(), null, ForgeRule.HIT_THIRD_LAST,
+                        ForgeRule.DRAW_SECOND_LAST, ForgeRule.HIT_LAST));
             }
         }
     }
@@ -116,6 +130,7 @@ public class MetalRecipes {
                 ItemStack rackwheel = new ItemStack(
                         ItemTechMetal.get(metal, ItemTechMetal.ItemType.RACKWHEEL));
 
+                // Rackwheel Half
                 r.register(new WeldingRecipe(
                         new ResourceLocation(Tags.MODID,
                                 metal.getRegistryName().getPath().toLowerCase() + "_" +
@@ -124,6 +139,7 @@ public class MetalRecipes {
                         ingredientRackwheelPiece,
                         rackwheelHalf, metal.getTier(), null));
 
+                // Rackwheel
                 r.register(new WeldingRecipe(
                         new ResourceLocation(Tags.MODID,
                                 metal.getRegistryName().getPath().toLowerCase() + "_" +
@@ -138,6 +154,7 @@ public class MetalRecipes {
     public static void registerShapedSkillRecipe() {
         for (Metal metal : TFCRegistries.METALS.getValuesCollection()) {
             if (metal.isToolMetal()) {
+                // Excavator
                 CraftingRecipeManager.addShapedSkillRecipe(
                         new ResourceLocation(Tags.MODID, "metal/tool/" + ItemRCTool.ItemType.EXCAVATOR + "/" + metal),
                         ItemRCTool.get(metal, ItemRCTool.ItemType.EXCAVATOR).getDefaultInstance(),
@@ -146,6 +163,7 @@ public class MetalRecipes {
                         'S', "stickWood",
                         'H', ItemRCMetal.get(metal, ItemRCMetal.ItemType.EXCAVATOR_HEAD).getDefaultInstance());
 
+                // Mining Hammer
                 CraftingRecipeManager.addShapedSkillRecipe(
                         new ResourceLocation(Tags.MODID,
                                 "metal/tool/" + ItemRCTool.ItemType.MINING_HAMMER + "/" + metal),

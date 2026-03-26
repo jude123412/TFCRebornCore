@@ -6,20 +6,17 @@ import net.dries007.tfc.api.registries.TFCRegistries;
 import net.dries007.tfc.api.types.Metal;
 import net.dries007.tfc.objects.inventory.ingredient.IIngredient;
 import net.dries007.tfc.objects.items.metal.ItemMetal;
-import net.dries007.tfc.objects.recipes.RecipeUtils;
 import net.dries007.tfc.util.forge.ForgeRule;
 import net.dries007.tfc.util.skills.SmithingSkill;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.registries.IForgeRegistry;
 
-import net.minecraftforge.registries.IForgeRegistryModifiable;
 import tfcreborncore.Tags;
 import tfcreborncore.objects.items.ItemRCMetal;
-import tfcreborncore.objects.recipe.CraftingRecipeManager;
 import tfcreborncore.objects.items.ItemRCTool;
+import tfcreborncore.objects.recipe.CraftingRecipeManager;
 import tfctech.objects.items.metal.ItemTechMetal;
 
 @SuppressWarnings({ "ConstantConditions", "unused" })

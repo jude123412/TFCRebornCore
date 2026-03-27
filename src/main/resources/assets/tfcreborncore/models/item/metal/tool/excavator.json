@@ -1,5 +1,5 @@
 {
-  "parent": "item/generated",
+  "parent": "item/handheld",
   "textures": {
     "layer0": "tfcreborncore:items/metal/tool/excavator",
     "layer1": "tfcreborncore:items/metal/tool/excavator_overlay"

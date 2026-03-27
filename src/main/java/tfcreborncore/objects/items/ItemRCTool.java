@@ -104,12 +104,12 @@ public class ItemRCTool extends ItemTFC implements IMetalItem {
         }
     }
 
-    public boolean onBlockDestroyed(ItemStack stack, World world, IBlockState state, BlockPos pos,
+    public boolean onBlockDestroyed(ItemStack stack, World worldIn, IBlockState state, BlockPos pos,
                                     EntityLivingBase entityLiving) {
-        if (world.isRemote) return true;
+        if (state.getBlockHardness(worldIn, pos) > 0.0F && !worldIn.isRemote) stack.damageItem(1, entityLiving);
 
         // Prevent AoE when breaking plants or other non-target blocks
-        if (!this.canHarvestBlock(state, stack)) return true;
+        if (!this.canHarvestBlock(state)) return true;
 
         int area = (this.areaOfEffect - 1) / 2;
 
@@ -117,7 +117,7 @@ public class ItemRCTool extends ItemTFC implements IMetalItem {
 
         // Detect Mining Face
         if (entityLiving instanceof EntityPlayer) {
-            RayTraceResult hit = ((EntityPlayer) entityLiving).rayTrace(5.0D, 1.0F);
+            RayTraceResult hit = entityLiving.rayTrace(5.0D, 1.0F);
 
             if (hit != null && hit.typeOfHit == RayTraceResult.Type.BLOCK) {
                 face = hit.sideHit;
@@ -157,24 +157,22 @@ public class ItemRCTool extends ItemTFC implements IMetalItem {
                 break;
         }
 
-        for (BlockPos.MutableBlockPos extraPos : BlockPos.getAllInBoxMutable(minX, minY, minZ, maxX, maxY, maxZ)) {
+        // Disable AOE without breaking functionality
+        if (entityLiving.isSneaking()) {
+            return true;
+        }
 
-            if (extraPos.equals(pos)) continue;
+        if (area >= 1 && entityLiving instanceof EntityPlayer player && !worldIn.isRemote) {
+            for (BlockPos extraPos : BlockPos.getAllInBoxMutable(minX, minY, minZ, maxX, maxY, maxZ)) {
+                IBlockState st = worldIn.getBlockState(extraPos);
 
-            // Disable AOE without breaking functionality
-            if (entityLiving.isSneaking()) {
-                stack.damageItem(1, entityLiving);
-                return true;
-            }
-
-            IBlockState extraState = world.getBlockState(extraPos);
-
-            if (!world.isAirBlock(extraPos) && this.canHarvestBlock(extraState)) {
-                extraState.getBlock().onPlayerDestroy(world, extraPos, extraState);
-                extraState.getBlock().harvestBlock(world, (EntityPlayer) entityLiving,
-                        extraPos, extraState, world.getTileEntity(extraPos), stack);
-                world.setBlockToAir(extraPos);
-                stack.damageItem(1, entityLiving);
+                if (!extraPos.equals(pos) && !worldIn.isAirBlock(extraPos) && this.canHarvestBlock(st)) {
+                    st.getBlock().onPlayerDestroy(worldIn, extraPos, st);
+                    st.getBlock().harvestBlock(worldIn, player,
+                            extraPos, st, worldIn.getTileEntity(extraPos), stack);
+                    worldIn.setBlockToAir(extraPos);
+                    stack.damageItem(1, player);
+                }
             }
         }
 

@@ -52,7 +52,8 @@ tfc.enum.extendedheat.yellow=Yellow
 tfc.enum.extendedheat.yellow_white=Yellow White
 tfc.enum.extendedheat.white=White
 tfc.enum.extendedheat.brilliant_white=Brilliant White
-tfc.enum.extendedheat.super_white=Super White
-tfc.enum.extendedheat.ultra_white=Ultra White
-tfc.enum.extendedheat.hyper_white=Hyper White
 tfc.enum.extendedheat.walter_white=Walter White
+tfc.enum.extendedheat.blue_white=Blue White
+tfc.enum.extendedheat.violet_white=Violet White
+tfc.enum.extendedheat.ultraviolet_edge=Ultraviolet Edge
+

@@ -28,9 +28,9 @@ public enum ExtendedHeat {
     WHITE(1400.0F, 1500.0F, TextFormatting.WHITE),
     BRILLIANT_WHITE(1500.0F, 1600.0F, TextFormatting.WHITE),
     WALTER_WHITE(1600.0F, 2000.0F, TextFormatting.AQUA),
-    SUPER_WHITE(2000.0F, 3000.0F, TextFormatting.BLUE),
-    ULTRA_WHITE(3000.0F, 4000.0F, TextFormatting.DARK_PURPLE),
-    HYPER_WHITE(4000.0F, 5000.0F, TextFormatting.LIGHT_PURPLE);
+    BLUE_WHITE(2000.0F, 3000.0F, TextFormatting.BLUE),
+    VIOLET_WHITE(3000.0F, 4000.0F, TextFormatting.DARK_PURPLE),
+    ULTRAVIOLET_EDGE(4000.0F, 5000.0F, TextFormatting.LIGHT_PURPLE);
 
     private static final ExtendedHeat[] VALUES = values();
     final TextFormatting format;
@@ -39,7 +39,7 @@ public enum ExtendedHeat {
     private final float max;
 
     public static float maxVisibleTemperature() {
-        return HYPER_WHITE.getMax();
+        return ULTRAVIOLET_EDGE.getMax();
     }
 
     @Nullable
@@ -50,8 +50,8 @@ public enum ExtendedHeat {
             }
         }
 
-        if (temperature > HYPER_WHITE.max) {
-            return HYPER_WHITE;
+        if (temperature > ULTRAVIOLET_EDGE.max) {
+            return ULTRAVIOLET_EDGE;
         } else {
             return null;
         }
@@ -65,7 +65,7 @@ public enum ExtendedHeat {
         } else {
             StringBuilder b = new StringBuilder();
             b.append(I18n.format(Helpers.getEnumName(heat), new Object[0]));
-            if (heat != HYPER_WHITE) {
+            if (heat != ULTRAVIOLET_EDGE) {
                 for (int i = 1; i <= 4; ++i) {
                     if (!(temperature <= heat.getMin() + (float) i * 0.2F * (heat.getMax() - heat.getMin()))) {
                         b.append("★");

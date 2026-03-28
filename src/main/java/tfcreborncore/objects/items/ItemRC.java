@@ -39,6 +39,9 @@ public class ItemRC extends ItemTFC {
     @Override
     public @NotNull Size getSize(@NotNull ItemStack itemStack) {
         switch (type) {
+            case ELECTRICAL_DOODAR_BASE_PLATE, ELECTRICAL_DOODAR_HOUSING, ELECTRICAL_THINGAMAJIG_STAGE_1, ELECTRICAL_THINGAMAJIG_STAGE_2, ELECTRICAL_THINGAMAJIG_STAGE_3, LIGNITE_COKE, BITUMINOUS_COAL_COKE -> {
+                return Size.SMALL;
+            }
             case METAL_PRESS_SLEEVE, METAL_PRESS_RACKWHEEL_PIECE, METAL_PRESS_RACKWHEEL, METAL_PRESS_LONG_ROD, METAL_PRESS_BOLT, METAL_PRESS_SCREW -> {
                 return Size.NORMAL;
             }
@@ -46,7 +49,7 @@ public class ItemRC extends ItemTFC {
                 return Size.LARGE;
             }
             default -> {
-                return Size.SMALL;
+                return Size.VERY_SMALL;
             }
         }
     }
@@ -54,7 +57,10 @@ public class ItemRC extends ItemTFC {
     @Override
     public @NotNull Weight getWeight(@NotNull ItemStack itemStack) {
         switch (type) {
-            case METAL_PRESS_SLEEVE, METAL_PRESS_RACKWHEEL_PIECE, METAL_PRESS_RACKWHEEL, METAL_PRESS_LONG_ROD, METAL_PRESS_BOLT, METAL_PRESS_SCREW -> {
+            case ELECTRICAL_DOODAR_BASE_PLATE, ELECTRICAL_DOODAR_HOUSING, ELECTRICAL_THINGAMAJIG_STAGE_1, ELECTRICAL_THINGAMAJIG_STAGE_2, ELECTRICAL_THINGAMAJIG_STAGE_3 -> {
+                return Weight.LIGHT;
+            }
+            case METAL_PRESS_SLEEVE, METAL_PRESS_RACKWHEEL_PIECE, METAL_PRESS_RACKWHEEL, METAL_PRESS_LONG_ROD, METAL_PRESS_BOLT, METAL_PRESS_SCREW, WOOD_SHEET, LATEX_COATED_WOOD_SHEET, ELECTRICAL_DOODAR, ELECTRICAL_THINGAMAJIG, LIGNITE_COKE, BITUMINOUS_COAL_COKE -> {
                 return Weight.MEDIUM;
             }
             case RF_CONTROL_CIRCUIT -> {
@@ -78,6 +84,16 @@ public class ItemRC extends ItemTFC {
         }
     }
 
+    @Override
+    public int getItemBurnTime(@NotNull ItemStack itemStack) {
+        return switch (type) {
+            case WOOD_SHEET, LATEX_COATED_WOOD_SHEET -> 100;
+            case LIGNITE_COKE -> 2400;
+            case BITUMINOUS_COAL_COKE -> 3200;
+            default -> -1;
+        };
+    }
+
     public enum ItemType {
 
         METAL_PRESS_SLEEVE,
@@ -86,8 +102,19 @@ public class ItemRC extends ItemTFC {
         METAL_PRESS_LONG_ROD,
         METAL_PRESS_BOLT,
         METAL_PRESS_SCREW,
+        WOOD_SHEET,
+        LATEX_COATED_WOOD_SHEET,
+        ELECTRICAL_DOODAR_BASE_PLATE,
+        ELECTRICAL_DOODAR_HOUSING,
+        ELECTRICAL_THINGAMAJIG_STAGE_1,
+        ELECTRICAL_THINGAMAJIG_STAGE_2,
+        ELECTRICAL_THINGAMAJIG_STAGE_3,
+        ELECTRICAL_DOODAR,
+        ELECTRICAL_THINGAMAJIG,
         RF_CONTROL_CIRCUIT,
-        HARDENED_GLASS_MIX;
+        HARDENED_GLASS_MIX,
+        LIGNITE_COKE,
+        BITUMINOUS_COAL_COKE;
 
         ItemType() {
             this(ItemRC::new);

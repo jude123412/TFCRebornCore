@@ -39,3 +39,20 @@ item.tfcreborncore.item.rf_control_circuit.name=RF Control Circuit
 item.tfcreborncore.item.hardened_glass_mix.name=Hardened Glass Mix
 item.tfcreborncore.item.lignite_coke.name=Lignite Coke
 item.tfcreborncore.item.bituminous_coal_coke.name=Bituminous Coal Coke
+
+# New Heating Values
+tfc.enum.extendedheat.warming=Warming
+tfc.enum.extendedheat.hot=Hot
+tfc.enum.extendedheat.very_hot=Very Hot
+tfc.enum.extendedheat.faint_red=Faint Red
+tfc.enum.extendedheat.dark_red=Dark Red
+tfc.enum.extendedheat.bright_red=Bright Red
+tfc.enum.extendedheat.orange=Orange
+tfc.enum.extendedheat.yellow=Yellow
+tfc.enum.extendedheat.yellow_white=Yellow White
+tfc.enum.extendedheat.white=White
+tfc.enum.extendedheat.brilliant_white=Brilliant White
+tfc.enum.extendedheat.super_white=Super White
+tfc.enum.extendedheat.ultra_white=Ultra White
+tfc.enum.extendedheat.hyper_white=Hyper White
+tfc.enum.extendedheat.walter_white=Walter White

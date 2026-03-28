@@ -6,6 +6,7 @@
   "compatibilityLevel": "JAVA_8",
   "mixins": [
     "terrafirmacraft.RCComparableItemStackValidatedMixin",
+    "terrafirmacraft.RCExtendedHeatMixin",
     "terrafirmacraft.RCModTypeMixins"
   ],
   "client": [

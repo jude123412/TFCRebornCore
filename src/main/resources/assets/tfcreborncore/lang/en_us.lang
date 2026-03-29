@@ -39,6 +39,8 @@ item.tfcreborncore.item.rf_control_circuit.name=RF Control Circuit
 item.tfcreborncore.item.hardened_glass_mix.name=Hardened Glass Mix
 item.tfcreborncore.item.lignite_coke.name=Lignite Coke
 item.tfcreborncore.item.bituminous_coal_coke.name=Bituminous Coal Coke
+item.tfcreborncore.item.coal_powder.name=Coal Powder
+item.tfcreborncore.item.synthetic_graphite_mix.name=Synthetic Graphite Mix
 
 # New Heating Values
 tfc.enum.extendedheat.warming=Warming

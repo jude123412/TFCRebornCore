@@ -114,7 +114,9 @@ public class ItemRC extends ItemTFC {
         RF_CONTROL_CIRCUIT,
         HARDENED_GLASS_MIX,
         LIGNITE_COKE,
-        BITUMINOUS_COAL_COKE;
+        BITUMINOUS_COAL_COKE,
+        COAL_POWDER,
+        SYNTHETIC_GRAPHITE_MIX;
 
         ItemType() {
             this(ItemRC::new);

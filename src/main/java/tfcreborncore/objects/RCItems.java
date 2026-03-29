@@ -139,6 +139,13 @@ public class RCItems {
             String base = "item/" + type.toString().toLowerCase();
 
             Item regularItemType = register(registry, base, ItemRC.ItemType.Create(type), CreativeTabsRC.CT_ITEMS);
+            switch (type) {
+                case LIGNITE_COKE -> OreDictionary.registerOre("gemLigniteCoke", regularItemType);
+                case BITUMINOUS_COAL_COKE -> OreDictionary.registerOre("gemBituminousCokeCoke", regularItemType);
+                case COAL_POWDER -> OreDictionary.registerOre("dustCoal", regularItemType);
+                case SYNTHETIC_GRAPHITE_MIX -> OreDictionary.registerOre("dustSyntheticGraphite", regularItemType);
+                case HARDENED_GLASS_MIX -> OreDictionary.registerOre("dustHardenedGlass", regularItemType);
+            }
             regularItems.add(regularItemType);
         }
 

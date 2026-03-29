@@ -51,6 +51,17 @@ public class MetalRecipes {
                                         ItemTechMetal.ItemType.ROD),
                         ingredientIngot, rod, metal.getTier(), null, ForgeRule.HIT_THIRD_LAST,
                         ForgeRule.DRAW_SECOND_LAST, ForgeRule.HIT_LAST));
+
+                ItemStack strip = new ItemStack(
+                        ItemTechMetal.get(metal, ItemTechMetal.ItemType.STRIP), 2);
+
+                // Strip
+                r.register(new AnvilRecipe(
+                        new ResourceLocation(Tags.MODID,
+                                (metal.getRegistryName().getPath()).toLowerCase() + "_" +
+                                        ItemTechMetal.ItemType.STRIP),
+                        ingredientIngot, strip, metal.getTier(), null, ForgeRule.HIT_ANY,
+                        ForgeRule.HIT_ANY, ForgeRule.SHRINK_ANY));
             }
         }
     }

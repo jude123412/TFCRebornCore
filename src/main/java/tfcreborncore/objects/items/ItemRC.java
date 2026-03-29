@@ -116,7 +116,8 @@ public class ItemRC extends ItemTFC {
         LIGNITE_COKE,
         BITUMINOUS_COAL_COKE,
         COAL_POWDER,
-        SYNTHETIC_GRAPHITE_MIX;
+        SYNTHETIC_GRAPHITE_MIX,
+        WOOD_POWDER;
 
         ItemType() {
             this(ItemRC::new);

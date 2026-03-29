@@ -145,6 +145,7 @@ public class RCItems {
                 case COAL_POWDER -> OreDictionary.registerOre("dustCoal", regularItemType);
                 case SYNTHETIC_GRAPHITE_MIX -> OreDictionary.registerOre("dustSyntheticGraphite", regularItemType);
                 case HARDENED_GLASS_MIX -> OreDictionary.registerOre("dustHardenedGlass", regularItemType);
+                case WOOD_POWDER -> OreDictionary.registerOre("dustWood", regularItemType);
             }
             regularItems.add(regularItemType);
         }

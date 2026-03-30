@@ -7,6 +7,7 @@ import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.renderer.color.IItemColor;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.ColorHandlerEvent;
 import net.minecraftforge.client.event.ModelRegistryEvent;
@@ -123,11 +124,11 @@ public class RCItems {
                     String path = metalItemType.getMetal().getRegistryName().getPath().toLowerCase();
                     switch (type) {
                         case MINING_HAMMER -> OreDictionary.registerOre("miningHammer",
-                                metalItemType);
+                                new ItemStack(metalItemType, 1, OreDictionary.WILDCARD_VALUE));
                         case EXCAVATOR -> OreDictionary.registerOre("excavator",
-                                metalItemType);
+                                new ItemStack(metalItemType, 1, OreDictionary.WILDCARD_VALUE));
                         case WIRE_CUTTER -> OreDictionary.registerOre("wireCutter",
-                                metalItemType);
+                                new ItemStack(metalItemType, 1, OreDictionary.WILDCARD_VALUE));
                     }
                     OreDictionary.registerOre(toPascalCaseAlt(type.toString().toLowerCase()) + toPascalCase(path),
                             metalItemType);

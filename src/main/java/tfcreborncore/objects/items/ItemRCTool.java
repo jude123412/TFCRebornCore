@@ -22,11 +22,16 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Enchantments;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.RayTraceResult;
@@ -40,6 +45,12 @@ import org.jetbrains.annotations.Nullable;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 
+import blusunrize.immersiveengineering.api.ApiUtils;
+import blusunrize.immersiveengineering.api.TargetingInfo;
+import blusunrize.immersiveengineering.api.energy.wires.IImmersiveConnectable;
+import blusunrize.immersiveengineering.api.energy.wires.ImmersiveNetHandler;
+import blusunrize.immersiveengineering.common.IESaveData;
+import blusunrize.immersiveengineering.common.util.Utils;
 import mcp.MethodsReturnNonnullByDefault;
 
 /*
@@ -90,6 +101,13 @@ public class ItemRCTool extends ItemTFC implements IMetalItem {
                     this.setMaxDamage(this.material.getMaxUses());
                     this.areaOfEffect = 3;
                     this.attackSpeed = -3.0F;
+                    break;
+                case WIRE_CUTTER:
+                    typeDamage = 0.475F;
+                    this.setHarvestLevel("IE_WIRECUTTER", harvestLevel);
+                    this.setMaxDamage(this.material.getMaxUses());
+                    this.areaOfEffect = 1;
+                    this.attackSpeed = -2.0F;
                     break;
                 default:
                     throw new IllegalArgumentException("Tool from non tool type.");
@@ -179,6 +197,64 @@ public class ItemRCTool extends ItemTFC implements IMetalItem {
         return true;
     }
 
+    @Nonnull
+    public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing side,
+                                      float hitX, float hitY, float hitZ) {
+        ItemStack stack = player.getHeldItem(hand);
+        TileEntity tileEntity = world.getTileEntity(pos);
+
+        switch (type) {
+            case WIRE_CUTTER -> {
+                // Based on wire cutter logic taken from Immersive Engineering's
+                // ItemIETool class (BluSunrize)
+                if (tileEntity instanceof IImmersiveConnectable immersiveConnectableTile) {
+                    TargetingInfo target = new TargetingInfo(side, hitX, hitY, hitZ);
+                    tileEntity = world.getTileEntity(immersiveConnectableTile.getConnectionMaster(null, target));
+                    if (!(tileEntity instanceof IImmersiveConnectable nodeHere)) return EnumActionResult.PASS;
+                    if (!world.isRemote) {
+                        boolean cut = ImmersiveNetHandler.INSTANCE.clearAllConnectionsFor(Utils.toCC(nodeHere), world,
+                                target);
+                        IESaveData.setDirty(world.provider.getDimension());
+                        if (cut) stack.damageItem(1, player);
+                    }
+
+                    return EnumActionResult.SUCCESS;
+                }
+            }
+            default -> {
+                return EnumActionResult.PASS;
+            }
+        }
+
+        return EnumActionResult.FAIL;
+    }
+
+    @Nonnull
+    public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, @Nonnull EnumHand hand) {
+        ItemStack stack = player.getHeldItem(hand);
+        switch (type) {
+            case WIRE_CUTTER -> {
+                // Based on wire cutter logic taken from Immersive Engineering's
+                // ItemIETool class (BluSunrize)
+                if (!world.isRemote) {
+                    double reachDistance = player.getAttributeMap().getAttributeInstance(EntityPlayer.REACH_DISTANCE)
+                            .getAttributeValue();
+                    ImmersiveNetHandler.Connection target = ApiUtils.getTargetConnection(world, player, null,
+                            reachDistance);
+                    if (target != null) {
+                        ImmersiveNetHandler.INSTANCE.removeConnectionAndDrop(target, world, player.getPosition());
+                        stack.damageItem(1, player);
+                    }
+                }
+
+                return new ActionResult<>(EnumActionResult.SUCCESS, stack);
+            }
+            default -> {
+                return new ActionResult<>(EnumActionResult.PASS, stack);
+            }
+        }
+    }
+
     public boolean canHarvestBlock(IBlockState state) {
         Material material = state.getMaterial();
         return switch (this.type) {
@@ -219,6 +295,10 @@ public class ItemRCTool extends ItemTFC implements IMetalItem {
 
     public boolean canApplyAtEnchantingTable(@Nonnull ItemStack stack, @Nonnull Enchantment enchantment) {
         switch (this.type) {
+            case WIRE_CUTTER -> {
+                return enchantment == Enchantments.EFFICIENCY || enchantment == Enchantments.UNBREAKING ||
+                        enchantment == Enchantments.MENDING;
+            }
             case EXCAVATOR, MINING_HAMMER -> {
                 return enchantment.type == EnumEnchantmentType.DIGGER;
             }
@@ -256,6 +336,9 @@ public class ItemRCTool extends ItemTFC implements IMetalItem {
     @Override
     public @NotNull Size getSize(@NotNull ItemStack itemStack) {
         switch (type) {
+            case WIRE_CUTTER -> {
+                return Size.NORMAL;
+            }
             case EXCAVATOR, MINING_HAMMER -> {
                 return Size.LARGE;
             }
@@ -268,6 +351,9 @@ public class ItemRCTool extends ItemTFC implements IMetalItem {
     @Override
     public @NotNull Weight getWeight(@NotNull ItemStack itemStack) {
         switch (type) {
+            case WIRE_CUTTER -> {
+                return Weight.MEDIUM;
+            }
             case EXCAVATOR -> {
                 return Weight.HEAVY;
             }
@@ -319,7 +405,8 @@ public class ItemRCTool extends ItemTFC implements IMetalItem {
     public enum ItemType {
 
         MINING_HAMMER(500),
-        EXCAVATOR(300);
+        EXCAVATOR(300),
+        WIRE_CUTTER(100);
 
         ItemType(int meltingAmount) {
             this(meltingAmount, ItemRCTool::new);

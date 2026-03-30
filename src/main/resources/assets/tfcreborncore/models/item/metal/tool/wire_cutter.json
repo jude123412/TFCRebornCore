@@ -1,0 +1,7 @@
+{
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "tfcreborncore:items/metal/tool/wire_cutter",
+    "layer1": "tfcreborncore:items/metal/tool/wire_cutter_overlay"
+  }
+}

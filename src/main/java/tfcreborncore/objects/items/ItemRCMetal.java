@@ -57,6 +57,9 @@ public class ItemRCMetal extends ItemTFC implements IMetalItem {
     @Override
     public @NotNull Size getSize(@NotNull ItemStack itemStack) {
         switch (type) {
+            case WIRE_CUTTER_HEAD -> {
+                return Size.NORMAL;
+            }
             case UNFINISHED_MINING_HAMMER_HEAD, EXCAVATOR_HEAD, MINING_HAMMER_HEAD, UNFINISHED_EXCAVATOR_HEAD -> {
                 return Size.LARGE;
             }
@@ -72,7 +75,7 @@ public class ItemRCMetal extends ItemTFC implements IMetalItem {
     @Override
     public @NotNull Weight getWeight(@NotNull ItemStack itemStack) {
         switch (type) {
-            case UNFINISHED_EXCAVATOR_HEAD, RACKWHEEL_HALF -> {
+            case UNFINISHED_EXCAVATOR_HEAD, RACKWHEEL_HALF, WIRE_CUTTER_HEAD -> {
                 return Weight.MEDIUM;
             }
             case UNFINISHED_MINING_HAMMER_HEAD, EXCAVATOR_HEAD -> {
@@ -126,7 +129,7 @@ public class ItemRCMetal extends ItemTFC implements IMetalItem {
 
     public static boolean isToolHead(ItemRCMetal.ItemType type) {
         return switch (type) {
-            case UNFINISHED_MINING_HAMMER_HEAD, UNFINISHED_EXCAVATOR_HEAD, MINING_HAMMER_HEAD, EXCAVATOR_HEAD -> true;
+            case UNFINISHED_MINING_HAMMER_HEAD, UNFINISHED_EXCAVATOR_HEAD, MINING_HAMMER_HEAD, EXCAVATOR_HEAD, WIRE_CUTTER_HEAD -> true;
             default -> false;
         };
     }
@@ -137,6 +140,7 @@ public class ItemRCMetal extends ItemTFC implements IMetalItem {
         MINING_HAMMER_HEAD(500),
         UNFINISHED_EXCAVATOR_HEAD(200),
         EXCAVATOR_HEAD(300),
+        WIRE_CUTTER_HEAD(100),
         RACKWHEEL_HALF(200);
 
         ItemType(int meltingAmount) {

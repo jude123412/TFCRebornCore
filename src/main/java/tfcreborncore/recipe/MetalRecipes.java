@@ -62,6 +62,17 @@ public class MetalRecipes {
                                         ItemTechMetal.ItemType.STRIP),
                         ingredientIngot, strip, metal.getTier(), null, ForgeRule.HIT_ANY,
                         ForgeRule.HIT_ANY, ForgeRule.SHRINK_ANY));
+
+                ItemStack wire_cutter_head = new ItemStack(
+                        ItemRCMetal.get(metal, ItemRCMetal.ItemType.WIRE_CUTTER_HEAD));
+
+                // Wire Cutter Head
+                r.register(new AnvilRecipe(
+                        new ResourceLocation(Tags.MODID,
+                                (metal.getRegistryName().getPath()).toLowerCase() + "_" +
+                                        ItemRCMetal.ItemType.WIRE_CUTTER_HEAD),
+                        ingredientIngot, wire_cutter_head, metal.getTier(), null, ForgeRule.BEND_ANY,
+                        ForgeRule.HIT_SECOND_LAST, ForgeRule.DRAW_ANY));
             }
         }
     }
@@ -200,6 +211,17 @@ public class MetalRecipes {
                         'S', "stickWood",
                         'H',
                         ItemRCMetal.get(metal, ItemRCMetal.ItemType.MINING_HAMMER_HEAD).getDefaultInstance());
+
+                // Wire Cutter
+                CraftingRecipeManager.addShapedSkillRecipe(
+                        new ResourceLocation(Tags.MODID,
+                                "metal/tool/" + ItemRCTool.ItemType.WIRE_CUTTER + "/" + metal),
+                        ItemRCTool.get(metal, ItemRCTool.ItemType.WIRE_CUTTER).getDefaultInstance(),
+                        "HS",
+                        "S ",
+                        'S', "stickWood",
+                        'H',
+                        ItemRCMetal.get(metal, ItemRCMetal.ItemType.WIRE_CUTTER_HEAD).getDefaultInstance());
             }
         }
     }

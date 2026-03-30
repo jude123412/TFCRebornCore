@@ -13,6 +13,10 @@ item.tfcreborncore.metal.unfinished_excavator_head.name=Unfinished %s Excavator 
 item.tfcreborncore.metal.excavator_head.name=%s Excavator Head
 item.tfcreborncore.tool.excavator.name=%s Excavator
 
+# IE Wire Cutter
+item.tfcreborncore.metal.wire_cutter_head.name=%s Wire Cutter Head
+item.tfcreborncore.tool.wire_cutter.name=%s Wire Cutter
+
 # Metal Items
 item.tfcreborncore.metal.rackwheel_half.name=%s Rackwheel Half
 

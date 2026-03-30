@@ -121,6 +121,14 @@ public class RCItems {
 
                     ItemRCTool metalItemType = (ItemRCTool) metalType;
                     String path = metalItemType.getMetal().getRegistryName().getPath().toLowerCase();
+                    switch (type) {
+                        case MINING_HAMMER -> OreDictionary.registerOre("miningHammer",
+                                metalItemType);
+                        case EXCAVATOR -> OreDictionary.registerOre("excavator",
+                                metalItemType);
+                        case WIRE_CUTTER -> OreDictionary.registerOre("wireCutter",
+                                metalItemType);
+                    }
                     OreDictionary.registerOre(toPascalCaseAlt(type.toString().toLowerCase()) + toPascalCase(path),
                             metalItemType);
                     metalItems.add(metalType);

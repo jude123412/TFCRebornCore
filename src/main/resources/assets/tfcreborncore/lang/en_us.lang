@@ -46,6 +46,8 @@ item.tfcreborncore.item.bituminous_coal_coke.name=Bituminous Coal Coke
 item.tfcreborncore.item.coal_powder.name=Coal Powder
 item.tfcreborncore.item.synthetic_graphite_mix.name=Synthetic Graphite Mix
 item.tfcreborncore.item.wood_powder.name=Wood Powder
+item.tfcreborncore.item.certus_quartz_powder.name=Certus Quartz Powder
+item.tfcreborncore.item.enderpearl_powder.name=Enderpearl Powder
 
 # New Heating Values
 tfc.enum.extendedheat.warming=Warming

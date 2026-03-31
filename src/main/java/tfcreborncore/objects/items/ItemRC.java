@@ -119,7 +119,9 @@ public class ItemRC extends ItemTFC {
         SYNTHETIC_GRAPHITE_MIX,
         WOOD_POWDER,
         CERTUS_QUARTZ_POWDER,
-        ENDERPEARL_POWDER;
+        ENDERPEARL_POWDER,
+        SLAG,
+        RICH_SLAG;
 
         ItemType() {
             this(ItemRC::new);

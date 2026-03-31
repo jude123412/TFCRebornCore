@@ -157,6 +157,8 @@ public class RCItems {
                 case WOOD_POWDER -> OreDictionary.registerOre("dustWood", regularItemType);
                 case CERTUS_QUARTZ_POWDER -> OreDictionary.registerOre("dustCertusQuartz", regularItemType);
                 case ENDERPEARL_POWDER -> OreDictionary.registerOre("dustEnder", regularItemType);
+                case SLAG -> OreDictionary.registerOre("crystalSlag", regularItemType);
+                case RICH_SLAG -> OreDictionary.registerOre("crystalSlagRich", regularItemType);
             }
             regularItems.add(regularItemType);
         }

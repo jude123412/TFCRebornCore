@@ -48,6 +48,9 @@ public class ItemRC extends ItemTFC {
             case RF_CONTROL_CIRCUIT -> {
                 return Size.LARGE;
             }
+            case BRASS_PISTON -> {
+                return Size.VERY_LARGE;
+            }
             default -> {
                 return Size.VERY_SMALL;
             }
@@ -63,7 +66,7 @@ public class ItemRC extends ItemTFC {
             case METAL_PRESS_SLEEVE, METAL_PRESS_RACKWHEEL_PIECE, METAL_PRESS_RACKWHEEL, METAL_PRESS_LONG_ROD, METAL_PRESS_BOLT, METAL_PRESS_SCREW, WOOD_SHEET, LATEX_COATED_WOOD_SHEET, ELECTRICAL_DOODAR, ELECTRICAL_THINGAMAJIG, LIGNITE_COKE, BITUMINOUS_COAL_COKE -> {
                 return Weight.MEDIUM;
             }
-            case RF_CONTROL_CIRCUIT -> {
+            case RF_CONTROL_CIRCUIT, BRASS_PISTON -> {
                 return Weight.HEAVY;
             }
             default -> {

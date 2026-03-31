@@ -121,7 +121,8 @@ public class ItemRC extends ItemTFC {
         CERTUS_QUARTZ_POWDER,
         ENDERPEARL_POWDER,
         SLAG,
-        RICH_SLAG;
+        RICH_SLAG,
+        BRASS_PISTON;
 
         ItemType() {
             this(ItemRC::new);

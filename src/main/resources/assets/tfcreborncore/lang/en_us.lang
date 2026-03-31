@@ -50,6 +50,7 @@ item.tfcreborncore.item.certus_quartz_powder.name=Certus Quartz Powder
 item.tfcreborncore.item.enderpearl_powder.name=Enderpearl Powder
 item.tfcreborncore.item.slag.name=Slag
 item.tfcreborncore.item.rich_slag.name=Rich Slag
+item.tfcreborncore.item.brass_piston.name=Brass Piston
 
 # New Heating Values
 tfc.enum.extendedheat.warming=Warming

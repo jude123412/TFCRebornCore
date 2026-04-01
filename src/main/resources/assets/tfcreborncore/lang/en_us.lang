@@ -69,3 +69,12 @@ tfc.enum.extendedheat.blue_white=Blue White
 tfc.enum.extendedheat.violet_white=Violet White
 tfc.enum.extendedheat.ultraviolet_edge=Ultraviolet Edge
 
+# New Tooltips
+tfcreborncore.tooltip.melting_temp=Melts at %d
+tfcreborncore.tooltip.metal_tier=%d Metal
+tfcreborncore.tooltip.burn_temp=Burns at %d
+tfcreborncore.tooltip.burn_time.none=for %d
+tfcreborncore.tooltip.burn_time.ticks=for %d Ticks
+tfcreborncore.tooltip.burn_time.minecraft_hours=for %d Hours
+tfcreborncore.tooltip.burn_time.real_minutes=for %d Minutes
+

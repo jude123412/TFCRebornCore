@@ -62,7 +62,7 @@ public class Proxy {
             int time = FuelManager.getFuel(stack).getAmount();
             float temp = FuelManager.getFuel(stack).getTemperature();
 
-            event.setBurnTime(time * (int) Math.min(temp / 1000, 1));
+            event.setBurnTime((int) (time * Math.max(temp / 1000.0, 1.0)));
         }
     }
 }

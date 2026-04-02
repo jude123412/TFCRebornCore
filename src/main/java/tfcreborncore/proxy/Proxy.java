@@ -3,9 +3,12 @@ package tfcreborncore.proxy;
 import net.dries007.tfc.api.recipes.WeldingRecipe;
 import net.dries007.tfc.api.recipes.anvil.AnvilRecipe;
 import net.dries007.tfc.api.recipes.quern.QuernRecipe;
+import net.dries007.tfc.util.fuel.FuelManager;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.event.furnace.FurnaceFuelBurnTimeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
@@ -43,5 +46,23 @@ public class Proxy {
     public static void registerRecipes(RegistryEvent.Register<IRecipe> event) {
         MetalRecipes.registerShapedSkillRecipe();
         CraftingRecipeManager.SKILL_RECIPES.forEach(event.getRegistry()::register);
+    }
+
+    @SubscribeEvent
+    public static void registerFurnaceFuels(FurnaceFuelBurnTimeEvent event) {
+        ItemStack stack = event.getItemStack();
+
+        // remove all old burn times
+        if (event.getBurnTime() > 0) {
+            event.setBurnTime(0);
+        }
+
+        // calculate the new based on TFC Fuel's
+        if (FuelManager.isItemFuel(stack)) {
+            int time = FuelManager.getFuel(stack).getAmount();
+            float temp = FuelManager.getFuel(stack).getTemperature();
+
+            event.setBurnTime(time * (int) Math.min(temp / 1000, 1));
+        }
     }
 }

@@ -23,6 +23,7 @@ import tfcreborncore.objects.items.ItemRC;
 import tfcreborncore.objects.items.ItemRCMetal;
 import tfcreborncore.objects.items.ItemRCOre;
 import tfcreborncore.objects.items.ItemRCTool;
+import tfcreborncore.objects.items.enums.ItemRCEnum;
 
 public class RCItems {
 
@@ -144,10 +145,10 @@ public class RCItems {
         IForgeRegistry<Item> registry = event.getRegistry();
 
         ImmutableList.Builder<Item> regularItems = ImmutableList.builder();
-        for (ItemRC.ItemType type : ItemRC.ItemType.values()) {
+        for (ItemRCEnum type : ItemRCEnum.values()) {
             String base = "item/" + type.toString().toLowerCase();
 
-            Item regularItemType = register(registry, base, ItemRC.ItemType.Create(type), CreativeTabsRC.CT_ITEMS);
+            Item regularItemType = register(registry, base, ItemRCEnum.Create(type), CreativeTabsRC.CT_ITEMS);
             switch (type) {
                 case LIGNITE_COKE -> OreDictionary.registerOre("gemLigniteCoke", regularItemType);
                 case BITUMINOUS_COAL_COKE -> OreDictionary.registerOre("gemBituminousCokeCoke", regularItemType);

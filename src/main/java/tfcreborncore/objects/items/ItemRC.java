@@ -2,24 +2,24 @@ package tfcreborncore.objects.items;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.function.Function;
 
 import net.dries007.tfc.api.capability.size.Size;
 import net.dries007.tfc.api.capability.size.Weight;
 import net.dries007.tfc.objects.items.ItemTFC;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import tfcreborncore.objects.items.enums.ItemRCEnum;
+
 public class ItemRC extends ItemTFC {
 
-    public static final Map<String, ItemRC.ItemType> CROSS_MOD_MAP = new HashMap<>();
+    public static final Map<String, ItemRCEnum> CROSS_MOD_MAP = new HashMap<>();
 
-    private final ItemRC.ItemType type;
+    private final ItemRCEnum type;
 
-    public ItemRC(ItemRC.ItemType type) {
+    public ItemRC(ItemRCEnum type) {
         super();
         this.type = type;
         if (!CROSS_MOD_MAP.containsKey(type.toString())) {
@@ -27,7 +27,7 @@ public class ItemRC extends ItemTFC {
         }
     }
 
-    public ItemRC.ItemType getType() {
+    public ItemRCEnum getType() {
         return type;
     }
 
@@ -38,111 +38,81 @@ public class ItemRC extends ItemTFC {
 
     @Override
     public @NotNull Size getSize(@NotNull ItemStack itemStack) {
-        switch (type) {
-            case ELECTRICAL_DOODAR_BASE_PLATE, ELECTRICAL_DOODAR_HOUSING, ELECTRICAL_THINGAMAJIG_STAGE_1, ELECTRICAL_THINGAMAJIG_STAGE_2, ELECTRICAL_THINGAMAJIG_STAGE_3, LIGNITE_COKE, BITUMINOUS_COAL_COKE -> {
-                return Size.SMALL;
-            }
-            case METAL_PRESS_SLEEVE, METAL_PRESS_RACKWHEEL_PIECE, METAL_PRESS_RACKWHEEL, METAL_PRESS_LONG_ROD, METAL_PRESS_BOLT, METAL_PRESS_SCREW -> {
-                return Size.NORMAL;
-            }
-            case RF_CONTROL_CIRCUIT -> {
-                return Size.LARGE;
-            }
-            case BRASS_PISTON -> {
-                return Size.VERY_LARGE;
-            }
-            default -> {
-                return Size.VERY_SMALL;
-            }
-        }
+        return switch (type) {
+            // @formatter:off
+            case ELECTRICAL_DOODAR_BASE_PLATE,
+                 ELECTRICAL_DOODAR_HOUSING,
+                 ELECTRICAL_THINGAMAJIG_STAGE_1,
+                 ELECTRICAL_THINGAMAJIG_STAGE_2,
+                 ELECTRICAL_THINGAMAJIG_STAGE_3,
+                 LIGNITE_COKE,
+                 BITUMINOUS_COAL_COKE -> Size.SMALL;
+            case METAL_PRESS_SLEEVE,
+                 METAL_PRESS_RACKWHEEL_PIECE,
+                 METAL_PRESS_RACKWHEEL,
+                 METAL_PRESS_LONG_ROD,
+                 METAL_PRESS_BOLT,
+                 METAL_PRESS_SCREW -> Size.NORMAL;
+            case RF_CONTROL_CIRCUIT -> Size.LARGE;
+            case BRASS_PISTON -> Size.VERY_LARGE;
+            default -> Size.VERY_SMALL;
+            // @formatter:on
+        };
     }
 
     @Override
     public @NotNull Weight getWeight(@NotNull ItemStack itemStack) {
-        switch (type) {
-            case ELECTRICAL_DOODAR_BASE_PLATE, ELECTRICAL_DOODAR_HOUSING, ELECTRICAL_THINGAMAJIG_STAGE_1, ELECTRICAL_THINGAMAJIG_STAGE_2, ELECTRICAL_THINGAMAJIG_STAGE_3 -> {
-                return Weight.LIGHT;
-            }
-            case METAL_PRESS_SLEEVE, METAL_PRESS_RACKWHEEL_PIECE, METAL_PRESS_RACKWHEEL, METAL_PRESS_LONG_ROD, METAL_PRESS_BOLT, METAL_PRESS_SCREW, WOOD_SHEET, LATEX_COATED_WOOD_SHEET, ELECTRICAL_DOODAR, ELECTRICAL_THINGAMAJIG, LIGNITE_COKE, BITUMINOUS_COAL_COKE -> {
-                return Weight.MEDIUM;
-            }
-            case RF_CONTROL_CIRCUIT, BRASS_PISTON -> {
-                return Weight.HEAVY;
-            }
-            default -> {
-                return Weight.VERY_LIGHT;
-            }
-        }
+        return switch (type) {
+            // @formatter:off
+            case ELECTRICAL_DOODAR_BASE_PLATE,
+                 ELECTRICAL_DOODAR_HOUSING,
+                 ELECTRICAL_THINGAMAJIG_STAGE_1,
+                 ELECTRICAL_THINGAMAJIG_STAGE_2,
+                 ELECTRICAL_THINGAMAJIG_STAGE_3 -> Weight.LIGHT;
+            case METAL_PRESS_SLEEVE,
+                 METAL_PRESS_RACKWHEEL_PIECE,
+                 METAL_PRESS_RACKWHEEL,
+                 METAL_PRESS_LONG_ROD,
+                 METAL_PRESS_BOLT,
+                 METAL_PRESS_SCREW,
+                 WOOD_SHEET,
+                 LATEX_COATED_WOOD_SHEET,
+                 ELECTRICAL_DOODAR,
+                 ELECTRICAL_THINGAMAJIG,
+                 LIGNITE_COKE,
+                 BITUMINOUS_COAL_COKE -> Weight.MEDIUM;
+            case RF_CONTROL_CIRCUIT,
+                 BRASS_PISTON -> Weight.HEAVY;
+            default -> Weight.VERY_LIGHT;
+            // @formatter:on
+        };
     }
 
     @Override
     public boolean canStack(@NotNull ItemStack stack) {
-        switch (type) {
-            case METAL_PRESS_SLEEVE, METAL_PRESS_RACKWHEEL_PIECE, METAL_PRESS_RACKWHEEL, METAL_PRESS_LONG_ROD, METAL_PRESS_BOLT, METAL_PRESS_SCREW -> {
-                return false;
-            }
-            default -> {
-                return true;
-            }
-        }
+        return switch (type) {
+            // @formatter:off
+            case METAL_PRESS_SLEEVE,
+                 METAL_PRESS_RACKWHEEL_PIECE,
+                 METAL_PRESS_RACKWHEEL,
+                 METAL_PRESS_LONG_ROD,
+                 METAL_PRESS_BOLT,
+                 METAL_PRESS_SCREW -> false;
+            default -> true;
+            // @formatter:on
+        };
     }
 
     @Override
     public int getItemBurnTime(@NotNull ItemStack itemStack) {
         return switch (type) {
-            case WOOD_SHEET, LATEX_COATED_WOOD_SHEET -> 100;
+            // @formatter:off
+            case WOOD_SHEET,
+                 LATEX_COATED_WOOD_SHEET -> 100;
             case LIGNITE_COKE -> 2400;
             case BITUMINOUS_COAL_COKE -> 3200;
             default -> -1;
+            // @formatter:on
         };
-    }
-
-    public enum ItemType {
-
-        METAL_PRESS_SLEEVE,
-        METAL_PRESS_RACKWHEEL_PIECE,
-        METAL_PRESS_RACKWHEEL,
-        METAL_PRESS_LONG_ROD,
-        METAL_PRESS_BOLT,
-        METAL_PRESS_SCREW,
-        WOOD_SHEET,
-        LATEX_COATED_WOOD_SHEET,
-        ELECTRICAL_DOODAR_BASE_PLATE,
-        ELECTRICAL_DOODAR_HOUSING,
-        ELECTRICAL_THINGAMAJIG_STAGE_1,
-        ELECTRICAL_THINGAMAJIG_STAGE_2,
-        ELECTRICAL_THINGAMAJIG_STAGE_3,
-        ELECTRICAL_DOODAR,
-        ELECTRICAL_THINGAMAJIG,
-        RF_CONTROL_CIRCUIT,
-        HARDENED_GLASS_MIX,
-        LIGNITE_COKE,
-        BITUMINOUS_COAL_COKE,
-        COAL_POWDER,
-        SYNTHETIC_GRAPHITE_MIX,
-        WOOD_POWDER,
-        CERTUS_QUARTZ_POWDER,
-        ENDERPEARL_POWDER,
-        SLAG,
-        RICH_SLAG,
-        BRASS_PISTON;
-
-        ItemType() {
-            this(ItemRC::new);
-        }
-
-        private final Function<ItemType, ItemRC> factory;
-
-        ItemType(Function<ItemType, ItemRC> factory) {
-            this.factory = factory;
-        }
-
-        public static Item Create(ItemRC.ItemType type) {
-            return type.factory.apply(type);
-        }
-
-        public ItemRC create() {
-            return factory.apply(this);
-        }
     }
 }

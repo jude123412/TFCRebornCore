@@ -48,6 +48,8 @@ public enum ItemRCType {
     WOOD_POWDER(Size.VERY_SMALL, Weight.VERY_LIGHT, "dustWood", true),
     CERTUS_QUARTZ_POWDER(Size.VERY_SMALL, Weight.VERY_LIGHT, "dustCertusQuartz", true),
     ENDERPEARL_POWDER(Size.VERY_SMALL, Weight.VERY_LIGHT, "dustEnder", true),
+    OBSIDIAN_POWDER(Size.VERY_SMALL, Weight.VERY_LIGHT, "dustObsidian", true),
+    SNOW_POWDER(Size.VERY_SMALL, Weight.VERY_LIGHT, "dustSnow", true),
 
     // Misc
     SLAG(Size.VERY_SMALL, Weight.VERY_LIGHT, "crystalSlag", true),

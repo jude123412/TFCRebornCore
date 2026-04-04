@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "tfcreborncore:items/regular/hi_tech_capacitor_cell"
+  }
+}

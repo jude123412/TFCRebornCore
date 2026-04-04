@@ -52,6 +52,13 @@ public enum ItemRCType {
     SNOW_POWDER(Size.VERY_SMALL, Weight.VERY_LIGHT, "dustSnow", true),
 
     // Misc
+    UNFIRED_CLAY_SHEET(Size.NORMAL, Weight.LIGHT, true),
+    CLAY_SHEET(Size.NORMAL, Weight.LIGHT, true),
+    NICKEL_PLATED_CAPACITOR_CELL(Size.LARGE, Weight.LIGHT, true),
+    CERAMIC_CAPACITOR_BLOCK(Size.LARGE, Weight.MEDIUM, true),
+    BASIC_CAPACITOR_CELL(Size.LARGE, Weight.MEDIUM, true),
+    ADVANCED_CAPACITOR_CELL(Size.LARGE, Weight.HEAVY, true),
+    HI_TECH_CAPACITOR_CELL(Size.LARGE, Weight.VERY_HEAVY, true),
     SLAG(Size.VERY_SMALL, Weight.VERY_LIGHT, "crystalSlag", true),
     RICH_SLAG(Size.VERY_SMALL, Weight.VERY_LIGHT, "crystalSlagRich", true);
 

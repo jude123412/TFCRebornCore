@@ -2,49 +2,110 @@ package tfcreborncore.objects.items.enums;
 
 import java.util.function.Function;
 
+import net.dries007.tfc.api.capability.size.Size;
+import net.dries007.tfc.api.capability.size.Weight;
 import net.minecraft.item.Item;
 
 import tfcreborncore.objects.items.ItemRC;
 
 public enum ItemRCEnum {
 
-    METAL_PRESS_SLEEVE,
-    METAL_PRESS_RACKWHEEL_PIECE,
-    METAL_PRESS_RACKWHEEL,
-    METAL_PRESS_LONG_ROD,
-    METAL_PRESS_BOLT,
-    METAL_PRESS_SCREW,
-    WOOD_SHEET,
-    LATEX_COATED_WOOD_SHEET,
-    ELECTRICAL_DOODAR_BASE_PLATE,
-    ELECTRICAL_DOODAR_HOUSING,
-    ELECTRICAL_THINGAMAJIG_STAGE_1,
-    ELECTRICAL_THINGAMAJIG_STAGE_2,
-    ELECTRICAL_THINGAMAJIG_STAGE_3,
-    ELECTRICAL_DOODAR,
-    ELECTRICAL_THINGAMAJIG,
-    RF_CONTROL_CIRCUIT,
-    HARDENED_GLASS_MIX,
-    LIGNITE_COKE,
-    BITUMINOUS_COAL_COKE,
-    COAL_POWDER,
-    SYNTHETIC_GRAPHITE_MIX,
-    WOOD_POWDER,
-    CERTUS_QUARTZ_POWDER,
-    ENDERPEARL_POWDER,
-    SLAG,
-    RICH_SLAG,
-    BRASS_PISTON;
+    // Metal Press Components (non-stackable)
+    METAL_PRESS_SLEEVE(Size.NORMAL, Weight.MEDIUM, false),
+    METAL_PRESS_RACKWHEEL_PIECE(Size.NORMAL, Weight.MEDIUM, false),
+    METAL_PRESS_RACKWHEEL(Size.NORMAL, Weight.MEDIUM, false),
+    METAL_PRESS_LONG_ROD(Size.NORMAL, Weight.MEDIUM, false),
+    METAL_PRESS_BOLT(Size.NORMAL, Weight.MEDIUM, false),
+    METAL_PRESS_SCREW(Size.NORMAL, Weight.MEDIUM, false),
 
-    ItemRCEnum() {
-        this(ItemRC::new);
-    }
+    // Wood sheets
+    WOOD_SHEET(Size.SMALL, Weight.MEDIUM, true),
+    LATEX_COATED_WOOD_SHEET(Size.SMALL, Weight.MEDIUM, true),
+
+    // Electrical components (light)
+    ELECTRICAL_DOODAR_BASE_PLATE(Size.SMALL, Weight.LIGHT, true),
+    ELECTRICAL_DOODAR_HOUSING(Size.SMALL, Weight.LIGHT, true),
+    ELECTRICAL_THINGAMAJIG_STAGE_1(Size.SMALL, Weight.LIGHT, true),
+    ELECTRICAL_THINGAMAJIG_STAGE_2(Size.SMALL, Weight.LIGHT, true),
+    ELECTRICAL_THINGAMAJIG_STAGE_3(Size.SMALL, Weight.LIGHT, true),
+
+    // Finished electrical items
+    ELECTRICAL_DOODAR(Size.VERY_SMALL, Weight.MEDIUM, true),
+    ELECTRICAL_THINGAMAJIG(Size.VERY_SMALL, Weight.MEDIUM, true),
+
+    // Heavy components
+    RF_CONTROL_CIRCUIT(Size.LARGE, Weight.HEAVY, true),
+    BRASS_PISTON(Size.VERY_LARGE, Weight.HEAVY, true),
+
+    // Fuels
+    LIGNITE_COKE(Size.SMALL, Weight.MEDIUM, "gemLigniteCoke", true),
+    BITUMINOUS_COAL_COKE(Size.SMALL, Weight.MEDIUM, "gemBituminousCokeCoke", true),
+
+    // Misc
+    HARDENED_GLASS_MIX(Size.VERY_SMALL, Weight.VERY_LIGHT, "dustHardenedGlass", true),
+    COAL_POWDER(Size.VERY_SMALL, Weight.VERY_LIGHT, "dustCoal", true),
+    SYNTHETIC_GRAPHITE_MIX(Size.VERY_SMALL, Weight.VERY_LIGHT, "dustSyntheticGraphite", true),
+    WOOD_POWDER(Size.VERY_SMALL, Weight.VERY_LIGHT, "dustWood", true),
+    CERTUS_QUARTZ_POWDER(Size.VERY_SMALL, Weight.VERY_LIGHT, "dustCertusQuartz", true),
+    ENDERPEARL_POWDER(Size.VERY_SMALL, Weight.VERY_LIGHT, "dustEnder", true),
+    SLAG(Size.VERY_SMALL, Weight.VERY_LIGHT, "crystalSlag", true),
+    RICH_SLAG(Size.VERY_SMALL, Weight.VERY_LIGHT, "crystalSlagRich", true);
+
+    // ---------------------------------------------------------------------
+    // Fields
+    // ---------------------------------------------------------------------
+
+    private final Size size;
+    private final Weight weight;
+    private final boolean canStack;
+    private final String dictionary;
 
     private final Function<ItemRCEnum, ItemRC> factory;
 
-    ItemRCEnum(Function<ItemRCEnum, ItemRC> factory) {
+    // ---------------------------------------------------------------------
+    // Constructor
+    // ---------------------------------------------------------------------
+
+    ItemRCEnum(Size size, Weight weight, boolean canStack) {
+        this(size, weight, canStack, null, ItemRC::new);
+    }
+
+    ItemRCEnum(Size size, Weight weight, String ore, boolean canStack) {
+        this(size, weight, canStack, ore, ItemRC::new);
+    }
+
+    ItemRCEnum(Size size, Weight weight, boolean canStack, String ore,
+               Function<ItemRCEnum, ItemRC> factory) {
+        this.size = size;
+        this.weight = weight;
+        this.canStack = canStack;
+        this.dictionary = ore;
         this.factory = factory;
     }
+
+    // ---------------------------------------------------------------------
+    // Accessors
+    // ---------------------------------------------------------------------
+
+    public Size getSize() {
+        return size;
+    }
+
+    public Weight getWeight() {
+        return weight;
+    }
+
+    public String getDictionary() {
+        return dictionary;
+    }
+
+    public boolean canStack() {
+        return canStack;
+    }
+
+    // ---------------------------------------------------------------------
+    // Factory
+    // ---------------------------------------------------------------------
 
     public static Item Create(ItemRCEnum type) {
         return type.factory.apply(type);

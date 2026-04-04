@@ -3,7 +3,6 @@ package tfcreborncore.objects.items;
 import java.util.EnumMap;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.function.BiFunction;
 
 import javax.annotation.Nonnull;
 import javax.annotation.ParametersAreNonnullByDefault;
@@ -52,6 +51,7 @@ import blusunrize.immersiveengineering.api.energy.wires.ImmersiveNetHandler;
 import blusunrize.immersiveengineering.common.IESaveData;
 import blusunrize.immersiveengineering.common.util.Utils;
 import mcp.MethodsReturnNonnullByDefault;
+import tfcreborncore.objects.items.enums.ItemRCToolType;
 
 /*
  * Original code from Terrafirmacraft's ItemMetalTool (EUPL v1.2)
@@ -68,58 +68,38 @@ public class ItemRCTool extends ItemTFC implements IMetalItem {
     private final double attackDamage;
     private final float attackSpeed;
 
-    private static final Map<Metal, EnumMap<ItemRCTool.ItemType, ItemRCTool>> TOOL_MAP = new HashMap<>();
+    private static final Map<Metal, EnumMap<ItemRCToolType, ItemRCTool>> TOOL_MAP = new HashMap<>();
 
     private final Metal metal;
-    private final ItemRCTool.ItemType type;
+    private final ItemRCToolType type;
 
-    public ItemRCTool(Metal metal, ItemRCTool.ItemType type) {
+    public ItemRCTool(Metal metal, ItemRCToolType type) {
         super();
         this.metal = metal;
         this.type = type;
+
         if (metal.getToolMetal() == null) {
             throw new IllegalArgumentException("Thou shall not make tools out of non tool metals.");
-        } else {
-            this.material = metal.getToolMetal();
-            this.setMaxStackSize(1);
-            this.efficiency = this.material.getEfficiency();
-
-            int harvestLevel = this.material.getHarvestLevel();
-            float typeDamage;
-
-            switch (type) {
-                case EXCAVATOR:
-                    typeDamage = 0.875F;
-                    this.setHarvestLevel("shovel", harvestLevel);
-                    this.setMaxDamage(this.material.getMaxUses());
-                    this.areaOfEffect = 3;
-                    this.attackSpeed = -3.0F;
-                    break;
-                case MINING_HAMMER:
-                    typeDamage = 1.0F;
-                    this.setHarvestLevel("pickaxe", harvestLevel);
-                    this.setMaxDamage(this.material.getMaxUses());
-                    this.areaOfEffect = 3;
-                    this.attackSpeed = -3.0F;
-                    break;
-                case WIRE_CUTTER:
-                    typeDamage = 0.475F;
-                    this.setHarvestLevel("IE_WIRECUTTER", harvestLevel);
-                    this.setMaxDamage(this.material.getMaxUses());
-                    this.areaOfEffect = 1;
-                    this.attackSpeed = -2.0F;
-                    break;
-                default:
-                    throw new IllegalArgumentException("Tool from non tool type.");
-            }
-
-            this.attackDamage = (double) (typeDamage * this.material.getAttackDamage());
-
-            if (!TOOL_MAP.containsKey(metal)) {
-                TOOL_MAP.put(metal, new EnumMap<>(ItemRCTool.ItemType.class));
-            }
-            TOOL_MAP.get(metal).put(type, this);
         }
+
+        this.material = metal.getToolMetal();
+        this.setMaxStackSize(1);
+        this.efficiency = this.material.getEfficiency();
+
+        int harvestLevel = this.material.getHarvestLevel();
+
+        // 🔥 All old switch logic replaced by enum data
+        this.setHarvestLevel(type.getHarvestType(), harvestLevel);
+        this.setMaxDamage(this.material.getMaxUses());
+        this.areaOfEffect = type.getAreaOfEffect();
+        this.attackSpeed = type.getAttackSpeed();
+
+        // Attack damage is still scaled by metal
+        this.attackDamage = type.getAttackDamage() * this.material.getAttackDamage();
+
+        // Registry map logic unchanged
+        TOOL_MAP.computeIfAbsent(metal, m -> new EnumMap<>(ItemRCToolType.class))
+                .put(type, this);
     }
 
     public boolean onBlockDestroyed(ItemStack stack, World worldIn, IBlockState state, BlockPos pos,
@@ -280,12 +260,7 @@ public class ItemRCTool extends ItemTFC implements IMetalItem {
     }
 
     public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker) {
-        switch (this.type) {
-            case EXCAVATOR, MINING_HAMMER -> {
-                stack.damageItem(2, attacker);
-            }
-        }
-
+        stack.damageItem(2, attacker);
         return true;
     }
 
@@ -324,46 +299,23 @@ public class ItemRCTool extends ItemTFC implements IMetalItem {
         return this.attackDamage;
     }
 
-    public ItemRCTool.ItemType getType() {
+    public ItemRCToolType getType() {
         return type;
     }
 
     @Nullable
-    public static ItemRCTool get(Metal metal, ItemRCTool.ItemType type) {
+    public static ItemRCTool get(Metal metal, ItemRCToolType type) {
         return TOOL_MAP.get(metal).get(type);
     }
 
     @Override
     public @NotNull Size getSize(@NotNull ItemStack itemStack) {
-        switch (type) {
-            case WIRE_CUTTER -> {
-                return Size.NORMAL;
-            }
-            case EXCAVATOR, MINING_HAMMER -> {
-                return Size.LARGE;
-            }
-            default -> {
-                return Size.VERY_SMALL;
-            }
-        }
+        return type.getSize();
     }
 
     @Override
     public @NotNull Weight getWeight(@NotNull ItemStack itemStack) {
-        switch (type) {
-            case WIRE_CUTTER -> {
-                return Weight.MEDIUM;
-            }
-            case EXCAVATOR -> {
-                return Weight.HEAVY;
-            }
-            case MINING_HAMMER -> {
-                return Weight.VERY_HEAVY;
-            }
-            default -> {
-                return Weight.LIGHT;
-            }
-        }
+        return type.getWeight();
     }
 
     @Override
@@ -400,32 +352,5 @@ public class ItemRCTool extends ItemTFC implements IMetalItem {
 
     public Metal getMetal() {
         return metal;
-    }
-
-    public enum ItemType {
-
-        MINING_HAMMER(500),
-        EXCAVATOR(300),
-        WIRE_CUTTER(100);
-
-        ItemType(int meltingAmount) {
-            this(meltingAmount, ItemRCTool::new);
-        }
-
-        ItemType(int meltingAmount, @Nonnull BiFunction<Metal, ItemRCTool.ItemType, Item> supplier) {
-            this.meltingAmount = meltingAmount;
-            this.supplier = supplier;
-        }
-
-        private final int meltingAmount;
-        private final BiFunction<Metal, ItemRCTool.ItemType, Item> supplier;
-
-        public static Item Create(Metal metal, ItemRCTool.ItemType type) {
-            return type.supplier.apply(metal, type);
-        }
-
-        public int getMeltingAmount() {
-            return meltingAmount;
-        }
     }
 }

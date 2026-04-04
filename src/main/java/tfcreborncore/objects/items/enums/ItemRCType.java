@@ -8,7 +8,7 @@ import net.minecraft.item.Item;
 
 import tfcreborncore.objects.items.ItemRC;
 
-public enum ItemRCEnum {
+public enum ItemRCType {
 
     // Metal Press Components (non-stackable)
     METAL_PRESS_SLEEVE(Size.NORMAL, Weight.MEDIUM, false),
@@ -41,13 +41,15 @@ public enum ItemRCEnum {
     LIGNITE_COKE(Size.SMALL, Weight.MEDIUM, "gemLigniteCoke", true),
     BITUMINOUS_COAL_COKE(Size.SMALL, Weight.MEDIUM, "gemBituminousCokeCoke", true),
 
-    // Misc
+    // Dust
     HARDENED_GLASS_MIX(Size.VERY_SMALL, Weight.VERY_LIGHT, "dustHardenedGlass", true),
     COAL_POWDER(Size.VERY_SMALL, Weight.VERY_LIGHT, "dustCoal", true),
     SYNTHETIC_GRAPHITE_MIX(Size.VERY_SMALL, Weight.VERY_LIGHT, "dustSyntheticGraphite", true),
     WOOD_POWDER(Size.VERY_SMALL, Weight.VERY_LIGHT, "dustWood", true),
     CERTUS_QUARTZ_POWDER(Size.VERY_SMALL, Weight.VERY_LIGHT, "dustCertusQuartz", true),
     ENDERPEARL_POWDER(Size.VERY_SMALL, Weight.VERY_LIGHT, "dustEnder", true),
+
+    // Misc
     SLAG(Size.VERY_SMALL, Weight.VERY_LIGHT, "crystalSlag", true),
     RICH_SLAG(Size.VERY_SMALL, Weight.VERY_LIGHT, "crystalSlagRich", true);
 
@@ -60,22 +62,22 @@ public enum ItemRCEnum {
     private final boolean canStack;
     private final String dictionary;
 
-    private final Function<ItemRCEnum, ItemRC> factory;
+    private final Function<ItemRCType, ItemRC> factory;
 
     // ---------------------------------------------------------------------
     // Constructor
     // ---------------------------------------------------------------------
 
-    ItemRCEnum(Size size, Weight weight, boolean canStack) {
+    ItemRCType(Size size, Weight weight, boolean canStack) {
         this(size, weight, canStack, null, ItemRC::new);
     }
 
-    ItemRCEnum(Size size, Weight weight, String ore, boolean canStack) {
+    ItemRCType(Size size, Weight weight, String ore, boolean canStack) {
         this(size, weight, canStack, ore, ItemRC::new);
     }
 
-    ItemRCEnum(Size size, Weight weight, boolean canStack, String ore,
-               Function<ItemRCEnum, ItemRC> factory) {
+    ItemRCType(Size size, Weight weight, boolean canStack, String ore,
+               Function<ItemRCType, ItemRC> factory) {
         this.size = size;
         this.weight = weight;
         this.canStack = canStack;
@@ -107,7 +109,7 @@ public enum ItemRCEnum {
     // Factory
     // ---------------------------------------------------------------------
 
-    public static Item Create(ItemRCEnum type) {
+    public static Item Create(ItemRCType type) {
         return type.factory.apply(type);
     }
 

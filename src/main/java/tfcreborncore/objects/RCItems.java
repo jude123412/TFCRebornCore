@@ -23,7 +23,8 @@ import tfcreborncore.objects.items.ItemRC;
 import tfcreborncore.objects.items.ItemRCMetal;
 import tfcreborncore.objects.items.ItemRCOre;
 import tfcreborncore.objects.items.ItemRCTool;
-import tfcreborncore.objects.items.enums.ItemRCEnum;
+import tfcreborncore.objects.items.enums.ItemRCToolType;
+import tfcreborncore.objects.items.enums.ItemRCType;
 
 public class RCItems {
 
@@ -114,23 +115,17 @@ public class RCItems {
         ImmutableList.Builder<Item> metalItems = ImmutableList.builder();
         for (Metal metal : TFCRegistries.METALS) {
             if (metal.isToolMetal()) {
-                for (ItemRCTool.ItemType type : ItemRCTool.ItemType.values()) {
+                for (ItemRCToolType type : ItemRCToolType.values()) {
                     String base = "metal/tool/" + type + "/" + metal.getRegistryName().getPath().toLowerCase();
 
                     Item metalType = register(registry, base + "_" + type.toString().toLowerCase(),
-                            ItemRCTool.ItemType.Create(metal, type),
+                            ItemRCToolType.Create(metal, type),
                             CreativeTabsRC.CT_ITEMS);
 
                     ItemRCTool metalItemType = (ItemRCTool) metalType;
                     String path = metalItemType.getMetal().getRegistryName().getPath().toLowerCase();
-                    switch (type) {
-                        case MINING_HAMMER -> OreDictionary.registerOre("miningHammer",
-                                new ItemStack(metalItemType, 1, OreDictionary.WILDCARD_VALUE));
-                        case EXCAVATOR -> OreDictionary.registerOre("excavator",
-                                new ItemStack(metalItemType, 1, OreDictionary.WILDCARD_VALUE));
-                        case WIRE_CUTTER -> OreDictionary.registerOre("wireCutter",
-                                new ItemStack(metalItemType, 1, OreDictionary.WILDCARD_VALUE));
-                    }
+                    OreDictionary.registerOre(toPascalCaseAlt(type.toString().toLowerCase()),
+                            new ItemStack(metalItemType, 1, OreDictionary.WILDCARD_VALUE));
                     OreDictionary.registerOre(toPascalCaseAlt(type.toString().toLowerCase()) + toPascalCase(path),
                             metalItemType);
                     metalItems.add(metalType);
@@ -145,10 +140,10 @@ public class RCItems {
         IForgeRegistry<Item> registry = event.getRegistry();
 
         ImmutableList.Builder<Item> regularItems = ImmutableList.builder();
-        for (ItemRCEnum type : ItemRCEnum.values()) {
+        for (ItemRCType type : ItemRCType.values()) {
             String base = "item/" + type.toString().toLowerCase();
 
-            Item regularItemType = register(registry, base, ItemRCEnum.Create(type), CreativeTabsRC.CT_ITEMS);
+            Item regularItemType = register(registry, base, ItemRCType.Create(type), CreativeTabsRC.CT_ITEMS);
             if (type.getDictionary() != null) OreDictionary.registerOre(type.getDictionary(), regularItemType);
             regularItems.add(regularItemType);
         }

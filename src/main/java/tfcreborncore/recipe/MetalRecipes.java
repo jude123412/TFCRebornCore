@@ -17,6 +17,7 @@ import net.minecraftforge.registries.IForgeRegistry;
 import tfcreborncore.Tags;
 import tfcreborncore.objects.items.ItemRCMetal;
 import tfcreborncore.objects.items.ItemRCTool;
+import tfcreborncore.objects.items.enums.ItemRCToolType;
 import tfcreborncore.objects.recipe.CraftingRecipeManager;
 import tfctech.objects.items.metal.ItemTechMetal;
 
@@ -194,8 +195,8 @@ public class MetalRecipes {
             if (metal.isToolMetal()) {
                 // Excavator
                 CraftingRecipeManager.addShapedSkillRecipe(
-                        new ResourceLocation(Tags.MODID, "metal/tool/" + ItemRCTool.ItemType.EXCAVATOR + "/" + metal),
-                        ItemRCTool.get(metal, ItemRCTool.ItemType.EXCAVATOR).getDefaultInstance(),
+                        new ResourceLocation(Tags.MODID, "metal/tool/" + ItemRCToolType.EXCAVATOR + "/" + metal),
+                        ItemRCTool.get(metal, ItemRCToolType.EXCAVATOR).getDefaultInstance(),
                         "H",
                         "S",
                         'S', "stickWood",
@@ -204,8 +205,8 @@ public class MetalRecipes {
                 // Mining Hammer
                 CraftingRecipeManager.addShapedSkillRecipe(
                         new ResourceLocation(Tags.MODID,
-                                "metal/tool/" + ItemRCTool.ItemType.MINING_HAMMER + "/" + metal),
-                        ItemRCTool.get(metal, ItemRCTool.ItemType.MINING_HAMMER).getDefaultInstance(),
+                                "metal/tool/" + ItemRCToolType.MINING_HAMMER + "/" + metal),
+                        ItemRCTool.get(metal, ItemRCToolType.MINING_HAMMER).getDefaultInstance(),
                         "H",
                         "S",
                         'S', "stickWood",
@@ -215,8 +216,8 @@ public class MetalRecipes {
                 // Wire Cutter
                 CraftingRecipeManager.addShapedSkillRecipe(
                         new ResourceLocation(Tags.MODID,
-                                "metal/tool/" + ItemRCTool.ItemType.WIRE_CUTTER + "/" + metal),
-                        ItemRCTool.get(metal, ItemRCTool.ItemType.WIRE_CUTTER).getDefaultInstance(),
+                                "metal/tool/" + ItemRCToolType.WIRE_CUTTER + "/" + metal),
+                        ItemRCTool.get(metal, ItemRCToolType.WIRE_CUTTER).getDefaultInstance(),
                         "HS",
                         "S ",
                         'S', "stickWood",

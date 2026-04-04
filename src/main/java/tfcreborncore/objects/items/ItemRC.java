@@ -11,15 +11,15 @@ import net.minecraft.item.ItemStack;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import tfcreborncore.objects.items.enums.ItemRCEnum;
+import tfcreborncore.objects.items.enums.ItemRCType;
 
 public class ItemRC extends ItemTFC {
 
-    public static final Map<String, ItemRCEnum> CROSS_MOD_MAP = new HashMap<>();
+    public static final Map<String, ItemRCType> CROSS_MOD_MAP = new HashMap<>();
 
-    private final ItemRCEnum type;
+    private final ItemRCType type;
 
-    public ItemRC(ItemRCEnum type) {
+    public ItemRC(ItemRCType type) {
         super();
         this.type = type;
         if (!CROSS_MOD_MAP.containsKey(type.toString())) {
@@ -27,7 +27,7 @@ public class ItemRC extends ItemTFC {
         }
     }
 
-    public ItemRCEnum getType() {
+    public ItemRCType getType() {
         return type;
     }
 

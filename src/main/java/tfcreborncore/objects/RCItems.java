@@ -23,6 +23,7 @@ import tfcreborncore.objects.items.ItemRC;
 import tfcreborncore.objects.items.ItemRCMetal;
 import tfcreborncore.objects.items.ItemRCOre;
 import tfcreborncore.objects.items.ItemRCTool;
+import tfcreborncore.objects.items.enums.ItemRCOreEnum;
 import tfcreborncore.objects.items.enums.ItemRCToolType;
 import tfcreborncore.objects.items.enums.ItemRCType;
 
@@ -58,9 +59,9 @@ public class RCItems {
             if (ore.isGraded()) {
                 String base = "ore/" + ore.getRegistryName().getPath().toLowerCase();
 
-                for (ItemRCOre.ItemType type : ItemRCOre.ItemType.values()) {
+                for (ItemRCOreEnum type : ItemRCOreEnum.values()) {
                     Item oreType = register(registry, base + "_" + type.toString().toLowerCase(),
-                            ItemRCOre.ItemType.Create(ore, type),
+                            ItemRCOreEnum.Create(ore, type),
                             CreativeTabsRC.CT_ITEMS);
 
                     ItemRCOre ItemType = (ItemRCOre) oreType;

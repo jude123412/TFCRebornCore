@@ -3,7 +3,6 @@ package tfcreborncore.objects.items;
 import java.util.EnumMap;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.function.BiFunction;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -14,13 +13,14 @@ import net.dries007.tfc.api.capability.size.Size;
 import net.dries007.tfc.api.capability.size.Weight;
 import net.dries007.tfc.api.types.Metal;
 import net.dries007.tfc.objects.items.ItemTFC;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 
 import org.jetbrains.annotations.NotNull;
+
+import tfcreborncore.objects.items.enums.ItemRCMetalType;
 
 /*
  * Original code from TFC Tech's ItemTechMetal (EUPL v1.2)
@@ -29,65 +29,39 @@ import org.jetbrains.annotations.NotNull;
  */
 public class ItemRCMetal extends ItemTFC implements IMetalItem {
 
-    private static final Map<Metal, EnumMap<ItemRCMetal.ItemType, ItemRCMetal>> METAL_MAP = new HashMap<>();
+    private static final Map<Metal, EnumMap<ItemRCMetalType, ItemRCMetal>> METAL_MAP = new HashMap<>();
 
     private final Metal metal;
-    private final ItemRCMetal.ItemType type;
+    private final ItemRCMetalType type;
 
-    public ItemRCMetal(Metal metal, ItemRCMetal.ItemType type) {
+    public ItemRCMetal(Metal metal, ItemRCMetalType type) {
         super();
         this.metal = metal;
         this.type = type;
         if (!METAL_MAP.containsKey(metal)) {
-            METAL_MAP.put(metal, new EnumMap<>(ItemRCMetal.ItemType.class));
+            METAL_MAP.put(metal, new EnumMap<>(ItemRCMetalType.class));
         }
         METAL_MAP.get(metal).put(type, this);
         setNoRepair();
     }
 
-    public ItemRCMetal.ItemType getType() {
+    public ItemRCMetalType getType() {
         return type;
     }
 
     @Nullable
-    public static ItemRCMetal get(Metal metal, ItemRCMetal.ItemType type) {
+    public static ItemRCMetal get(Metal metal, ItemRCMetalType type) {
         return METAL_MAP.get(metal).get(type);
     }
 
     @Override
     public @NotNull Size getSize(@NotNull ItemStack itemStack) {
-        switch (type) {
-            case WIRE_CUTTER_HEAD -> {
-                return Size.NORMAL;
-            }
-            case UNFINISHED_MINING_HAMMER_HEAD, EXCAVATOR_HEAD, MINING_HAMMER_HEAD, UNFINISHED_EXCAVATOR_HEAD -> {
-                return Size.LARGE;
-            }
-            case RACKWHEEL_HALF -> {
-                return Size.NORMAL;
-            }
-            default -> {
-                return Size.VERY_SMALL;
-            }
-        }
+        return type.getSize();
     }
 
     @Override
     public @NotNull Weight getWeight(@NotNull ItemStack itemStack) {
-        switch (type) {
-            case UNFINISHED_EXCAVATOR_HEAD, RACKWHEEL_HALF, WIRE_CUTTER_HEAD -> {
-                return Weight.MEDIUM;
-            }
-            case UNFINISHED_MINING_HAMMER_HEAD, EXCAVATOR_HEAD -> {
-                return Weight.HEAVY;
-            }
-            case MINING_HAMMER_HEAD -> {
-                return Weight.VERY_HEAVY;
-            }
-            default -> {
-                return Weight.LIGHT;
-            }
-        }
+        return type.getWeight();
     }
 
     @Override
@@ -121,46 +95,6 @@ public class ItemRCMetal extends ItemTFC implements IMetalItem {
     }
 
     public boolean canStack(@Nonnull ItemStack stack) {
-        return switch (this.type) {
-            case UNFINISHED_MINING_HAMMER_HEAD, UNFINISHED_EXCAVATOR_HEAD -> false;
-            default -> true;
-        };
-    }
-
-    public static boolean isToolHead(ItemRCMetal.ItemType type) {
-        return switch (type) {
-            case UNFINISHED_MINING_HAMMER_HEAD, UNFINISHED_EXCAVATOR_HEAD, MINING_HAMMER_HEAD, EXCAVATOR_HEAD, WIRE_CUTTER_HEAD -> true;
-            default -> false;
-        };
-    }
-
-    public enum ItemType {
-
-        UNFINISHED_MINING_HAMMER_HEAD(300),
-        MINING_HAMMER_HEAD(500),
-        UNFINISHED_EXCAVATOR_HEAD(200),
-        EXCAVATOR_HEAD(300),
-        WIRE_CUTTER_HEAD(100),
-        RACKWHEEL_HALF(200);
-
-        ItemType(int meltingAmount) {
-            this(meltingAmount, ItemRCMetal::new);
-        }
-
-        ItemType(int meltingAmount, @Nonnull BiFunction<Metal, ItemRCMetal.ItemType, Item> supplier) {
-            this.meltingAmount = meltingAmount;
-            this.supplier = supplier;
-        }
-
-        private final int meltingAmount;
-        private final BiFunction<Metal, ItemRCMetal.ItemType, Item> supplier;
-
-        public static Item Create(Metal metal, ItemRCMetal.ItemType type) {
-            return type.supplier.apply(metal, type);
-        }
-
-        public int getMeltingAmount() {
-            return meltingAmount;
-        }
+        return type.canStack();
     }
 }

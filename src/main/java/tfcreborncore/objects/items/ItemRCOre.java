@@ -21,7 +21,7 @@ import net.minecraftforge.common.capabilities.ICapabilityProvider;
 
 import org.jetbrains.annotations.NotNull;
 
-import tfcreborncore.objects.items.enums.ItemRCOreEnum;
+import tfcreborncore.objects.items.enums.ItemRCOreType;
 
 /*
  * Original code from TFC Tech's ItemTechMetal (EUPL v1.2)
@@ -30,23 +30,23 @@ import tfcreborncore.objects.items.enums.ItemRCOreEnum;
  */
 public class ItemRCOre extends ItemTFC implements IMetalItem {
 
-    private static final Map<Ore, EnumMap<ItemRCOreEnum, ItemRCOre>> ORE_MAP = new HashMap<>();
+    private static final Map<Ore, EnumMap<ItemRCOreType, ItemRCOre>> ORE_MAP = new HashMap<>();
 
     private final Ore ore;
-    private final ItemRCOreEnum type;
+    private final ItemRCOreType type;
 
-    public ItemRCOre(Ore ore, ItemRCOreEnum type) {
+    public ItemRCOre(Ore ore, ItemRCOreType type) {
         super();
         this.ore = ore;
         this.type = type;
         if (!ORE_MAP.containsKey(ore)) {
-            ORE_MAP.put(ore, new EnumMap<>(ItemRCOreEnum.class));
+            ORE_MAP.put(ore, new EnumMap<>(ItemRCOreType.class));
         }
         ORE_MAP.get(ore).put(type, this);
         setNoRepair();
     }
 
-    public ItemRCOreEnum getType() {
+    public ItemRCOreType getType() {
         return type;
     }
 

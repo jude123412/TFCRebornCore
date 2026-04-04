@@ -11,7 +11,7 @@ import net.minecraft.item.Item;
 
 import tfcreborncore.objects.items.ItemRCOre;
 
-public enum ItemRCOreEnum {
+public enum ItemRCOreType {
 
     PILE(5, Size.VERY_SMALL, Weight.VERY_LIGHT),
     CUBE(25, Size.NORMAL, Weight.LIGHT),
@@ -25,17 +25,17 @@ public enum ItemRCOreEnum {
     private final Size size;
     private final Weight weight;
 
-    private final BiFunction<Ore, ItemRCOreEnum, Item> supplier;
+    private final BiFunction<Ore, ItemRCOreType, Item> supplier;
 
     // ---------------------------------------------------------------------
     // Constructor
     // ---------------------------------------------------------------------
 
-    ItemRCOreEnum(int meltingAmount, Size size, Weight weight) {
+    ItemRCOreType(int meltingAmount, Size size, Weight weight) {
         this(meltingAmount, size, weight, ItemRCOre::new);
     }
 
-    ItemRCOreEnum(int meltingAmount, Size size, Weight weight, @Nonnull BiFunction<Ore, ItemRCOreEnum, Item> supplier) {
+    ItemRCOreType(int meltingAmount, Size size, Weight weight, @Nonnull BiFunction<Ore, ItemRCOreType, Item> supplier) {
         this.meltingAmount = meltingAmount;
         this.size = size;
         this.weight = weight;
@@ -62,7 +62,7 @@ public enum ItemRCOreEnum {
     // Factory
     // ---------------------------------------------------------------------
 
-    public static Item Create(Ore ore, ItemRCOreEnum type) {
+    public static Item Create(Ore ore, ItemRCOreType type) {
         return type.supplier.apply(ore, type);
     }
 }

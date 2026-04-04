@@ -17,6 +17,7 @@ import net.minecraftforge.registries.IForgeRegistry;
 import tfcreborncore.Tags;
 import tfcreborncore.objects.items.ItemRCMetal;
 import tfcreborncore.objects.items.ItemRCTool;
+import tfcreborncore.objects.items.enums.ItemRCMetalType;
 import tfcreborncore.objects.items.enums.ItemRCToolType;
 import tfcreborncore.objects.recipe.CraftingRecipeManager;
 import tfctech.objects.items.metal.ItemTechMetal;
@@ -65,13 +66,13 @@ public class MetalRecipes {
                         ForgeRule.HIT_ANY, ForgeRule.SHRINK_ANY));
 
                 ItemStack wire_cutter_head = new ItemStack(
-                        ItemRCMetal.get(metal, ItemRCMetal.ItemType.WIRE_CUTTER_HEAD));
+                        ItemRCMetal.get(metal, ItemRCMetalType.WIRE_CUTTER_HEAD));
 
                 // Wire Cutter Head
                 r.register(new AnvilRecipe(
                         new ResourceLocation(Tags.MODID,
                                 (metal.getRegistryName().getPath()).toLowerCase() + "_" +
-                                        ItemRCMetal.ItemType.WIRE_CUTTER_HEAD),
+                                        ItemRCMetalType.WIRE_CUTTER_HEAD),
                         ingredientIngot, wire_cutter_head, metal.getTier(), null, ForgeRule.BEND_ANY,
                         ForgeRule.HIT_SECOND_LAST, ForgeRule.DRAW_ANY));
             }
@@ -91,52 +92,52 @@ public class MetalRecipes {
 
                 // Unfinished Mining Hammer Head
                 ItemStack miningHammerHeadUnfinished = new ItemStack(
-                        ItemRCMetal.get(metal, ItemRCMetal.ItemType.UNFINISHED_MINING_HAMMER_HEAD));
+                        ItemRCMetal.get(metal, ItemRCMetalType.UNFINISHED_MINING_HAMMER_HEAD));
                 if (!miningHammerHeadUnfinished.isEmpty())
                     r.register(new WeldingRecipe(
                             new ResourceLocation(Tags.MODID,
                                     metal.getRegistryName().getPath().toLowerCase() + "_" +
-                                            ItemRCMetal.ItemType.UNFINISHED_MINING_HAMMER_HEAD),
+                                            ItemRCMetalType.UNFINISHED_MINING_HAMMER_HEAD),
                             ingredientIngotDouble,
                             IIngredient.of(new ItemStack(ItemMetal.get(metal, Metal.ItemType.HAMMER_HEAD))),
                             miningHammerHeadUnfinished, metal.getTier(), SmithingSkill.Type.TOOLS));
 
                 // Mining Hammer Head
                 ItemStack miningHammerHead = new ItemStack(
-                        ItemRCMetal.get(metal, ItemRCMetal.ItemType.MINING_HAMMER_HEAD));
+                        ItemRCMetal.get(metal, ItemRCMetalType.MINING_HAMMER_HEAD));
                 if (!miningHammerHead.isEmpty())
                     r.register(new WeldingRecipe(
                             new ResourceLocation(Tags.MODID,
                                     metal.getRegistryName().getPath().toLowerCase() +
-                                            "_" + ItemRCMetal.ItemType.MINING_HAMMER_HEAD),
+                                            "_" + ItemRCMetalType.MINING_HAMMER_HEAD),
                             ingredientIngotDouble,
                             IIngredient.of(new ItemStack(
-                                    ItemRCMetal.get(metal, ItemRCMetal.ItemType.UNFINISHED_MINING_HAMMER_HEAD))),
+                                    ItemRCMetal.get(metal, ItemRCMetalType.UNFINISHED_MINING_HAMMER_HEAD))),
                             miningHammerHead, metal.getTier(), SmithingSkill.Type.TOOLS));
 
                 // Unfinished Excavator Head
                 ItemStack excavatorHeadUnfinished = new ItemStack(
-                        ItemRCMetal.get(metal, ItemRCMetal.ItemType.UNFINISHED_EXCAVATOR_HEAD));
+                        ItemRCMetal.get(metal, ItemRCMetalType.UNFINISHED_EXCAVATOR_HEAD));
                 if (!excavatorHeadUnfinished.isEmpty())
                     r.register(new WeldingRecipe(
                             new ResourceLocation(Tags.MODID,
                                     metal.getRegistryName().getPath().toLowerCase() + "_" +
-                                            ItemRCMetal.ItemType.UNFINISHED_EXCAVATOR_HEAD),
+                                            ItemRCMetalType.UNFINISHED_EXCAVATOR_HEAD),
                             ingredientIngot,
                             IIngredient.of(new ItemStack(ItemMetal.get(metal, Metal.ItemType.SHOVEL_HEAD))),
                             excavatorHeadUnfinished, metal.getTier(), SmithingSkill.Type.TOOLS));
 
                 // Excavator Head
                 ItemStack excavatorHead = new ItemStack(
-                        ItemRCMetal.get(metal, ItemRCMetal.ItemType.EXCAVATOR_HEAD));
+                        ItemRCMetal.get(metal, ItemRCMetalType.EXCAVATOR_HEAD));
                 if (!excavatorHead.isEmpty())
                     r.register(new WeldingRecipe(
                             new ResourceLocation(Tags.MODID,
                                     metal.getRegistryName().getPath().toLowerCase() + "_" +
-                                            ItemRCMetal.ItemType.EXCAVATOR_HEAD),
+                                            ItemRCMetalType.EXCAVATOR_HEAD),
                             ingredientIngot,
                             IIngredient.of(new ItemStack(
-                                    ItemRCMetal.get(metal, ItemRCMetal.ItemType.UNFINISHED_EXCAVATOR_HEAD))),
+                                    ItemRCMetal.get(metal, ItemRCMetalType.UNFINISHED_EXCAVATOR_HEAD))),
                             excavatorHead, metal.getTier(), SmithingSkill.Type.TOOLS));
 
             }
@@ -146,7 +147,7 @@ public class MetalRecipes {
                         .of(new ItemStack(ItemTechMetal.get(metal, ItemTechMetal.ItemType.RACKWHEEL_PIECE)));
 
                 ItemStack rackwheelHalf = new ItemStack(
-                        ItemRCMetal.get(metal, ItemRCMetal.ItemType.RACKWHEEL_HALF));
+                        ItemRCMetal.get(metal, ItemRCMetalType.RACKWHEEL_HALF));
 
                 IIngredient<ItemStack> ingredientRackwheelHalf = IIngredient
                         .of(rackwheelHalf);
@@ -158,7 +159,7 @@ public class MetalRecipes {
                 r.register(new WeldingRecipe(
                         new ResourceLocation(Tags.MODID,
                                 metal.getRegistryName().getPath().toLowerCase() + "_" +
-                                        ItemRCMetal.ItemType.RACKWHEEL_HALF),
+                                        ItemRCMetalType.RACKWHEEL_HALF),
                         ingredientRackwheelPiece,
                         ingredientRackwheelPiece,
                         rackwheelHalf, metal.getTier(), null));
@@ -200,7 +201,7 @@ public class MetalRecipes {
                         "H",
                         "S",
                         'S', "stickWood",
-                        'H', ItemRCMetal.get(metal, ItemRCMetal.ItemType.EXCAVATOR_HEAD).getDefaultInstance());
+                        'H', ItemRCMetal.get(metal, ItemRCMetalType.EXCAVATOR_HEAD).getDefaultInstance());
 
                 // Mining Hammer
                 CraftingRecipeManager.addShapedSkillRecipe(
@@ -211,7 +212,7 @@ public class MetalRecipes {
                         "S",
                         'S', "stickWood",
                         'H',
-                        ItemRCMetal.get(metal, ItemRCMetal.ItemType.MINING_HAMMER_HEAD).getDefaultInstance());
+                        ItemRCMetal.get(metal, ItemRCMetalType.MINING_HAMMER_HEAD).getDefaultInstance());
 
                 // Wire Cutter
                 CraftingRecipeManager.addShapedSkillRecipe(
@@ -222,7 +223,7 @@ public class MetalRecipes {
                         "S ",
                         'S', "stickWood",
                         'H',
-                        ItemRCMetal.get(metal, ItemRCMetal.ItemType.WIRE_CUTTER_HEAD).getDefaultInstance());
+                        ItemRCMetal.get(metal, ItemRCMetalType.WIRE_CUTTER_HEAD).getDefaultInstance());
             }
         }
     }

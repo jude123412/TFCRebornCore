@@ -23,7 +23,8 @@ import tfcreborncore.objects.items.ItemRC;
 import tfcreborncore.objects.items.ItemRCMetal;
 import tfcreborncore.objects.items.ItemRCOre;
 import tfcreborncore.objects.items.ItemRCTool;
-import tfcreborncore.objects.items.enums.ItemRCOreEnum;
+import tfcreborncore.objects.items.enums.ItemRCMetalType;
+import tfcreborncore.objects.items.enums.ItemRCOreType;
 import tfcreborncore.objects.items.enums.ItemRCToolType;
 import tfcreborncore.objects.items.enums.ItemRCType;
 
@@ -59,9 +60,9 @@ public class RCItems {
             if (ore.isGraded()) {
                 String base = "ore/" + ore.getRegistryName().getPath().toLowerCase();
 
-                for (ItemRCOreEnum type : ItemRCOreEnum.values()) {
+                for (ItemRCOreType type : ItemRCOreType.values()) {
                     Item oreType = register(registry, base + "_" + type.toString().toLowerCase(),
-                            ItemRCOreEnum.Create(ore, type),
+                            ItemRCOreType.Create(ore, type),
                             CreativeTabsRC.CT_ITEMS);
 
                     ItemRCOre ItemType = (ItemRCOre) oreType;
@@ -83,16 +84,16 @@ public class RCItems {
             String metalName = metal.getRegistryName().getPath().toLowerCase();
             String base = metal.isToolMetal() ? "metal/tool/head/" + metalName : "metal/" + metalName;
 
-            for (ItemRCMetal.ItemType type : ItemRCMetal.ItemType.values()) {
+            for (ItemRCMetalType type : ItemRCMetalType.values()) {
 
                 String name = base + "_" + type.toString().toLowerCase();
 
-                boolean shouldRegister = (ItemRCMetal.isToolHead(type) && metal.isToolMetal()) ||
-                        (!ItemRCMetal.isToolHead(type) && metal.isUsable());
+                boolean shouldRegister = (type.isToolHead() && metal.isToolMetal()) ||
+                        (!type.isToolHead() && metal.isUsable());
 
                 if (shouldRegister) {
                     Item metalType = register(registry, name,
-                            ItemRCMetal.ItemType.Create(metal, type),
+                            ItemRCMetalType.Create(metal, type),
                             CreativeTabsRC.CT_ITEMS);
 
                     ItemRCMetal metalItemType = (ItemRCMetal) metalType;

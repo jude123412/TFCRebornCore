@@ -59,6 +59,9 @@ public enum ItemRCType {
     BASIC_CAPACITOR_CELL(Size.LARGE, Weight.MEDIUM, true),
     ADVANCED_CAPACITOR_CELL(Size.LARGE, Weight.HEAVY, true),
     HI_TECH_CAPACITOR_CELL(Size.LARGE, Weight.VERY_HEAVY, true),
+    UNFIRED_CERAMIC_INSULATOR(Size.NORMAL, Weight.LIGHT, true),
+    CERAMIC_INSULATOR(Size.NORMAL, Weight.LIGHT, true),
+    GLASS_INSULATOR(Size.NORMAL, Weight.LIGHT, true),
     SLAG(Size.VERY_SMALL, Weight.VERY_LIGHT, "crystalSlag", true),
     RICH_SLAG(Size.VERY_SMALL, Weight.VERY_LIGHT, "crystalSlagRich", true);
 

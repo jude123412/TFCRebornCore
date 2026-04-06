@@ -23,6 +23,9 @@ item.tfcreborncore.metal.rackwheel_half.name=%s Rackwheel Half
 # Creative Tabs
 itemGroup.tfcreborncore.items=TFC: Reborn Core Items
 
+# Lumber Items
+item.tfcreborncore.wood.lumber.name=%s Lumber
+
 # Regular Items
 item.tfcreborncore.item.metal_press_sleeve.name=Metal Press Mold: Sleeve
 item.tfcreborncore.item.metal_press_rackwheel_piece.name=Metal Press Mold: Rackwheel Piece

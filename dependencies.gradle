@@ -45,6 +45,8 @@ dependencies {
     implementation rfg.deobf("curse.maven:immersive-engineering-0.12.98-231951:2974106") // Immersive Engineering 0.12.98
     implementation rfg.deobf("curse.maven:groovy-script-1.4.1-687577:7813868") // Groovy Script 1.4.1
 
+    compileOnly rfg.deobf("curse.maven:forestry-5.8.2.427-59751:7398359") // Forestry 5.8.2.427
+    compileOnly rfg.deobf("curse.maven:binnies-mods-patched-2.5.1.213-899182:7731146") // Binnies Mods Patched 2.5.1.213
     compileOnly rfg.deobf("curse.maven:thermal-expansion-5.5.7.1-69163:2926431") // Thermal Expansion 5.5.7.1
     compileOnly rfg.deobf("curse.maven:cofh-core-4.6.6.1-69162:2920433") // Code Chicken Lib 3.2.3.358
 
@@ -59,4 +61,6 @@ dependencies {
     runtimeOnlyNonPublishable rfg.deobf("curse.maven:code-chicken-lib-3.2.3.358-242818:2779848") // Code Chicken Lib 3.2.3.358
     runtimeOnlyNonPublishable rfg.deobf("curse.maven:cofh-core-4.6.6.1-69162:2920433") // Code Chicken Lib 3.2.3.358
     runtimeOnlyNonPublishable rfg.deobf("curse.maven:cofh-world-1.4.9.1-271384:2920434") // Code Chicken Lib 1.4.9.1
+    runtimeOnlyNonPublishable rfg.deobf("curse.maven:forestry-5.8.2.427-59751:7398359") // Forestry 5.8.2.427
+    runtimeOnlyNonPublishable rfg.deobf("curse.maven:binnies-mods-patched-2.5.1.213-899182:7731146") // Binnies Mods Patched 2.5.1.213
 }

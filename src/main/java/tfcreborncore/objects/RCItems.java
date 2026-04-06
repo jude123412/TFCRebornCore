@@ -13,6 +13,7 @@ import net.minecraftforge.client.event.ColorHandlerEvent;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.registries.IForgeRegistry;
 
@@ -20,9 +21,11 @@ import com.google.common.collect.ImmutableList;
 
 import tfcreborncore.Tags;
 import tfcreborncore.objects.items.ItemRC;
+import tfcreborncore.objects.items.ItemRCLumber;
 import tfcreborncore.objects.items.ItemRCMetal;
 import tfcreborncore.objects.items.ItemRCOre;
 import tfcreborncore.objects.items.ItemRCTool;
+import tfcreborncore.objects.items.enums.ItemRCLumberType;
 import tfcreborncore.objects.items.enums.ItemRCMetalType;
 import tfcreborncore.objects.items.enums.ItemRCOreType;
 import tfcreborncore.objects.items.enums.ItemRCToolType;
@@ -34,18 +37,21 @@ public class RCItems {
     private static ImmutableList<Item> allMetalItems;
     private static ImmutableList<Item> allToolItems;
     private static ImmutableList<Item> allRegularItems;
+    private static ImmutableList<Item> allWoodItems;
 
     public static void registerItems(RegistryEvent.Register<Item> event) {
         registerOreItems(event);
         registerMetalItems(event);
         registerToolItems(event);
         registerRegularItems(event);
+        registerLumberWoodItems(event);
     }
 
     public static void registerItemColors(final ColorHandlerEvent.Item event) {
         registerOreItemColor(event);
         registerMetalItemColor(event);
         registerToolItemColor(event);
+        registerLumberItemColor(event);
     }
 
     public static void registerItemModels(ModelRegistryEvent event) {
@@ -153,6 +159,24 @@ public class RCItems {
         allRegularItems = regularItems.build();
     }
 
+    public static void registerLumberWoodItems(RegistryEvent.Register<Item> event) {
+        IForgeRegistry<Item> registry = event.getRegistry();
+
+        ImmutableList.Builder<Item> forestryWoodItems = ImmutableList.builder();
+        if (Loader.isModLoaded("forestry")) {
+            for (ItemRCLumberType wood : ItemRCLumberType.values()) {
+                String base = "wood/lumber/" + wood.toString().toLowerCase();
+
+                Item regularItemType = register(registry, base, new ItemRCLumber(wood), CreativeTabsRC.CT_ITEMS);
+                OreDictionary.registerOre("lumber", regularItemType);
+                OreDictionary.registerOre("lumber" + toPascalCase(wood.toString().toLowerCase()), regularItemType);
+                forestryWoodItems.add(regularItemType);
+            }
+        }
+
+        allWoodItems = forestryWoodItems.build();
+    }
+
     private static void registerOreItemColor(final ColorHandlerEvent.Item event) {
         ImmutableList<Item> oreItems = getAllOreItems();
         if (oreItems == null || oreItems.isEmpty()) return;
@@ -207,6 +231,24 @@ public class RCItems {
         }
     }
 
+    private static void registerLumberItemColor(final ColorHandlerEvent.Item event) {
+        ImmutableList<Item> lumberItems = getAllLumberItems();
+        if (lumberItems == null || lumberItems.isEmpty()) return;
+
+        for (Item item : lumberItems) {
+            if (!(item instanceof ItemRCLumber lumberItem)) continue;
+
+            int color = lumberItem.getType().getColor();
+
+            IItemColor handler = (stack, tintIndex) -> {
+                if (tintIndex != 0) return 0xFFFFFF;
+                return color;
+            };
+
+            event.getItemColors().registerItemColorHandler(handler, item);
+        }
+    }
+
     private static void registerModels(ModelRegistryEvent event) {
         for (Item item : getAllOreItems()) {
             ItemRCOre oreItem = (ItemRCOre) item;
@@ -234,6 +276,13 @@ public class RCItems {
                     new ResourceLocation(Tags.MODID, "regular/" + regularItem.getType().name().toLowerCase()),
                     "inventory"));
         }
+
+        for (Item item : getAllLumberItems()) {
+            ItemRCLumber woodItem = (ItemRCLumber) item;
+            ModelLoader.setCustomModelResourceLocation(woodItem, 0, new ModelResourceLocation(
+                    new ResourceLocation(Tags.MODID, "wood/lumber"),
+                    "inventory"));
+        }
     }
 
     public static ImmutableList<Item> getAllOreItems() {
@@ -250,6 +299,10 @@ public class RCItems {
 
     public static ImmutableList<Item> getAllRegularItems() {
         return allRegularItems;
+    }
+
+    public static ImmutableList<Item> getAllLumberItems() {
+        return allWoodItems;
     }
 
     public static String toPascalCase(String input) {
@@ -278,6 +331,7 @@ public class RCItems {
 
         for (char c : input.toCharArray()) {
             if (c == '_') {
+                sb.append(' ');
                 capitalizeNext = true;
             } else {
                 sb.append(capitalizeNext ? Character.toUpperCase(c) : c);
@@ -287,6 +341,25 @@ public class RCItems {
 
         if (sb.length() == 0) return sb.toString();
         sb.setCharAt(0, Character.toLowerCase(sb.charAt(0)));
+        return sb.toString();
+    }
+
+    public static String toTitleCase(String input) {
+        if (input == null || input.isEmpty()) return input;
+
+        StringBuilder sb = new StringBuilder();
+        boolean capitalizeNext = true;
+
+        for (char c : input.toCharArray()) {
+            if (c == '_') {
+                sb.append(' ');
+                capitalizeNext = true;
+            } else {
+                sb.append(capitalizeNext ? Character.toUpperCase(c) : c);
+                capitalizeNext = false;
+            }
+        }
+
         return sb.toString();
     }
 

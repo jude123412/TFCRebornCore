@@ -36,12 +36,12 @@ public class ItemRCLumber extends ItemTFC {
 
     @Override
     public @NotNull Size getSize(@NotNull ItemStack itemStack) {
-        return Size.NORMAL;
+        return Size.SMALL;
     }
 
     @Override
     public @NotNull Weight getWeight(@NotNull ItemStack itemStack) {
-        return Weight.MEDIUM;
+        return Weight.VERY_LIGHT;
     }
 
     @Override

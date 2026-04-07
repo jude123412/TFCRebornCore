@@ -5,8 +5,10 @@ import java.util.List;
 
 import net.dries007.tfc.api.recipes.anvil.AnvilRecipe;
 import net.dries007.tfc.api.recipes.barrel.BarrelRecipe;
+import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.event.RegistryEvent;
 
+import net.minecraftforge.registries.IForgeRegistryModifiable;
 import tfcreborncore.recipe.compat.ExNihiloCompat;
 import tfcreborncore.recipe.compat.ForestryCompat;
 import tfcreborncore.recipe.compat.ThermalExpansionCompat;
@@ -21,9 +23,9 @@ public final class CompatManager {
         modules.add(new ExNihiloCompat());
     }
 
-    public static void loadCraftingRecipes() {
+    public static void loadCraftingRecipes(RegistryEvent.Register<IRecipe> event) {
         for (ICompatModule module : modules) {
-            if (module.areRecipesLoadable()) module.registerCraftingRecipe();
+            if (module.areRecipesLoadable()) module.registerCraftingRecipe(event);
         }
     }
 

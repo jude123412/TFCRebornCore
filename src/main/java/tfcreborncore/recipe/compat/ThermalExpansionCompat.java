@@ -8,17 +8,28 @@ import java.util.List;
 import net.dries007.tfc.api.recipes.barrel.BarrelRecipe;
 import net.dries007.tfc.objects.inventory.ingredient.IIngredient;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.IRecipe;
+import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.registries.IForgeRegistry;
 
 import tfcreborncore.recipe.ICompatModule;
+import tfcreborncore.recipe.RecipeHelper;
 import tfcreborncore.recipe.mods.TFCRecipeHelper;
 
 public class ThermalExpansionCompat implements ICompatModule {
 
     @Override
-    public List<String> dependancies() {
+    public List<String> dependencies() {
         return Arrays.asList(
                 Mods.THERMAL_EXPANSION.getName());
+    }
+
+    @Override
+    public void registerOreDictionaries(RegistryEvent.Register<IRecipe> event) {
+        // GemCinnabar
+        OreDictionary.registerOre("gemCinnabar",
+                RecipeHelper.getItemStack("thermalfoundation", "material", 866));
     }
 
     @Override

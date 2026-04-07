@@ -9,6 +9,8 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.registries.IForgeRegistry;
 
+import tfcreborncore.Tags;
+
 public class TFCRecipeHelper {
 
     public static int getHours(int hours) {
@@ -19,13 +21,13 @@ public class TFCRecipeHelper {
                                        IIngredient<ItemStack> inputStack, FluidStack outputFluid, ItemStack outputStack,
                                        int duration, String regName) {
         r.register(new BarrelRecipe(inputFluid, inputStack, outputFluid, outputStack, duration)
-                .setRegistryName(new ResourceLocation("tfcreborncore", "barrel/" + regName.toLowerCase())));
+                .setRegistryName(new ResourceLocation(Tags.MODID, "barrel/" + regName.toLowerCase())));
     }
 
     public static void addBarrelRecipeFluidMixin(IForgeRegistry<BarrelRecipe> r, IIngredient<FluidStack> inputFluid1,
                                                  FluidStack inputFluid2, FluidStack outputFluid, int duration,
                                                  String regName) {
         r.register(new BarrelRecipeFluidMixing(inputFluid1, new IngredientFluidItem(inputFluid2), outputFluid, duration)
-                .setRegistryName(new ResourceLocation("tfcreborncore", "barrel/mixing/" + regName.toLowerCase())));
+                .setRegistryName(new ResourceLocation(Tags.MODID, "barrel/mixing/" + regName.toLowerCase())));
     }
 }

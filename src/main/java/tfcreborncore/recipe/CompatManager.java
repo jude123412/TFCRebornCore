@@ -8,9 +8,11 @@ import net.dries007.tfc.api.recipes.barrel.BarrelRecipe;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.event.RegistryEvent;
 
-import net.minecraftforge.registries.IForgeRegistryModifiable;
 import tfcreborncore.recipe.compat.ExNihiloCompat;
 import tfcreborncore.recipe.compat.ForestryCompat;
+import tfcreborncore.recipe.compat.MinecraftCompat;
+import tfcreborncore.recipe.compat.StorageDrawersCompat;
+import tfcreborncore.recipe.compat.TFCTechCompat;
 import tfcreborncore.recipe.compat.ThermalExpansionCompat;
 
 public final class CompatManager {
@@ -21,6 +23,15 @@ public final class CompatManager {
         modules.add(new ForestryCompat());
         modules.add(new ThermalExpansionCompat());
         modules.add(new ExNihiloCompat());
+        modules.add(new TFCTechCompat());
+        modules.add(new MinecraftCompat());
+        modules.add(new StorageDrawersCompat());
+    }
+
+    public static void loadOreDictionaries(RegistryEvent.Register<IRecipe> event) {
+        for (ICompatModule module : modules) {
+            if (module.areRecipesLoadable()) module.registerOreDictionaries(event);
+        }
     }
 
     public static void loadCraftingRecipes(RegistryEvent.Register<IRecipe> event) {

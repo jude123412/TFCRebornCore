@@ -11,7 +11,9 @@ import net.minecraftforge.registries.IForgeRegistry;
 
 public interface ICompatModule {
 
-    List<String> dependancies();
+    List<String> dependencies();
+
+    default void registerOreDictionaries(RegistryEvent.Register<IRecipe> event) {}
 
     default void registerCraftingRecipe(RegistryEvent.Register<IRecipe> event) {}
 
@@ -20,7 +22,7 @@ public interface ICompatModule {
     default void registerAnvilRecipes(IForgeRegistry<AnvilRecipe> r) {}
 
     default boolean areRecipesLoadable() {
-        for (String dep : dependancies()) {
+        for (String dep : dependencies()) {
             if (!Loader.isModLoaded(dep)) {
                 return false;
             }

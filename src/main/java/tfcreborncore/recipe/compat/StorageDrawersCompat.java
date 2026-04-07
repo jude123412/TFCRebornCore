@@ -10,20 +10,17 @@ import net.minecraftforge.oredict.OreDictionary;
 import tfcreborncore.recipe.ICompatModule;
 import tfcreborncore.recipe.RecipeHelper;
 
-public class ForestryCompat implements ICompatModule {
+public class StorageDrawersCompat implements ICompatModule {
 
     @Override
     public List<String> dependencies() {
         return Arrays.asList(
-                Mods.FORESTRY.getName());
+                Mods.STORAGE_DRAWERS.ID);
     }
 
     @Override
     public void registerOreDictionaries(RegistryEvent.Register<IRecipe> event) {
-        // Sweetener
-        OreDictionary.registerOre("sweetener",
-                RecipeHelper.getItemStack("forestry", "honey_drop"));
-        OreDictionary.registerOre("sweetener",
-                RecipeHelper.getItemStack("forestry", "honeydew"));
+        OreDictionary.registerOre("drawerFramed",
+                RecipeHelper.getItemStack("storagedrawers", "customdrawers", OreDictionary.WILDCARD_VALUE));
     }
 }

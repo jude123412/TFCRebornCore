@@ -4,15 +4,18 @@ public enum Mods {
 
     THERMAL_EXPANSION("thermalexpansion"),
     EX_NIHILO_CREATIO("exnihilocreatio"),
+    TFC_TECH("tfctech"),
+    MINECRAFT("minecraft"),
+    STORAGE_DRAWERS("storagedrawers"),
     FORESTRY("forestry");
 
-    private final String name;
+    public final String ID;
 
     Mods(String name) {
-        this.name = name;
+        this.ID = name;
     }
 
     public final String getName() {
-        return name;
+        return ID;
     }
 }

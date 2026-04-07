@@ -14,7 +14,6 @@ import net.minecraftforge.oredict.ShapedOreRecipe;
  * Modified to create a publicly accessible recipe class
  * Modified by xXjudeXx on 2026-03-23
  */
-
 public class ShapedSkillRecipe extends ShapedOreRecipe {
 
     public ShapedSkillRecipe(ResourceLocation name, @Nonnull ItemStack result, CraftingHelper.ShapedPrimer primer) {

@@ -1,6 +1,8 @@
 package tfcreborncore.recipe;
 
-import net.dries007.tfc.objects.recipes.RecipeUtils;
+import java.util.ArrayList;
+import java.util.List;
+
 import net.minecraft.init.Items;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.Item;
@@ -15,10 +17,6 @@ import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.registries.IForgeRegistry;
 import net.minecraftforge.registries.IForgeRegistryEntry;
-import tfcreborncore.TFCRebornCore;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class RecipeHelper {
 
@@ -31,6 +29,11 @@ public class RecipeHelper {
         return new ItemStack(item, 1, metaId);
     }
 
+    // gets an item without meta value
+    public static ItemStack getItemStack(String modId, String itemId) {
+        return getItemStack(modId, itemId, 0);
+    }
+
     // Returns a fluid
     public static Fluid getFluid(String fluidName) {
         return FluidRegistry.getFluid(fluidName);
@@ -41,6 +44,9 @@ public class RecipeHelper {
         return FluidRegistry.getFluidStack(fluidName, amount);
     }
 
+    // Removes crafting recipes by output
+    // Has Wildcard capability for remove all items
+    // with meta values
     public static void removeRecipeByOutput(IForgeRegistry<IRecipe> registry, ItemStack output) {
         List<ResourceLocation> toRemove = new ArrayList<>();
 
@@ -65,6 +71,7 @@ public class RecipeHelper {
      * Modified by xXjudeXx on 2026-04-07
      */
     private static class DummyRecipe extends IForgeRegistryEntry.Impl<IRecipe> implements IRecipe {
+
         private DummyRecipe(String domain, String id) {
             this.setRegistryName(domain, id);
         }

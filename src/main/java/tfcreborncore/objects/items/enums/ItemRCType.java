@@ -62,6 +62,8 @@ public enum ItemRCType {
     UNFIRED_CERAMIC_INSULATOR(Size.NORMAL, Weight.LIGHT, true),
     CERAMIC_INSULATOR(Size.NORMAL, Weight.LIGHT, true),
     GLASS_INSULATOR(Size.NORMAL, Weight.LIGHT, true),
+    RADIATOR_PIPING(Size.SMALL, Weight.MEDIUM, true),
+    RADIATOR_MATRIX(Size.NORMAL, Weight.MEDIUM, true),
     SLAG(Size.VERY_SMALL, Weight.VERY_LIGHT, "crystalSlag", true),
     RICH_SLAG(Size.VERY_SMALL, Weight.VERY_LIGHT, "crystalSlagRich", true);
 

@@ -64,6 +64,8 @@ item.tfcreborncore.item.unfired_ceramic_insulator.name=Unfired Ceramic Insulator
 item.tfcreborncore.item.ceramic_insulator.name=Ceramic Insulator
 item.tfcreborncore.item.glass_insulator.name=Glass Insulator
 item.tfcreborncore.item.brass_piston.name=Brass Piston
+item.tfcreborncore.item.radiator_piping.name=Radiator Piping
+item.tfcreborncore.item.radiator_matrix.name=Radiator Matrix
 item.tfcreborncore.item.slag.name=Slag
 item.tfcreborncore.item.rich_slag.name=Rich Slag
 

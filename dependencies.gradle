@@ -43,7 +43,6 @@ dependencies {
     implementation rfg.deobf("curse.maven:tfc-decoration-1.0.9-414667:3510190") // TFC Decoration 1.0.9
     implementation rfg.deobf("curse.maven:journey-map-5.7.1p3-32274:5172461") // Journey Map 5.7.1p3
     implementation rfg.deobf("curse.maven:immersive-engineering-0.12.98-231951:2974106") // Immersive Engineering 0.12.98
-    implementation rfg.deobf("curse.maven:groovy-script-1.4.1-687577:7813868") // Groovy Script 1.4.1
 
     compileOnly rfg.deobf("curse.maven:forestry-5.8.2.427-59751:7398359") // Forestry 5.8.2.427
     compileOnly rfg.deobf("curse.maven:binnies-mods-patched-2.5.1.213-899182:7731146") // Binnies Mods Patched 2.5.1.213
@@ -63,4 +62,7 @@ dependencies {
     runtimeOnlyNonPublishable rfg.deobf("curse.maven:cofh-world-1.4.9.1-271384:2920434") // Code Chicken Lib 1.4.9.1
     runtimeOnlyNonPublishable rfg.deobf("curse.maven:forestry-5.8.2.427-59751:7398359") // Forestry 5.8.2.427
     runtimeOnlyNonPublishable rfg.deobf("curse.maven:binnies-mods-patched-2.5.1.213-899182:7731146") // Binnies Mods Patched 2.5.1.213
+    runtimeOnlyNonPublishable rfg.deobf("curse.maven:ex-nihilo-0.4.7.2-274456:2817545") // Ex Nihilo 0.4.7.2
+    runtimeOnlyNonPublishable rfg.deobf("curse.maven:forgelin-1.8.4-248453:2785465") // Forgelin 1.8.4
+    runtimeOnlyNonPublishable rfg.deobf("curse.maven:groovy-script-1.4.1-687577:7813868") // Groovy Script 1.4.1
 }

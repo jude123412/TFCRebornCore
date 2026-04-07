@@ -13,9 +13,7 @@ import tfcreborncore.Tags;
 
 public class TFCRecipeHelper {
 
-    public static int getHours(int hours) {
-        return hours * 1000;
-    }
+    public static int H = 1000;
 
     public static void addBarrelRecipe(IForgeRegistry<BarrelRecipe> r, IIngredient<FluidStack> inputFluid,
                                        IIngredient<ItemStack> inputStack, FluidStack outputFluid, ItemStack outputStack,

@@ -50,7 +50,9 @@ public class TFCRebornCore {
 
     @EventHandler
     // postInit "Handle interaction with other mods, complete your setup based on this." (Remove if not needed)
-    public void postInit(FMLPostInitializationEvent event) {}
+    public void postInit(FMLPostInitializationEvent event) {
+        CompatManager.loadSieveRecipes(event);
+    }
 
     @EventHandler
     // register server commands in this event handler (Remove if not needed)

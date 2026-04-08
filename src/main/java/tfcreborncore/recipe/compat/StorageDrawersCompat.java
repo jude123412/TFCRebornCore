@@ -19,7 +19,7 @@ public class StorageDrawersCompat implements ICompatModule {
     }
 
     @Override
-    public void registerOreDictionaries(RegistryEvent.Register<IRecipe> event) {
+    public void registerOreDictionaries(RegistryEvent.Register<IRecipe> e) {
         OreDictionary.registerOre("drawerFramed",
                 RecipeHelper.getItemStack("storagedrawers", "customdrawers", OreDictionary.WILDCARD_VALUE));
     }

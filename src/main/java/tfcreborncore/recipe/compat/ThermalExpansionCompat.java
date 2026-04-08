@@ -26,7 +26,7 @@ public class ThermalExpansionCompat implements ICompatModule {
     }
 
     @Override
-    public void registerOreDictionaries(RegistryEvent.Register<IRecipe> event) {
+    public void registerOreDictionaries(RegistryEvent.Register<IRecipe> e) {
         // GemCinnabar
         OreDictionary.registerOre("gemCinnabar",
                 RecipeHelper.getItemStack("thermalfoundation", "material", 866));

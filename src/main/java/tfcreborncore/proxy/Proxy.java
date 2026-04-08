@@ -2,7 +2,6 @@ package tfcreborncore.proxy;
 
 import net.dries007.tfc.api.recipes.WeldingRecipe;
 import net.dries007.tfc.api.recipes.anvil.AnvilRecipe;
-import net.dries007.tfc.api.recipes.barrel.BarrelRecipe;
 import net.dries007.tfc.api.recipes.quern.QuernRecipe;
 import net.dries007.tfc.util.fuel.FuelManager;
 import net.minecraft.item.Item;
@@ -16,7 +15,6 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import tfcreborncore.Tags;
 import tfcreborncore.objects.RCItems;
 import tfcreborncore.objects.recipe.CraftingRecipeManager;
-import tfcreborncore.recipe.CompatManager;
 import tfcreborncore.recipe.MetalRecipes;
 
 @Mod.EventBusSubscriber(modid = Tags.MODID)
@@ -30,10 +28,14 @@ public class Proxy {
     }
 
     @SubscribeEvent
+    public static void registerRecipes(RegistryEvent.Register<IRecipe> event) {
+        MetalRecipes.registerShapedSkillRecipe();
+        CraftingRecipeManager.SHAPED_RECIPES.forEach(event.getRegistry()::register);
+    }
+
+    @SubscribeEvent
     public static void registerAnvilRecipes(RegistryEvent.Register<AnvilRecipe> event) {
         MetalRecipes.registerAnvilRecipes(event);
-
-        CompatManager.loadAnvilRecipes(event);
     }
 
     @SubscribeEvent
@@ -44,19 +46,6 @@ public class Proxy {
     @SubscribeEvent
     public static void registerQuernRecipes(RegistryEvent.Register<QuernRecipe> event) {
         MetalRecipes.registerQuernRecipes(event);
-    }
-
-    @SubscribeEvent
-    public static void registerBarrelRecipes(RegistryEvent.Register<BarrelRecipe> event) {
-        CompatManager.loadBarrelRecipes(event);
-    }
-
-    @SubscribeEvent
-    public static void registerRecipes(RegistryEvent.Register<IRecipe> event) {
-        MetalRecipes.registerShapedSkillRecipe();
-        CompatManager.loadOreDictionaries(event);
-        CompatManager.loadCraftingRecipes(event);
-        CraftingRecipeManager.SHAPED_RECIPES.forEach(event.getRegistry()::register);
     }
 
     @SubscribeEvent

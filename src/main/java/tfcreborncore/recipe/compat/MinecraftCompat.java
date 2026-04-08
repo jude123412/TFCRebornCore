@@ -19,7 +19,7 @@ public class MinecraftCompat implements ICompatModule {
     }
 
     @Override
-    public void registerOreDictionaries(RegistryEvent.Register<IRecipe> event) {
+    public void registerOreDictionaries(RegistryEvent.Register<IRecipe> e) {
         // GemEnder
         OreDictionary.registerOre("gemEnder",
                 RecipeHelper.getItemStack("minecraft", "ender_pearl"));

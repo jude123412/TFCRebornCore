@@ -19,7 +19,7 @@ public class ForestryCompat implements ICompatModule {
     }
 
     @Override
-    public void registerOreDictionaries(RegistryEvent.Register<IRecipe> event) {
+    public void registerOreDictionaries(RegistryEvent.Register<IRecipe> e) {
         // Sweetener
         OreDictionary.registerOre("sweetener",
                 RecipeHelper.getItemStack("forestry", "honey_drop"));

@@ -7,6 +7,8 @@ public enum Mods {
     TFC_TECH("tfctech"),
     MINECRAFT("minecraft"),
     STORAGE_DRAWERS("storagedrawers"),
+    TERRAFIRMACRAFT("tfc"),
+    FIRMALIFE("firmalife"),
     FORESTRY("forestry");
 
     public final String ID;

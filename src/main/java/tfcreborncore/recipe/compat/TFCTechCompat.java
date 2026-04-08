@@ -19,7 +19,7 @@ public class TFCTechCompat implements ICompatModule {
     }
 
     @Override
-    public void registerOreDictionaries(RegistryEvent.Register<IRecipe> event) {
+    public void registerOreDictionaries(RegistryEvent.Register<IRecipe> e) {
         // TFC Tech
         // Any Bronze Strip
         OreDictionary.registerOre("stripAnyBronze",

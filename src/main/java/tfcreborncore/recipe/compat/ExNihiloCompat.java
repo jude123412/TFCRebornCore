@@ -111,7 +111,7 @@ public class ExNihiloCompat implements ICompatModule {
 
         // Artificial Hive
         CraftingRecipeManager.addShapedRecipe(
-                new ResourceLocation(Tags.MODID, "steel_mesh"),
+                new ResourceLocation(Tags.MODID, "artificial_hive"),
                 getItemStack(Mods.EX_NIHILO_CREATIO.ID, "hive", 0),
                 "SSS",
                 "SHS",

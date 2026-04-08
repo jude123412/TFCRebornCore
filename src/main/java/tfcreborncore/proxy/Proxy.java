@@ -34,7 +34,7 @@ public class Proxy {
         MetalRecipes.registerShapedSkillRecipe();
         CompatManager.loadOreDictionaries(event);
         CompatManager.loadCraftingRecipes(event);
-        CraftingRecipeManager.SHAPED_RECIPES.forEach(event.getRegistry()::register);
+        CraftingRecipeManager.RECIPE_LIST.forEach(event.getRegistry()::register);
     }
 
     @SubscribeEvent

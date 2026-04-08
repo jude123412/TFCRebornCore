@@ -1,5 +1,7 @@
 package tfcreborncore.recipe.compat;
 
+import static tfcreborncore.recipe.RecipeHelper.getItemStack;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -9,8 +11,6 @@ import net.minecraftforge.oredict.OreDictionary;
 
 import tfcreborncore.recipe.ICompatModule;
 import tfcreborncore.recipe.RecipeHelper;
-
-import static tfcreborncore.recipe.RecipeHelper.getItemStack;
 
 public class MinecraftCompat implements ICompatModule {
 

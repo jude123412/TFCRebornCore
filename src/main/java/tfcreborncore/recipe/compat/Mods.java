@@ -8,6 +8,8 @@ public enum Mods {
     MINECRAFT("minecraft"),
     STORAGE_DRAWERS("storagedrawers"),
     TERRAFIRMACRAFT("tfc"),
+    BAUBLELICIOUS("baublelicious"),
+    BAUBLES("baubles"),
     FIRMALIFE("firmalife"),
     FORESTRY("forestry");
 

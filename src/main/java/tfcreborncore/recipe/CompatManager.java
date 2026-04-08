@@ -9,6 +9,7 @@ import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 
+import tfcreborncore.recipe.compat.BaubleliciousCompat;
 import tfcreborncore.recipe.compat.ExNihiloCompat;
 import tfcreborncore.recipe.compat.ForestryCompat;
 import tfcreborncore.recipe.compat.MinecraftCompat;
@@ -27,6 +28,7 @@ public final class CompatManager {
         modules.add(new TFCTechCompat());
         modules.add(new MinecraftCompat());
         modules.add(new StorageDrawersCompat());
+        modules.add(new BaubleliciousCompat());
     }
 
     public static void loadOreDictionaries(RegistryEvent.Register<IRecipe> event) {

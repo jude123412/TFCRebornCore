@@ -65,7 +65,6 @@ public class MetalRecipes {
                         ingredientIngot, strip, metal.getTier(), null, ForgeRule.HIT_ANY,
                         ForgeRule.HIT_ANY, ForgeRule.SHRINK_ANY));
 
-
             }
             if (metal.isToolMetal()) {
                 IIngredient<ItemStack> ingredientIngot = IIngredient

@@ -10,6 +10,8 @@ import net.minecraftforge.oredict.OreDictionary;
 import tfcreborncore.recipe.ICompatModule;
 import tfcreborncore.recipe.RecipeHelper;
 
+import static tfcreborncore.recipe.RecipeHelper.getItemStack;
+
 public class MinecraftCompat implements ICompatModule {
 
     @Override
@@ -19,9 +21,14 @@ public class MinecraftCompat implements ICompatModule {
     }
 
     @Override
-    public void registerOreDictionaries(RegistryEvent.Register<IRecipe> e) {
+    public void registerOreDictionaries(RegistryEvent.Register<IRecipe> r) {
         // GemEnder
         OreDictionary.registerOre("gemEnder",
                 RecipeHelper.getItemStack("minecraft", "ender_pearl"));
+    }
+
+    @Override
+    public void registerCraftingRecipe(RegistryEvent.Register<IRecipe> r) {
+        RecipeHelper.removeRecipeByOutput(r, getItemStack(Mods.MINECRAFT.ID, "blaze_powder"));
     }
 }

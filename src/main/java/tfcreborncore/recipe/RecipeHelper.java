@@ -10,6 +10,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
+import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
@@ -17,6 +18,7 @@ import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.registries.IForgeRegistry;
 import net.minecraftforge.registries.IForgeRegistryEntry;
+import net.minecraftforge.registries.IForgeRegistryModifiable;
 
 public class RecipeHelper {
 
@@ -47,10 +49,10 @@ public class RecipeHelper {
     // Removes crafting recipes by output
     // Has Wildcard capability for remove all items
     // with meta values
-    public static void removeRecipeByOutput(IForgeRegistry<IRecipe> registry, ItemStack output) {
+    public static void removeRecipeByOutput(RegistryEvent.Register<IRecipe> registry, ItemStack output) {
+        IForgeRegistryModifiable<IRecipe> r = (IForgeRegistryModifiable) registry.getRegistry();
         List<ResourceLocation> toRemove = new ArrayList<>();
-
-        for (IRecipe recipe : registry.getValuesCollection()) {
+        for (IRecipe recipe : r.getValuesCollection()) {
             ItemStack recipeOutput = recipe.getRecipeOutput();
             boolean areItemsEqual = recipeOutput.getItem().equals(output.getItem());
             boolean isMetaEqual = recipeOutput.getItemDamage() == output.getItemDamage();
@@ -59,9 +61,8 @@ public class RecipeHelper {
                 toRemove.add(recipe.getRegistryName());
             }
         }
-
         for (ResourceLocation rl : toRemove) {
-            registry.register(new DummyRecipe(rl.getNamespace(), rl.getPath()));
+            r.register(new DummyRecipe(rl.getNamespace(), rl.getPath()));
         }
     }
 

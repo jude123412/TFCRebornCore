@@ -14,15 +14,15 @@ public interface ICompatModule {
 
     List<String> dependencies();
 
-    default void registerOreDictionaries(RegistryEvent.Register<IRecipe> e) {}
+    default void registerOreDictionaries(RegistryEvent.Register<IRecipe> r) {}
 
-    default void registerCraftingRecipe(RegistryEvent.Register<IRecipe> e) {}
+    default void registerCraftingRecipe(RegistryEvent.Register<IRecipe> r) {}
 
     default void registerBarrelRecipes(IForgeRegistry<BarrelRecipe> r) {}
 
     default void registerAnvilRecipes(IForgeRegistry<AnvilRecipe> r) {}
 
-    default void registerSieveRecipes(FMLPostInitializationEvent e) {}
+    default void registerSieveRecipes(FMLPostInitializationEvent r) {}
 
     default boolean areRecipesLoadable() {
         for (String dep : dependencies()) {

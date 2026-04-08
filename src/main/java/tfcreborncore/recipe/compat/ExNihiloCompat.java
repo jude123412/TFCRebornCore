@@ -37,37 +37,35 @@ public class ExNihiloCompat implements ICompatModule {
     }
 
     @Override
-    public void registerCraftingRecipe(RegistryEvent.Register<IRecipe> e) {
-        IForgeRegistryModifiable<IRecipe> registry = (IForgeRegistryModifiable) e.getRegistry();
-
-        RecipeHelper.removeRecipeByOutput(registry, getItemStack(Mods.EX_NIHILO_CREATIO.ID, "hammer_wood"));
-        RecipeHelper.removeRecipeByOutput(registry, getItemStack(Mods.EX_NIHILO_CREATIO.ID, "hammer_stone"));
-        RecipeHelper.removeRecipeByOutput(registry, getItemStack(Mods.EX_NIHILO_CREATIO.ID, "hammer_iron"));
-        RecipeHelper.removeRecipeByOutput(registry, getItemStack(Mods.EX_NIHILO_CREATIO.ID, "hammer_diamond"));
-        RecipeHelper.removeRecipeByOutput(registry, getItemStack(Mods.EX_NIHILO_CREATIO.ID, "hammer_gold"));
-        RecipeHelper.removeRecipeByOutput(registry,
+    public void registerCraftingRecipe(RegistryEvent.Register<IRecipe> r) {
+        RecipeHelper.removeRecipeByOutput(r, getItemStack(Mods.EX_NIHILO_CREATIO.ID, "hammer_wood"));
+        RecipeHelper.removeRecipeByOutput(r, getItemStack(Mods.EX_NIHILO_CREATIO.ID, "hammer_stone"));
+        RecipeHelper.removeRecipeByOutput(r, getItemStack(Mods.EX_NIHILO_CREATIO.ID, "hammer_iron"));
+        RecipeHelper.removeRecipeByOutput(r, getItemStack(Mods.EX_NIHILO_CREATIO.ID, "hammer_diamond"));
+        RecipeHelper.removeRecipeByOutput(r, getItemStack(Mods.EX_NIHILO_CREATIO.ID, "hammer_gold"));
+        RecipeHelper.removeRecipeByOutput(r,
                 getItemStack(Mods.EX_NIHILO_CREATIO.ID, "item_mesh", OreDictionary.WILDCARD_VALUE));
-        RecipeHelper.removeRecipeByOutput(registry,
+        RecipeHelper.removeRecipeByOutput(r,
                 getItemStack(Mods.EX_NIHILO_CREATIO.ID, "item_material", OreDictionary.WILDCARD_VALUE));
-        RecipeHelper.removeRecipeByOutput(registry,
+        RecipeHelper.removeRecipeByOutput(r,
                 getItemStack(Mods.EX_NIHILO_CREATIO.ID, "block_crucible"));
-        RecipeHelper.removeRecipeByOutput(registry,
+        RecipeHelper.removeRecipeByOutput(r,
                 getItemStack(Mods.EX_NIHILO_CREATIO.ID, "block_barrel0"));
-        RecipeHelper.removeRecipeByOutput(registry,
+        RecipeHelper.removeRecipeByOutput(r,
                 getItemStack(Mods.EX_NIHILO_CREATIO.ID, "block_barrel1"));
-        RecipeHelper.removeRecipeByOutput(registry,
+        RecipeHelper.removeRecipeByOutput(r,
                 getItemStack(Mods.EX_NIHILO_CREATIO.ID, "block_waterwheel"));
-        RecipeHelper.removeRecipeByOutput(registry,
+        RecipeHelper.removeRecipeByOutput(r,
                 getItemStack(Mods.EX_NIHILO_CREATIO.ID, "block_axle_stone"));
-        RecipeHelper.removeRecipeByOutput(registry,
+        RecipeHelper.removeRecipeByOutput(r,
                 getItemStack(Mods.EX_NIHILO_CREATIO.ID, "block_auto_sifter"));
-        RecipeHelper.removeRecipeByOutput(registry,
+        RecipeHelper.removeRecipeByOutput(r,
                 getItemStack(Mods.EX_NIHILO_CREATIO.ID, "block_end_cake"));
-        RecipeHelper.removeRecipeByOutput(registry,
+        RecipeHelper.removeRecipeByOutput(r,
                 getItemStack(Mods.EX_NIHILO_CREATIO.ID, "block_crucible_wood"));
-        RecipeHelper.removeRecipeByOutput(registry,
+        RecipeHelper.removeRecipeByOutput(r,
                 getItemStack(Mods.EX_NIHILO_CREATIO.ID, "item_doll", OreDictionary.WILDCARD_VALUE));
-        RecipeHelper.removeRecipeByOutput(registry,
+        RecipeHelper.removeRecipeByOutput(r,
                 getItemStack(Mods.EX_NIHILO_CREATIO.ID, "hive", OreDictionary.WILDCARD_VALUE));
 
         // String Mesh

@@ -18,6 +18,8 @@ public interface ICompatModule {
 
     default void registerCraftingRecipe(RegistryEvent.Register<IRecipe> r) {}
 
+    default void registerItemMetal(FMLPostInitializationEvent r) {}
+
     default void registerBarrelRecipes(IForgeRegistry<BarrelRecipe> r) {}
 
     default void registerAnvilRecipes(IForgeRegistry<AnvilRecipe> r) {}

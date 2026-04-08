@@ -43,6 +43,12 @@ public final class CompatManager {
         }
     }
 
+    public static void loadItemMetal(FMLPostInitializationEvent event) {
+        for (ICompatModule module : modules) {
+            if (module.areRecipesLoadable()) module.registerItemMetal(event);
+        }
+    }
+
     public static void loadBarrelRecipes(RegistryEvent.Register<BarrelRecipe> event) {
         for (ICompatModule module : modules) {
             if (module.areRecipesLoadable()) module.registerBarrelRecipes(event.getRegistry());

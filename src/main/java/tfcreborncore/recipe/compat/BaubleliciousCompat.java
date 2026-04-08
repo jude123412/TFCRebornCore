@@ -6,10 +6,12 @@ import java.util.List;
 import net.dries007.tfc.api.recipes.anvil.AnvilRecipe;
 import net.dries007.tfc.api.types.Metal;
 import net.dries007.tfc.objects.inventory.ingredient.IIngredient;
+import net.dries007.tfc.types.DefaultMetals;
 import net.dries007.tfc.util.forge.ForgeRule;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.registries.IForgeRegistry;
 
@@ -176,6 +178,12 @@ public class BaubleliciousCompat implements ICompatModule {
                 'S', "stickSterlingSilver",
                 'B', RecipeHelper.getItemStack(Mods.BAUBLELICIOUS.ID, "itemring"),
                 'I', "ingotAnyBronze");
+    }
+
+    @Override
+    public void registerItemMetal(FMLPostInitializationEvent r) {
+        TFCRecipeHelper.addItemMetal(RecipeHelper.getItemStack(Mods.BAUBLELICIOUS.ID, "itemring"), DefaultMetals.GOLD,
+                100, true);
     }
 
     @Override

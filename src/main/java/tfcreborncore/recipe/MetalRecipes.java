@@ -65,6 +65,12 @@ public class MetalRecipes {
                         ingredientIngot, strip, metal.getTier(), null, ForgeRule.HIT_ANY,
                         ForgeRule.HIT_ANY, ForgeRule.SHRINK_ANY));
 
+
+            }
+            if (metal.isToolMetal()) {
+                IIngredient<ItemStack> ingredientIngot = IIngredient
+                        .of(new ItemStack(ItemMetal.get(metal, Metal.ItemType.INGOT)));
+
                 ItemStack wire_cutter_head = new ItemStack(
                         ItemRCMetal.get(metal, ItemRCMetalType.WIRE_CUTTER_HEAD));
 

@@ -4,6 +4,7 @@ import net.dries007.tfc.api.capability.damage.DamageType;
 import net.dries007.tfc.api.registries.TFCRegistries;
 import net.dries007.tfc.api.types.Metal;
 import net.dries007.tfc.api.types.Ore;
+import net.dries007.tfc.util.OreDictionaryHelper;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.renderer.color.IItemColor;
 import net.minecraft.creativetab.CreativeTabs;
@@ -162,9 +163,9 @@ public class RCItems {
                         new ItemRCUniversalWeapon(metal),
                         CreativeTabsRC.CT_ITEMS);
                 OreDictionary.registerOre("universalWeapon", universalWeapon);
-                OreDictionary.registerOre(DamageType.SLASHING.toString().toLowerCase(), universalWeapon);
-                OreDictionary.registerOre(DamageType.CRUSHING.toString().toLowerCase(), universalWeapon);
-                OreDictionary.registerOre(DamageType.PIERCING.toString().toLowerCase(), universalWeapon);
+                OreDictionary.registerOre("damageType" + DamageType.SLASHING.toString().toLowerCase(), universalWeapon);
+                OreDictionary.registerOre("damageType" + DamageType.CRUSHING.toString().toLowerCase(), universalWeapon);
+                OreDictionary.registerOre("damageType" + DamageType.PIERCING.toString().toLowerCase(), universalWeapon);
                 universalWeaponItems.add(universalWeapon);
             }
         }

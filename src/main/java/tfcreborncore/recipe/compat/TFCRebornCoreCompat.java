@@ -32,6 +32,7 @@ public class TFCRebornCoreCompat implements ICompatModule {
                 Mods.TFC_TECH.ID,
                 Mods.TFC_METALLUM.ID,
                 Mods.THERMAL_EXPANSION.ID,
+                Mods.THERMAL_FOUNDATION.ID,
                 Mods.EX_NIHILO_CREATIO.ID);
     }
 
@@ -143,5 +144,19 @@ public class TFCRebornCoreCompat implements ICompatModule {
                     35,
                     7000);
         }
+
+        // Leaves Recycling
+        ThermalExpansionRecipeManager.addPulverizerRecipe(
+                "treeLeaves",
+                RecipeHelper.getItemStack(Mods.THERMAL_FOUNDATION.ID, "material", 816),
+                1600);
+
+        // Sapling Recycling
+        ThermalExpansionRecipeManager.addPulverizerRecipe(
+                "treeSapling",
+                RecipeHelper.getItemStack(Mods.THERMAL_FOUNDATION.ID, "material", 816),
+                RecipeHelper.getItemStack(Mods.MINECRAFT.ID, "stick"),
+                25,
+                1600);
     }
 }

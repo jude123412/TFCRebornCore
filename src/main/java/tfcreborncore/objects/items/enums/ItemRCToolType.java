@@ -13,9 +13,9 @@ import tfcreborncore.objects.items.ItemRCTool;
 
 public enum ItemRCToolType {
 
-    MINING_HAMMER(500, 3, 0.875F, -3.0F, "shovel", Size.LARGE, Weight.VERY_HEAVY),
-    EXCAVATOR(300, 3, 1.0F, -3.0F, "pickaxe", Size.LARGE, Weight.HEAVY),
-    WIRE_CUTTER(100, 1, 0.475F, -2.0F, "IE_WIRECUTTER", Size.NORMAL, Weight.MEDIUM);
+    MINING_HAMMER(500, 3, 0.875F, -1.2F, "shovel", Size.LARGE, Weight.VERY_HEAVY),
+    EXCAVATOR(300, 3, 1.0F, -1.0F, "pickaxe", Size.LARGE, Weight.HEAVY),
+    WIRE_CUTTER(100, 1, 0.475F, -1.0F, "IE_WIRECUTTER", Size.NORMAL, Weight.MEDIUM);
 
     // ---------------------------------------------------------------------
     // Fields

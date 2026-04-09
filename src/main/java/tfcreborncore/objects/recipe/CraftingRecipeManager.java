@@ -28,6 +28,13 @@ public class CraftingRecipeManager {
         RECIPE_LIST.add(recipe);
     }
 
+    public static void addShapelessSkillRecipe(ResourceLocation name, ItemStack result, Object... inputs) {
+        ShapelessSkillRecipe recipe = new ShapelessSkillRecipe(name, result, inputs);
+        recipe.setRegistryName(name);
+
+        RECIPE_LIST.add(recipe);
+    }
+
     public static void addShapedRecipe(ResourceLocation name, ItemStack result, Object... inputs) {
         Object[] list = new Object[inputs.length + 1];
         list[0] = false;

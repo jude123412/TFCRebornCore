@@ -1,0 +1,7 @@
+{
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "tfcreborncore:items/metal/tool/universal_weapon",
+    "layer1": "tfcreborncore:items/metal/tool/universal_weapon_overlay"
+  }
+}

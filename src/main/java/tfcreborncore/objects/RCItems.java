@@ -25,6 +25,7 @@ import tfcreborncore.objects.items.ItemRCLumber;
 import tfcreborncore.objects.items.ItemRCMetal;
 import tfcreborncore.objects.items.ItemRCOre;
 import tfcreborncore.objects.items.ItemRCTool;
+import tfcreborncore.objects.items.ItemRCUniversalWeapon;
 import tfcreborncore.objects.items.enums.ItemRCLumberType;
 import tfcreborncore.objects.items.enums.ItemRCMetalType;
 import tfcreborncore.objects.items.enums.ItemRCOreType;
@@ -36,6 +37,7 @@ public class RCItems {
     private static ImmutableList<Item> allOreItems;
     private static ImmutableList<Item> allMetalItems;
     private static ImmutableList<Item> allToolItems;
+    private static ImmutableList<Item> allUniversalWeaponItems;
     private static ImmutableList<Item> allRegularItems;
     private static ImmutableList<Item> allWoodItems;
 
@@ -43,6 +45,7 @@ public class RCItems {
         registerOreItems(event);
         registerMetalItems(event);
         registerToolItems(event);
+        registerAllUniversalWeaponItems(event);
         registerRegularItems(event);
         registerLumberWoodItems(event);
     }
@@ -51,6 +54,7 @@ public class RCItems {
         registerOreItemColor(event);
         registerMetalItemColor(event);
         registerToolItemColor(event);
+        registerUniversalWeaponItemColor(event);
         registerLumberItemColor(event);
     }
 
@@ -138,10 +142,30 @@ public class RCItems {
                             metalItemType);
                     metalItems.add(metalType);
                 }
+
             }
         }
 
         allToolItems = metalItems.build();
+    }
+
+    public static void registerAllUniversalWeaponItems(RegistryEvent.Register<Item> event) {
+        IForgeRegistry<Item> registry = event.getRegistry();
+
+        ImmutableList.Builder<Item> universalWeaponItems = ImmutableList.builder();
+        for (Metal metal : TFCRegistries.METALS) {
+            if (metal.isToolMetal()) {
+
+                String base = "metal/tool/universal_weapon/" + metal.getRegistryName().getPath().toLowerCase();
+                Item universalWeapon = register(registry, base,
+                        new ItemRCUniversalWeapon(metal),
+                        CreativeTabsRC.CT_ITEMS);
+
+                universalWeaponItems.add(universalWeapon);
+            }
+        }
+
+        allUniversalWeaponItems = universalWeaponItems.build();
     }
 
     public static void registerRegularItems(RegistryEvent.Register<Item> event) {
@@ -202,7 +226,7 @@ public class RCItems {
         for (Item item : metalItems) {
             if (!(item instanceof ItemRCMetal metalItem)) continue;
 
-            int color = getMetalColor(metalItem);
+            int color = getMetalColor(metalItem.getMetal());
 
             IItemColor handler = (stack, tintIndex) -> {
                 if (tintIndex != 0) return 0xFFFFFF;
@@ -220,7 +244,25 @@ public class RCItems {
         for (Item item : metalItems) {
             if (!(item instanceof ItemRCTool metalItem)) continue;
 
-            int color = getToolColor(metalItem);
+            int color = getMetalColor(metalItem.getMetal());
+
+            IItemColor handler = (stack, tintIndex) -> {
+                if (tintIndex != 0) return 0xFFFFFF;
+                return color;
+            };
+
+            event.getItemColors().registerItemColorHandler(handler, item);
+        }
+    }
+
+    private static void registerUniversalWeaponItemColor(final ColorHandlerEvent.Item event) {
+        ImmutableList<Item> metalItems = getAllUniversalWeaponItems();
+        if (metalItems == null || metalItems.isEmpty()) return;
+
+        for (Item item : metalItems) {
+            if (!(item instanceof ItemRCUniversalWeapon metalItem)) continue;
+
+            int color = getMetalColor(metalItem.getMetal());
 
             IItemColor handler = (stack, tintIndex) -> {
                 if (tintIndex != 0) return 0xFFFFFF;
@@ -270,6 +312,13 @@ public class RCItems {
                     "inventory"));
         }
 
+        for (Item item : getAllUniversalWeaponItems()) {
+            ItemRCUniversalWeapon metalItem = (ItemRCUniversalWeapon) item;
+            ModelLoader.setCustomModelResourceLocation(metalItem, 0, new ModelResourceLocation(
+                    new ResourceLocation(Tags.MODID, "metal/tool/universal_weapon"),
+                    "inventory"));
+        }
+
         for (Item item : getAllRegularItems()) {
             ItemRC regularItem = (ItemRC) item;
             ModelLoader.setCustomModelResourceLocation(regularItem, 0, new ModelResourceLocation(
@@ -295,6 +344,10 @@ public class RCItems {
 
     public static ImmutableList<Item> getAllToolItems() {
         return allToolItems;
+    }
+
+    public static ImmutableList<Item> getAllUniversalWeaponItems() {
+        return allUniversalWeaponItems;
     }
 
     public static ImmutableList<Item> getAllRegularItems() {
@@ -381,12 +434,8 @@ public class RCItems {
         return color;
     }
 
-    private static int getMetalColor(ItemRCMetal metalItem) {
-        return metalItem.getMetal().getColor() & 0xFFFFFF;
-    }
-
-    private static int getToolColor(ItemRCTool metalItem) {
-        return metalItem.getMetal().getColor() & 0xFFFFFF;
+    private static int getMetalColor(Metal metal) {
+        return metal.getColor() & 0xFFFFFF;
     }
 
     protected static <T extends Item> T register(IForgeRegistry<Item> r, String name, T item, CreativeTabs ct) {

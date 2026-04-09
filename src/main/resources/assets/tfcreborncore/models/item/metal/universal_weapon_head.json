@@ -1,0 +1,7 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "tfcreborncore:items/metal/universal_weapon_head",
+    "layer1": "tfcreborncore:items/metal/universal_weapon_head_overlay"
+  }
+}

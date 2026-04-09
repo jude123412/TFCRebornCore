@@ -17,6 +17,11 @@ item.tfcreborncore.tool.excavator.name=%s Excavator
 item.tfcreborncore.metal.wire_cutter_head.name=%s Wire Cutter Head
 item.tfcreborncore.tool.wire_cutter.name=%s Wire Cutter
 
+# Universal Weapon
+item.tfcreborncore.metal.unfinished_universal_weapon_head.name=Unfinished %s Universal Weapon Head
+item.tfcreborncore.metal.universal_weapon_head.name=%s Universal Weapon Head
+item.tfcreborncore.tool.universal_weapon.name=%s Universal Weapon
+
 # Metal Items
 item.tfcreborncore.metal.rackwheel_half.name=%s Rackwheel Half
 

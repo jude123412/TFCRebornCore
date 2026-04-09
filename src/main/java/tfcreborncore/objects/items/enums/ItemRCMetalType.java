@@ -18,6 +18,8 @@ public enum ItemRCMetalType {
     UNFINISHED_EXCAVATOR_HEAD(200, Size.LARGE, Weight.MEDIUM, false, true),
     EXCAVATOR_HEAD(300, Size.LARGE, Weight.HEAVY, true, true),
     WIRE_CUTTER_HEAD(100, Size.NORMAL, Weight.MEDIUM, true, true),
+    UNFINISHED_UNIVERSAL_WEAPON_HEAD(200, Size.LARGE, Weight.MEDIUM, false, true),
+    UNIVERSAL_WEAPON_HEAD(200, Size.LARGE, Weight.MEDIUM, true, true),
     RACKWHEEL_HALF(200, Size.NORMAL, Weight.MEDIUM, true, false);
 
     // ---------------------------------------------------------------------

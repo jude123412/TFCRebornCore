@@ -8,7 +8,6 @@ import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLLoadCompleteEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
@@ -57,7 +56,7 @@ public class TFCRebornCore {
     }
 
     @EventHandler
-    public void loadComplete(FMLLoadCompleteEvent event) {
+    public void loadComplete(FMLPostInitializationEvent event) {
         CompatManager.loadPulverizerRecipes(event);
     }
 

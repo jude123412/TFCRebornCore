@@ -6,7 +6,6 @@ import java.util.List;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;
-import net.minecraftforge.fml.common.event.FMLLoadCompleteEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 
 import tfcreborncore.Tags;
@@ -58,7 +57,7 @@ public class TFCRebornCoreCompat implements ICompatModule {
                     2,
                     RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/pile/" + type.getPrimaryName(), 0, 2),
                     "hammer",
-                    RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID, "ore/" + type.getPrimaryName(), 0));
+                    RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID, "ore/" + type.getPrimaryName(), 1));
 
             // Normal Ore Smashing
             MinecraftRecipeManager.addShapelessDamageRecipe(
@@ -67,7 +66,7 @@ public class TFCRebornCoreCompat implements ICompatModule {
                     2,
                     RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/pile/" + type.getPrimaryName(), 0, 3),
                     "hammer",
-                    RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID, "ore/" + type.getPrimaryName(), 1));
+                    RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID, "ore/" + type.getPrimaryName(), 0));
 
             // Rich Ore Smashing
             MinecraftRecipeManager.addShapelessDamageRecipe(
@@ -106,10 +105,11 @@ public class TFCRebornCoreCompat implements ICompatModule {
     }
 
     @Override
-    public void registerPulverizerRecipes(FMLLoadCompleteEvent r) {
+    public void registerPulverizerRecipes(FMLPostInitializationEvent r) {
         // Remove all Pulverizer Recipes
         ThermalExpansionRecipeManager.removeAllPulverizerRecipes();
 
+        // Ore Processing
         for (OreProcessingTypes type : OreProcessingTypes.values()) {
             // Small Ore Pulverizing
             ThermalExpansionRecipeManager.addPulverizerRecipe(
@@ -121,7 +121,7 @@ public class TFCRebornCoreCompat implements ICompatModule {
 
             // Poor Ore Pulverizing
             ThermalExpansionRecipeManager.addPulverizerRecipe(
-                    RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID, "ore/" + type.getPrimaryName(), 0),
+                    RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID, "ore/" + type.getPrimaryName(), 1),
                     RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/pile/" + type.getPrimaryName(), 0, 3),
                     RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/pile/" + type.getProductA()),
                     15,
@@ -129,7 +129,7 @@ public class TFCRebornCoreCompat implements ICompatModule {
 
             // Normal Ore Pulverizing
             ThermalExpansionRecipeManager.addPulverizerRecipe(
-                    RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID, "ore/" + type.getPrimaryName(), 1),
+                    RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID, "ore/" + type.getPrimaryName(), 0),
                     RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/pile/" + type.getPrimaryName(), 0, 5),
                     RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/pile/" + type.getProductA()),
                     25,

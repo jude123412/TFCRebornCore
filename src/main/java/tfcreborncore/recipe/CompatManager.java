@@ -7,7 +7,6 @@ import net.dries007.tfc.api.recipes.anvil.AnvilRecipe;
 import net.dries007.tfc.api.recipes.barrel.BarrelRecipe;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.event.RegistryEvent;
-import net.minecraftforge.fml.common.event.FMLLoadCompleteEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 
 import tfcreborncore.recipe.compat.BaubleliciousCompat;
@@ -70,7 +69,7 @@ public final class CompatManager {
         }
     }
 
-    public static void loadPulverizerRecipes(FMLLoadCompleteEvent event) {
+    public static void loadPulverizerRecipes(FMLPostInitializationEvent event) {
         for (ICompatModule module : modules) {
             if (module.areRecipesLoadable()) module.registerPulverizerRecipes(event);
         }

@@ -57,10 +57,12 @@ public class ThermalExpansionRecipeManager {
      */
     public static void addPulverizerRecipe(String oreInputs, ItemStack primaryOutput, int energy) {
         for (ItemStack input : OreDictionary.getOres(oreInputs)) {
-            PulverizerRecipe recipe = PulverizerRecipeAccessor.createPulverizerRecipe(input, primaryOutput,
-                    null,
-                    0, energy);
-            PulverizerManagerAccessor.getRecipeMap().put(new ComparableItemStackValidated(input), recipe);
+            if (!input.isEmpty()) {
+                PulverizerRecipe recipe = PulverizerRecipeAccessor.createPulverizerRecipe(input, primaryOutput,
+                        null,
+                        0, energy);
+                PulverizerManagerAccessor.getRecipeMap().put(new ComparableItemStackValidated(input), recipe);
+            }
         }
     }
 
@@ -80,10 +82,12 @@ public class ThermalExpansionRecipeManager {
     public static void addPulverizerRecipe(String oreInputs, ItemStack primaryOutput, ItemStack secondaryOutput,
                                            int secondaryChance, int energy) {
         for (ItemStack input : OreDictionary.getOres(oreInputs)) {
-            PulverizerRecipe recipe = PulverizerRecipeAccessor.createPulverizerRecipe(input, primaryOutput,
-                    secondaryOutput,
-                    secondaryChance, energy);
-            PulverizerManagerAccessor.getRecipeMap().put(new ComparableItemStackValidated(input), recipe);
+            if (!input.isEmpty()) {
+                PulverizerRecipe recipe = PulverizerRecipeAccessor.createPulverizerRecipe(input, primaryOutput,
+                        secondaryOutput,
+                        secondaryChance, energy);
+                PulverizerManagerAccessor.getRecipeMap().put(new ComparableItemStackValidated(input), recipe);
+            }
         }
     }
 }

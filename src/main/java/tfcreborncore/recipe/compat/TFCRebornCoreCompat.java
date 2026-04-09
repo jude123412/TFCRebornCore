@@ -7,12 +7,14 @@ import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.event.FMLLoadCompleteEvent;
+import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 
 import tfcreborncore.Tags;
 import tfcreborncore.recipe.ICompatModule;
 import tfcreborncore.recipe.RecipeHelper;
 import tfcreborncore.recipe.enums.Mods;
 import tfcreborncore.recipe.enums.OreProcessingTypes;
+import tfcreborncore.recipe.manager.ExNihiloRecipeManager;
 import tfcreborncore.recipe.manager.MinecraftRecipeManager;
 import tfcreborncore.recipe.manager.ThermalExpansionRecipeManager;
 
@@ -30,7 +32,8 @@ public class TFCRebornCoreCompat implements ICompatModule {
                 Mods.TERRAFIRMACRAFT.ID,
                 Mods.TFC_TECH.ID,
                 Mods.TFC_METALLUM.ID,
-                Mods.THERMAL_EXPANSION.ID);
+                Mods.THERMAL_EXPANSION.ID,
+                Mods.EX_NIHILO_CREATIO.ID);
     }
 
     @Override
@@ -97,12 +100,17 @@ public class TFCRebornCoreCompat implements ICompatModule {
     }
 
     @Override
+    public void registerSieveRecipes(FMLPostInitializationEvent r) {
+        // Remove all Sieve Recipes
+        ExNihiloRecipeManager.removeAllSieveRecipes();
+    }
+
+    @Override
     public void registerPulverizerRecipes(FMLLoadCompleteEvent r) {
         // Remove all Pulverizer Recipes
         ThermalExpansionRecipeManager.removeAllPulverizerRecipes();
 
         for (OreProcessingTypes type : OreProcessingTypes.values()) {
-
             // Small Ore Pulverizing
             ThermalExpansionRecipeManager.addPulverizerRecipe(
                     RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID, "ore/small/" + type.getPrimaryName()),

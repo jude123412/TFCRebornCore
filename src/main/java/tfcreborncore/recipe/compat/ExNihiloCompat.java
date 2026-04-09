@@ -137,9 +137,6 @@ public class ExNihiloCompat implements ICompatModule {
 
     @Override
     public void registerSieveRecipes(FMLPostInitializationEvent e) {
-        // Remove all existing Sieve Recipes
-        ExNihiloRecipeManager.removeAllSieveRecipes();
-
         // Gravel Sieving
         ExNihiloRecipeManager.registerSieveRecipe("gravel", getItemStack("tfc", "ore/small/tetrahedrite"), 0.04F,
                 0.04F);

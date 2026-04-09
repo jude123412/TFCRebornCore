@@ -1,4 +1,4 @@
-package tfcreborncore.objects.recipe;
+package tfcreborncore.recipe.manager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +10,11 @@ import net.minecraftforge.common.crafting.CraftingHelper;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
 
-public class CraftingRecipeManager {
+import tfcreborncore.recipe.manager.builders.ShapedSkillRecipe;
+import tfcreborncore.recipe.manager.builders.ShapelessDamageRecipe;
+import tfcreborncore.recipe.manager.builders.ShapelessSkillRecipe;
+
+public class MinecraftRecipeManager {
 
     public static final List<IRecipe> RECIPE_LIST = new ArrayList<>();
 

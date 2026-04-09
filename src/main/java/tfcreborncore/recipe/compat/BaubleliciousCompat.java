@@ -16,10 +16,11 @@ import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.registries.IForgeRegistry;
 
 import tfcreborncore.Tags;
-import tfcreborncore.objects.recipe.CraftingRecipeManager;
 import tfcreborncore.recipe.ICompatModule;
 import tfcreborncore.recipe.RecipeHelper;
-import tfcreborncore.recipe.mods.TFCRecipeHelper;
+import tfcreborncore.recipe.enums.Mods;
+import tfcreborncore.recipe.manager.MinecraftRecipeManager;
+import tfcreborncore.recipe.manager.TerrafirmacraftRecipeManager;
 
 public class BaubleliciousCompat implements ICompatModule {
 
@@ -59,7 +60,7 @@ public class BaubleliciousCompat implements ICompatModule {
                 RecipeHelper.getItemStack("baublelicious", "item.itemmagiccore", OreDictionary.WILDCARD_VALUE));
 
         // Amulet
-        CraftingRecipeManager.addShapelessDamageRecipe(
+        MinecraftRecipeManager.addShapelessDamageRecipe(
                 new ResourceLocation(Tags.MODID, "amulet"),
                 1,
                 RecipeHelper.getItemStack(Mods.BAUBLELICIOUS.ID, "itemamulet"),
@@ -67,14 +68,14 @@ public class BaubleliciousCompat implements ICompatModule {
                 "leather");
 
         // Belt
-        CraftingRecipeManager.addShapelessRecipe(
+        MinecraftRecipeManager.addShapelessRecipe(
                 new ResourceLocation(Tags.MODID, "belt"),
                 RecipeHelper.getItemStack(Mods.BAUBLELICIOUS.ID, "itembelt"),
                 RecipeHelper.getItemStack(Mods.TFC_TECH.ID, "wiredraw/leather_belt"),
                 "stripGold");
 
         // Speed Belt
-        CraftingRecipeManager.addShapedRecipe(
+        MinecraftRecipeManager.addShapedRecipe(
                 new ResourceLocation(Tags.MODID, "belt/speed"),
                 RecipeHelper.getItemStack(Mods.BAUBLELICIOUS.ID, "itemspeedbelt"),
                 " G ",
@@ -84,7 +85,7 @@ public class BaubleliciousCompat implements ICompatModule {
                 'S', "sweetener",
                 'B', RecipeHelper.getItemStack(Mods.BAUBLELICIOUS.ID, "itembelt"),
                 'I', "ingotAnyBronze");
-        CraftingRecipeManager.addShapedRecipe(
+        MinecraftRecipeManager.addShapedRecipe(
                 new ResourceLocation(Tags.MODID, "belt/speed_alt"),
                 RecipeHelper.getItemStack(Mods.BAUBLELICIOUS.ID, "itemspeedbelt"),
                 " G ",
@@ -96,7 +97,7 @@ public class BaubleliciousCompat implements ICompatModule {
                 'I', "ingotAnyBronze");
 
         // Ring of Flight
-        CraftingRecipeManager.addShapedRecipe(
+        MinecraftRecipeManager.addShapedRecipe(
                 new ResourceLocation(Tags.MODID, "ring/flight"),
                 RecipeHelper.getItemStack(Mods.BAUBLELICIOUS.ID, "itemringofflight"),
                 " G ",
@@ -108,7 +109,7 @@ public class BaubleliciousCompat implements ICompatModule {
                 'I', "ingotBlackSteel");
 
         // Belt of Water Walking
-        CraftingRecipeManager.addShapedRecipe(
+        MinecraftRecipeManager.addShapedRecipe(
                 new ResourceLocation(Tags.MODID, "belt/water_walking"),
                 RecipeHelper.getItemStack(Mods.BAUBLELICIOUS.ID, "itembeltwaterwalking"),
                 " G ",
@@ -120,7 +121,7 @@ public class BaubleliciousCompat implements ICompatModule {
                 'I', "ingotSteel");
 
         // Amulet of Diving
-        CraftingRecipeManager.addShapedRecipe(
+        MinecraftRecipeManager.addShapedRecipe(
                 new ResourceLocation(Tags.MODID, "amulet/diving"),
                 RecipeHelper.getItemStack(Mods.BAUBLELICIOUS.ID, "itemdivingamulet"),
                 " G ",
@@ -132,7 +133,7 @@ public class BaubleliciousCompat implements ICompatModule {
                 'I', "ingotIron");
 
         // Falling Belt
-        CraftingRecipeManager.addShapedRecipe(
+        MinecraftRecipeManager.addShapedRecipe(
                 new ResourceLocation(Tags.MODID, "belt/falling"),
                 RecipeHelper.getItemStack(Mods.BAUBLELICIOUS.ID, "itemfallingbelt"),
                 " G ",
@@ -144,7 +145,7 @@ public class BaubleliciousCompat implements ICompatModule {
                 'I', "ingotIron");
 
         // Amulet of Nightvision
-        CraftingRecipeManager.addShapedRecipe(
+        MinecraftRecipeManager.addShapedRecipe(
                 new ResourceLocation(Tags.MODID, "amulet/night_vision"),
                 RecipeHelper.getItemStack(Mods.BAUBLELICIOUS.ID, "itemamuletnightvision"),
                 " G ",
@@ -156,7 +157,7 @@ public class BaubleliciousCompat implements ICompatModule {
                 'I', "ingotIron");
 
         // Amulet of the Fiery Core
-        CraftingRecipeManager.addShapedRecipe(
+        MinecraftRecipeManager.addShapedRecipe(
                 new ResourceLocation(Tags.MODID, "amulet/fiery_core"),
                 RecipeHelper.getItemStack(Mods.BAUBLELICIOUS.ID, "itemamuletfierycore"),
                 " G ",
@@ -168,7 +169,7 @@ public class BaubleliciousCompat implements ICompatModule {
                 'I', "ingotSteel");
 
         // Miner's Ring
-        CraftingRecipeManager.addShapedRecipe(
+        MinecraftRecipeManager.addShapedRecipe(
                 new ResourceLocation(Tags.MODID, "ring/miners"),
                 RecipeHelper.getItemStack(Mods.BAUBLES.ID, "ring"),
                 " G ",
@@ -182,13 +183,14 @@ public class BaubleliciousCompat implements ICompatModule {
 
     @Override
     public void registerItemMetal(FMLPostInitializationEvent r) {
-        TFCRecipeHelper.addItemMetal(RecipeHelper.getItemStack(Mods.BAUBLELICIOUS.ID, "itemring"), DefaultMetals.GOLD,
+        TerrafirmacraftRecipeManager.addItemMetal(RecipeHelper.getItemStack(Mods.BAUBLELICIOUS.ID, "itemring"),
+                DefaultMetals.GOLD,
                 100, true);
     }
 
     @Override
     public void registerAnvilRecipes(IForgeRegistry<AnvilRecipe> r) {
-        TFCRecipeHelper.addAnvilRecipe(r, "gold_ring", IIngredient.of("ingotGold"),
+        TerrafirmacraftRecipeManager.addAnvilRecipe(r, "gold_ring", IIngredient.of("ingotGold"),
                 RecipeHelper.getItemStack(Mods.BAUBLELICIOUS.ID, "itemring"), Metal.Tier.TIER_I, null,
                 ForgeRule.BEND_ANY, ForgeRule.BEND_ANY, ForgeRule.BEND_ANY);
     }

@@ -8,6 +8,7 @@ import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLLoadCompleteEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
@@ -44,7 +45,7 @@ public class TFCRebornCore {
     // Register blocks here (Remove if not needed)
     public void registerBlocks(RegistryEvent.Register<Block> event) {}
 
-    @EventHandler
+    @EventHandler()
     // load "Do your mod setup. Build whatever data structures you care about." (Remove if not needed)
     public void init(FMLInitializationEvent event) {}
 
@@ -53,6 +54,11 @@ public class TFCRebornCore {
     public void postInit(FMLPostInitializationEvent event) {
         CompatManager.loadSieveRecipes(event);
         CompatManager.loadItemMetal(event);
+    }
+
+    @EventHandler
+    public void loadComplete(FMLLoadCompleteEvent event) {
+        CompatManager.loadPulverizerRecipes(event);
     }
 
     @EventHandler

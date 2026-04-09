@@ -20,7 +20,7 @@ import tfcreborncore.objects.items.ItemRCTool;
 import tfcreborncore.objects.items.ItemRCUniversalWeapon;
 import tfcreborncore.objects.items.enums.ItemRCMetalType;
 import tfcreborncore.objects.items.enums.ItemRCToolType;
-import tfcreborncore.objects.recipe.CraftingRecipeManager;
+import tfcreborncore.recipe.manager.MinecraftRecipeManager;
 import tfctech.objects.items.metal.ItemTechMetal;
 
 @SuppressWarnings({ "ConstantConditions", "unused" })
@@ -214,7 +214,7 @@ public class MetalRecipes {
         for (Metal metal : TFCRegistries.METALS.getValuesCollection()) {
             if (metal.isToolMetal()) {
                 // Excavator
-                CraftingRecipeManager.addShapedSkillRecipe(
+                MinecraftRecipeManager.addShapedSkillRecipe(
                         new ResourceLocation(Tags.MODID,
                                 "crafting/shaped/skill/" + ItemRCToolType.EXCAVATOR + "/" + metal),
                         ItemRCTool.get(metal, ItemRCToolType.EXCAVATOR).getDefaultInstance(),
@@ -224,7 +224,7 @@ public class MetalRecipes {
                         'H', ItemRCMetal.get(metal, ItemRCMetalType.EXCAVATOR_HEAD).getDefaultInstance());
 
                 // Mining Hammer
-                CraftingRecipeManager.addShapedSkillRecipe(
+                MinecraftRecipeManager.addShapedSkillRecipe(
                         new ResourceLocation(Tags.MODID,
                                 "crafting/shaped/skill/" + ItemRCToolType.MINING_HAMMER + "/" + metal),
                         ItemRCTool.get(metal, ItemRCToolType.MINING_HAMMER).getDefaultInstance(),
@@ -235,7 +235,7 @@ public class MetalRecipes {
                         ItemRCMetal.get(metal, ItemRCMetalType.MINING_HAMMER_HEAD).getDefaultInstance());
 
                 // Wire Cutter
-                CraftingRecipeManager.addShapedSkillRecipe(
+                MinecraftRecipeManager.addShapedSkillRecipe(
                         new ResourceLocation(Tags.MODID,
                                 "crafting/shaped/skill/" + ItemRCToolType.WIRE_CUTTER + "/" + metal),
                         ItemRCTool.get(metal, ItemRCToolType.WIRE_CUTTER).getDefaultInstance(),
@@ -246,7 +246,7 @@ public class MetalRecipes {
                         ItemRCMetal.get(metal, ItemRCMetalType.WIRE_CUTTER_HEAD).getDefaultInstance());
 
                 // Universal Weapon
-                CraftingRecipeManager.addShapedSkillRecipe(
+                MinecraftRecipeManager.addShapedSkillRecipe(
                         new ResourceLocation(Tags.MODID, "crafting/shaped/skill/universal_weapon/" + metal),
                         ItemRCUniversalWeapon.get(metal).getDefaultInstance(),
                         "H",
@@ -255,7 +255,7 @@ public class MetalRecipes {
                         'H', ItemRCMetal.get(metal, ItemRCMetalType.UNIVERSAL_WEAPON_HEAD).getDefaultInstance());
 
                 // Universal Weapon Head
-                CraftingRecipeManager.addShapelessSkillRecipe(
+                MinecraftRecipeManager.addShapelessSkillRecipe(
                         new ResourceLocation(Tags.MODID, "crafting/shapeless/skill/universal_weapon_head/" + metal),
                         ItemRCMetal.get(metal, ItemRCMetalType.UNIVERSAL_WEAPON_HEAD).getDefaultInstance(),
                         "gemAmethyst",

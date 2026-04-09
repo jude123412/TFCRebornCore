@@ -15,9 +15,9 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import tfcreborncore.Tags;
 import tfcreborncore.objects.RCItems;
-import tfcreborncore.objects.recipe.CraftingRecipeManager;
 import tfcreborncore.recipe.CompatManager;
 import tfcreborncore.recipe.MetalRecipes;
+import tfcreborncore.recipe.manager.MinecraftRecipeManager;
 
 @Mod.EventBusSubscriber(modid = Tags.MODID)
 public class Proxy {
@@ -34,7 +34,7 @@ public class Proxy {
         MetalRecipes.registerShapedSkillRecipe();
         CompatManager.loadOreDictionaries(event);
         CompatManager.loadCraftingRecipes(event);
-        CraftingRecipeManager.RECIPE_LIST.forEach(event.getRegistry()::register);
+        MinecraftRecipeManager.RECIPE_LIST.forEach(event.getRegistry()::register);
     }
 
     @SubscribeEvent

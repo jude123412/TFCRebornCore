@@ -2,7 +2,7 @@ package tfcreborncore.recipe.compat;
 
 import static tfcreborncore.recipe.RecipeHelper.getFluidStack;
 import static tfcreborncore.recipe.RecipeHelper.getItemStack;
-import static tfcreborncore.recipe.mods.TFCRecipeHelper.H;
+import static tfcreborncore.recipe.manager.TerrafirmacraftRecipeManager.H;
 
 import java.util.Arrays;
 import java.util.List;
@@ -18,11 +18,12 @@ import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.registries.IForgeRegistry;
 
 import tfcreborncore.Tags;
-import tfcreborncore.objects.recipe.CraftingRecipeManager;
 import tfcreborncore.recipe.ICompatModule;
 import tfcreborncore.recipe.RecipeHelper;
-import tfcreborncore.recipe.mods.ExNihiloHelper;
-import tfcreborncore.recipe.mods.TFCRecipeHelper;
+import tfcreborncore.recipe.enums.Mods;
+import tfcreborncore.recipe.manager.ExNihiloRecipeManager;
+import tfcreborncore.recipe.manager.MinecraftRecipeManager;
+import tfcreborncore.recipe.manager.TerrafirmacraftRecipeManager;
 
 public class ExNihiloCompat implements ICompatModule {
 
@@ -68,7 +69,7 @@ public class ExNihiloCompat implements ICompatModule {
                 getItemStack(Mods.EX_NIHILO_CREATIO.ID, "hive", OreDictionary.WILDCARD_VALUE));
 
         // String Mesh
-        CraftingRecipeManager.addShapedRecipe(
+        MinecraftRecipeManager.addShapedRecipe(
                 new ResourceLocation(Tags.MODID, "string_mesh"),
                 getItemStack(Mods.EX_NIHILO_CREATIO.ID, "item_mesh", 1),
                 "SSS",
@@ -77,7 +78,7 @@ public class ExNihiloCompat implements ICompatModule {
                 'S', "string");
 
         // Bronze Mesh
-        CraftingRecipeManager.addShapedRecipe(
+        MinecraftRecipeManager.addShapedRecipe(
                 new ResourceLocation(Tags.MODID, "bronze_mesh"),
                 getItemStack(Mods.EX_NIHILO_CREATIO.ID, "item_mesh", 2),
                 "WWW",
@@ -87,7 +88,7 @@ public class ExNihiloCompat implements ICompatModule {
                 'W', "wireAnyBronze");
 
         // Wrought Iron Mesh
-        CraftingRecipeManager.addShapedRecipe(
+        MinecraftRecipeManager.addShapedRecipe(
                 new ResourceLocation(Tags.MODID, "wrought_iron_mesh"),
                 getItemStack(Mods.EX_NIHILO_CREATIO.ID, "item_mesh", 3),
                 "WWW",
@@ -97,7 +98,7 @@ public class ExNihiloCompat implements ICompatModule {
                 'W', "wireIron");
 
         // Steel Mesh
-        CraftingRecipeManager.addShapedRecipe(
+        MinecraftRecipeManager.addShapedRecipe(
                 new ResourceLocation(Tags.MODID, "steel_mesh"),
                 getItemStack(Mods.EX_NIHILO_CREATIO.ID, "item_mesh", 4),
                 "WWW",
@@ -107,7 +108,7 @@ public class ExNihiloCompat implements ICompatModule {
                 'W', "wireSteel");
 
         // Artificial Hive
-        CraftingRecipeManager.addShapedRecipe(
+        MinecraftRecipeManager.addShapedRecipe(
                 new ResourceLocation(Tags.MODID, "artificial_hive"),
                 getItemStack(Mods.EX_NIHILO_CREATIO.ID, "hive", 0),
                 "SSS",
@@ -120,15 +121,15 @@ public class ExNihiloCompat implements ICompatModule {
     @Override
     public void registerBarrelRecipes(IForgeRegistry<BarrelRecipe> r) {
         // Witch Water
-        TFCRecipeHelper.addBarrelRecipe(r, IIngredient.of(getFluidStack("salt_water", 1000)),
+        TerrafirmacraftRecipeManager.addBarrelRecipe(r, IIngredient.of(getFluidStack("salt_water", 1000)),
                 IIngredient.of(getItemStack(Mods.EX_NIHILO_CREATIO.ID, "item_material", 3)),
                 getFluidStack("witchwater", 1000), ItemStack.EMPTY, 0, "witch_water_from_ancient_spores");
-        TFCRecipeHelper.addBarrelRecipeFluidMixin(r, IIngredient.of(getFluidStack("salt_water", 9000)),
+        TerrafirmacraftRecipeManager.addBarrelRecipeFluidMixin(r, IIngredient.of(getFluidStack("salt_water", 9000)),
                 getFluidStack("witchwater", 1000), getFluidStack("witchwater", 10000), 0,
                 "witch_water_from_witch_water");
 
         // Scented Hive
-        TFCRecipeHelper.addBarrelRecipe(r, IIngredient.of(getFluidStack("seed.oil", 1000)),
+        TerrafirmacraftRecipeManager.addBarrelRecipe(r, IIngredient.of(getFluidStack("seed.oil", 1000)),
                 IIngredient.of(RecipeHelper.getItemStack(Mods.EX_NIHILO_CREATIO.ID, "hive", 0)), null,
                 getItemStack(Mods.EX_NIHILO_CREATIO.ID, "hive", 1), 32 * H,
                 "scented_hive");
@@ -137,45 +138,53 @@ public class ExNihiloCompat implements ICompatModule {
     @Override
     public void registerSieveRecipes(FMLPostInitializationEvent e) {
         // Remove all existing Sieve Recipes
-        ExNihiloHelper.removeAllSieveRecipes();
+        ExNihiloRecipeManager.removeAllSieveRecipes();
 
         // Gravel Sieving
-        ExNihiloHelper.registerSieveRecipe("gravel", getItemStack("tfc", "ore/small/tetrahedrite"), 0.04F, 0.04F);
-        ExNihiloHelper.registerSieveRecipe("gravel", getItemStack("tfc", "ore/small/native_copper"), 0.04F, 0.04F);
-        ExNihiloHelper.registerSieveRecipe("gravel", getItemStack("tfc", "ore/small/malachite"), 0.04F, 0.04F);
-        ExNihiloHelper.registerSieveRecipe("gravel", getItemStack("tfc", "ore/small/sphalerite"), 0.04F, 0.04F);
-        ExNihiloHelper.registerSieveRecipe("gravel", getItemStack("tfc", "ore/small/bismuthinite"), 0.04F, 0.04F);
-        ExNihiloHelper.registerSieveRecipe("gravel", getItemStack("tfc", "ore/small/cassiterite"), 0.04F, 0.04F);
-        ExNihiloHelper.registerSieveRecipe("gravel", getItemStack("tfc", "ore/small/native_gold"), 0.04F, 0.04F);
-        ExNihiloHelper.registerSieveRecipe("gravel", getItemStack("tfc", "ore/small/native_silver"), 0.04F, 0.04F);
-        ExNihiloHelper.registerSieveRecipe("gravel", getItemStack("tfc", "ore/lapis_lazuli"), 0.04F, 0.04F);
-        ExNihiloHelper.registerSieveRecipe("gravel", getItemStack("tfc", "ore/cryolite"), 0.04F, 0.04F);
-        ExNihiloHelper.registerSieveRecipe("gravel", getItemStack("tfc", "ore/gypsum"), 0.04F, 0.04F);
-        ExNihiloHelper.registerSieveRecipe("gravel", getItemStack("minecraft", "flint"), 0.04F, 0.04F);
+        ExNihiloRecipeManager.registerSieveRecipe("gravel", getItemStack("tfc", "ore/small/tetrahedrite"), 0.04F,
+                0.04F);
+        ExNihiloRecipeManager.registerSieveRecipe("gravel", getItemStack("tfc", "ore/small/native_copper"), 0.04F,
+                0.04F);
+        ExNihiloRecipeManager.registerSieveRecipe("gravel", getItemStack("tfc", "ore/small/malachite"), 0.04F, 0.04F);
+        ExNihiloRecipeManager.registerSieveRecipe("gravel", getItemStack("tfc", "ore/small/sphalerite"), 0.04F, 0.04F);
+        ExNihiloRecipeManager.registerSieveRecipe("gravel", getItemStack("tfc", "ore/small/bismuthinite"), 0.04F,
+                0.04F);
+        ExNihiloRecipeManager.registerSieveRecipe("gravel", getItemStack("tfc", "ore/small/cassiterite"), 0.04F, 0.04F);
+        ExNihiloRecipeManager.registerSieveRecipe("gravel", getItemStack("tfc", "ore/small/native_gold"), 0.04F, 0.04F);
+        ExNihiloRecipeManager.registerSieveRecipe("gravel", getItemStack("tfc", "ore/small/native_silver"), 0.04F,
+                0.04F);
+        ExNihiloRecipeManager.registerSieveRecipe("gravel", getItemStack("tfc", "ore/lapis_lazuli"), 0.04F, 0.04F);
+        ExNihiloRecipeManager.registerSieveRecipe("gravel", getItemStack("tfc", "ore/cryolite"), 0.04F, 0.04F);
+        ExNihiloRecipeManager.registerSieveRecipe("gravel", getItemStack("tfc", "ore/gypsum"), 0.04F, 0.04F);
+        ExNihiloRecipeManager.registerSieveRecipe("gravel", getItemStack("minecraft", "flint"), 0.04F, 0.04F);
 
         // Dirt Sieving
-        ExNihiloHelper.registerSieveRecipe("dirt", getItemStack("exnihilocreatio", "item_material", 3), 0.02F, 0.02F);
-        ExNihiloHelper.registerSieveRecipe("dirt", getItemStack("firmalife", "crop/seeds/pumpkin"), 0.02F, 0.02F);
-        ExNihiloHelper.registerSieveRecipe("dirt", getItemStack("firmalife", "crop/seeds/melon"), 0.02F, 0.02F);
-        ExNihiloHelper.registerSieveRecipe("dirt", getItemStack("tfc", "crop/seeds/barley"), 0.02F, 0.02F);
-        ExNihiloHelper.registerSieveRecipe("dirt", getItemStack("tfc", "crop/seeds/maize"), 0.02F, 0.02F);
-        ExNihiloHelper.registerSieveRecipe("dirt", getItemStack("tfc", "crop/seeds/oat"), 0.02F, 0.02F);
-        ExNihiloHelper.registerSieveRecipe("dirt", getItemStack("tfc", "crop/seeds/rice"), 0.02F, 0.02F);
-        ExNihiloHelper.registerSieveRecipe("dirt", getItemStack("tfc", "crop/seeds/rye"), 0.02F, 0.02F);
-        ExNihiloHelper.registerSieveRecipe("dirt", getItemStack("tfc", "crop/seeds/wheat"), 0.02F, 0.02F);
-        ExNihiloHelper.registerSieveRecipe("dirt", getItemStack("tfc", "crop/seeds/beet"), 0.02F, 0.02F);
-        ExNihiloHelper.registerSieveRecipe("dirt", getItemStack("tfc", "crop/seeds/cabbage"), 0.02F, 0.02F);
-        ExNihiloHelper.registerSieveRecipe("dirt", getItemStack("tfc", "crop/seeds/carrot"), 0.02F, 0.02F);
-        ExNihiloHelper.registerSieveRecipe("dirt", getItemStack("tfc", "crop/seeds/garlic"), 0.02F, 0.02F);
-        ExNihiloHelper.registerSieveRecipe("dirt", getItemStack("tfc", "crop/seeds/green_bean"), 0.02F, 0.02F);
-        ExNihiloHelper.registerSieveRecipe("dirt", getItemStack("tfc", "crop/seeds/onion"), 0.02F, 0.02F);
-        ExNihiloHelper.registerSieveRecipe("dirt", getItemStack("tfc", "crop/seeds/potato"), 0.02F, 0.02F);
-        ExNihiloHelper.registerSieveRecipe("dirt", getItemStack("tfc", "crop/seeds/soybean"), 0.02F, 0.02F);
-        ExNihiloHelper.registerSieveRecipe("dirt", getItemStack("tfc", "crop/seeds/squash"), 0.02F, 0.02F);
-        ExNihiloHelper.registerSieveRecipe("dirt", getItemStack("tfc", "crop/seeds/sugarcane"), 0.02F, 0.02F);
-        ExNihiloHelper.registerSieveRecipe("dirt", getItemStack("tfc", "crop/seeds/tomato"), 0.02F, 0.02F);
-        ExNihiloHelper.registerSieveRecipe("dirt", getItemStack("tfc", "crop/seeds/red_bell_pepper"), 0.02F, 0.02F);
-        ExNihiloHelper.registerSieveRecipe("dirt", getItemStack("tfc", "crop/seeds/yellow_bell_pepper"), 0.02F, 0.02F);
-        ExNihiloHelper.registerSieveRecipe("dirt", getItemStack("tfc", "crop/seeds/jute"), 0.02F, 0.02F);
+        ExNihiloRecipeManager.registerSieveRecipe("dirt", getItemStack("exnihilocreatio", "item_material", 3), 0.02F,
+                0.02F);
+        ExNihiloRecipeManager.registerSieveRecipe("dirt", getItemStack("firmalife", "crop/seeds/pumpkin"), 0.02F,
+                0.02F);
+        ExNihiloRecipeManager.registerSieveRecipe("dirt", getItemStack("firmalife", "crop/seeds/melon"), 0.02F, 0.02F);
+        ExNihiloRecipeManager.registerSieveRecipe("dirt", getItemStack("tfc", "crop/seeds/barley"), 0.02F, 0.02F);
+        ExNihiloRecipeManager.registerSieveRecipe("dirt", getItemStack("tfc", "crop/seeds/maize"), 0.02F, 0.02F);
+        ExNihiloRecipeManager.registerSieveRecipe("dirt", getItemStack("tfc", "crop/seeds/oat"), 0.02F, 0.02F);
+        ExNihiloRecipeManager.registerSieveRecipe("dirt", getItemStack("tfc", "crop/seeds/rice"), 0.02F, 0.02F);
+        ExNihiloRecipeManager.registerSieveRecipe("dirt", getItemStack("tfc", "crop/seeds/rye"), 0.02F, 0.02F);
+        ExNihiloRecipeManager.registerSieveRecipe("dirt", getItemStack("tfc", "crop/seeds/wheat"), 0.02F, 0.02F);
+        ExNihiloRecipeManager.registerSieveRecipe("dirt", getItemStack("tfc", "crop/seeds/beet"), 0.02F, 0.02F);
+        ExNihiloRecipeManager.registerSieveRecipe("dirt", getItemStack("tfc", "crop/seeds/cabbage"), 0.02F, 0.02F);
+        ExNihiloRecipeManager.registerSieveRecipe("dirt", getItemStack("tfc", "crop/seeds/carrot"), 0.02F, 0.02F);
+        ExNihiloRecipeManager.registerSieveRecipe("dirt", getItemStack("tfc", "crop/seeds/garlic"), 0.02F, 0.02F);
+        ExNihiloRecipeManager.registerSieveRecipe("dirt", getItemStack("tfc", "crop/seeds/green_bean"), 0.02F, 0.02F);
+        ExNihiloRecipeManager.registerSieveRecipe("dirt", getItemStack("tfc", "crop/seeds/onion"), 0.02F, 0.02F);
+        ExNihiloRecipeManager.registerSieveRecipe("dirt", getItemStack("tfc", "crop/seeds/potato"), 0.02F, 0.02F);
+        ExNihiloRecipeManager.registerSieveRecipe("dirt", getItemStack("tfc", "crop/seeds/soybean"), 0.02F, 0.02F);
+        ExNihiloRecipeManager.registerSieveRecipe("dirt", getItemStack("tfc", "crop/seeds/squash"), 0.02F, 0.02F);
+        ExNihiloRecipeManager.registerSieveRecipe("dirt", getItemStack("tfc", "crop/seeds/sugarcane"), 0.02F, 0.02F);
+        ExNihiloRecipeManager.registerSieveRecipe("dirt", getItemStack("tfc", "crop/seeds/tomato"), 0.02F, 0.02F);
+        ExNihiloRecipeManager.registerSieveRecipe("dirt", getItemStack("tfc", "crop/seeds/red_bell_pepper"), 0.02F,
+                0.02F);
+        ExNihiloRecipeManager.registerSieveRecipe("dirt", getItemStack("tfc", "crop/seeds/yellow_bell_pepper"), 0.02F,
+                0.02F);
+        ExNihiloRecipeManager.registerSieveRecipe("dirt", getItemStack("tfc", "crop/seeds/jute"), 0.02F, 0.02F);
     }
 }

@@ -1,11 +1,11 @@
-package tfcreborncore.recipe.mods;
+package tfcreborncore.recipe.manager;
 
 import net.minecraft.item.ItemStack;
 
 import exnihilocreatio.registries.manager.ExNihiloRegistryManager;
 import exnihilocreatio.util.ItemInfo;
 
-public class ExNihiloHelper {
+public class ExNihiloRecipeManager {
 
     public static void removeAllSieveRecipes() {
         ExNihiloRegistryManager.SIEVE_REGISTRY.getRegistry().clear();

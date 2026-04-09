@@ -1,4 +1,4 @@
-package tfcreborncore.recipe.mods;
+package tfcreborncore.recipe.manager;
 
 import java.util.function.Supplier;
 
@@ -20,7 +20,7 @@ import net.minecraftforge.registries.IForgeRegistry;
 
 import tfcreborncore.Tags;
 
-public class TFCRecipeHelper {
+public class TerrafirmacraftRecipeManager {
 
     public static int H = 1000;
 

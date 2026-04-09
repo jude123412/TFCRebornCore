@@ -7,6 +7,7 @@ import net.dries007.tfc.api.recipes.anvil.AnvilRecipe;
 import net.dries007.tfc.api.recipes.barrel.BarrelRecipe;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.fml.common.event.FMLLoadCompleteEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 
 import tfcreborncore.recipe.compat.BaubleliciousCompat;
@@ -14,6 +15,7 @@ import tfcreborncore.recipe.compat.ExNihiloCompat;
 import tfcreborncore.recipe.compat.ForestryCompat;
 import tfcreborncore.recipe.compat.MinecraftCompat;
 import tfcreborncore.recipe.compat.StorageDrawersCompat;
+import tfcreborncore.recipe.compat.TFCRebornCoreCompat;
 import tfcreborncore.recipe.compat.TFCTechCompat;
 import tfcreborncore.recipe.compat.ThermalExpansionCompat;
 
@@ -22,6 +24,7 @@ public final class CompatManager {
     private static final List<ICompatModule> modules = new ArrayList<>();
 
     public static void init() {
+        modules.add(new TFCRebornCoreCompat());
         modules.add(new ForestryCompat());
         modules.add(new ThermalExpansionCompat());
         modules.add(new ExNihiloCompat());
@@ -63,9 +66,13 @@ public final class CompatManager {
 
     public static void loadSieveRecipes(FMLPostInitializationEvent event) {
         for (ICompatModule module : modules) {
-            if (module.areRecipesLoadable()) {
-                module.registerSieveRecipes(event);
-            }
+            if (module.areRecipesLoadable()) module.registerSieveRecipes(event);
+        }
+    }
+
+    public static void loadPulverizerRecipes(FMLLoadCompleteEvent event) {
+        for (ICompatModule module : modules) {
+            if (module.areRecipesLoadable()) module.registerPulverizerRecipes(event);
         }
     }
 }

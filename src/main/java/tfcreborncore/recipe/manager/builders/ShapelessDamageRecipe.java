@@ -1,4 +1,4 @@
-package tfcreborncore.objects.recipe;
+package tfcreborncore.recipe.manager.builders;
 
 import javax.annotation.Nonnull;
 

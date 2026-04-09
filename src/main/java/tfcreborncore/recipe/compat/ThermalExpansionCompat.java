@@ -15,7 +15,8 @@ import net.minecraftforge.registries.IForgeRegistry;
 
 import tfcreborncore.recipe.ICompatModule;
 import tfcreborncore.recipe.RecipeHelper;
-import tfcreborncore.recipe.mods.TFCRecipeHelper;
+import tfcreborncore.recipe.enums.Mods;
+import tfcreborncore.recipe.manager.TerrafirmacraftRecipeManager;
 
 public class ThermalExpansionCompat implements ICompatModule {
 
@@ -34,7 +35,7 @@ public class ThermalExpansionCompat implements ICompatModule {
 
     @Override
     public void registerBarrelRecipes(IForgeRegistry<BarrelRecipe> r) {
-        TFCRecipeHelper.addBarrelRecipe(r, IIngredient.of(getFluidStack("fresh_water", 1000)),
+        TerrafirmacraftRecipeManager.addBarrelRecipe(r, IIngredient.of(getFluidStack("fresh_water", 1000)),
                 IIngredient.of("dustPyrotheum", 1), getFluidStack("hot_water", 1000), ItemStack.EMPTY, 0,
                 "hot_water_from_pyrotheum");
     }

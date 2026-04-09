@@ -1,10 +1,8 @@
 package tfcreborncore.objects;
 
-import net.dries007.tfc.api.capability.damage.DamageType;
 import net.dries007.tfc.api.registries.TFCRegistries;
 import net.dries007.tfc.api.types.Metal;
 import net.dries007.tfc.api.types.Ore;
-import net.dries007.tfc.util.OreDictionaryHelper;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.renderer.color.IItemColor;
 import net.minecraft.creativetab.CreativeTabs;
@@ -70,10 +68,10 @@ public class RCItems {
         ImmutableList.Builder<Item> oreItems = ImmutableList.builder();
         for (Ore ore : TFCRegistries.ORES) {
             if (ore.isGraded()) {
-                String base = "ore/" + ore.getRegistryName().getPath().toLowerCase();
-
                 for (ItemRCOreType type : ItemRCOreType.values()) {
-                    Item oreType = register(registry, base + "_" + type.toString().toLowerCase(),
+                    String base = "ore/" + type.toString().toLowerCase() + "/" +
+                            ore.getRegistryName().getPath().toLowerCase();
+                    Item oreType = register(registry, base,
                             ItemRCOreType.Create(ore, type),
                             CreativeTabsRC.CT_ITEMS);
 
@@ -163,9 +161,9 @@ public class RCItems {
                         new ItemRCUniversalWeapon(metal),
                         CreativeTabsRC.CT_ITEMS);
                 OreDictionary.registerOre("universalWeapon", universalWeapon);
-                OreDictionary.registerOre("damageType" + DamageType.SLASHING.toString().toLowerCase(), universalWeapon);
-                OreDictionary.registerOre("damageType" + DamageType.CRUSHING.toString().toLowerCase(), universalWeapon);
-                OreDictionary.registerOre("damageType" + DamageType.PIERCING.toString().toLowerCase(), universalWeapon);
+                OreDictionary.registerOre("damageTypeSlashing", universalWeapon);
+                OreDictionary.registerOre("damageTypeCrushing", universalWeapon);
+                OreDictionary.registerOre("damageTypePiercing", universalWeapon);
                 universalWeaponItems.add(universalWeapon);
             }
         }

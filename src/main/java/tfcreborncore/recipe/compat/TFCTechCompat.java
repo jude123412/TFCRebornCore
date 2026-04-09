@@ -9,6 +9,7 @@ import net.minecraftforge.oredict.OreDictionary;
 
 import tfcreborncore.recipe.ICompatModule;
 import tfcreborncore.recipe.RecipeHelper;
+import tfcreborncore.recipe.enums.Mods;
 
 public class TFCTechCompat implements ICompatModule {
 

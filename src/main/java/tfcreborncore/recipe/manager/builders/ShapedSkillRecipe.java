@@ -1,4 +1,4 @@
-package tfcreborncore.objects.recipe;
+package tfcreborncore.recipe.manager.builders;
 
 import javax.annotation.Nonnull;
 
@@ -6,19 +6,18 @@ import net.dries007.tfc.util.skills.SmithingSkill;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.oredict.ShapelessOreRecipe;
-
-import org.jetbrains.annotations.NotNull;
+import net.minecraftforge.common.crafting.CraftingHelper;
+import net.minecraftforge.oredict.ShapedOreRecipe;
 
 /*
  * Original code from Terrafirmacraft's ShapedSkillRecipe (EUPL v1.2)
  * Modified to create a publicly accessible recipe class
- * Modified by xXjudeXx on 2026-04-09
+ * Modified by xXjudeXx on 2026-03-23
  */
-public class ShapelessSkillRecipe extends ShapelessOreRecipe {
+public class ShapedSkillRecipe extends ShapedOreRecipe {
 
-    public ShapelessSkillRecipe(ResourceLocation group, @NotNull ItemStack result, Object... recipe) {
-        super(group, result, recipe);
+    public ShapedSkillRecipe(ResourceLocation name, @Nonnull ItemStack result, CraftingHelper.ShapedPrimer primer) {
+        super(name, result, primer);
     }
 
     @Nonnull

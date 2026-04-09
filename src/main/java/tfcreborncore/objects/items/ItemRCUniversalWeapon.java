@@ -5,14 +5,12 @@ import java.util.Map;
 
 import javax.annotation.Nonnull;
 
-import net.dries007.tfc.api.capability.damage.DamageType;
 import net.dries007.tfc.api.capability.forge.ForgeableHeatableHandler;
 import net.dries007.tfc.api.capability.metal.IMetalItem;
 import net.dries007.tfc.api.capability.size.IItemSize;
 import net.dries007.tfc.api.capability.size.Size;
 import net.dries007.tfc.api.capability.size.Weight;
 import net.dries007.tfc.api.types.Metal;
-import net.dries007.tfc.util.OreDictionaryHelper;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.inventory.EntityEquipmentSlot;
@@ -61,10 +59,6 @@ public class ItemRCUniversalWeapon extends ItemSword implements IMetalItem, IIte
             this.setMaxStackSize(1);
             this.setMaxDamage(this.material.getMaxUses());
             this.attackDamage = this.material.getAttackDamage();
-            OreDictionaryHelper.register(this, "universalWeapon");
-            OreDictionaryHelper.registerDamageType(this, DamageType.SLASHING);
-            OreDictionaryHelper.registerDamageType(this, DamageType.CRUSHING);
-            OreDictionaryHelper.registerDamageType(this, DamageType.PIERCING);
         }
     }
 

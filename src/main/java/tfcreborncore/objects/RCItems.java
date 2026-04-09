@@ -331,7 +331,6 @@ public class RCItems {
 
         for (char c : input.toCharArray()) {
             if (c == '_') {
-                sb.append(' ');
                 capitalizeNext = true;
             } else {
                 sb.append(capitalizeNext ? Character.toUpperCase(c) : c);

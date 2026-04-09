@@ -1,4 +1,4 @@
-package tfcreborncore.mixins.terrafirmacraft;
+package tfcreborncore.mixins.thermalexpansion;
 
 import net.minecraft.item.ItemStack;
 

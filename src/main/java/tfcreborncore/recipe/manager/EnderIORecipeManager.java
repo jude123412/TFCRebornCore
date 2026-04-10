@@ -13,7 +13,7 @@ import crazypants.enderio.base.recipe.sagmill.SagMillRecipeManager;
 public class EnderIORecipeManager {
 
     /**
-     * Removes every SAG Mill recipes currently registered in Ender IO.
+     * Removes every SAG Mill recipe currently registered in Ender IO.
      * <p>
      * This performs a full reset by clearing the internal recipe list returned by
      * {@link SagMillRecipeManager#getRecipes()}. All default Ender IO recipes and

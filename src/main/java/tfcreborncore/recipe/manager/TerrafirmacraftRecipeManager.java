@@ -24,6 +24,20 @@ public class TerrafirmacraftRecipeManager {
 
     public static int H = 1000;
 
+    /**
+     * Registers a custom metal definition for a specific {@link ItemStack} in TFC.
+     * <p>
+     * This associates the given item with a {@link MetalItemHandler} that defines
+     * its metal type, melt amount, and whether the item is allowed to melt in a
+     * forge or crucible. The mapping is stored in
+     * {@link CapabilityMetalItem#CUSTOM_METAL_ITEMS} using an {@link IIngredient}
+     * wrapper as the lookup key.
+     *
+     * @param inputStack    The item to associate with a metal definition.
+     * @param metalLocation The registry name of the TFC metal to assign.
+     * @param amount        The amount of metal (in units) the item contains.
+     * @param canMelt       Whether the item is allowed to melt into liquid metal.
+     */
     @SuppressWarnings("unchecked")
     public static void addItemMetal(ItemStack inputStack, ResourceLocation metalLocation, int amount, boolean canMelt) {
         Metal metal = TFCRegistries.METALS.getValue(metalLocation);
@@ -31,6 +45,22 @@ public class TerrafirmacraftRecipeManager {
                 k -> (Supplier) () -> new MetalItemHandler(metal, amount, canMelt));
     }
 
+    /**
+     * Registers a new TFC anvil recipe.
+     * <p>
+     * Creates an {@link AnvilRecipe} with the specified input ingredient, output
+     * item, minimum anvil tier, smithing skill type, and required forge rules.
+     * The recipe is assigned a registry name under {@code tfc:anvil/<name>} and
+     * registered into the provided {@link IForgeRegistry}.
+     *
+     * @param r           The anvil recipe registry.
+     * @param regName     The unique name for the recipe (lowercased automatically).
+     * @param inputStack  The input ingredient required for the anvil operation.
+     * @param outputStack The resulting item produced by the recipe.
+     * @param minTier     The minimum metal tier required to perform the recipe.
+     * @param skillType   The smithing skill category used for XP gain.
+     * @param forgeRules  The sequence of forging steps required to complete the recipe.
+     */
     public static void addAnvilRecipe(IForgeRegistry<AnvilRecipe> r, String regName, IIngredient<ItemStack> inputStack,
                                       ItemStack outputStack, Metal.Tier minTier, SmithingSkill.Type skillType,
                                       ForgeRule... forgeRules) {
@@ -38,6 +68,22 @@ public class TerrafirmacraftRecipeManager {
                 outputStack, minTier, skillType, forgeRules));
     }
 
+    /**
+     * Registers a new TFC barrel recipe involving fluid + item transformation.
+     * <p>
+     * Creates a {@link BarrelRecipe} that consumes the specified input fluid and
+     * input item, producing either an output fluid, an output item, or both. The
+     * recipe is assigned a registry name under {@code tfc:barrel/<name>} and
+     * registered into the provided {@link IForgeRegistry}.
+     *
+     * @param r           The barrel recipe registry.
+     * @param inputFluid  The required input fluid ingredient.
+     * @param inputStack  The required input item ingredient.
+     * @param outputFluid The resulting fluid (maybe {@code null}).
+     * @param outputStack The resulting item (maybe {@code ItemStack.EMPTY}).
+     * @param duration    The time (in ticks) required to complete the recipe.
+     * @param regName     The unique name for the recipe (lowercased automatically).
+     */
     public static void addBarrelRecipe(IForgeRegistry<BarrelRecipe> r, IIngredient<FluidStack> inputFluid,
                                        IIngredient<ItemStack> inputStack, FluidStack outputFluid, ItemStack outputStack,
                                        int duration, String regName) {
@@ -45,6 +91,22 @@ public class TerrafirmacraftRecipeManager {
                 .setRegistryName(new ResourceLocation(Tags.MODID, "barrel/" + regName.toLowerCase())));
     }
 
+    /**
+     * Registers a TFC barrel fluid-mixing recipe.
+     * <p>
+     * This variant mixes two fluids together inside the barrel. The first fluid is
+     * defined as an {@link IIngredient}, while the second is wrapped in an
+     * {@link IngredientFluidItem}. The resulting {@link BarrelRecipeFluidMixing}
+     * produces a new output fluid after the specified duration. The recipe is
+     * registered under {@code tfc:barrel/mixing/<name>}.
+     *
+     * @param r           The barrel recipe registry.
+     * @param inputFluid1 The first input fluid ingredient.
+     * @param inputFluid2 The second input fluid (exact stack).
+     * @param outputFluid The resulting mixed fluid.
+     * @param duration    The time (in ticks) required for mixing.
+     * @param regName     The unique name for the recipe (lowercased automatically).
+     */
     public static void addBarrelRecipeFluidMixin(IForgeRegistry<BarrelRecipe> r, IIngredient<FluidStack> inputFluid1,
                                                  FluidStack inputFluid2, FluidStack outputFluid, int duration,
                                                  String regName) {

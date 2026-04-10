@@ -66,4 +66,10 @@ public final class CompatManager {
             if (module.areRecipesLoadable()) module.registerSieveRecipes(event);
         }
     }
+
+    public static void loadSagMillRecipes(FMLPostInitializationEvent event) {
+        for (ICompatModule module : modules) {
+            if (module.areRecipesLoadable()) module.registerSagMillRecipes(event);
+        }
+    }
 }

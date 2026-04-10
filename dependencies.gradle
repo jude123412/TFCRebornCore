@@ -48,6 +48,9 @@ dependencies {
     implementation rfg.deobf("curse.maven:binnies-mods-patched-2.5.1.213-899182:7731146") // Binnies Mods Patched 2.5.1.213
     implementation rfg.deobf("curse.maven:groovy-script-1.4.1-687577:7813868") // Groovy Script 1.4.1
 
+    implementation 'com.enderio:endercore:0.5.78' // Ender Core 0.5.78
+    implementation 'crazypants:enderio:5.3.72' // Ender IO 5.3.72
+
     runtimeOnlyNonPublishable rfg.deobf("curse.maven:baublelicious-1.4.0.4-223951:2532880") // Baublelicious 1.4.0.4
     runtimeOnlyNonPublishable rfg.deobf("curse.maven:storage-drawers-5.5.3-223852:5981297") // Storage Drawers 5.5.3
 
@@ -61,4 +64,5 @@ dependencies {
     runtimeOnlyNonPublishable rfg.deobf("curse.maven:forgelin-1.8.4-248453:2785465") // Forgelin 1.8.4
     runtimeOnlyNonPublishable rfg.deobf("curse.maven:chameleon-4.1.3-230497:2450900") // Chameleon 4.1.3
     runtimeOnlyNonPublishable rfg.deobf("curse.maven:Baubles-1.5.2-227083:2518667") // Baubles 1.5.2
+
 }

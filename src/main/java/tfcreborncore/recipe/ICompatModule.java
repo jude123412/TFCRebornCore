@@ -26,6 +26,8 @@ public interface ICompatModule {
 
     default void registerSieveRecipes(FMLPostInitializationEvent r) {}
 
+    default void registerSagMillRecipes(FMLPostInitializationEvent r) {}
+
     default boolean areRecipesLoadable() {
         for (String dep : dependencies()) {
             if (!Loader.isModLoaded(dep)) {

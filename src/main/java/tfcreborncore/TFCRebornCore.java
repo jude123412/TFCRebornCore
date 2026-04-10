@@ -44,7 +44,7 @@ public class TFCRebornCore {
     // Register blocks here (Remove if not needed)
     public void registerBlocks(RegistryEvent.Register<Block> event) {}
 
-    @EventHandler()
+    @EventHandler
     // load "Do your mod setup. Build whatever data structures you care about." (Remove if not needed)
     public void init(FMLInitializationEvent event) {}
 
@@ -53,6 +53,7 @@ public class TFCRebornCore {
     public void postInit(FMLPostInitializationEvent event) {
         CompatManager.loadSieveRecipes(event);
         CompatManager.loadItemMetal(event);
+        CompatManager.loadSagMillRecipes(event);
     }
 
     @EventHandler

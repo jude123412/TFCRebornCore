@@ -12,6 +12,8 @@ public enum Mods {
     FIRMALIFE("firmalife"),
     TFC_METALLUM("tfcmetallum"),
     TFC_REBORN_CORE("tfcreborncore"),
+    THERMAL_FOUNDATION("thermalfoundation"),
+    ENDER_IO("enderio"),
     FORESTRY("forestry");
 
     public final String ID;

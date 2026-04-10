@@ -2,8 +2,6 @@ package tfcreborncore.recipe.enums;
 
 public enum Mods {
 
-    THERMAL_EXPANSION("thermalexpansion"),
-    THERMAL_FOUNDATION("thermalfoundation"),
     EX_NIHILO_CREATIO("exnihilocreatio"),
     TFC_TECH("tfctech"),
     MINECRAFT("minecraft"),

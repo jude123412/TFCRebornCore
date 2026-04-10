@@ -15,7 +15,6 @@ import tfcreborncore.recipe.enums.Mods;
 import tfcreborncore.recipe.enums.OreProcessingTypes;
 import tfcreborncore.recipe.manager.ExNihiloRecipeManager;
 import tfcreborncore.recipe.manager.MinecraftRecipeManager;
-import tfcreborncore.recipe.manager.ThermalExpansionRecipeManager;
 
 public class TFCRebornCoreCompat implements ICompatModule {
 
@@ -31,8 +30,6 @@ public class TFCRebornCoreCompat implements ICompatModule {
                 Mods.TERRAFIRMACRAFT.ID,
                 Mods.TFC_TECH.ID,
                 Mods.TFC_METALLUM.ID,
-                Mods.THERMAL_EXPANSION.ID,
-                Mods.THERMAL_FOUNDATION.ID,
                 Mods.EX_NIHILO_CREATIO.ID);
     }
 
@@ -105,58 +102,51 @@ public class TFCRebornCoreCompat implements ICompatModule {
         ExNihiloRecipeManager.removeAllSieveRecipes();
     }
 
-    @Override
-    public void registerPulverizerRecipes(FMLPostInitializationEvent r) {
-        // Remove all Pulverizer Recipes
-        ThermalExpansionRecipeManager.removeAllPulverizerRecipes();
-
-        // Ore Processing
-        for (OreProcessingTypes type : OreProcessingTypes.values()) {
-            // Small Ore Pulverizing
-            ThermalExpansionRecipeManager.addPulverizerRecipe(
-                    RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID, "ore/small/" + type.getPrimaryName()),
-                    RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/pile/" + type.getPrimaryName(), 0, 2),
-                    RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/pile/" + type.getProductA(), 0),
-                    10,
-                    2000);
-
-            // Poor Ore Pulverizing
-            ThermalExpansionRecipeManager.addPulverizerRecipe(
-                    RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID, "ore/" + type.getPrimaryName(), 1),
-                    RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/pile/" + type.getPrimaryName(), 0, 3),
-                    RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/pile/" + type.getProductA()),
-                    15,
-                    3000);
-
-            // Normal Ore Pulverizing
-            ThermalExpansionRecipeManager.addPulverizerRecipe(
-                    RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID, "ore/" + type.getPrimaryName(), 0),
-                    RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/pile/" + type.getPrimaryName(), 0, 5),
-                    RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/pile/" + type.getProductA()),
-                    25,
-                    5000);
-
-            // Rich Ore Pulverizing
-            ThermalExpansionRecipeManager.addPulverizerRecipe(
-                    RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID, "ore/" + type.getPrimaryName(), 2),
-                    RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/pile/" + type.getPrimaryName(), 0, 7),
-                    RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/pile/" + type.getProductA()),
-                    35,
-                    7000);
-        }
-
-        // Leaves Recycling
-        ThermalExpansionRecipeManager.addPulverizerRecipe(
-                "treeLeaves",
-                RecipeHelper.getItemStack(Mods.THERMAL_FOUNDATION.ID, "material", 816),
-                1600);
-
-        // Sapling Recycling
-        ThermalExpansionRecipeManager.addPulverizerRecipe(
-                "treeSapling",
-                RecipeHelper.getItemStack(Mods.THERMAL_FOUNDATION.ID, "material", 816),
-                RecipeHelper.getItemStack(Mods.MINECRAFT.ID, "stick"),
-                25,
-                1600);
-    }
+    // TODO : Fix this :D
+    // Small Ore Pulverizing
+    // ThermalExpansionRecipeManager.addPulverizerRecipe(
+    // RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID, "ore/small/" + type.getPrimaryName()),
+    // RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/pile/" + type.getPrimaryName(), 0, 2),
+    // RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/pile/" + type.getProductA(), 0),
+    // 10,
+    // 2000);
+    //
+    // // Poor Ore Pulverizing
+    // ThermalExpansionRecipeManager.addPulverizerRecipe(
+    // RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID, "ore/" + type.getPrimaryName(), 1),
+    // RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/pile/" + type.getPrimaryName(), 0, 3),
+    // RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/pile/" + type.getProductA()),
+    // 15,
+    // 3000);
+    //
+    // // Normal Ore Pulverizing
+    // ThermalExpansionRecipeManager.addPulverizerRecipe(
+    // RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID, "ore/" + type.getPrimaryName(), 0),
+    // RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/pile/" + type.getPrimaryName(), 0, 5),
+    // RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/pile/" + type.getProductA()),
+    // 25,
+    // 5000);
+    //
+    // // Rich Ore Pulverizing
+    // ThermalExpansionRecipeManager.addPulverizerRecipe(
+    // RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID, "ore/" + type.getPrimaryName(), 2),
+    // RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/pile/" + type.getPrimaryName(), 0, 7),
+    // RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/pile/" + type.getProductA()),
+    // 35,
+    // 7000);
+    // }
+    //
+    // // Leaves Recycling
+    // ThermalExpansionRecipeManager.addPulverizerRecipe(
+    // "treeLeaves",
+    // RecipeHelper.getItemStack(Mods.THERMAL_FOUNDATION.ID, "material", 816),
+    // 1600);
+    //
+    // // Sapling Recycling
+    // ThermalExpansionRecipeManager.addPulverizerRecipe(
+    // "treeSapling",
+    // RecipeHelper.getItemStack(Mods.THERMAL_FOUNDATION.ID, "material", 816),
+    // RecipeHelper.getItemStack(Mods.MINECRAFT.ID, "stick"),
+    // 25,
+    // 1600);
 }

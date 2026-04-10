@@ -56,11 +56,6 @@ public class TFCRebornCore {
     }
 
     @EventHandler
-    public void loadComplete(FMLPostInitializationEvent event) {
-        CompatManager.loadPulverizerRecipes(event);
-    }
-
-    @EventHandler
     // register server commands in this event handler (Remove if not needed)
     public void serverStarting(FMLServerStartingEvent event) {}
 }

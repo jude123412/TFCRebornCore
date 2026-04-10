@@ -16,7 +16,6 @@ import tfcreborncore.recipe.compat.MinecraftCompat;
 import tfcreborncore.recipe.compat.StorageDrawersCompat;
 import tfcreborncore.recipe.compat.TFCRebornCoreCompat;
 import tfcreborncore.recipe.compat.TFCTechCompat;
-import tfcreborncore.recipe.compat.ThermalExpansionCompat;
 
 public final class CompatManager {
 
@@ -25,7 +24,6 @@ public final class CompatManager {
     public static void init() {
         modules.add(new TFCRebornCoreCompat());
         modules.add(new ForestryCompat());
-        modules.add(new ThermalExpansionCompat());
         modules.add(new ExNihiloCompat());
         modules.add(new TFCTechCompat());
         modules.add(new MinecraftCompat());
@@ -66,12 +64,6 @@ public final class CompatManager {
     public static void loadSieveRecipes(FMLPostInitializationEvent event) {
         for (ICompatModule module : modules) {
             if (module.areRecipesLoadable()) module.registerSieveRecipes(event);
-        }
-    }
-
-    public static void loadPulverizerRecipes(FMLPostInitializationEvent event) {
-        for (ICompatModule module : modules) {
-            if (module.areRecipesLoadable()) module.registerPulverizerRecipes(event);
         }
     }
 }

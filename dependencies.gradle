@@ -44,15 +44,12 @@ dependencies {
     implementation rfg.deobf("curse.maven:journey-map-5.7.1p3-32274:5172461") // Journey Map 5.7.1p3
     implementation rfg.deobf("curse.maven:immersive-engineering-0.12.98-231951:2974106") // Immersive Engineering 0.12.98
     implementation rfg.deobf("curse.maven:ex-nihilo-0.4.7.2-274456:2817545") // Ex Nihilo 0.4.7.2
-    implementation rfg.deobf("curse.maven:thermal-expansion-5.5.7.1-69163:2926431") // Thermal Expansion 5.5.7.1
     implementation rfg.deobf("curse.maven:forestry-5.8.2.427-59751:7398359") // Forestry 5.8.2.427
     implementation rfg.deobf("curse.maven:binnies-mods-patched-2.5.1.213-899182:7731146") // Binnies Mods Patched 2.5.1.213
-    implementation rfg.deobf("curse.maven:cofh-core-4.6.6.1-69162:2920433") // Code Chicken Lib 3.2.3.358
     implementation rfg.deobf("curse.maven:groovy-script-1.4.1-687577:7813868") // Groovy Script 1.4.1
 
     runtimeOnlyNonPublishable rfg.deobf("curse.maven:baublelicious-1.4.0.4-223951:2532880") // Baublelicious 1.4.0.4
     runtimeOnlyNonPublishable rfg.deobf("curse.maven:storage-drawers-5.5.3-223852:5981297") // Storage Drawers 5.5.3
-    runtimeOnlyNonPublishable rfg.deobf("curse.maven:thermal-foundation-2.6.7.1-222880:2926428") // Thermal Foundation 2.6.7.1
 
     runtimeOnlyNonPublishable rfg.deobf("curse.maven:tfc-rocks-plus-1.3.6-376298:3260513") // TFC Rocks+ 1.3.6
     runtimeOnlyNonPublishable rfg.deobf("curse.maven:firmalife-0.5.1-453394:3612887") // TFC Firmalife 0.5.1
@@ -61,7 +58,6 @@ dependencies {
     runtimeOnlyNonPublishable rfg.deobf("curse.maven:mixin-bootstrap-1.1.0-357178:3437402") // Mixin Bootstrap 1.1.0
     runtimeOnlyNonPublishable rfg.deobf("curse.maven:redstone-flux-2.1.1.1-270789:2920436") // Redstone Flux 2.1.1.1
     runtimeOnlyNonPublishable rfg.deobf("curse.maven:code-chicken-lib-3.2.3.358-242818:2779848") // Code Chicken Lib 3.2.3.358
-    runtimeOnlyNonPublishable rfg.deobf("curse.maven:cofh-world-1.4.9.1-271384:2920434") // Cofh World 1.4.9.1
     runtimeOnlyNonPublishable rfg.deobf("curse.maven:forgelin-1.8.4-248453:2785465") // Forgelin 1.8.4
     runtimeOnlyNonPublishable rfg.deobf("curse.maven:chameleon-4.1.3-230497:2450900") // Chameleon 4.1.3
     runtimeOnlyNonPublishable rfg.deobf("curse.maven:Baubles-1.5.2-227083:2518667") // Baubles 1.5.2

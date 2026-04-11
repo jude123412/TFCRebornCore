@@ -13,6 +13,8 @@ public enum Mods {
     TFC_METALLUM("tfcmetallum"),
     TFC_REBORN_CORE("tfcreborncore"),
     THERMAL_FOUNDATION("thermalfoundation"),
+    THERMAL_DYNAMICS("thermaldynamics"),
+    THERMAL_INNOVATION("thermalinnovation"),
     ENDER_IO("enderio"),
     FORESTRY("forestry");
 

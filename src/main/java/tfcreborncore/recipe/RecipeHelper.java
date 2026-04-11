@@ -1,23 +1,13 @@
 package tfcreborncore.recipe;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import net.minecraft.init.Items;
-import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.world.World;
-import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
-import net.minecraftforge.oredict.OreDictionary;
-import net.minecraftforge.registries.IForgeRegistryEntry;
-import net.minecraftforge.registries.IForgeRegistryModifiable;
 
 public class RecipeHelper {
 

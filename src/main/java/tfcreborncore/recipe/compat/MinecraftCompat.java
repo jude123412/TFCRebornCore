@@ -31,6 +31,6 @@ public class MinecraftCompat implements ICompatModule {
 
     @Override
     public void registerCraftingRecipe(RegistryEvent.Register<IRecipe> r) {
-       MinecraftRecipeManager.removeRecipeByOutput(r, getItemStack(Mods.MINECRAFT.ID, "blaze_powder"));
+        MinecraftRecipeManager.removeRecipeByOutput(r, getItemStack(Mods.MINECRAFT.ID, "blaze_powder"));
     }
 }

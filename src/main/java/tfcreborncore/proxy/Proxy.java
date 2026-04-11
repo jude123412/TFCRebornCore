@@ -11,6 +11,7 @@ import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.event.furnace.FurnaceFuelBurnTimeEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import tfcreborncore.Tags;
@@ -29,7 +30,7 @@ public class Proxy {
         RCItems.registerItems(event);
     }
 
-    @SubscribeEvent
+    @SubscribeEvent(priority = EventPriority.LOW)
     public static void registerRecipes(RegistryEvent.Register<IRecipe> event) {
         MetalRecipes.registerShapedSkillRecipe();
         CompatManager.loadOreDictionaries(event);

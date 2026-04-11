@@ -3,13 +3,19 @@ package tfcreborncore.recipe.manager;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.World;
 import net.minecraftforge.common.crafting.CraftingHelper;
+import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
 
+import net.minecraftforge.registries.IForgeRegistryEntry;
+import net.minecraftforge.registries.IForgeRegistryModifiable;
 import tfcreborncore.recipe.manager.builders.ShapedSkillRecipe;
 import tfcreborncore.recipe.manager.builders.ShapelessDamageRecipe;
 import tfcreborncore.recipe.manager.builders.ShapelessSkillRecipe;
@@ -125,5 +131,70 @@ public class MinecraftRecipeManager {
         recipe.setRegistryName(name);
 
         RECIPE_LIST.add(recipe);
+    }
+
+    /**
+     * Removes crafting recipes based on their output {@link ItemStack}.
+     * <p>
+     * This method scans all registered crafting recipes and identifies any whose
+     * output item matches the provided {@code output} stack. Metadata comparison
+     * supports wildcard matching via {@link OreDictionary#WILDCARD_VALUE}, allowing
+     * removal of all variants of an item regardless of damage value.
+     * <p>
+     * Matching recipes are not deleted directly; instead, each is replaced with a
+     * {@link DummyRecipe} registered under the same {@link ResourceLocation}. This
+     * preserves registry integrity while effectively disabling the original recipe.
+     *
+     * @param registry  The Forge registry event for {@link IRecipe} registration.
+     * @param output    The output item to match against recipe results. May use
+     *                  {@link OreDictionary#WILDCARD_VALUE} for metadata wildcarding.
+     */
+    public static void removeRecipeByOutput(RegistryEvent.Register<IRecipe> registry, ItemStack output) {
+        IForgeRegistryModifiable<IRecipe> r = (IForgeRegistryModifiable) registry.getRegistry();
+        List<ResourceLocation> toRemove = new ArrayList<>();
+
+        for (IRecipe recipe : r.getValuesCollection()) {
+            ItemStack recipeOutput = recipe.getRecipeOutput();
+
+            boolean areItemsEqual = recipeOutput.getItem().equals(output.getItem());
+            boolean isMetaEqual = recipeOutput.getItemDamage() == output.getItemDamage();
+            boolean isWildcard = output.getItemDamage() == OreDictionary.WILDCARD_VALUE;
+
+            if (areItemsEqual && (isMetaEqual || isWildcard)) {
+                toRemove.add(recipe.getRegistryName());
+            }
+        }
+
+        for (ResourceLocation rl : toRemove) {
+            r.register(new DummyRecipe(rl.getNamespace(), rl.getPath()));
+        }
+    }
+
+    /*
+     * Original code from Terrafirmacraft's RecipeUtils.DummyRecipe (EUPL v1.2)
+     * Modified to create DummyRecipe
+     * Modified by xXjudeXx on 2026-04-07
+     */
+    private static class DummyRecipe extends IForgeRegistryEntry.Impl<IRecipe> implements IRecipe {
+
+        private DummyRecipe(String domain, String id) {
+            this.setRegistryName(domain, id);
+        }
+
+        public boolean matches(InventoryCrafting inventoryCrafting, World world) {
+            return false;
+        }
+
+        public ItemStack getCraftingResult(InventoryCrafting inventoryCrafting) {
+            return ItemStack.EMPTY;
+        }
+
+        public boolean canFit(int i, int i1) {
+            return false;
+        }
+
+        public ItemStack getRecipeOutput() {
+            return ItemStack.EMPTY;
+        }
     }
 }

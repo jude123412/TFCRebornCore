@@ -12,6 +12,7 @@ import net.minecraftforge.oredict.OreDictionary;
 import tfcreborncore.recipe.ICompatModule;
 import tfcreborncore.recipe.RecipeHelper;
 import tfcreborncore.recipe.enums.Mods;
+import tfcreborncore.recipe.manager.MinecraftRecipeManager;
 
 public class MinecraftCompat implements ICompatModule {
 
@@ -30,6 +31,6 @@ public class MinecraftCompat implements ICompatModule {
 
     @Override
     public void registerCraftingRecipe(RegistryEvent.Register<IRecipe> r) {
-        RecipeHelper.removeRecipeByOutput(r, getItemStack(Mods.MINECRAFT.ID, "blaze_powder"));
+       MinecraftRecipeManager.removeRecipeByOutput(r, getItemStack(Mods.MINECRAFT.ID, "blaze_powder"));
     }
 }

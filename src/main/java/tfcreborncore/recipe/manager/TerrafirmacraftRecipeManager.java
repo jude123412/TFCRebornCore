@@ -7,6 +7,7 @@ import net.dries007.tfc.api.capability.metal.MetalItemHandler;
 import net.dries007.tfc.api.recipes.anvil.AnvilRecipe;
 import net.dries007.tfc.api.recipes.barrel.BarrelRecipe;
 import net.dries007.tfc.api.recipes.barrel.BarrelRecipeFluidMixing;
+import net.dries007.tfc.api.recipes.quern.QuernRecipe;
 import net.dries007.tfc.api.registries.TFCRegistries;
 import net.dries007.tfc.api.types.Metal;
 import net.dries007.tfc.objects.inventory.ingredient.IIngredient;
@@ -17,8 +18,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.registries.IForgeRegistry;
-
-import tfcreborncore.Tags;
 
 public class TerrafirmacraftRecipeManager {
 
@@ -61,11 +60,31 @@ public class TerrafirmacraftRecipeManager {
      * @param skillType   The smithing skill category used for XP gain.
      * @param forgeRules  The sequence of forging steps required to complete the recipe.
      */
-    public static void addAnvilRecipe(IForgeRegistry<AnvilRecipe> r, String regName, IIngredient<ItemStack> inputStack,
+    public static void addAnvilRecipe(IForgeRegistry<AnvilRecipe> r, ResourceLocation regName,
+                                      IIngredient<ItemStack> inputStack,
                                       ItemStack outputStack, Metal.Tier minTier, SmithingSkill.Type skillType,
                                       ForgeRule... forgeRules) {
-        r.register(new AnvilRecipe(new ResourceLocation(Tags.MODID, "anvil/" + regName.toLowerCase()), inputStack,
+        r.register(new AnvilRecipe(regName, inputStack,
                 outputStack, minTier, skillType, forgeRules));
+    }
+
+    /**
+     * Registers a new TFC quern recipe.
+     * <p>
+     * This creates a {@link QuernRecipe} using the specified input ingredient and
+     * output item, assigns the provided {@link ResourceLocation} as its registry
+     * name, and registers it into the supplied {@link IForgeRegistry}. Quern
+     * recipes define simple manual grinding transformations performed using the
+     * TFC quern.
+     *
+     * @param r          The quern recipe registry.
+     * @param regName    The unique registry name for the recipe.
+     * @param inputStack The ingredient required to be ground in the quern.
+     * @param result     The resulting {@link ItemStack} produced by grinding.
+     */
+    public static void addQuernRecipe(IForgeRegistry<QuernRecipe> r, ResourceLocation regName,
+                                      IIngredient<ItemStack> inputStack, ItemStack result) {
+        r.register(new QuernRecipe(inputStack, result).setRegistryName(regName));
     }
 
     /**
@@ -84,11 +103,12 @@ public class TerrafirmacraftRecipeManager {
      * @param duration    The time (in ticks) required to complete the recipe.
      * @param regName     The unique name for the recipe (lowercased automatically).
      */
-    public static void addBarrelRecipe(IForgeRegistry<BarrelRecipe> r, IIngredient<FluidStack> inputFluid,
+    public static void addBarrelRecipe(IForgeRegistry<BarrelRecipe> r, ResourceLocation regName,
+                                       IIngredient<FluidStack> inputFluid,
                                        IIngredient<ItemStack> inputStack, FluidStack outputFluid, ItemStack outputStack,
-                                       int duration, String regName) {
+                                       int duration) {
         r.register(new BarrelRecipe(inputFluid, inputStack, outputFluid, outputStack, duration)
-                .setRegistryName(new ResourceLocation(Tags.MODID, "barrel/" + regName.toLowerCase())));
+                .setRegistryName(regName));
     }
 
     /**
@@ -107,10 +127,10 @@ public class TerrafirmacraftRecipeManager {
      * @param duration    The time (in ticks) required for mixing.
      * @param regName     The unique name for the recipe (lowercased automatically).
      */
-    public static void addBarrelRecipeFluidMixin(IForgeRegistry<BarrelRecipe> r, IIngredient<FluidStack> inputFluid1,
-                                                 FluidStack inputFluid2, FluidStack outputFluid, int duration,
-                                                 String regName) {
+    public static void addBarrelRecipeFluidMixin(IForgeRegistry<BarrelRecipe> r, ResourceLocation regName,
+                                                 IIngredient<FluidStack> inputFluid1,
+                                                 FluidStack inputFluid2, FluidStack outputFluid, int duration) {
         r.register(new BarrelRecipeFluidMixing(inputFluid1, new IngredientFluidItem(inputFluid2), outputFluid, duration)
-                .setRegistryName(new ResourceLocation(Tags.MODID, "barrel/mixing/" + regName.toLowerCase())));
+                .setRegistryName(regName));
     }
 }

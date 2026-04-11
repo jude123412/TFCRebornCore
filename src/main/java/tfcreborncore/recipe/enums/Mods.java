@@ -16,6 +16,7 @@ public enum Mods {
     THERMAL_DYNAMICS("thermaldynamics"),
     THERMAL_INNOVATION("thermalinnovation"),
     ENDER_IO("enderio"),
+    IMMERSIVE_ENGINEERING("immersiveengineering"),
     FORESTRY("forestry");
 
     public final String ID;

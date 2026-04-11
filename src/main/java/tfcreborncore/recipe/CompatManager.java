@@ -5,6 +5,7 @@ import java.util.List;
 
 import net.dries007.tfc.api.recipes.anvil.AnvilRecipe;
 import net.dries007.tfc.api.recipes.barrel.BarrelRecipe;
+import net.dries007.tfc.api.recipes.quern.QuernRecipe;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
@@ -63,6 +64,12 @@ public final class CompatManager {
         }
     }
 
+    public static void loadQuernRecipes(RegistryEvent.Register<QuernRecipe> event) {
+        for (ICompatModule module : modules) {
+            if (module.areRecipesLoadable()) module.registerQuernRecipes(event.getRegistry());
+        }
+    }
+
     public static void loadSieveRecipes(FMLPostInitializationEvent event) {
         for (ICompatModule module : modules) {
             if (module.areRecipesLoadable()) module.registerSieveRecipes(event);
@@ -72,6 +79,12 @@ public final class CompatManager {
     public static void loadSagMillRecipes(FMLPostInitializationEvent event) {
         for (ICompatModule module : modules) {
             if (module.areRecipesLoadable()) module.registerSagMillRecipes(event);
+        }
+    }
+
+    public static void loadCrusherRecipes(FMLPostInitializationEvent event) {
+        for (ICompatModule module : modules) {
+            if (module.areRecipesLoadable()) module.registerCrusherRecipes(event);
         }
     }
 }

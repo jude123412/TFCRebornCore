@@ -190,7 +190,8 @@ public class BaubleliciousCompat implements ICompatModule {
 
     @Override
     public void registerAnvilRecipes(IForgeRegistry<AnvilRecipe> r) {
-        TerrafirmacraftRecipeManager.addAnvilRecipe(r, "gold_ring", IIngredient.of("ingotGold"),
+        TerrafirmacraftRecipeManager.addAnvilRecipe(r,
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "anvil/working/gold_ring"), IIngredient.of("ingotGold"),
                 RecipeHelper.getItemStack(Mods.BAUBLELICIOUS.ID, "itemring"), Metal.Tier.TIER_I, null,
                 ForgeRule.BEND_ANY, ForgeRule.BEND_ANY, ForgeRule.BEND_ANY);
     }

@@ -19,6 +19,7 @@ import tfcreborncore.recipe.enums.Mods;
 import tfcreborncore.recipe.enums.OreProcessingTypes;
 import tfcreborncore.recipe.manager.EnderIORecipeManager;
 import tfcreborncore.recipe.manager.ExNihiloRecipeManager;
+import tfcreborncore.recipe.manager.ImmersiveEngineeringRecipeManager;
 import tfcreborncore.recipe.manager.MinecraftRecipeManager;
 
 public class TFCRebornCoreCompat implements ICompatModule {
@@ -211,5 +212,11 @@ public class TFCRebornCoreCompat implements ICompatModule {
                     RecipeBonusType.CHANCE_ONLY,
                     RecipeLevel.IGNORE);
         }
+    }
+
+    @Override
+    public void registerCrusherRecipes(FMLPostInitializationEvent r) {
+        // Remove All
+        ImmersiveEngineeringRecipeManager.removeAllCrusherRecipes();
     }
 }

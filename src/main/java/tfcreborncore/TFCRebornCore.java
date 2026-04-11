@@ -54,6 +54,7 @@ public class TFCRebornCore {
         CompatManager.loadSieveRecipes(event);
         CompatManager.loadItemMetal(event);
         CompatManager.loadSagMillRecipes(event);
+        CompatManager.loadCrusherRecipes(event);
     }
 
     @EventHandler

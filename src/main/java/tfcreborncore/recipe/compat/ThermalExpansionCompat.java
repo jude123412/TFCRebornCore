@@ -1,25 +1,38 @@
 package tfcreborncore.recipe.compat;
 
+import static tfcreborncore.recipe.manager.TerrafirmacraftRecipeManager.H;
+
 import java.util.Arrays;
 import java.util.List;
 
+import net.dries007.tfc.api.recipes.barrel.BarrelRecipe;
+import net.dries007.tfc.api.recipes.quern.QuernRecipe;
+import net.dries007.tfc.objects.inventory.ingredient.IIngredient;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.oredict.OreDictionary;
+import net.minecraftforge.registries.IForgeRegistry;
 
+import crazypants.enderio.base.recipe.RecipeBonusType;
+import crazypants.enderio.base.recipe.RecipeLevel;
+import crazypants.enderio.base.recipe.RecipeOutput;
+import tfcreborncore.objects.RCItems;
 import tfcreborncore.recipe.ICompatModule;
 import tfcreborncore.recipe.RecipeHelper;
 import tfcreborncore.recipe.enums.Mods;
+import tfcreborncore.recipe.enums.ThermalToolMaterialTypes;
+import tfcreborncore.recipe.manager.EnderIORecipeManager;
+import tfcreborncore.recipe.manager.ImmersiveEngineeringRecipeManager;
 import tfcreborncore.recipe.manager.MinecraftRecipeManager;
+import tfcreborncore.recipe.manager.TerrafirmacraftRecipeManager;
 
 public class ThermalExpansionCompat implements ICompatModule {
 
     @Override
     public List<String> dependencies() {
         return Arrays.asList(
-                Mods.TERRAFIRMACRAFT.ID,
                 Mods.TFC_METALLUM.ID,
                 Mods.TFC_TECH.ID,
                 Mods.THERMAL_FOUNDATION.ID,
@@ -235,8 +248,232 @@ public class ThermalExpansionCompat implements ICompatModule {
                 "dustBasalz",
                 "dustRedstone",
                 "dustObsidian");
+
+        // Fluiduct
+        MinecraftRecipeManager.addShapedRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shaped/fluiduct"),
+                RecipeHelper.getItemStack(Mods.THERMAL_DYNAMICS.ID, "duct_16", 0, 8),
+                "CGC",
+                'C', "sheetCopper",
+                'G', "blockGlassHardened");
+
+        // Hardened Fluiduct
+        MinecraftRecipeManager.addShapedRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shaped/hardened_fluiduct"),
+                RecipeHelper.getItemStack(Mods.THERMAL_DYNAMICS.ID, "duct_16", 2, 8),
+                "SGS",
+                'S', "sheetSterlingSilver",
+                'G', "blockGlassHardened");
+
+        // Super-Laminar Fluiduct
+        MinecraftRecipeManager.addShapedRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shaped/super_laminar_fluiduct"),
+                RecipeHelper.getItemStack(Mods.THERMAL_DYNAMICS.ID, "duct_16", 6),
+                "GGG",
+                "BDB",
+                "GGG",
+                'G', "blockGlassHardened",
+                'B', "sheetAnyBronze",
+                'D', RecipeHelper.getItemStack(Mods.THERMAL_DYNAMICS.ID, "duct_16", 2));
+
+        // Itemduct
+        MinecraftRecipeManager.addShapedRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shaped/itemduct"),
+                RecipeHelper.getItemStack(Mods.THERMAL_DYNAMICS.ID, "duct_32", 0, 8),
+                "TGT",
+                'T', "sheetTin",
+                'G', "blockGlassHardened");
+
+        // Structuralduct
+        MinecraftRecipeManager.addShapedRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shaped/structuralduct"),
+                RecipeHelper.getItemStack(Mods.THERMAL_DYNAMICS.ID, "duct_48", 0, 16),
+                "NSN",
+                'N', "nuggetIron",
+                'S', "sheetLead");
+
+        // Long Range Viaduct
+        MinecraftRecipeManager.addShapedRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shaped/long_range_viaduct"),
+                RecipeHelper.getItemStack(Mods.THERMAL_DYNAMICS.ID, "duct_64", 1, 32),
+                "LGL",
+                "G G",
+                "LGL",
+                'L', "sheetLead",
+                'G', "blockGlassHardened");
+
+        // Viaduct (Untreated)
+        MinecraftRecipeManager.addShapedRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shaped/viaduct_untreated"),
+                RecipeHelper.getItemStack(Mods.THERMAL_DYNAMICS.ID, "duct_64", 3, 16),
+                "BGB",
+                "G G",
+                "BGB",
+                'B', "sheetAnyBronze",
+                'G', "blockGlassHardened");
+
+        // Redstone Relay
+        MinecraftRecipeManager.addShapedRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shaped/redstone_relay"),
+                RecipeHelper.getItemStack(Mods.THERMAL_DYNAMICS.ID, "relay", 0, 2),
+                "SQS",
+                "LRL",
+                'S', "stripSignalum",
+                'Q', "gemQuartz",
+                'L', "sheetLead",
+                'R', "dustRedstone");
+
+        for (ThermalToolMaterialTypes type : ThermalToolMaterialTypes.values()) {
+            // Servo Recipes
+            MinecraftRecipeManager.addShapedRecipe(
+                    new ResourceLocation(Mods.TFC_REBORN_CORE.ID,
+                            "crafting/shaped/servo_" + type.getName()),
+                    RecipeHelper.getItemStack(Mods.THERMAL_DYNAMICS.ID, "servo", type.getMeta(), 2),
+                    "PGP",
+                    "TRT",
+                    'P', "strip" + RCItems.toPascalCase(type.getName()),
+                    'G', "blockGlassHardened",
+                    'T', "sheet" + RCItems.toPascalCase(type.getName()),
+                    'R', "dustRedstone");
+            // Filter Recipes
+            MinecraftRecipeManager.addShapedRecipe(
+                    new ResourceLocation(Mods.TFC_REBORN_CORE.ID,
+                            "crafting/shaped/filter_" + type.getName()),
+                    RecipeHelper.getItemStack(Mods.THERMAL_DYNAMICS.ID, "filter", type.getMeta(), 2),
+                    "PGP",
+                    "TRT",
+                    'P', "strip" + RCItems.toPascalCase(type.getName()),
+                    'G', "blockGlassHardened",
+                    'T', "sheet" + RCItems.toPascalCase(type.getName()),
+                    'R', "paper");
+            // Retriever Recipes
+            MinecraftRecipeManager.addShapedRecipe(
+                    new ResourceLocation(Mods.TFC_REBORN_CORE.ID,
+                            "crafting/shaped/retriever_" + type.getName()),
+                    RecipeHelper.getItemStack(Mods.THERMAL_DYNAMICS.ID, "retriever", type.getMeta(), 2),
+                    "PGP",
+                    "TRT",
+                    'P', "strip" + RCItems.toPascalCase(type.getName()),
+                    'G', "blockGlassHardened",
+                    'T', "sheet" + RCItems.toPascalCase(type.getName()),
+                    'R', RecipeHelper.getItemStack(Mods.MINECRAFT.ID, "ender_eye"));
+        }
     }
 
     @Override
-    public void registerSagMillRecipes(FMLPostInitializationEvent r) {}
+    public void registerBarrelRecipes(IForgeRegistry<BarrelRecipe> r) {
+        // Blizz Rod
+        TerrafirmacraftRecipeManager.addBarrelRecipe(r,
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "barrel/transform/blizz_rod"),
+                IIngredient.of(RecipeHelper.getFluidStack("witchwater", 250)),
+                IIngredient.of("stickCobalt"),
+                null,
+                RecipeHelper.getItemStack(Mods.THERMAL_FOUNDATION.ID, "material", 2048),
+                8 * H);
+
+        // Blitz Rod
+        TerrafirmacraftRecipeManager.addBarrelRecipe(r,
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "barrel/transform/blitz_rod"),
+                IIngredient.of(RecipeHelper.getFluidStack("witchwater", 250)),
+                IIngredient.of("stickGold"),
+                null,
+                RecipeHelper.getItemStack(Mods.THERMAL_FOUNDATION.ID, "material", 2050),
+                8 * H);
+
+        // Basalz Rod
+        TerrafirmacraftRecipeManager.addBarrelRecipe(r,
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "barrel/transform/basalz_rod"),
+                IIngredient.of(RecipeHelper.getFluidStack("witchwater", 250)),
+                IIngredient.of("stickMagnesiumDiboride"),
+                null,
+                RecipeHelper.getItemStack(Mods.THERMAL_FOUNDATION.ID, "material", 2052),
+                8 * H);
+    }
+
+    @Override
+    public void registerQuernRecipes(IForgeRegistry<QuernRecipe> r) {
+        // Blizz Powder
+        TerrafirmacraftRecipeManager.addQuernRecipe(r,
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "quern/powder/blizz_powder"),
+                IIngredient.of("rodBlizz"),
+                RecipeHelper.getItemStack(Mods.THERMAL_FOUNDATION.ID, "material", 2049, 2));
+
+        // Blitz Powder
+        TerrafirmacraftRecipeManager.addQuernRecipe(r,
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "quern/powder/blitz_powder"),
+                IIngredient.of("rodBlitz"),
+                RecipeHelper.getItemStack(Mods.THERMAL_FOUNDATION.ID, "material", 2051, 2));
+
+        // Basalz Powder
+        TerrafirmacraftRecipeManager.addQuernRecipe(r,
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "quern/powder/basalz_powder"),
+                IIngredient.of("rodBasalz"),
+                RecipeHelper.getItemStack(Mods.THERMAL_FOUNDATION.ID, "material", 2053, 2));
+    }
+
+    @Override
+    public void registerSagMillRecipes(FMLPostInitializationEvent r) {
+        // Blizz Powder
+        EnderIORecipeManager.registerSagMillRecipe(
+                "rodBlizz",
+                new RecipeOutput[] {
+                        new RecipeOutput(RecipeHelper.getItemStack(Mods.THERMAL_FOUNDATION.ID, "material", 2049, 2)),
+                        new RecipeOutput(RecipeHelper.getItemStack(Mods.THERMAL_FOUNDATION.ID, "material", 2049), 0.20F)
+                },
+                1600,
+                RecipeBonusType.CHANCE_ONLY,
+                RecipeLevel.IGNORE);
+
+        // Blitz Powder
+        EnderIORecipeManager.registerSagMillRecipe(
+                "rodBlitz",
+                new RecipeOutput[] {
+                        new RecipeOutput(RecipeHelper.getItemStack(Mods.THERMAL_FOUNDATION.ID, "material", 2051, 2)),
+                        new RecipeOutput(RecipeHelper.getItemStack(Mods.THERMAL_FOUNDATION.ID, "material", 2051), 0.20F)
+                },
+                1600,
+                RecipeBonusType.CHANCE_ONLY,
+                RecipeLevel.IGNORE);
+
+        // Basalz Powder
+        EnderIORecipeManager.registerSagMillRecipe(
+                "rodBasalz",
+                new RecipeOutput[] {
+                        new RecipeOutput(RecipeHelper.getItemStack(Mods.THERMAL_FOUNDATION.ID, "material", 2053, 2)),
+                        new RecipeOutput(RecipeHelper.getItemStack(Mods.THERMAL_FOUNDATION.ID, "material", 2053), 0.20F)
+                },
+                1600,
+                RecipeBonusType.CHANCE_ONLY,
+                RecipeLevel.IGNORE);
+    }
+
+    @Override
+    public void registerCrusherRecipes(FMLPostInitializationEvent r) {
+        // Blizz Powder
+        ImmersiveEngineeringRecipeManager.addCrusherRecipe(
+                "rodBlizz",
+                RecipeHelper.getItemStack(Mods.THERMAL_FOUNDATION.ID, "material", 2049, 3),
+                new Object[] {
+                        RecipeHelper.getItemStack(Mods.THERMAL_FOUNDATION.ID, "material", 2049), 0.50F
+                },
+                1600);
+
+        // Blitz Powder
+        ImmersiveEngineeringRecipeManager.addCrusherRecipe(
+                "rodBlizz",
+                RecipeHelper.getItemStack(Mods.THERMAL_FOUNDATION.ID, "material", 2051, 3),
+                new Object[] {
+                        RecipeHelper.getItemStack(Mods.THERMAL_FOUNDATION.ID, "material", 2051), 0.50F
+                },
+                1600);
+
+        // Basalz Powder
+        ImmersiveEngineeringRecipeManager.addCrusherRecipe(
+                "rodBlizz",
+                RecipeHelper.getItemStack(Mods.THERMAL_FOUNDATION.ID, "material", 2053, 3),
+                new Object[] {
+                        RecipeHelper.getItemStack(Mods.THERMAL_FOUNDATION.ID, "material", 2053), 0.50F
+                },
+                1600);
+    }
 }

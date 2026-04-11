@@ -121,18 +121,22 @@ public class ExNihiloCompat implements ICompatModule {
     @Override
     public void registerBarrelRecipes(IForgeRegistry<BarrelRecipe> r) {
         // Witch Water
-        TerrafirmacraftRecipeManager.addBarrelRecipe(r, IIngredient.of(getFluidStack("salt_water", 1000)),
+        TerrafirmacraftRecipeManager.addBarrelRecipe(r,
+                new ResourceLocation(Tags.MODID, "barrel/transform/witch_water"),
+                IIngredient.of(getFluidStack("salt_water", 1000)),
                 IIngredient.of(getItemStack(Mods.EX_NIHILO_CREATIO.ID, "item_material", 3)),
-                getFluidStack("witchwater", 1000), ItemStack.EMPTY, 0, "witch_water_from_ancient_spores");
-        TerrafirmacraftRecipeManager.addBarrelRecipeFluidMixin(r, IIngredient.of(getFluidStack("salt_water", 9000)),
-                getFluidStack("witchwater", 1000), getFluidStack("witchwater", 10000), 0,
-                "witch_water_from_witch_water");
+                getFluidStack("witchwater", 1000), ItemStack.EMPTY, 0);
+        TerrafirmacraftRecipeManager.addBarrelRecipeFluidMixin(r,
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "barrel/mixing/witch_water"),
+                IIngredient.of(getFluidStack("salt_water", 9000)),
+                getFluidStack("witchwater", 1000), getFluidStack("witchwater", 10000), 0);
 
         // Scented Hive
-        TerrafirmacraftRecipeManager.addBarrelRecipe(r, IIngredient.of(getFluidStack("seed.oil", 1000)),
+        TerrafirmacraftRecipeManager.addBarrelRecipe(r,
+                new ResourceLocation(Tags.MODID, "barrel/transform/scented_hive"),
+                IIngredient.of(getFluidStack("seed.oil", 1000)),
                 IIngredient.of(RecipeHelper.getItemStack(Mods.EX_NIHILO_CREATIO.ID, "hive", 0)), null,
-                getItemStack(Mods.EX_NIHILO_CREATIO.ID, "hive", 1), 32 * H,
-                "scented_hive");
+                getItemStack(Mods.EX_NIHILO_CREATIO.ID, "hive", 1), 32 * H);
     }
 
     @Override

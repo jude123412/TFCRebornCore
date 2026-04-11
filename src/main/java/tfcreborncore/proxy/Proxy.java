@@ -52,6 +52,7 @@ public class Proxy {
     @SubscribeEvent
     public static void registerQuernRecipes(RegistryEvent.Register<QuernRecipe> event) {
         MetalRecipes.registerQuernRecipes(event);
+        CompatManager.loadQuernRecipes(event);
     }
 
     @SubscribeEvent

@@ -51,6 +51,7 @@ public enum OreProcessingTypes {
     // ---------------------------------------------------------------------
     // Accessors
     // ---------------------------------------------------------------------
+
     public String getPrimaryName() {
         return this.name().toLowerCase();
     }

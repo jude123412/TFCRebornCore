@@ -10,6 +10,7 @@ import net.minecraftforge.oredict.OreDictionary;
 import tfcreborncore.recipe.ICompatModule;
 import tfcreborncore.recipe.RecipeHelper;
 import tfcreborncore.recipe.enums.Mods;
+import tfcreborncore.recipe.manager.MinecraftRecipeManager;
 
 public class ForestryCompat implements ICompatModule {
 
@@ -26,5 +27,12 @@ public class ForestryCompat implements ICompatModule {
                 RecipeHelper.getItemStack("forestry", "honey_drop"));
         OreDictionary.registerOre("sweetener",
                 RecipeHelper.getItemStack("forestry", "honeydew"));
+    }
+
+    @Override
+    public void registerCraftingRecipe(RegistryEvent.Register<IRecipe> r) {
+        MinecraftRecipeManager.removeRecipeByOutput(r, RecipeHelper.getItemStack(Mods.FORESTRY.ID, "ingot_copper"));
+        MinecraftRecipeManager.removeRecipeByOutput(r, RecipeHelper.getItemStack(Mods.FORESTRY.ID, "ingot_tin"));
+        MinecraftRecipeManager.removeRecipeByOutput(r, RecipeHelper.getItemStack(Mods.FORESTRY.ID, "ingot_bronze"));
     }
 }

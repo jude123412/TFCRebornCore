@@ -69,6 +69,9 @@ public class ThermalExpansionCompat implements ICompatModule {
         MinecraftRecipeManager.removeRecipeByOutput(r,
                 RecipeHelper.getItemStack(Mods.THERMAL_FOUNDATION.ID, "security"));
         MinecraftRecipeManager.removeRecipeByOutput(r,
+                RecipeHelper.getItemStack(Mods.THERMAL_FOUNDATION.ID, "storage_resource",
+                        OreDictionary.WILDCARD_VALUE));
+        MinecraftRecipeManager.removeRecipeByOutput(r,
                 RecipeHelper.getItemStack(Mods.THERMAL_DYNAMICS.ID, "duct_0", OreDictionary.WILDCARD_VALUE));
         MinecraftRecipeManager.removeRecipeByOutput(r,
                 RecipeHelper.getItemStack(Mods.THERMAL_DYNAMICS.ID, "duct_16", OreDictionary.WILDCARD_VALUE));

@@ -2,6 +2,7 @@ package tfcreborncore.recipe;
 
 import java.util.List;
 
+import net.dries007.tfc.api.recipes.WeldingRecipe;
 import net.dries007.tfc.api.recipes.anvil.AnvilRecipe;
 import net.dries007.tfc.api.recipes.barrel.BarrelRecipe;
 import net.dries007.tfc.api.recipes.quern.QuernRecipe;
@@ -24,6 +25,8 @@ public interface ICompatModule {
     default void registerBarrelRecipes(IForgeRegistry<BarrelRecipe> r) {}
 
     default void registerAnvilRecipes(IForgeRegistry<AnvilRecipe> r) {}
+
+    default void registerWeldingRecipes(IForgeRegistry<WeldingRecipe> r) {}
 
     default void registerQuernRecipes(IForgeRegistry<QuernRecipe> r) {}
 

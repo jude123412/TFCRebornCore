@@ -3,6 +3,7 @@ package tfcreborncore.recipe;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.dries007.tfc.api.recipes.WeldingRecipe;
 import net.dries007.tfc.api.recipes.anvil.AnvilRecipe;
 import net.dries007.tfc.api.recipes.barrel.BarrelRecipe;
 import net.dries007.tfc.api.recipes.quern.QuernRecipe;
@@ -61,6 +62,12 @@ public final class CompatManager {
     public static void loadAnvilRecipes(RegistryEvent.Register<AnvilRecipe> event) {
         for (ICompatModule module : modules) {
             if (module.areRecipesLoadable()) module.registerAnvilRecipes(event.getRegistry());
+        }
+    }
+
+    public static void loadWeldingRecipes(RegistryEvent.Register<WeldingRecipe> event) {
+        for (ICompatModule module : modules) {
+            if (module.areRecipesLoadable()) module.registerWeldingRecipes(event.getRegistry());
         }
     }
 

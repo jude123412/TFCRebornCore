@@ -47,6 +47,7 @@ public class Proxy {
     @SubscribeEvent
     public static void registerWeldingRecipes(RegistryEvent.Register<WeldingRecipe> event) {
         MetalRecipes.registerWeldingRecipes(event);
+        CompatManager.loadWeldingRecipes(event);
     }
 
     @SubscribeEvent

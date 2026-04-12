@@ -3,16 +3,23 @@ package tfcreborncore.recipe.compat;
 import java.util.Arrays;
 import java.util.List;
 
+import net.dries007.tfc.api.recipes.WeldingRecipe;
+import net.dries007.tfc.api.registries.TFCRegistries;
+import net.dries007.tfc.api.types.Metal;
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
+import net.minecraftforge.oredict.OreDictionary;
+import net.minecraftforge.registries.IForgeRegistry;
 
 import crazypants.enderio.base.recipe.RecipeBonusType;
 import crazypants.enderio.base.recipe.RecipeInput;
 import crazypants.enderio.base.recipe.RecipeLevel;
 import crazypants.enderio.base.recipe.RecipeOutput;
 import tfcreborncore.Tags;
+import tfcreborncore.objects.RCItems;
 import tfcreborncore.recipe.ICompatModule;
 import tfcreborncore.recipe.RecipeHelper;
 import tfcreborncore.recipe.enums.Mods;
@@ -102,7 +109,58 @@ public class TFCRebornCoreCompat implements ICompatModule {
                     RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/cube/" + type.getPrimaryName()),
                     RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/cube/" + type.getPrimaryName()));
         }
+
+        // Simple code to remove and
+        // add block recipes for metals
+        for (Metal type : TFCRegistries.METALS.getValuesCollection()) {
+
+            // Remove Block Recipes if they exist
+            for (ItemStack oreBlocks : OreDictionary
+                    .getOres("block" + RCItems.toPascalCase(type.getRegistryName().getPath()))) {
+                if (!oreBlocks.isEmpty()) MinecraftRecipeManager.removeRecipeByOutput(r, oreBlocks);
+            }
+
+            // Find a block if it exists?
+            List<ItemStack> maybeBlock = OreDictionary
+                    .getOres("block" + RCItems.toPascalCase(type.getRegistryName().getPath()));
+
+            // Find an ingot if it exists?
+            List<ItemStack> maybeIngot = OreDictionary
+                    .getOres("ingot" + RCItems.toPascalCase(type.getRegistryName().getPath()));
+
+            // Add a block &
+            // uncraft recipe
+            if (!maybeBlock.isEmpty() && !maybeIngot.isEmpty()) {
+
+                // Metal Block
+                MinecraftRecipeManager.addShapedDamageRecipe(
+                        new ResourceLocation(Mods.TFC_REBORN_CORE.ID,
+                                "crafting/shaped/damage/metal_block/" + type.getRegistryName().getPath()),
+                        8,
+                        maybeBlock.get(0),
+                        "III",
+                        "IHI",
+                        "III",
+                        'I', "ingot" + RCItems.toPascalCase(type.getRegistryName().getPath()),
+                        'H', "hammer");
+
+                // Uncraft Block
+                MinecraftRecipeManager.addShapelessDamageRecipe(
+                        new ResourceLocation(Tags.MODID,
+                                "crafting/shapeless/damage/metal_block/uncraft/" + type.getRegistryName().getPath()),
+                        8,
+                        new ItemStack(maybeIngot.get(0).getItem(), 8),
+                        "block" + RCItems.toPascalCase(type.getRegistryName().getPath()),
+                        "chisel");
+            }
+        }
     }
+
+    @Override
+    public void registerItemMetal(FMLPostInitializationEvent r) {}
+
+    @Override
+    public void registerWeldingRecipes(IForgeRegistry<WeldingRecipe> r) {}
 
     @Override
     public void registerSieveRecipes(FMLPostInitializationEvent r) {

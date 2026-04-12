@@ -6,6 +6,7 @@ import static tfcreborncore.recipe.manager.TerrafirmacraftRecipeManager.H;
 import java.util.Arrays;
 import java.util.List;
 
+import net.dries007.tfc.api.recipes.WeldingRecipe;
 import net.dries007.tfc.api.recipes.barrel.BarrelRecipe;
 import net.dries007.tfc.objects.inventory.ingredient.IIngredient;
 import net.minecraft.item.crafting.IRecipe;
@@ -42,6 +43,9 @@ public class MinecraftCompat implements ICompatModule {
     public void registerCraftingRecipe(RegistryEvent.Register<IRecipe> r) {
         MinecraftRecipeManager.removeRecipeByOutput(r, getItemStack(Mods.MINECRAFT.ID, "blaze_powder"));
     }
+
+    @Override
+    public void registerWeldingRecipes(IForgeRegistry<WeldingRecipe> r) {}
 
     @Override
     public void registerBarrelRecipes(IForgeRegistry<BarrelRecipe> r) {

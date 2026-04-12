@@ -16,6 +16,7 @@ import net.minecraftforge.oredict.ShapelessOreRecipe;
 import net.minecraftforge.registries.IForgeRegistryEntry;
 import net.minecraftforge.registries.IForgeRegistryModifiable;
 
+import tfcreborncore.recipe.manager.builders.ShapedDamageRecipe;
 import tfcreborncore.recipe.manager.builders.ShapedSkillRecipe;
 import tfcreborncore.recipe.manager.builders.ShapelessDamageRecipe;
 import tfcreborncore.recipe.manager.builders.ShapelessSkillRecipe;
@@ -53,23 +54,6 @@ public class MinecraftRecipeManager {
     }
 
     /**
-     * Registers a shapeless Skill-based crafting recipe.
-     * <p>
-     * Creates a {@link ShapelessSkillRecipe} using the provided output and input
-     * ingredients, assigns the registry name, and adds it to the internal recipe list.
-     *
-     * @param name   The unique registry name for the recipe.
-     * @param result The resulting {@link ItemStack} produced by the recipe.
-     * @param inputs The shapeless ingredient list for the recipe.
-     */
-    public static void addShapelessSkillRecipe(ResourceLocation name, ItemStack result, Object... inputs) {
-        ShapelessSkillRecipe recipe = new ShapelessSkillRecipe(name, result, inputs);
-        recipe.setRegistryName(name);
-
-        RECIPE_LIST.add(recipe);
-    }
-
-    /**
      * Registers a standard shaped OreDictionary-aware crafting recipe.
      * <p>
      * Builds a non-mirrored {@link CraftingHelper.ShapedPrimer} from the provided
@@ -91,6 +75,55 @@ public class MinecraftRecipeManager {
         primer.mirrored = false;
 
         ShapedOreRecipe recipe = new ShapedOreRecipe(name, result, primer);
+        recipe.setRegistryName(name);
+
+        RECIPE_LIST.add(recipe);
+    }
+
+    /**
+     * Registers a shaped crafting recipe that applies durability damage to one or
+     * more tool ingredients when crafted.
+     * <p>
+     * This constructs a non‑mirrored {@link CraftingHelper.ShapedPrimer} from the
+     * provided pattern and ingredient definitions, then wraps it in a custom
+     * {@link ShapedDamageRecipe}. Unlike standard shaped recipes, this variant
+     * supports durability‑based tool usage: specified inputs are not consumed but
+     * instead take the configured amount of damage when the recipe is crafted.
+     * <p>
+     * The recipe is assigned the provided {@link ResourceLocation} as its registry
+     * name and added to the internal recipe list for later registration.
+     *
+     * @param name   The unique registry name for the recipe.
+     * @param damage The amount of durability damage applied to tool inputs.
+     * @param result The resulting {@link ItemStack} produced by the recipe.
+     * @param inputs The shaped crafting pattern and ingredient definitions.
+     */
+    public static void addShapedDamageRecipe(ResourceLocation name, int damage, ItemStack result, Object... inputs) {
+        Object[] list = new Object[inputs.length + 1];
+        list[0] = false;
+        System.arraycopy(inputs, 0, list, 1, inputs.length);
+
+        CraftingHelper.ShapedPrimer primer = CraftingHelper.parseShaped(list);
+        primer.mirrored = false;
+
+        ShapedDamageRecipe recipe = new ShapedDamageRecipe(name, damage, result, primer);
+        recipe.setRegistryName(name);
+
+        RECIPE_LIST.add(recipe);
+    }
+
+    /**
+     * Registers a shapeless Skill-based crafting recipe.
+     * <p>
+     * Creates a {@link ShapelessSkillRecipe} using the provided output and input
+     * ingredients, assigns the registry name, and adds it to the internal recipe list.
+     *
+     * @param name   The unique registry name for the recipe.
+     * @param result The resulting {@link ItemStack} produced by the recipe.
+     * @param inputs The shapeless ingredient list for the recipe.
+     */
+    public static void addShapelessSkillRecipe(ResourceLocation name, ItemStack result, Object... inputs) {
+        ShapelessSkillRecipe recipe = new ShapelessSkillRecipe(name, result, inputs);
         recipe.setRegistryName(name);
 
         RECIPE_LIST.add(recipe);

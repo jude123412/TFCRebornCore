@@ -120,6 +120,11 @@ public class TFCRebornCoreCompat implements ICompatModule {
                 if (!oreBlocks.isEmpty()) MinecraftRecipeManager.removeRecipeByOutput(r, oreBlocks);
             }
 
+            for (ItemStack ingots : OreDictionary
+                    .getOres("ingot" + RCItems.toPascalCase(type.getRegistryName().getPath()))) {
+                if (!ingots.isEmpty()) MinecraftRecipeManager.removeRecipeByOutput(r, ingots);
+            }
+
             // Find a block if it exists?
             List<ItemStack> maybeBlock = OreDictionary
                     .getOres("block" + RCItems.toPascalCase(type.getRegistryName().getPath()));
@@ -145,11 +150,13 @@ public class TFCRebornCoreCompat implements ICompatModule {
                         'H', "hammer");
 
                 // Uncraft Block
+                ItemStack ingot = maybeIngot.get(0);
+                ingot.setCount(8);
                 MinecraftRecipeManager.addShapelessDamageRecipe(
                         new ResourceLocation(Tags.MODID,
                                 "crafting/shapeless/damage/metal_block/uncraft/" + type.getRegistryName().getPath()),
                         8,
-                        new ItemStack(maybeIngot.get(0).getItem(), 8),
+                        ingot,
                         "block" + RCItems.toPascalCase(type.getRegistryName().getPath()),
                         "chisel");
             }

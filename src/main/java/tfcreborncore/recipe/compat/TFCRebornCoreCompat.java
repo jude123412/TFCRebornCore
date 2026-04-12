@@ -129,14 +129,9 @@ public class TFCRebornCoreCompat implements ICompatModule {
             List<ItemStack> maybeBlock = OreDictionary
                     .getOres("block" + RCItems.toPascalCase(type.getRegistryName().getPath()));
 
-            // Find an ingot if it exists?
-            List<ItemStack> maybeIngot = OreDictionary
-                    .getOres("ingot" + RCItems.toPascalCase(type.getRegistryName().getPath()));
-
             // Add a block &
             // uncraft recipe
-            if (!maybeBlock.isEmpty() && !maybeIngot.isEmpty()) {
-
+            if (!maybeBlock.isEmpty()) {
                 // Metal Block
                 MinecraftRecipeManager.addShapedDamageRecipe(
                         new ResourceLocation(Mods.TFC_REBORN_CORE.ID,
@@ -148,17 +143,6 @@ public class TFCRebornCoreCompat implements ICompatModule {
                         "III",
                         'I', "ingot" + RCItems.toPascalCase(type.getRegistryName().getPath()),
                         'H', "hammer");
-
-                // Uncraft Block
-                ItemStack ingot = maybeIngot.get(0);
-                ingot.setCount(8);
-                MinecraftRecipeManager.addShapelessDamageRecipe(
-                        new ResourceLocation(Tags.MODID,
-                                "crafting/shapeless/damage/metal_block/uncraft/" + type.getRegistryName().getPath()),
-                        8,
-                        ingot,
-                        "block" + RCItems.toPascalCase(type.getRegistryName().getPath()),
-                        "chisel");
             }
         }
     }

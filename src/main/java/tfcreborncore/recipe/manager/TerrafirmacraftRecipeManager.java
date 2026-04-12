@@ -21,8 +21,6 @@ import net.minecraftforge.registries.IForgeRegistry;
 
 public class TerrafirmacraftRecipeManager {
 
-    public static int H = 1000;
-
     /**
      * Registers a custom metal definition for a specific {@link ItemStack} in TFC.
      * <p>
@@ -107,7 +105,7 @@ public class TerrafirmacraftRecipeManager {
                                        IIngredient<FluidStack> inputFluid,
                                        IIngredient<ItemStack> inputStack, FluidStack outputFluid, ItemStack outputStack,
                                        int duration) {
-        r.register(new BarrelRecipe(inputFluid, inputStack, outputFluid, outputStack, duration)
+        r.register(new BarrelRecipe(inputFluid, inputStack, outputFluid, outputStack, duration * 1000)
                 .setRegistryName(regName));
     }
 
@@ -130,7 +128,8 @@ public class TerrafirmacraftRecipeManager {
     public static void addBarrelRecipeFluidMixin(IForgeRegistry<BarrelRecipe> r, ResourceLocation regName,
                                                  IIngredient<FluidStack> inputFluid1,
                                                  FluidStack inputFluid2, FluidStack outputFluid, int duration) {
-        r.register(new BarrelRecipeFluidMixing(inputFluid1, new IngredientFluidItem(inputFluid2), outputFluid, duration)
-                .setRegistryName(regName));
+        r.register(new BarrelRecipeFluidMixing(inputFluid1, new IngredientFluidItem(inputFluid2), outputFluid,
+                duration * 1000)
+                        .setRegistryName(regName));
     }
 }

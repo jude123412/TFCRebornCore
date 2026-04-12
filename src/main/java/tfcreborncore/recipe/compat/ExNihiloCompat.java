@@ -2,7 +2,6 @@ package tfcreborncore.recipe.compat;
 
 import static tfcreborncore.recipe.RecipeHelper.getFluidStack;
 import static tfcreborncore.recipe.RecipeHelper.getItemStack;
-import static tfcreborncore.recipe.manager.TerrafirmacraftRecipeManager.H;
 
 import java.util.Arrays;
 import java.util.List;
@@ -125,7 +124,7 @@ public class ExNihiloCompat implements ICompatModule {
                 new ResourceLocation(Tags.MODID, "barrel/transform/witch_water"),
                 IIngredient.of(getFluidStack("salt_water", 1000)),
                 IIngredient.of(getItemStack(Mods.EX_NIHILO_CREATIO.ID, "item_material", 3)),
-                getFluidStack("witchwater", 1000), ItemStack.EMPTY, 0);
+                getFluidStack("witchwater", 1000), ItemStack.EMPTY, 8);
         TerrafirmacraftRecipeManager.addBarrelRecipeFluidMixin(r,
                 new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "barrel/mixing/witch_water"),
                 IIngredient.of(getFluidStack("salt_water", 9000)),
@@ -136,7 +135,7 @@ public class ExNihiloCompat implements ICompatModule {
                 new ResourceLocation(Tags.MODID, "barrel/transform/scented_hive"),
                 IIngredient.of(getFluidStack("seed.oil", 1000)),
                 IIngredient.of(RecipeHelper.getItemStack(Mods.EX_NIHILO_CREATIO.ID, "hive", 0)), null,
-                getItemStack(Mods.EX_NIHILO_CREATIO.ID, "hive", 1), 32 * H);
+                getItemStack(Mods.EX_NIHILO_CREATIO.ID, "hive", 1), 32);
     }
 
     @Override

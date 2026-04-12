@@ -1,7 +1,5 @@
 package tfcreborncore.recipe.compat;
 
-import static tfcreborncore.recipe.manager.TerrafirmacraftRecipeManager.H;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -372,7 +370,7 @@ public class ThermalExpansionCompat implements ICompatModule {
                 IIngredient.of("stickCobalt"),
                 null,
                 RecipeHelper.getItemStack(Mods.THERMAL_FOUNDATION.ID, "material", 2048),
-                8 * H);
+                8);
 
         // Blitz Rod
         TerrafirmacraftRecipeManager.addBarrelRecipe(r,
@@ -381,7 +379,7 @@ public class ThermalExpansionCompat implements ICompatModule {
                 IIngredient.of("stickGold"),
                 null,
                 RecipeHelper.getItemStack(Mods.THERMAL_FOUNDATION.ID, "material", 2050),
-                8 * H);
+                8);
 
         // Basalz Rod
         TerrafirmacraftRecipeManager.addBarrelRecipe(r,
@@ -390,7 +388,7 @@ public class ThermalExpansionCompat implements ICompatModule {
                 IIngredient.of("stickMagnesiumDiboride"),
                 null,
                 RecipeHelper.getItemStack(Mods.THERMAL_FOUNDATION.ID, "material", 2052),
-                8 * H);
+                8);
     }
 
     @Override

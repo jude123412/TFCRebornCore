@@ -1,7 +1,6 @@
 package tfcreborncore.recipe.compat;
 
 import static tfcreborncore.recipe.RecipeHelper.getItemStack;
-import static tfcreborncore.recipe.manager.TerrafirmacraftRecipeManager.H;
 
 import java.util.Arrays;
 import java.util.List;
@@ -56,7 +55,7 @@ public class MinecraftCompat implements ICompatModule {
                 IIngredient.of("dustCopper"),
                 null,
                 RecipeHelper.getItemStack(Mods.MINECRAFT.ID, "redstone"),
-                8 * H);
+                8);
 
         // Glowstone Dust from Witch Water
         TerrafirmacraftRecipeManager.addBarrelRecipe(r,
@@ -65,7 +64,7 @@ public class MinecraftCompat implements ICompatModule {
                 IIngredient.of("dustGold"),
                 null,
                 RecipeHelper.getItemStack(Mods.MINECRAFT.ID, "glowstone_dust"),
-                8 * H);
+                8);
 
         // Enderpearl Powder from Witch Water
         TerrafirmacraftRecipeManager.addBarrelRecipe(r,
@@ -74,7 +73,7 @@ public class MinecraftCompat implements ICompatModule {
                 IIngredient.of("dustBismuth"),
                 null,
                 RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/enderpearl_powder"),
-                8 * H);
+                8);
 
         // Blaze Rod from Witch Water
         TerrafirmacraftRecipeManager.addBarrelRecipe(r,
@@ -83,7 +82,7 @@ public class MinecraftCompat implements ICompatModule {
                 IIngredient.of("stickRoseGold"),
                 null,
                 RecipeHelper.getItemStack(Mods.MINECRAFT.ID, "blaze_rod"),
-                8 * H);
+                8);
 
         // Obsidian from Witch Water
         TerrafirmacraftRecipeManager.addBarrelRecipe(r,
@@ -92,7 +91,7 @@ public class MinecraftCompat implements ICompatModule {
                 IIngredient.of("cobblestone"),
                 null,
                 RecipeHelper.getItemStack(Mods.MINECRAFT.ID, "obsidian"),
-                72 * H);
+                72);
     }
 
     @Override

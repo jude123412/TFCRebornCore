@@ -129,7 +129,7 @@ public class StorageDrawersCompat implements ICompatModule {
 
         // Status Upgrade (II)
         MinecraftRecipeManager.addShapedRecipe(
-                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shaped/status_upgrade_1"),
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shaped/status_upgrade_2"),
                 RecipeHelper.getItemStack(Mods.STORAGE_DRAWERS.ID, "upgrade_status", 1),
                 "WWW",
                 "TUT",
@@ -162,7 +162,7 @@ public class StorageDrawersCompat implements ICompatModule {
 
         // Redstone Upgrade
         MinecraftRecipeManager.addShapedRecipe(
-                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shaped/status_upgrade_1"),
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shaped/redstone_upgrade"),
                 RecipeHelper.getItemStack(Mods.STORAGE_DRAWERS.ID, "upgrade_redstone", 0),
                 "WWW",
                 "RUR",
@@ -173,7 +173,7 @@ public class StorageDrawersCompat implements ICompatModule {
 
         // Redstone Max Upgrade
         MinecraftRecipeManager.addShapedRecipe(
-                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shaped/status_upgrade_1"),
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shaped/redstone_max_upgrade"),
                 RecipeHelper.getItemStack(Mods.STORAGE_DRAWERS.ID, "upgrade_redstone", 1),
                 "WWW",
                 "TUR",
@@ -185,7 +185,7 @@ public class StorageDrawersCompat implements ICompatModule {
 
         // Redstone Min Upgrade
         MinecraftRecipeManager.addShapedRecipe(
-                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shaped/status_upgrade_1"),
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shaped/redstone_min_upgrade"),
                 RecipeHelper.getItemStack(Mods.STORAGE_DRAWERS.ID, "upgrade_redstone", 2),
                 "WWW",
                 "RUT",

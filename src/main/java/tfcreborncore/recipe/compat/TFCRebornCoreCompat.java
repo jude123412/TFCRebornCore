@@ -50,7 +50,33 @@ public class TFCRebornCoreCompat implements ICompatModule {
     }
 
     @Override
-    public void registerOreDictionaries(RegistryEvent.Register<IRecipe> r) {}
+    public void registerOreDictionaries(RegistryEvent.Register<IRecipe> r) {
+        // Wrought Iron Block is Iron Block?
+        for (ItemStack stack : OreDictionary.getOres("blockIron")) {
+            OreDictionary.registerOre("blockWroughtIron", stack);
+        }
+
+        // Aluminum or Aluminium?
+        // Why not both
+        for (ItemStack stack : OreDictionary.getOres("blockAluminum")) {
+            OreDictionary.registerOre("blockAluminium", stack);
+        }
+        for (ItemStack stack : OreDictionary.getOres("blockSheetmetalAluminum")) {
+            OreDictionary.registerOre("blockSheetmetalAluminium", stack);
+        }
+        for (ItemStack stack : OreDictionary.getOres("ingotAluminum")) {
+            OreDictionary.registerOre("ingotAluminium", stack);
+        }
+        for (ItemStack stack : OreDictionary.getOres("dustAluminum")) {
+            OreDictionary.registerOre("dustAluminium", stack);
+        }
+        for (ItemStack stack : OreDictionary.getOres("fenceAluminum")) {
+            OreDictionary.registerOre("fenceAluminium", stack);
+        }
+        for (ItemStack stack : OreDictionary.getOres("trapdoorAluminum")) {
+            OreDictionary.registerOre("trapdoorAluminium", stack);
+        }
+    }
 
     @Override
     public void registerRecipeRemoval(FMLPostInitializationEvent r) {

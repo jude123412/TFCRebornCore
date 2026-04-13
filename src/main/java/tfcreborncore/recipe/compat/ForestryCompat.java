@@ -31,8 +31,6 @@ public class ForestryCompat implements ICompatModule {
 
     @Override
     public void registerCraftingRecipe(RegistryEvent.Register<IRecipe> r) {
-        MinecraftRecipeManager.removeRecipeByOutput(r, RecipeHelper.getItemStack(Mods.FORESTRY.ID, "ingot_copper"));
-        MinecraftRecipeManager.removeRecipeByOutput(r, RecipeHelper.getItemStack(Mods.FORESTRY.ID, "ingot_tin"));
-        MinecraftRecipeManager.removeRecipeByOutput(r, RecipeHelper.getItemStack(Mods.FORESTRY.ID, "ingot_bronze"));
+        MinecraftRecipeManager.removeRecipeByModGroup(r, Mods.FORESTRY.ID);
     }
 }

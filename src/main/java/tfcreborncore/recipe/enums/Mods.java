@@ -17,6 +17,11 @@ public enum Mods {
     THERMAL_INNOVATION("thermalinnovation"),
     ENDER_IO("enderio"),
     IMMERSIVE_ENGINEERING("immersiveengineering"),
+    BINNIE_CORE("binniecore"),
+    BINNIE_BOTANY("botany"),
+    BINNIE_EXTRA_BEES("extrabees"),
+    BINNIE_EXTRA_TREES("extratrees"),
+    BINNIE_GENETICS("genetics"),
     FORESTRY("forestry");
 
     public final String ID;

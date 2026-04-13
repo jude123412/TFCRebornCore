@@ -234,7 +234,7 @@ public class MinecraftRecipeManager {
         for (IRecipe recipe : r.getValuesCollection()) {
             String modGroup = recipe.getRegistryName().getNamespace();
 
-            if (modGroup.contains(group)) {
+            if (modGroup.contains(group) && !modGroup.contains(Mods.TFC_REBORN_CORE.ID)) {
                 toRemove.add(recipe.getRegistryName());
             }
         }

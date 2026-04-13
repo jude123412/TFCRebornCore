@@ -12,6 +12,7 @@ import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 
 import tfcreborncore.recipe.compat.BaubleliciousCompat;
+import tfcreborncore.recipe.compat.BinniesCompat;
 import tfcreborncore.recipe.compat.ExNihiloCompat;
 import tfcreborncore.recipe.compat.ForestryCompat;
 import tfcreborncore.recipe.compat.MinecraftCompat;
@@ -33,6 +34,7 @@ public final class CompatManager {
         modules.add(new StorageDrawersCompat());
         modules.add(new BaubleliciousCompat());
         modules.add(new ThermalExpansionCompat());
+        modules.add(new BinniesCompat());
     }
 
     public static void loadOreDictionaries(RegistryEvent.Register<IRecipe> event) {

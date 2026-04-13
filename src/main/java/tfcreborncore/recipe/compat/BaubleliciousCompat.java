@@ -35,29 +35,7 @@ public class BaubleliciousCompat implements ICompatModule {
 
     @Override
     public void registerRecipeRemoval(FMLPostInitializationEvent r) {
-        MinecraftRecipeManager.removeRecipeByOutput(RecipeHelper.getItemStack(Mods.BAUBLELICIOUS.ID, "itemring"));
-        MinecraftRecipeManager.removeRecipeByOutput(
-                RecipeHelper.getItemStack("baublelicious", "itemamulet"));
-        MinecraftRecipeManager.removeRecipeByOutput(
-                RecipeHelper.getItemStack("baublelicious", "itembelt"));
-        MinecraftRecipeManager.removeRecipeByOutput(
-                RecipeHelper.getItemStack("baublelicious", "itemspeedbelt"));
-        MinecraftRecipeManager.removeRecipeByOutput(
-                RecipeHelper.getItemStack("baublelicious", "itemgrowthpendant"));
-        MinecraftRecipeManager.removeRecipeByOutput(
-                RecipeHelper.getItemStack("baublelicious", "itemringofflight"));
-        MinecraftRecipeManager.removeRecipeByOutput(
-                RecipeHelper.getItemStack("baublelicious", "itembeltwaterwalking"));
-        MinecraftRecipeManager.removeRecipeByOutput(
-                RecipeHelper.getItemStack("baublelicious", "itemdivingamulet"));
-        MinecraftRecipeManager.removeRecipeByOutput(
-                RecipeHelper.getItemStack("baublelicious", "itemfallingbelt"));
-        MinecraftRecipeManager.removeRecipeByOutput(
-                RecipeHelper.getItemStack("baublelicious", "itemamuletnightvision"));
-        MinecraftRecipeManager.removeRecipeByOutput(
-                RecipeHelper.getItemStack("baublelicious", "itemamuletfierycore"));
-        MinecraftRecipeManager.removeRecipeByOutput(
-                RecipeHelper.getItemStack("baublelicious", "item.itemmagiccore", OreDictionary.WILDCARD_VALUE));
+        MinecraftRecipeManager.removeRecipeByModGroup(Mods.BAUBLELICIOUS.ID);
     }
 
     @Override

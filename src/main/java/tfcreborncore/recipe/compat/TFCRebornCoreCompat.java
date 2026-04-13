@@ -28,6 +28,7 @@ import tfcreborncore.recipe.manager.EnderIORecipeManager;
 import tfcreborncore.recipe.manager.ExNihiloRecipeManager;
 import tfcreborncore.recipe.manager.ImmersiveEngineeringRecipeManager;
 import tfcreborncore.recipe.manager.MinecraftRecipeManager;
+import tfcreborncore.recipe.manager.TerrafirmacraftRecipeManager;
 
 public class TFCRebornCoreCompat implements ICompatModule {
 
@@ -154,7 +155,19 @@ public class TFCRebornCoreCompat implements ICompatModule {
     }
 
     @Override
-    public void registerItemMetal(FMLPostInitializationEvent r) {}
+    public void registerItemMetal(FMLPostInitializationEvent r) {
+        for (Metal type : TFCRegistries.METALS.getValuesCollection()) {
+
+            // Find a block if it exists?
+            List<ItemStack> maybeBlock = OreDictionary
+                    .getOres("block" + RCItems.toPascalCase(type.getRegistryName().getPath()));
+
+            // Add Item Metal to block
+            for (ItemStack block : maybeBlock) {
+                if (!block.isEmpty()) TerrafirmacraftRecipeManager.addItemMetal(block, type, 800, true);
+            }
+        }
+    }
 
     @Override
     public void registerWeldingRecipes(IForgeRegistry<WeldingRecipe> r) {}

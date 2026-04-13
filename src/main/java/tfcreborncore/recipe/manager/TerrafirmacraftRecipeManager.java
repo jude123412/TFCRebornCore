@@ -43,6 +43,28 @@ public class TerrafirmacraftRecipeManager {
     }
 
     /**
+     * Registers a custom metal definition for a specific {@link ItemStack} in TFC.
+     * <p>
+     * This variant accepts a direct {@link Metal} instance rather than a
+     * {@link ResourceLocation}, allowing callers to bypass a registry lookup when
+     * the metal object is already known. The item is associated with a
+     * {@link MetalItemHandler} that defines its metal type, melt amount, and
+     * whether the item is allowed to melt in a forge or crucible. The mapping is
+     * stored in {@link CapabilityMetalItem#CUSTOM_METAL_ITEMS} using an
+     * {@link IIngredient} wrapper as the lookup key.
+     *
+     * @param inputStack The item to associate with a metal definition.
+     * @param metal      The TFC {@link Metal} instance to assign to the item.
+     * @param amount     The amount of metal (in units) the item contains.
+     * @param canMelt    Whether the item is allowed to melt into liquid metal.
+     */
+    @SuppressWarnings("unchecked")
+    public static void addItemMetal(ItemStack inputStack, Metal metal, int amount, boolean canMelt) {
+        CapabilityMetalItem.CUSTOM_METAL_ITEMS.computeIfAbsent(IIngredient.of(inputStack),
+                k -> (Supplier) () -> new MetalItemHandler(metal, amount, canMelt));
+    }
+
+    /**
      * Registers a new TFC anvil recipe.
      * <p>
      * Creates an {@link AnvilRecipe} with the specified input ingredient, output

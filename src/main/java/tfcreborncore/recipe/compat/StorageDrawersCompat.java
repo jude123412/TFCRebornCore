@@ -267,7 +267,7 @@ public class StorageDrawersCompat implements ICompatModule {
                 RecipeHelper.getItemStack(Mods.MINECRAFT.ID, "stone_button"));
 
         // Framing Table
-        MinecraftRecipeManager.addShapelessDamageRecipe(
+        MinecraftRecipeManager.addShapedDamageRecipe(
                 new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shaped/framing_table"),
                 1,
                 RecipeHelper.getItemStack(Mods.STORAGE_DRAWERS.ID, "framingtable"),

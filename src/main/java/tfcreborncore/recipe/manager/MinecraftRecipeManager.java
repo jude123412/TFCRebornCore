@@ -9,13 +9,14 @@ import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 import net.minecraftforge.common.crafting.CraftingHelper;
-import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
 import net.minecraftforge.registries.IForgeRegistryEntry;
 import net.minecraftforge.registries.IForgeRegistryModifiable;
 
+import tfcreborncore.recipe.enums.Mods;
 import tfcreborncore.recipe.manager.builders.ShapedDamageRecipe;
 import tfcreborncore.recipe.manager.builders.ShapedSkillRecipe;
 import tfcreborncore.recipe.manager.builders.ShapelessDamageRecipe;
@@ -169,32 +170,36 @@ public class MinecraftRecipeManager {
     /**
      * Removes crafting recipes based on their output {@link ItemStack}.
      * <p>
-     * This method scans all registered crafting recipes and identifies any whose
-     * output item matches the provided {@code output} stack. Metadata comparison
-     * supports wildcard matching via {@link OreDictionary#WILDCARD_VALUE}, allowing
-     * removal of all variants of an item regardless of damage value.
+     * This method iterates over the fully-populated crafting recipe registry
+     * (typically during {@code FMLLoadCompleteEvent}) and identifies any recipe
+     * whose output item matches the provided {@code output} stack. Metadata
+     * comparison supports wildcard matching via {@link OreDictionary#WILDCARD_VALUE},
+     * allowing removal of all variants of an item regardless of damage value.
+     * <p>
+     * Recipes belonging to this mod (as identified by the namespace
+     * {@code Mods.TFC_REBORN_CORE.ID}) are explicitly excluded from removal.
      * <p>
      * Matching recipes are not deleted directly; instead, each is replaced with a
      * {@link DummyRecipe} registered under the same {@link ResourceLocation}. This
      * preserves registry integrity while effectively disabling the original recipe.
      *
-     * @param registry The Forge registry event for {@link IRecipe} registration.
-     * @param output   The output item to match against recipe results. May use
-     *                 {@link OreDictionary#WILDCARD_VALUE} for metadata wildcarding.
+     * @param output The output item to match against recipe results. May use
+     *               {@link OreDictionary#WILDCARD_VALUE} for metadata wildcarding.
      */
     @SuppressWarnings("unchecked")
-    public static void removeRecipeByOutput(RegistryEvent.Register<IRecipe> registry, ItemStack output) {
-        IForgeRegistryModifiable<IRecipe> r = (IForgeRegistryModifiable) registry.getRegistry();
+    public static void removeRecipeByOutput(ItemStack output) {
+        IForgeRegistryModifiable<IRecipe> r = (IForgeRegistryModifiable<IRecipe>) ForgeRegistries.RECIPES;
         List<ResourceLocation> toRemove = new ArrayList<>();
 
         for (IRecipe recipe : r.getValuesCollection()) {
             ItemStack recipeOutput = recipe.getRecipeOutput();
+            String group = recipe.getRegistryName().getNamespace();
 
             boolean areItemsEqual = recipeOutput.getItem().equals(output.getItem());
             boolean isMetaEqual = recipeOutput.getItemDamage() == output.getItemDamage();
             boolean isWildcard = output.getItemDamage() == OreDictionary.WILDCARD_VALUE;
 
-            if (areItemsEqual && (isMetaEqual || isWildcard)) {
+            if (areItemsEqual && !group.contains(Mods.TFC_REBORN_CORE.ID) && (isMetaEqual || isWildcard)) {
                 toRemove.add(recipe.getRegistryName());
             }
         }
@@ -208,22 +213,22 @@ public class MinecraftRecipeManager {
      * Removes crafting recipes based on the namespace (mod ID) portion of their
      * {@link ResourceLocation}.
      * <p>
-     * This method scans all registered crafting recipes and identifies any whose
-     * registry name namespace contains the specified {@code group} string. This
-     * allows bulk removal of recipes originating from a specific mod or from any
-     * mod whose ID matches the provided substring.
+     * This method iterates over the fully-populated crafting recipe registry
+     * (typically during {@code FMLLoadCompleteEvent}) and identifies any recipe
+     * whose registry name namespace contains the specified {@code group} string.
+     * This allows bulk removal of recipes originating from a specific mod or from
+     * any mod whose ID matches the provided substring.
      * <p>
      * Matching recipes are not deleted directly; instead, each is replaced with a
      * {@link DummyRecipe} registered under the same {@link ResourceLocation}. This
      * preserves registry integrity while effectively disabling the original recipe.
      *
-     * @param registry The Forge registry event for {@link IRecipe} registration.
-     * @param group    The namespace substring to match against recipe registry names.
-     *                 Typically a mod ID (e.g. "minecraft", "thermalfoundation").
+     * @param group The namespace substring to match against recipe registry names.
+     *              Typically a mod ID (e.g. "minecraft", "thermalfoundation").
      */
     @SuppressWarnings("unchecked")
-    public static void removeRecipeByModGroup(RegistryEvent.Register<IRecipe> registry, String group) {
-        IForgeRegistryModifiable<IRecipe> r = (IForgeRegistryModifiable) registry.getRegistry();
+    public static void removeRecipeByModGroup(String group) {
+        IForgeRegistryModifiable<IRecipe> r = (IForgeRegistryModifiable<IRecipe>) ForgeRegistries.RECIPES;
         List<ResourceLocation> toRemove = new ArrayList<>();
 
         for (IRecipe recipe : r.getValuesCollection()) {

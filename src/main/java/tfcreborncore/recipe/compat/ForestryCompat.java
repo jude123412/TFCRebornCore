@@ -5,6 +5,7 @@ import java.util.List;
 
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.oredict.OreDictionary;
 
 import tfcreborncore.recipe.ICompatModule;
@@ -17,7 +18,7 @@ public class ForestryCompat implements ICompatModule {
     @Override
     public List<String> dependencies() {
         return Arrays.asList(
-                Mods.FORESTRY.getName());
+                Mods.FORESTRY.ID);
     }
 
     @Override
@@ -30,7 +31,10 @@ public class ForestryCompat implements ICompatModule {
     }
 
     @Override
-    public void registerCraftingRecipe(RegistryEvent.Register<IRecipe> r) {
-        MinecraftRecipeManager.removeRecipeByModGroup(r, Mods.FORESTRY.ID);
+    public void registerRecipeRemoval(FMLPostInitializationEvent r) {
+        MinecraftRecipeManager.removeRecipeByModGroup(Mods.FORESTRY.ID);
     }
+
+    @Override
+    public void registerCraftingRecipe(RegistryEvent.Register<IRecipe> r) {}
 }

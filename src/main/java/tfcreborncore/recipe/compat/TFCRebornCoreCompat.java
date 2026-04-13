@@ -52,6 +52,24 @@ public class TFCRebornCoreCompat implements ICompatModule {
     public void registerOreDictionaries(RegistryEvent.Register<IRecipe> r) {}
 
     @Override
+    public void registerRecipeRemoval(FMLPostInitializationEvent r) {
+        for (Metal type : TFCRegistries.METALS.getValuesCollection()) {
+
+            // Remove Block Recipes if they exist
+            for (ItemStack oreBlocks : OreDictionary
+                    .getOres("block" + RCItems.toPascalCase(type.getRegistryName().getPath()))) {
+                if (!oreBlocks.isEmpty()) MinecraftRecipeManager.removeRecipeByOutput(oreBlocks);
+            }
+
+            // Remove Ingot Recipes if they exist
+            for (ItemStack ingots : OreDictionary
+                    .getOres("ingot" + RCItems.toPascalCase(type.getRegistryName().getPath()))) {
+                if (!ingots.isEmpty()) MinecraftRecipeManager.removeRecipeByOutput(ingots);
+            }
+        }
+    }
+
+    @Override
     public void registerCraftingRecipe(RegistryEvent.Register<IRecipe> r) {
         for (OreProcessingTypes type : OreProcessingTypes.values()) {
             // Small Ore Smashing
@@ -113,18 +131,6 @@ public class TFCRebornCoreCompat implements ICompatModule {
         // Simple code to remove and
         // add block recipes for metals
         for (Metal type : TFCRegistries.METALS.getValuesCollection()) {
-
-            // Remove Block Recipes if they exist
-            for (ItemStack oreBlocks : OreDictionary
-                    .getOres("block" + RCItems.toPascalCase(type.getRegistryName().getPath()))) {
-                if (!oreBlocks.isEmpty()) MinecraftRecipeManager.removeRecipeByOutput(r, oreBlocks);
-            }
-
-            for (ItemStack ingots : OreDictionary
-                    .getOres("ingot" + RCItems.toPascalCase(type.getRegistryName().getPath()))) {
-                if (!ingots.isEmpty()) MinecraftRecipeManager.removeRecipeByOutput(r, ingots);
-            }
-
             // Find a block if it exists?
             List<ItemStack> maybeBlock = OreDictionary
                     .getOres("block" + RCItems.toPascalCase(type.getRegistryName().getPath()));

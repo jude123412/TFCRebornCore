@@ -10,7 +10,6 @@ import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
-import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.registries.IForgeRegistry;
 
 import crazypants.enderio.base.recipe.RecipeBonusType;
@@ -42,61 +41,15 @@ public class ThermalExpansionCompat implements ICompatModule {
     public void registerOreDictionaries(RegistryEvent.Register<IRecipe> r) {}
 
     @Override
-    public void registerCraftingRecipe(RegistryEvent.Register<IRecipe> r) {
+    public void registerRecipeRemoval(FMLPostInitializationEvent r) {
         // Recipe Removal
-        MinecraftRecipeManager.removeRecipeByOutput(r,
-                RecipeHelper.getItemStack(Mods.THERMAL_FOUNDATION.ID, "glass", OreDictionary.WILDCARD_VALUE));
-        MinecraftRecipeManager.removeRecipeByOutput(r, RecipeHelper.getItemStack(Mods.THERMAL_FOUNDATION.ID, "wrench"));
-        MinecraftRecipeManager.removeRecipeByOutput(r, RecipeHelper.getItemStack(Mods.THERMAL_FOUNDATION.ID, "meter"));
-        MinecraftRecipeManager.removeRecipeByOutput(r,
-                RecipeHelper.getItemStack(Mods.THERMAL_FOUNDATION.ID, "upgrade", OreDictionary.WILDCARD_VALUE));
-        MinecraftRecipeManager.removeRecipeByOutput(r,
-                RecipeHelper.getItemStack(Mods.THERMAL_FOUNDATION.ID, "glass", OreDictionary.WILDCARD_VALUE));
-        MinecraftRecipeManager.removeRecipeByOutput(r,
-                RecipeHelper.getItemStack(Mods.THERMAL_FOUNDATION.ID, "security"));
-        MinecraftRecipeManager.removeRecipeByOutput(r,
-                RecipeHelper.getItemStack(Mods.THERMAL_FOUNDATION.ID, "diagram_redprint"));
-        MinecraftRecipeManager.removeRecipeByOutput(r,
-                RecipeHelper.getItemStack(Mods.THERMAL_FOUNDATION.ID, "tome_lexicon"));
-        MinecraftRecipeManager.removeRecipeByOutput(r,
-                RecipeHelper.getItemStack(Mods.THERMAL_FOUNDATION.ID, "tome_experience"));
-        MinecraftRecipeManager.removeRecipeByOutput(r,
-                RecipeHelper.getItemStack(Mods.THERMAL_FOUNDATION.ID, "fertilizer", OreDictionary.WILDCARD_VALUE));
-        MinecraftRecipeManager.removeRecipeByOutput(r,
-                RecipeHelper.getItemStack(Mods.THERMAL_FOUNDATION.ID, "material", OreDictionary.WILDCARD_VALUE));
-        MinecraftRecipeManager.removeRecipeByOutput(r,
-                RecipeHelper.getItemStack(Mods.THERMAL_FOUNDATION.ID, "security"));
-        MinecraftRecipeManager.removeRecipeByOutput(r,
-                RecipeHelper.getItemStack(Mods.THERMAL_FOUNDATION.ID, "storage_resource",
-                        OreDictionary.WILDCARD_VALUE));
-        MinecraftRecipeManager.removeRecipeByOutput(r,
-                RecipeHelper.getItemStack(Mods.THERMAL_DYNAMICS.ID, "duct_0", OreDictionary.WILDCARD_VALUE));
-        MinecraftRecipeManager.removeRecipeByOutput(r,
-                RecipeHelper.getItemStack(Mods.THERMAL_DYNAMICS.ID, "duct_16", OreDictionary.WILDCARD_VALUE));
-        MinecraftRecipeManager.removeRecipeByOutput(r,
-                RecipeHelper.getItemStack(Mods.THERMAL_DYNAMICS.ID, "duct_32", OreDictionary.WILDCARD_VALUE));
-        MinecraftRecipeManager.removeRecipeByOutput(r,
-                RecipeHelper.getItemStack(Mods.THERMAL_DYNAMICS.ID, "duct_48", OreDictionary.WILDCARD_VALUE));
-        MinecraftRecipeManager.removeRecipeByOutput(r,
-                RecipeHelper.getItemStack(Mods.THERMAL_DYNAMICS.ID, "duct_64", OreDictionary.WILDCARD_VALUE));
-        MinecraftRecipeManager.removeRecipeByOutput(r,
-                RecipeHelper.getItemStack(Mods.THERMAL_DYNAMICS.ID, "servo", OreDictionary.WILDCARD_VALUE));
-        MinecraftRecipeManager.removeRecipeByOutput(r,
-                RecipeHelper.getItemStack(Mods.THERMAL_DYNAMICS.ID, "filter", OreDictionary.WILDCARD_VALUE));
-        MinecraftRecipeManager.removeRecipeByOutput(r,
-                RecipeHelper.getItemStack(Mods.THERMAL_DYNAMICS.ID, "retriever", OreDictionary.WILDCARD_VALUE));
-        MinecraftRecipeManager.removeRecipeByOutput(r, RecipeHelper.getItemStack(Mods.THERMAL_DYNAMICS.ID, "relay"));
-        MinecraftRecipeManager.removeRecipeByOutput(r,
-                RecipeHelper.getItemStack(Mods.THERMAL_INNOVATION.ID, "drill", OreDictionary.WILDCARD_VALUE));
-        MinecraftRecipeManager.removeRecipeByOutput(r,
-                RecipeHelper.getItemStack(Mods.THERMAL_INNOVATION.ID, "saw", OreDictionary.WILDCARD_VALUE));
-        MinecraftRecipeManager.removeRecipeByOutput(r,
-                RecipeHelper.getItemStack(Mods.THERMAL_INNOVATION.ID, "magnet", OreDictionary.WILDCARD_VALUE));
-        MinecraftRecipeManager.removeRecipeByOutput(r,
-                RecipeHelper.getItemStack(Mods.THERMAL_INNOVATION.ID, "injector", OreDictionary.WILDCARD_VALUE));
-        MinecraftRecipeManager.removeRecipeByOutput(r,
-                RecipeHelper.getItemStack(Mods.THERMAL_INNOVATION.ID, "quiver", OreDictionary.WILDCARD_VALUE));
+        MinecraftRecipeManager.removeRecipeByModGroup(Mods.THERMAL_DYNAMICS.ID);
+        MinecraftRecipeManager.removeRecipeByModGroup(Mods.THERMAL_FOUNDATION.ID);
+        MinecraftRecipeManager.removeRecipeByModGroup(Mods.THERMAL_INNOVATION.ID);
+    }
 
+    @Override
+    public void registerCraftingRecipe(RegistryEvent.Register<IRecipe> r) {
         // Crescent Hammer
         MinecraftRecipeManager.addShapedRecipe(
                 new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shaped/crescent_hammer"),

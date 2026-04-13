@@ -41,6 +41,12 @@ public final class CompatManager {
         }
     }
 
+    public static void loadRecipeRemoval(FMLPostInitializationEvent event) {
+        for (ICompatModule module : modules) {
+            if (module.areRecipesLoadable()) module.registerRecipeRemoval(event);
+        }
+    }
+
     public static void loadCraftingRecipes(RegistryEvent.Register<IRecipe> event) {
         for (ICompatModule module : modules) {
             if (module.areRecipesLoadable()) module.registerCraftingRecipe(event);

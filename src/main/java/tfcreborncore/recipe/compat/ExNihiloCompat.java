@@ -36,37 +36,40 @@ public class ExNihiloCompat implements ICompatModule {
     }
 
     @Override
-    public void registerCraftingRecipe(RegistryEvent.Register<IRecipe> r) {
-        MinecraftRecipeManager.removeRecipeByOutput(r, getItemStack(Mods.EX_NIHILO_CREATIO.ID, "hammer_wood"));
-        MinecraftRecipeManager.removeRecipeByOutput(r, getItemStack(Mods.EX_NIHILO_CREATIO.ID, "hammer_stone"));
-        MinecraftRecipeManager.removeRecipeByOutput(r, getItemStack(Mods.EX_NIHILO_CREATIO.ID, "hammer_iron"));
-        MinecraftRecipeManager.removeRecipeByOutput(r, getItemStack(Mods.EX_NIHILO_CREATIO.ID, "hammer_diamond"));
-        MinecraftRecipeManager.removeRecipeByOutput(r, getItemStack(Mods.EX_NIHILO_CREATIO.ID, "hammer_gold"));
-        MinecraftRecipeManager.removeRecipeByOutput(r,
+    public void registerRecipeRemoval(FMLPostInitializationEvent r) {
+        MinecraftRecipeManager.removeRecipeByOutput(getItemStack(Mods.EX_NIHILO_CREATIO.ID, "hammer_wood"));
+        MinecraftRecipeManager.removeRecipeByOutput(getItemStack(Mods.EX_NIHILO_CREATIO.ID, "hammer_stone"));
+        MinecraftRecipeManager.removeRecipeByOutput(getItemStack(Mods.EX_NIHILO_CREATIO.ID, "hammer_iron"));
+        MinecraftRecipeManager.removeRecipeByOutput(getItemStack(Mods.EX_NIHILO_CREATIO.ID, "hammer_diamond"));
+        MinecraftRecipeManager.removeRecipeByOutput(getItemStack(Mods.EX_NIHILO_CREATIO.ID, "hammer_gold"));
+        MinecraftRecipeManager.removeRecipeByOutput(
                 getItemStack(Mods.EX_NIHILO_CREATIO.ID, "item_mesh", OreDictionary.WILDCARD_VALUE));
-        MinecraftRecipeManager.removeRecipeByOutput(r,
+        MinecraftRecipeManager.removeRecipeByOutput(
                 getItemStack(Mods.EX_NIHILO_CREATIO.ID, "item_material", OreDictionary.WILDCARD_VALUE));
-        MinecraftRecipeManager.removeRecipeByOutput(r,
+        MinecraftRecipeManager.removeRecipeByOutput(
                 getItemStack(Mods.EX_NIHILO_CREATIO.ID, "block_crucible"));
-        MinecraftRecipeManager.removeRecipeByOutput(r,
+        MinecraftRecipeManager.removeRecipeByOutput(
                 getItemStack(Mods.EX_NIHILO_CREATIO.ID, "block_barrel0"));
-        MinecraftRecipeManager.removeRecipeByOutput(r,
+        MinecraftRecipeManager.removeRecipeByOutput(
                 getItemStack(Mods.EX_NIHILO_CREATIO.ID, "block_barrel1"));
-        MinecraftRecipeManager.removeRecipeByOutput(r,
+        MinecraftRecipeManager.removeRecipeByOutput(
                 getItemStack(Mods.EX_NIHILO_CREATIO.ID, "block_waterwheel"));
-        MinecraftRecipeManager.removeRecipeByOutput(r,
+        MinecraftRecipeManager.removeRecipeByOutput(
                 getItemStack(Mods.EX_NIHILO_CREATIO.ID, "block_axle_stone"));
-        MinecraftRecipeManager.removeRecipeByOutput(r,
+        MinecraftRecipeManager.removeRecipeByOutput(
                 getItemStack(Mods.EX_NIHILO_CREATIO.ID, "block_auto_sifter"));
-        MinecraftRecipeManager.removeRecipeByOutput(r,
+        MinecraftRecipeManager.removeRecipeByOutput(
                 getItemStack(Mods.EX_NIHILO_CREATIO.ID, "block_end_cake"));
-        MinecraftRecipeManager.removeRecipeByOutput(r,
+        MinecraftRecipeManager.removeRecipeByOutput(
                 getItemStack(Mods.EX_NIHILO_CREATIO.ID, "block_crucible_wood"));
-        MinecraftRecipeManager.removeRecipeByOutput(r,
+        MinecraftRecipeManager.removeRecipeByOutput(
                 getItemStack(Mods.EX_NIHILO_CREATIO.ID, "item_doll", OreDictionary.WILDCARD_VALUE));
-        MinecraftRecipeManager.removeRecipeByOutput(r,
+        MinecraftRecipeManager.removeRecipeByOutput(
                 getItemStack(Mods.EX_NIHILO_CREATIO.ID, "hive", OreDictionary.WILDCARD_VALUE));
+    }
 
+    @Override
+    public void registerCraftingRecipe(RegistryEvent.Register<IRecipe> r) {
         // String Mesh
         MinecraftRecipeManager.addShapedRecipe(
                 new ResourceLocation(Tags.MODID, "string_mesh"),

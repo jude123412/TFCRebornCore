@@ -34,31 +34,34 @@ public class BaubleliciousCompat implements ICompatModule {
     }
 
     @Override
-    public void registerCraftingRecipe(RegistryEvent.Register<IRecipe> r) {
-        MinecraftRecipeManager.removeRecipeByOutput(r, RecipeHelper.getItemStack(Mods.BAUBLELICIOUS.ID, "itemring"));
-        MinecraftRecipeManager.removeRecipeByOutput(r,
+    public void registerRecipeRemoval(FMLPostInitializationEvent r) {
+        MinecraftRecipeManager.removeRecipeByOutput(RecipeHelper.getItemStack(Mods.BAUBLELICIOUS.ID, "itemring"));
+        MinecraftRecipeManager.removeRecipeByOutput(
                 RecipeHelper.getItemStack("baublelicious", "itemamulet"));
-        MinecraftRecipeManager.removeRecipeByOutput(r,
+        MinecraftRecipeManager.removeRecipeByOutput(
                 RecipeHelper.getItemStack("baublelicious", "itembelt"));
-        MinecraftRecipeManager.removeRecipeByOutput(r,
+        MinecraftRecipeManager.removeRecipeByOutput(
                 RecipeHelper.getItemStack("baublelicious", "itemspeedbelt"));
-        MinecraftRecipeManager.removeRecipeByOutput(r,
+        MinecraftRecipeManager.removeRecipeByOutput(
                 RecipeHelper.getItemStack("baublelicious", "itemgrowthpendant"));
-        MinecraftRecipeManager.removeRecipeByOutput(r,
+        MinecraftRecipeManager.removeRecipeByOutput(
                 RecipeHelper.getItemStack("baublelicious", "itemringofflight"));
-        MinecraftRecipeManager.removeRecipeByOutput(r,
+        MinecraftRecipeManager.removeRecipeByOutput(
                 RecipeHelper.getItemStack("baublelicious", "itembeltwaterwalking"));
-        MinecraftRecipeManager.removeRecipeByOutput(r,
+        MinecraftRecipeManager.removeRecipeByOutput(
                 RecipeHelper.getItemStack("baublelicious", "itemdivingamulet"));
-        MinecraftRecipeManager.removeRecipeByOutput(r,
+        MinecraftRecipeManager.removeRecipeByOutput(
                 RecipeHelper.getItemStack("baublelicious", "itemfallingbelt"));
-        MinecraftRecipeManager.removeRecipeByOutput(r,
+        MinecraftRecipeManager.removeRecipeByOutput(
                 RecipeHelper.getItemStack("baublelicious", "itemamuletnightvision"));
-        MinecraftRecipeManager.removeRecipeByOutput(r,
+        MinecraftRecipeManager.removeRecipeByOutput(
                 RecipeHelper.getItemStack("baublelicious", "itemamuletfierycore"));
-        MinecraftRecipeManager.removeRecipeByOutput(r,
+        MinecraftRecipeManager.removeRecipeByOutput(
                 RecipeHelper.getItemStack("baublelicious", "item.itemmagiccore", OreDictionary.WILDCARD_VALUE));
+    }
 
+    @Override
+    public void registerCraftingRecipe(RegistryEvent.Register<IRecipe> r) {
         // Amulet
         MinecraftRecipeManager.addShapelessDamageRecipe(
                 new ResourceLocation(Tags.MODID, "amulet"),

@@ -6,6 +6,7 @@ public enum Mods {
     TFC_TECH("tfctech"),
     MINECRAFT("minecraft"),
     STORAGE_DRAWERS("storagedrawers"),
+    FRAMED_COMPACTING_DRAWERS("framedcompactdrawers"),
     TERRAFIRMACRAFT("tfc"),
     BAUBLELICIOUS("baublelicious"),
     BAUBLES("baubles"),
@@ -22,6 +23,7 @@ public enum Mods {
     BINNIE_EXTRA_BEES("extrabees"),
     BINNIE_EXTRA_TREES("extratrees"),
     BINNIE_GENETICS("genetics"),
+    OPEN_GLIDER("openglider"),
     FORESTRY("forestry");
 
     public final String ID;

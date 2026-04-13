@@ -36,6 +36,8 @@ public class MinecraftCompat implements ICompatModule {
         // GemEnder
         OreDictionary.registerOre("gemEnder",
                 RecipeHelper.getItemStack("minecraft", "ender_pearl"));
+        OreDictionary.registerOre("gemEnderEye",
+                RecipeHelper.getItemStack("minecraft", "ender_eye"));
     }
 
     @Override

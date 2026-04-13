@@ -16,6 +16,7 @@ import tfcreborncore.recipe.compat.BinniesCompat;
 import tfcreborncore.recipe.compat.ExNihiloCompat;
 import tfcreborncore.recipe.compat.ForestryCompat;
 import tfcreborncore.recipe.compat.MinecraftCompat;
+import tfcreborncore.recipe.compat.OpenGliderCompat;
 import tfcreborncore.recipe.compat.StorageDrawersCompat;
 import tfcreborncore.recipe.compat.TFCRebornCoreCompat;
 import tfcreborncore.recipe.compat.TFCTechCompat;
@@ -35,6 +36,7 @@ public final class CompatManager {
         modules.add(new BaubleliciousCompat());
         modules.add(new ThermalExpansionCompat());
         modules.add(new BinniesCompat());
+        modules.add(new OpenGliderCompat());
     }
 
     public static void loadOreDictionaries(RegistryEvent.Register<IRecipe> event) {

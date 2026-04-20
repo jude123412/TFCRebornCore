@@ -519,6 +519,269 @@ public class ThermalExpansionCompat implements ICompatModule {
                 'S', "sheetEnderium",
                 'D', RecipeHelper.getItemStack(Mods.THERMAL_INNOVATION.ID, "drill", 3),
                 'G', "gearEnderium");
+
+        // Fluxsaw Basic
+        MinecraftRecipeManager.addShapedRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID,
+                        "crafting/shaped/fluxsaw/basic"),
+                RecipeHelper.getItemStack(Mods.THERMAL_INNOVATION.ID, "saw", 0),
+                "DSG",
+                "SCR",
+                "BIR",
+                'D', RecipeHelper.getItemStack(Mods.THERMAL_FOUNDATION.ID, "material", 657),
+                'I', "ingotRedstone",
+                'G', "gearIron",
+                'S', "sheetSilver",
+                'C', RecipeHelper.getItemStack(Mods.THERMAL_FOUNDATION.ID, "material", 640),
+                'B', RecipeHelper.getItemStack(Mods.MINECRAFT.ID, "stone_button"),
+                'R', "stickLongIron");
+
+        // Fluxsaw Hardened
+        MinecraftRecipeManager.addShapedRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID,
+                        "crafting/shaped/fluxsaw/hardened"),
+                RecipeHelper.getItemStack(Mods.THERMAL_INNOVATION.ID, "saw", 1),
+                " I ",
+                "SDS",
+                "IGI",
+                'I', "ingotAnyBronze",
+                'S', "sheetInvar",
+                'D', RecipeHelper.getItemStack(Mods.THERMAL_INNOVATION.ID, "saw", 0),
+                'G', "gearInvar");
+
+        // Fluxsaw Reinforced
+        MinecraftRecipeManager.addShapedRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID,
+                        "crafting/shaped/fluxsaw/reinforced"),
+                RecipeHelper.getItemStack(Mods.THERMAL_INNOVATION.ID, "saw", 2),
+                " I ",
+                "SDS",
+                "IGI",
+                'I', "ingotIron",
+                'S', "sheetElectrum",
+                'D', RecipeHelper.getItemStack(Mods.THERMAL_INNOVATION.ID, "saw", 1),
+                'G', "gearElectrum");
+
+        // Fluxsaw Signalum
+        MinecraftRecipeManager.addShapedRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID,
+                        "crafting/shaped/fluxsaw/signalum"),
+                RecipeHelper.getItemStack(Mods.THERMAL_INNOVATION.ID, "saw", 3),
+                " I ",
+                "SDS",
+                "IGI",
+                'I', "ingotSteel",
+                'S', "sheetSignalum",
+                'D', RecipeHelper.getItemStack(Mods.THERMAL_INNOVATION.ID, "saw", 2),
+                'G', "gearSignalum");
+
+        // Fluxsaw Enderium
+        MinecraftRecipeManager.addShapedRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID,
+                        "crafting/shaped/fluxsaw/enderium"),
+                RecipeHelper.getItemStack(Mods.THERMAL_INNOVATION.ID, "saw", 4),
+                " I ",
+                "SDS",
+                "IGI",
+                'I', "ingotBlackSteel",
+                'S', "sheetEnderium",
+                'D', RecipeHelper.getItemStack(Mods.THERMAL_INNOVATION.ID, "saw", 3),
+                'G', "gearEnderium");
+
+        // Fluxomagnet Basic
+        MinecraftRecipeManager.addShapedRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID,
+                        "crafting/shaped/fluxomagnet/basic"),
+                RecipeHelper.getItemStack(Mods.THERMAL_INNOVATION.ID, "magnet", 0),
+                "I I",
+                "SCS",
+                " S ",
+                'S', "sheetLead",
+                'I', "ingotRedstone",
+                'C', RecipeHelper.getItemStack(Mods.THERMAL_FOUNDATION.ID, "material", 515));
+
+        // Fluxomagnet Hardened
+        MinecraftRecipeManager.addShapedRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID,
+                        "crafting/shaped/fluxomagnet/hardened"),
+                RecipeHelper.getItemStack(Mods.THERMAL_INNOVATION.ID, "magnet", 1),
+                " I ",
+                "SDS",
+                "IGI",
+                'I', "ingotAnyBronze",
+                'S', "sheetInvar",
+                'D', RecipeHelper.getItemStack(Mods.THERMAL_INNOVATION.ID, "magnet", 0),
+                'G', "gearInvar");
+
+        // Fluxomagnet Reinforced
+        MinecraftRecipeManager.addShapedRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID,
+                        "crafting/shaped/fluxomagnet/reinforced"),
+                RecipeHelper.getItemStack(Mods.THERMAL_INNOVATION.ID, "magnet", 2),
+                " I ",
+                "SDS",
+                "IGI",
+                'I', "ingotIron",
+                'S', "sheetElectrum",
+                'D', RecipeHelper.getItemStack(Mods.THERMAL_INNOVATION.ID, "magnet", 1),
+                'G', "gearElectrum");
+
+        // Fluxomagnet Signalum
+        MinecraftRecipeManager.addShapedRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID,
+                        "crafting/shaped/fluxomagnet/signalum"),
+                RecipeHelper.getItemStack(Mods.THERMAL_INNOVATION.ID, "magnet", 3),
+                " I ",
+                "SDS",
+                "IGI",
+                'I', "ingotSteel",
+                'S', "sheetSignalum",
+                'D', RecipeHelper.getItemStack(Mods.THERMAL_INNOVATION.ID, "magnet", 2),
+                'G', "gearSignalum");
+
+        // Fluxomagnet Enderium
+        MinecraftRecipeManager.addShapedRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID,
+                        "crafting/shaped/fluxomagnet/enderium"),
+                RecipeHelper.getItemStack(Mods.THERMAL_INNOVATION.ID, "magnet", 4),
+                " I ",
+                "SDS",
+                "IGI",
+                'I', "ingotBlackSteel",
+                'S', "sheetEnderium",
+                'D', RecipeHelper.getItemStack(Mods.THERMAL_INNOVATION.ID, "magnet", 3),
+                'G', "gearEnderium");
+
+        // Hypoinfuser Basic
+        MinecraftRecipeManager.addShapedRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID,
+                        "crafting/shaped/hypoinfuser/basic"),
+                RecipeHelper.getItemStack(Mods.THERMAL_INNOVATION.ID, "injector", 0),
+                " SI",
+                "BSL",
+                "RB ",
+                'S', "sheetCopper",
+                'I', "ingotGlowstone",
+                'B', RecipeHelper.getItemStack(Mods.MINECRAFT.ID, "glass_bottle"),
+                'L', "stickLongSterlingSilver",
+                'R', "stickSterlingSilver");
+
+        // Hypoinfuser Hardened
+        MinecraftRecipeManager.addShapedRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID,
+                        "crafting/shaped/hypoinfuser/hardened"),
+                RecipeHelper.getItemStack(Mods.THERMAL_INNOVATION.ID, "injector", 1),
+                " I ",
+                "SDS",
+                "IGI",
+                'I', "ingotAnyBronze",
+                'S', "sheetInvar",
+                'D', RecipeHelper.getItemStack(Mods.THERMAL_INNOVATION.ID, "injector", 0),
+                'G', "gearInvar");
+
+        // Hypoinfuser Reinforced
+        MinecraftRecipeManager.addShapedRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID,
+                        "crafting/shaped/hypoinfuser/reinforced"),
+                RecipeHelper.getItemStack(Mods.THERMAL_INNOVATION.ID, "injector", 2),
+                " I ",
+                "SDS",
+                "IGI",
+                'I', "ingotIron",
+                'S', "sheetElectrum",
+                'D', RecipeHelper.getItemStack(Mods.THERMAL_INNOVATION.ID, "injector", 1),
+                'G', "gearElectrum");
+
+        // Hypoinfuser Signalum
+        MinecraftRecipeManager.addShapedRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID,
+                        "crafting/shaped/hypoinfuser/signalum"),
+                RecipeHelper.getItemStack(Mods.THERMAL_INNOVATION.ID, "injector", 3),
+                " I ",
+                "SDS",
+                "IGI",
+                'I', "ingotSteel",
+                'S', "sheetSignalum",
+                'D', RecipeHelper.getItemStack(Mods.THERMAL_INNOVATION.ID, "injector", 2),
+                'G', "gearSignalum");
+
+        // Hypoinfuser Enderium
+        MinecraftRecipeManager.addShapedRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID,
+                        "crafting/shaped/hypoinfuser/enderium"),
+                RecipeHelper.getItemStack(Mods.THERMAL_INNOVATION.ID, "injector", 4),
+                " I ",
+                "SDS",
+                "IGI",
+                'I', "ingotBlackSteel",
+                'S', "sheetEnderium",
+                'D', RecipeHelper.getItemStack(Mods.THERMAL_INNOVATION.ID, "injector", 3),
+                'G', "gearEnderium");
+
+        // Alchemical Quiver Basic
+        MinecraftRecipeManager.addShapedRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID,
+                        "crafting/shaped/alchemical_quiver/basic"),
+                RecipeHelper.getItemStack(Mods.THERMAL_INNOVATION.ID, "quiver", 0),
+                "BSL",
+                "SQS",
+                "LSB",
+                'B', RecipeHelper.getItemStack(Mods.MINECRAFT.ID, "glass_bottle"),
+                'S', "sheetCopper",
+                'L', "stickLongIron",
+                'Q', RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID, "quiver"));
+
+        // Alchemical Quiver Hardened
+        MinecraftRecipeManager.addShapedRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID,
+                        "crafting/shaped/alchemical_quiver/hardened"),
+                RecipeHelper.getItemStack(Mods.THERMAL_INNOVATION.ID, "quiver", 1),
+                " I ",
+                "SDS",
+                "IGI",
+                'I', "ingotAnyBronze",
+                'S', "sheetInvar",
+                'D', RecipeHelper.getItemStack(Mods.THERMAL_INNOVATION.ID, "quiver", 0),
+                'G', "gearInvar");
+
+        // Alchemical Quiver Reinforced
+        MinecraftRecipeManager.addShapedRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID,
+                        "crafting/shaped/alchemical_quiver/reinforced"),
+                RecipeHelper.getItemStack(Mods.THERMAL_INNOVATION.ID, "quiver", 2),
+                " I ",
+                "SDS",
+                "IGI",
+                'I', "ingotIron",
+                'S', "sheetElectrum",
+                'D', RecipeHelper.getItemStack(Mods.THERMAL_INNOVATION.ID, "quiver", 1),
+                'G', "gearElectrum");
+
+        // Alchemical Quiver Signalum
+        MinecraftRecipeManager.addShapedRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID,
+                        "crafting/shaped/alchemical_quiver/signalum"),
+                RecipeHelper.getItemStack(Mods.THERMAL_INNOVATION.ID, "quiver", 3),
+                " I ",
+                "SDS",
+                "IGI",
+                'I', "ingotSteel",
+                'S', "sheetSignalum",
+                'D', RecipeHelper.getItemStack(Mods.THERMAL_INNOVATION.ID, "quiver", 2),
+                'G', "gearSignalum");
+
+        // Alchemical Quiver Enderium
+        MinecraftRecipeManager.addShapedRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID,
+                        "crafting/shaped/alchemical_quiver/enderium"),
+                RecipeHelper.getItemStack(Mods.THERMAL_INNOVATION.ID, "quiver", 4),
+                " I ",
+                "SDS",
+                "IGI",
+                'I', "ingotBlackSteel",
+                'S', "sheetEnderium",
+                'D', RecipeHelper.getItemStack(Mods.THERMAL_INNOVATION.ID, "quiver", 3),
+                'G', "gearEnderium");
     }
 
     @Override

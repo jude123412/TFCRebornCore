@@ -273,11 +273,79 @@ public class ThermalExpansionCompat implements ICompatModule {
                 'L', "sheetLead",
                 'R', "dustRedstone");
 
+        // Fluxbore Basic
+        MinecraftRecipeManager.addShapedRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID,
+                        "crafting/shaped/fluxbore/basic"),
+                RecipeHelper.getItemStack(Mods.THERMAL_INNOVATION.ID, "drill", 0),
+                "DIG",
+                "SCI",
+                "BSR",
+                'D', RecipeHelper.getItemStack(Mods.THERMAL_FOUNDATION.ID, "material", 656),
+                'I', "ingotRedstone",
+                'G', "gearIron",
+                'S', "sheetSilver",
+                'C', RecipeHelper.getItemStack(Mods.THERMAL_FOUNDATION.ID, "material", 640),
+                'B', RecipeHelper.getItemStack(Mods.MINECRAFT.ID, "stone_button"),
+                'R', "stickLongIron");
+
+        // Fluxbore Hardened
+        MinecraftRecipeManager.addShapedRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID,
+                        "crafting/shaped/fluxbore/hardened"),
+                RecipeHelper.getItemStack(Mods.THERMAL_INNOVATION.ID, "drill", 1),
+                " I ",
+                "SDS",
+                "IGI",
+                'I', "ingotAnyBronze",
+                'S', "sheetInvar",
+                'D', RecipeHelper.getItemStack(Mods.THERMAL_INNOVATION.ID, "drill", 0),
+                'G', "gearInvar");
+
+        // Fluxbore Reinforced
+        MinecraftRecipeManager.addShapedRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID,
+                        "crafting/shaped/fluxbore/reinforced"),
+                RecipeHelper.getItemStack(Mods.THERMAL_INNOVATION.ID, "drill", 2),
+                " I ",
+                "SDS",
+                "IGI",
+                'I', "ingotIron",
+                'S', "sheetElectrum",
+                'D', RecipeHelper.getItemStack(Mods.THERMAL_INNOVATION.ID, "drill", 1),
+                'G', "gearElectrum");
+
+        // Fluxbore Signalum
+        MinecraftRecipeManager.addShapedRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID,
+                        "crafting/shaped/fluxbore/signalum"),
+                RecipeHelper.getItemStack(Mods.THERMAL_INNOVATION.ID, "drill", 3),
+                " I ",
+                "SDS",
+                "IGI",
+                'I', "ingotSteel",
+                'S', "sheetSignalum",
+                'D', RecipeHelper.getItemStack(Mods.THERMAL_INNOVATION.ID, "drill", 2),
+                'G', "gearSignalum");
+
+        // Fluxbore Enderium
+        MinecraftRecipeManager.addShapedRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID,
+                        "crafting/shaped/fluxbore/enderium"),
+                RecipeHelper.getItemStack(Mods.THERMAL_INNOVATION.ID, "drill", 4),
+                " I ",
+                "SDS",
+                "IGI",
+                'I', "ingotBlackSteel",
+                'S', "sheetEnderium",
+                'D', RecipeHelper.getItemStack(Mods.THERMAL_INNOVATION.ID, "drill", 3),
+                'G', "gearEnderium");
+
         for (ThermalToolMaterialTypes type : ThermalToolMaterialTypes.values()) {
             // Servo Recipes
             MinecraftRecipeManager.addShapedRecipe(
                     new ResourceLocation(Mods.TFC_REBORN_CORE.ID,
-                            "crafting/shaped/servo_" + type.getName()),
+                            "crafting/shaped/servo/" + type.getName()),
                     RecipeHelper.getItemStack(Mods.THERMAL_DYNAMICS.ID, "servo", type.getMeta(), 2),
                     "PGP",
                     "TRT",
@@ -288,7 +356,7 @@ public class ThermalExpansionCompat implements ICompatModule {
             // Filter Recipes
             MinecraftRecipeManager.addShapedRecipe(
                     new ResourceLocation(Mods.TFC_REBORN_CORE.ID,
-                            "crafting/shaped/filter_" + type.getName()),
+                            "crafting/shaped/filter/" + type.getName()),
                     RecipeHelper.getItemStack(Mods.THERMAL_DYNAMICS.ID, "filter", type.getMeta(), 2),
                     "PGP",
                     "TRT",
@@ -299,7 +367,7 @@ public class ThermalExpansionCompat implements ICompatModule {
             // Retriever Recipes
             MinecraftRecipeManager.addShapedRecipe(
                     new ResourceLocation(Mods.TFC_REBORN_CORE.ID,
-                            "crafting/shaped/retriever_" + type.getName()),
+                            "crafting/shaped/retriever/" + type.getName()),
                     RecipeHelper.getItemStack(Mods.THERMAL_DYNAMICS.ID, "retriever", type.getMeta(), 2),
                     "PGP",
                     "TRT",

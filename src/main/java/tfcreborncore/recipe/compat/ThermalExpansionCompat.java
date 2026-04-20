@@ -12,11 +12,9 @@ import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.registries.IForgeRegistry;
 
-import tfcreborncore.objects.RCItems;
 import tfcreborncore.recipe.ICompatModule;
 import tfcreborncore.recipe.RecipeHelper;
 import tfcreborncore.recipe.enums.Mods;
-import tfcreborncore.recipe.enums.ThermalToolMaterialTypes;
 import tfcreborncore.recipe.manager.ImmersiveEngineeringRecipeManager;
 import tfcreborncore.recipe.manager.MinecraftRecipeManager;
 import tfcreborncore.recipe.manager.TerrafirmacraftRecipeManager;
@@ -127,12 +125,13 @@ public class ThermalExpansionCompat implements ICompatModule {
         MinecraftRecipeManager.addShapedRecipe(
                 new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shaped/tool_casing"),
                 RecipeHelper.getItemStack(Mods.THERMAL_FOUNDATION.ID, "material", 640),
-                " G ",
-                "RCR",
-                " G ",
-                'G', "sheetGold",
-                'R', "ingotRedstone",
-                'C', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/rf_control_circuit"));
+                "RS ",
+                "SCS",
+                " ST",
+                'R', RecipeHelper.getItemStack(Mods.THERMAL_FOUNDATION.ID, "material", 513),
+                'S', "sheetGold",
+                'C', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/rf_control_circuit"),
+                'T', RecipeHelper.getItemStack(Mods.THERMAL_FOUNDATION.ID, "material", 514));
 
         // Drill Head
         MinecraftRecipeManager.addShapedRecipe(
@@ -262,6 +261,186 @@ public class ThermalExpansionCompat implements ICompatModule {
                 'B', "sheetAnyBronze",
                 'G', "blockGlassHardened");
 
+        // Servo Basic
+        MinecraftRecipeManager.addShapedRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID,
+                        "crafting/shaped/servo/basic"),
+                RecipeHelper.getItemStack(Mods.THERMAL_DYNAMICS.ID, "servo", 0),
+                "PGP",
+                "TRT",
+                'P', "stripTin",
+                'G', "blockGlassHardened",
+                'T', "sheetTin",
+                'R', RecipeHelper.getItemStack(Mods.THERMAL_FOUNDATION.ID, "material", 512));
+
+        // Servo Hardened
+        MinecraftRecipeManager.addShapedRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID,
+                        "crafting/shaped/servo/hardened"),
+                RecipeHelper.getItemStack(Mods.THERMAL_DYNAMICS.ID, "servo", 1),
+                "PGP",
+                "TRT",
+                'P', "stripInvar",
+                'G', "blockGlassHardened",
+                'T', "sheetInvar",
+                'R', RecipeHelper.getItemStack(Mods.THERMAL_DYNAMICS.ID, "servo", 0));
+
+        // Servo Reinforced
+        MinecraftRecipeManager.addShapedRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID,
+                        "crafting/shaped/servo/reinforced"),
+                RecipeHelper.getItemStack(Mods.THERMAL_DYNAMICS.ID, "servo", 2),
+                "PGP",
+                "TRT",
+                'P', "stripElectrum",
+                'G', "blockGlassHardened",
+                'T', "sheetElectrum",
+                'R', RecipeHelper.getItemStack(Mods.THERMAL_DYNAMICS.ID, "servo", 1));
+
+        // Servo Signalum
+        MinecraftRecipeManager.addShapedRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID,
+                        "crafting/shaped/servo/signalum"),
+                RecipeHelper.getItemStack(Mods.THERMAL_DYNAMICS.ID, "servo", 3),
+                "PGP",
+                "TRT",
+                'P', "stripSignalum",
+                'G', "blockGlassHardened",
+                'T', "sheetSignalum",
+                'R', RecipeHelper.getItemStack(Mods.THERMAL_DYNAMICS.ID, "servo", 2));
+
+        // Servo Enderium
+        MinecraftRecipeManager.addShapedRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID,
+                        "crafting/shaped/servo/enderium"),
+                RecipeHelper.getItemStack(Mods.THERMAL_DYNAMICS.ID, "servo", 4),
+                "PGP",
+                "TRT",
+                'P', "stripEnderium",
+                'G', "blockGlassHardened",
+                'T', "sheetEnderium",
+                'R', RecipeHelper.getItemStack(Mods.THERMAL_DYNAMICS.ID, "servo", 3));
+
+        // Filter Basic
+        MinecraftRecipeManager.addShapedRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID,
+                        "crafting/shaped/filter/basic"),
+                RecipeHelper.getItemStack(Mods.THERMAL_DYNAMICS.ID, "filter", 0),
+                "PGP",
+                "TRT",
+                'P', "stripTin",
+                'G', "blockGlassHardened",
+                'T', "sheetTin",
+                'R', "paper");
+
+        // Filter Hardened
+        MinecraftRecipeManager.addShapedRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID,
+                        "crafting/shaped/filter/hardened"),
+                RecipeHelper.getItemStack(Mods.THERMAL_DYNAMICS.ID, "filter", 1),
+                "PGP",
+                "TRT",
+                'P', "stripInvar",
+                'G', "blockGlassHardened",
+                'T', "sheetInvar",
+                'R', RecipeHelper.getItemStack(Mods.THERMAL_DYNAMICS.ID, "filter", 0));
+
+        // Filter Reinforced
+        MinecraftRecipeManager.addShapedRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID,
+                        "crafting/shaped/filter/reinforced"),
+                RecipeHelper.getItemStack(Mods.THERMAL_DYNAMICS.ID, "filter", 2),
+                "PGP",
+                "TRT",
+                'P', "stripElectrum",
+                'G', "blockGlassHardened",
+                'T', "sheetElectrum",
+                'R', RecipeHelper.getItemStack(Mods.THERMAL_DYNAMICS.ID, "filter", 1));
+
+        // Filter Signalum
+        MinecraftRecipeManager.addShapedRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID,
+                        "crafting/shaped/filter/signalum"),
+                RecipeHelper.getItemStack(Mods.THERMAL_DYNAMICS.ID, "filter", 3),
+                "PGP",
+                "TRT",
+                'P', "stripSignalum",
+                'G', "blockGlassHardened",
+                'T', "sheetSignalum",
+                'R', RecipeHelper.getItemStack(Mods.THERMAL_DYNAMICS.ID, "filter", 2));
+
+        // Filter Enderium
+        MinecraftRecipeManager.addShapedRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID,
+                        "crafting/shaped/filter/enderium"),
+                RecipeHelper.getItemStack(Mods.THERMAL_DYNAMICS.ID, "filter", 4),
+                "PGP",
+                "TRT",
+                'P', "stripEnderium",
+                'G', "blockGlassHardened",
+                'T', "sheetEnderium",
+                'R', RecipeHelper.getItemStack(Mods.THERMAL_DYNAMICS.ID, "filter", 3));
+
+        // Retriever Basic
+        MinecraftRecipeManager.addShapedRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID,
+                        "crafting/shaped/retriever/basic"),
+                RecipeHelper.getItemStack(Mods.THERMAL_DYNAMICS.ID, "retriever", 0),
+                "PGP",
+                "TRT",
+                'P', "stripTin",
+                'G', "blockGlassHardened",
+                'T', "sheetTin",
+                'R', "gemEnderEye");
+
+        // Retriever Hardened
+        MinecraftRecipeManager.addShapedRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID,
+                        "crafting/shaped/retriever/hardened"),
+                RecipeHelper.getItemStack(Mods.THERMAL_DYNAMICS.ID, "retriever", 1),
+                "PGP",
+                "TRT",
+                'P', "stripInvar",
+                'G', "blockGlassHardened",
+                'T', "sheetInvar",
+                'R', RecipeHelper.getItemStack(Mods.THERMAL_DYNAMICS.ID, "retriever", 0));
+
+        // Retriever Reinforced
+        MinecraftRecipeManager.addShapedRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID,
+                        "crafting/shaped/retriever/reinforced"),
+                RecipeHelper.getItemStack(Mods.THERMAL_DYNAMICS.ID, "retriever", 2),
+                "PGP",
+                "TRT",
+                'P', "stripElectrum",
+                'G', "blockGlassHardened",
+                'T', "sheetElectrum",
+                'R', RecipeHelper.getItemStack(Mods.THERMAL_DYNAMICS.ID, "retriever", 1));
+
+        // Retriever Signalum
+        MinecraftRecipeManager.addShapedRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID,
+                        "crafting/shaped/retriever/signalum"),
+                RecipeHelper.getItemStack(Mods.THERMAL_DYNAMICS.ID, "retriever", 3),
+                "PGP",
+                "TRT",
+                'P', "stripSignalum",
+                'G', "blockGlassHardened",
+                'T', "sheetSignalum",
+                'R', RecipeHelper.getItemStack(Mods.THERMAL_DYNAMICS.ID, "retriever", 2));
+
+        // Retriever Enderium
+        MinecraftRecipeManager.addShapedRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID,
+                        "crafting/shaped/retriever/enderium"),
+                RecipeHelper.getItemStack(Mods.THERMAL_DYNAMICS.ID, "retriever", 4),
+                "PGP",
+                "TRT",
+                'P', "stripEnderium",
+                'G', "blockGlassHardened",
+                'T', "sheetEnderium",
+                'R', RecipeHelper.getItemStack(Mods.THERMAL_DYNAMICS.ID, "retriever", 3));
+
         // Redstone Relay
         MinecraftRecipeManager.addShapedRecipe(
                 new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shaped/redstone_relay"),
@@ -340,42 +519,6 @@ public class ThermalExpansionCompat implements ICompatModule {
                 'S', "sheetEnderium",
                 'D', RecipeHelper.getItemStack(Mods.THERMAL_INNOVATION.ID, "drill", 3),
                 'G', "gearEnderium");
-
-        for (ThermalToolMaterialTypes type : ThermalToolMaterialTypes.values()) {
-            // Servo Recipes
-            MinecraftRecipeManager.addShapedRecipe(
-                    new ResourceLocation(Mods.TFC_REBORN_CORE.ID,
-                            "crafting/shaped/servo/" + type.getName()),
-                    RecipeHelper.getItemStack(Mods.THERMAL_DYNAMICS.ID, "servo", type.getMeta(), 2),
-                    "PGP",
-                    "TRT",
-                    'P', "strip" + RCItems.toPascalCase(type.getName()),
-                    'G', "blockGlassHardened",
-                    'T', "sheet" + RCItems.toPascalCase(type.getName()),
-                    'R', "dustRedstone");
-            // Filter Recipes
-            MinecraftRecipeManager.addShapedRecipe(
-                    new ResourceLocation(Mods.TFC_REBORN_CORE.ID,
-                            "crafting/shaped/filter/" + type.getName()),
-                    RecipeHelper.getItemStack(Mods.THERMAL_DYNAMICS.ID, "filter", type.getMeta(), 2),
-                    "PGP",
-                    "TRT",
-                    'P', "strip" + RCItems.toPascalCase(type.getName()),
-                    'G', "blockGlassHardened",
-                    'T', "sheet" + RCItems.toPascalCase(type.getName()),
-                    'R', "paper");
-            // Retriever Recipes
-            MinecraftRecipeManager.addShapedRecipe(
-                    new ResourceLocation(Mods.TFC_REBORN_CORE.ID,
-                            "crafting/shaped/retriever/" + type.getName()),
-                    RecipeHelper.getItemStack(Mods.THERMAL_DYNAMICS.ID, "retriever", type.getMeta(), 2),
-                    "PGP",
-                    "TRT",
-                    'P', "strip" + RCItems.toPascalCase(type.getName()),
-                    'G', "blockGlassHardened",
-                    'T', "sheet" + RCItems.toPascalCase(type.getName()),
-                    'R', RecipeHelper.getItemStack(Mods.MINECRAFT.ID, "ender_eye"));
-        }
     }
 
     @Override

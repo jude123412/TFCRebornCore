@@ -42,14 +42,15 @@ public enum ItemRCType {
     BITUMINOUS_COAL_COKE(Size.SMALL, Weight.MEDIUM, "gemBituminousCokeCoke", true),
 
     // Dust
-    HARDENED_GLASS_MIX(Size.VERY_SMALL, Weight.VERY_LIGHT, "dustHardenedGlass", true),
-    COAL_POWDER(Size.VERY_SMALL, Weight.VERY_LIGHT, "dustCoal", true),
-    SYNTHETIC_GRAPHITE_MIX(Size.VERY_SMALL, Weight.VERY_LIGHT, "dustSyntheticGraphite", true),
-    WOOD_POWDER(Size.VERY_SMALL, Weight.VERY_LIGHT, "dustWood", true),
-    CERTUS_QUARTZ_POWDER(Size.VERY_SMALL, Weight.VERY_LIGHT, "dustCertusQuartz", true),
-    ENDERPEARL_POWDER(Size.VERY_SMALL, Weight.VERY_LIGHT, "dustEnder", true),
-    OBSIDIAN_POWDER(Size.VERY_SMALL, Weight.VERY_LIGHT, "dustObsidian", true),
-    SNOW_POWDER(Size.VERY_SMALL, Weight.VERY_LIGHT, "dustSnow", true),
+    HARDENED_GLASS_MIX(Size.SMALL, Weight.VERY_LIGHT, "dustHardenedGlass", true),
+    COAL_POWDER(Size.SMALL, Weight.VERY_LIGHT, "dustCoal", true),
+    SYNTHETIC_GRAPHITE_MIX(Size.SMALL, Weight.VERY_LIGHT, "dustSyntheticGraphite", true),
+    WOOD_POWDER(Size.SMALL, Weight.VERY_LIGHT, "dustWood", true),
+    CERTUS_QUARTZ_POWDER(Size.SMALL, Weight.VERY_LIGHT, "dustCertusQuartz", true),
+    ENDERPEARL_POWDER(Size.SMALL, Weight.VERY_LIGHT, "dustEnder", true),
+    OBSIDIAN_POWDER(Size.SMALL, Weight.VERY_LIGHT, "dustObsidian", true),
+    SNOW_POWDER(Size.SMALL, Weight.VERY_LIGHT, "dustSnow", true),
+    APATITE_POWDER(Size.SMALL, Weight.VERY_LIGHT, "dustApatite", true),
 
     // Misc
     UNFIRED_CLAY_SHEET(Size.NORMAL, Weight.LIGHT, true),

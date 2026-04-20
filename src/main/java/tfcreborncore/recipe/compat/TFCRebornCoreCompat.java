@@ -12,6 +12,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.fml.common.event.FMLLoadCompleteEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.registries.IForgeRegistry;
@@ -23,6 +24,7 @@ import tfcreborncore.recipe.RecipeHelper;
 import tfcreborncore.recipe.enums.Mods;
 import tfcreborncore.recipe.enums.OreProcessingTypes;
 import tfcreborncore.recipe.manager.ExNihiloRecipeManager;
+import tfcreborncore.recipe.manager.ForestryRecipeManager;
 import tfcreborncore.recipe.manager.ImmersiveEngineeringRecipeManager;
 import tfcreborncore.recipe.manager.MinecraftRecipeManager;
 import tfcreborncore.recipe.manager.TerrafirmacraftRecipeManager;
@@ -43,7 +45,8 @@ public class TFCRebornCoreCompat implements ICompatModule {
                 Mods.TFC_METALLUM.ID,
                 Mods.EX_NIHILO_CREATIO.ID,
                 Mods.IMMERSIVE_ENGINEERING.ID,
-                Mods.THERMAL_FOUNDATION.ID);
+                Mods.THERMAL_FOUNDATION.ID,
+                Mods.FORESTRY.ID);
     }
 
     @Override
@@ -180,7 +183,6 @@ public class TFCRebornCoreCompat implements ICompatModule {
     @Override
     public void registerItemMetal(FMLPostInitializationEvent r) {
         for (Metal type : TFCRegistries.METALS.getValuesCollection()) {
-
             // Find a block if it exists?
             List<ItemStack> maybeBlock = OreDictionary
                     .getOres("block" + RCItems.toPascalCase(type.getRegistryName().getPath()));
@@ -269,6 +271,12 @@ public class TFCRebornCoreCompat implements ICompatModule {
                 new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "malachite_powder"),
                 IIngredient.of("pileMalachite"),
                 RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID, "powder/malachite"));
+
+        // Apatite Powder
+        TerrafirmacraftRecipeManager.addQuernRecipe(r,
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "apatite_powder"),
+                IIngredient.of("gemApatite"),
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/apatite_powder"));
 
         // Bio pulp
         TerrafirmacraftRecipeManager.addQuernRecipe(r,
@@ -390,5 +398,11 @@ public class TFCRebornCoreCompat implements ICompatModule {
                         RecipeHelper.getItemStack(Mods.MINECRAFT.ID, "stick"), 0.25F
                 },
                 1600);
+    }
+
+    @Override
+    public void registerForestryRecipes(FMLLoadCompleteEvent r) {
+        // Forestry Recipe Removal
+        ForestryRecipeManager.removeAllCarpenterRecipes();
     }
 }

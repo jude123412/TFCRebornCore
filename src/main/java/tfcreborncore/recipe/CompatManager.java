@@ -9,6 +9,7 @@ import net.dries007.tfc.api.recipes.barrel.BarrelRecipe;
 import net.dries007.tfc.api.recipes.quern.QuernRecipe;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.fml.common.event.FMLLoadCompleteEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 
 import tfcreborncore.recipe.compat.BaubleliciousCompat;
@@ -96,6 +97,12 @@ public final class CompatManager {
     public static void loadCrusherRecipes(FMLPostInitializationEvent event) {
         for (ICompatModule module : modules) {
             if (module.areRecipesLoadable()) module.registerCrusherRecipes(event);
+        }
+    }
+
+    public static void loadForestryRecipes(FMLLoadCompleteEvent event) {
+        for (ICompatModule module : modules) {
+            if (module.areRecipesLoadable()) module.registerForestryRecipes(event);
         }
     }
 }

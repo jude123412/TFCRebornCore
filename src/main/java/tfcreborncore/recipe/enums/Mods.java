@@ -16,7 +16,6 @@ public enum Mods {
     THERMAL_FOUNDATION("thermalfoundation"),
     THERMAL_DYNAMICS("thermaldynamics"),
     THERMAL_INNOVATION("thermalinnovation"),
-    ENDER_IO("enderio"),
     IMMERSIVE_ENGINEERING("immersiveengineering"),
     BINNIE_CORE("binniecore"),
     BINNIE_BOTANY("botany"),

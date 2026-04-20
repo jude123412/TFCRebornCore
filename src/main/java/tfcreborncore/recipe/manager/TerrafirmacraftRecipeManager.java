@@ -1,5 +1,7 @@
 package tfcreborncore.recipe.manager;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.function.Supplier;
 
 import net.dries007.tfc.api.capability.metal.CapabilityMetalItem;
@@ -18,6 +20,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.registries.IForgeRegistry;
+import net.minecraftforge.registries.IForgeRegistryModifiable;
+
+import tfcreborncore.recipe.enums.Mods;
 
 public class TerrafirmacraftRecipeManager {
 
@@ -105,6 +110,33 @@ public class TerrafirmacraftRecipeManager {
     public static void addQuernRecipe(IForgeRegistry<QuernRecipe> r, ResourceLocation regName,
                                       IIngredient<ItemStack> inputStack, ItemStack result) {
         r.register(new QuernRecipe(inputStack, result).setRegistryName(regName));
+    }
+
+    /**
+     * Removes all TFC quern recipes that produce the specified output item.
+     * <p>
+     * This method scans the {@link TFCRegistries#QUERN} registry and identifies any
+     * {@link QuernRecipe} whose primary output matches the provided {@link ItemStack}
+     * using {@link ItemStack#isItemEqual(ItemStack)}. All matching recipes are then
+     * removed from the registry using {@link IForgeRegistryModifiable#remove(ResourceLocation)}.
+     * <p>
+     * This is useful for overriding or replacing existing quern transformations
+     * without clearing the entire registry.
+     *
+     * @param result The output item used to identify which quern recipes to remove.
+     */
+    public static void removeQuernRecipe(ItemStack result) {
+        List<QuernRecipe> toRemove = new ArrayList<>();
+
+        TFCRegistries.QUERN.getValuesCollection().stream()
+                .filter(r -> r.getOutputs().get(0).isItemEqual(result) &&
+                        !r.getRegistryName().getNamespace().contains(Mods.TFC_REBORN_CORE.ID))
+                .forEach(toRemove::add);
+
+        for (QuernRecipe recipe : toRemove) {
+            IForgeRegistryModifiable registry = (IForgeRegistryModifiable) TFCRegistries.QUERN;
+            registry.remove(recipe.getRegistryName());
+        }
     }
 
     /**

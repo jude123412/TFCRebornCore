@@ -93,12 +93,6 @@ public final class CompatManager {
         }
     }
 
-    public static void loadSagMillRecipes(FMLPostInitializationEvent event) {
-        for (ICompatModule module : modules) {
-            if (module.areRecipesLoadable()) module.registerSagMillRecipes(event);
-        }
-    }
-
     public static void loadCrusherRecipes(FMLPostInitializationEvent event) {
         for (ICompatModule module : modules) {
             if (module.areRecipesLoadable()) module.registerCrusherRecipes(event);

@@ -7,6 +7,7 @@ import java.util.List;
 
 import net.dries007.tfc.api.recipes.WeldingRecipe;
 import net.dries007.tfc.api.recipes.barrel.BarrelRecipe;
+import net.dries007.tfc.api.recipes.quern.QuernRecipe;
 import net.dries007.tfc.objects.inventory.ingredient.IIngredient;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ResourceLocation;
@@ -28,7 +29,8 @@ public class MinecraftCompat implements ICompatModule {
     public List<String> dependencies() {
         return Arrays.asList(
                 Mods.TFC_TECH.ID,
-                Mods.TFC_METALLUM.ID);
+                Mods.TFC_METALLUM.ID,
+                Mods.TERRAFIRMACRAFT.ID);
     }
 
     @Override
@@ -50,6 +52,21 @@ public class MinecraftCompat implements ICompatModule {
 
     @Override
     public void registerWeldingRecipes(IForgeRegistry<WeldingRecipe> r) {}
+
+    @Override
+    public void registerQuernRecipes(IForgeRegistry<QuernRecipe> r) {
+        // Redstone Ingot Recycling
+        TerrafirmacraftRecipeManager.addQuernRecipe(r,
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "redstone_ingot_recycling"),
+                IIngredient.of("ingotRedstone"),
+                RecipeHelper.getItemStack(Mods.MINECRAFT.ID, "redstone"));
+
+        // Glowstone Ingot Recycling
+        TerrafirmacraftRecipeManager.addQuernRecipe(r,
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "glowstone_ingot_recycling"),
+                IIngredient.of("ingotGlowstone"),
+                RecipeHelper.getItemStack(Mods.MINECRAFT.ID, "glowstone_dust"));
+    }
 
     @Override
     public void registerBarrelRecipes(IForgeRegistry<BarrelRecipe> r) {

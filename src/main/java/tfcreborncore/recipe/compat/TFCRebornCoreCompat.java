@@ -4,8 +4,10 @@ import java.util.Arrays;
 import java.util.List;
 
 import net.dries007.tfc.api.recipes.WeldingRecipe;
+import net.dries007.tfc.api.recipes.quern.QuernRecipe;
 import net.dries007.tfc.api.registries.TFCRegistries;
 import net.dries007.tfc.api.types.Metal;
+import net.dries007.tfc.objects.inventory.ingredient.IIngredient;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ResourceLocation;
@@ -14,17 +16,12 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.registries.IForgeRegistry;
 
-import crazypants.enderio.base.recipe.RecipeBonusType;
-import crazypants.enderio.base.recipe.RecipeInput;
-import crazypants.enderio.base.recipe.RecipeLevel;
-import crazypants.enderio.base.recipe.RecipeOutput;
 import tfcreborncore.Tags;
 import tfcreborncore.objects.RCItems;
 import tfcreborncore.recipe.ICompatModule;
 import tfcreborncore.recipe.RecipeHelper;
 import tfcreborncore.recipe.enums.Mods;
 import tfcreborncore.recipe.enums.OreProcessingTypes;
-import tfcreborncore.recipe.manager.EnderIORecipeManager;
 import tfcreborncore.recipe.manager.ExNihiloRecipeManager;
 import tfcreborncore.recipe.manager.ImmersiveEngineeringRecipeManager;
 import tfcreborncore.recipe.manager.MinecraftRecipeManager;
@@ -45,7 +42,7 @@ public class TFCRebornCoreCompat implements ICompatModule {
                 Mods.TFC_TECH.ID,
                 Mods.TFC_METALLUM.ID,
                 Mods.EX_NIHILO_CREATIO.ID,
-                Mods.ENDER_IO.ID,
+                Mods.IMMERSIVE_ENGINEERING.ID,
                 Mods.THERMAL_FOUNDATION.ID);
     }
 
@@ -199,118 +196,199 @@ public class TFCRebornCoreCompat implements ICompatModule {
     public void registerWeldingRecipes(IForgeRegistry<WeldingRecipe> r) {}
 
     @Override
+    public void registerQuernRecipes(IForgeRegistry<QuernRecipe> r) {
+        TerrafirmacraftRecipeManager
+                .removeQuernRecipe(RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID, "powder/hematite"));
+        TerrafirmacraftRecipeManager
+                .removeQuernRecipe(RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID, "powder/limonite"));
+        TerrafirmacraftRecipeManager
+                .removeQuernRecipe(RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID, "powder/malachite"));
+
+        // Wood Powder
+        TerrafirmacraftRecipeManager.addQuernRecipe(r,
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "wood_powder"),
+                IIngredient.of("lumber"),
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/wood_powder"));
+
+        // Coal Powder
+        TerrafirmacraftRecipeManager.addQuernRecipe(r,
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "coal_powder"),
+                IIngredient.of("gemLignite"),
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/coal_powder"));
+        TerrafirmacraftRecipeManager.addQuernRecipe(r,
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "coal_powder_alt"),
+                IIngredient.of("gemCoal"),
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/coal_powder", 0, 2));
+
+        // Snow Powder
+        TerrafirmacraftRecipeManager.addQuernRecipe(r,
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "snow_powder"),
+                IIngredient.of(RecipeHelper.getItemStack(Mods.MINECRAFT.ID, "snow")),
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/snow_powder", 0, 2));
+
+        // Obsidian Powder
+        TerrafirmacraftRecipeManager.addQuernRecipe(r,
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "obsidian_powder"),
+                IIngredient.of(RecipeHelper.getItemStack(Mods.MINECRAFT.ID, "obsidian")),
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/obsidian_powder", 0, 2));
+
+        // Enderpearl Powder
+        TerrafirmacraftRecipeManager.addQuernRecipe(r,
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "enderpearl_powder"),
+                IIngredient.of("gemEnder"),
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/enderpearl_powder"));
+
+        // Certus Quartz Powder
+        TerrafirmacraftRecipeManager.addQuernRecipe(r,
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "certus_quartz_powder"),
+                IIngredient.of("crystalCertusQuartz"),
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/certus_quartz_powder"));
+        TerrafirmacraftRecipeManager.addQuernRecipe(r,
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "certus_quartz_powder_alt_1"),
+                IIngredient.of("crystalPureCertusQuartz"),
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/certus_quartz_powder"));
+        TerrafirmacraftRecipeManager.addQuernRecipe(r,
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "certus_quartz_powder_alt_2"),
+                IIngredient.of(RecipeHelper.getItemStack("appliedenergistics2", "material", 1)),
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/certus_quartz_powder"));
+
+        // Hematite Powder
+        TerrafirmacraftRecipeManager.addQuernRecipe(r,
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "hematite_powder"),
+                IIngredient.of("pileHematite"),
+                RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID, "powder/hematite"));
+
+        // Limonite Powder
+        TerrafirmacraftRecipeManager.addQuernRecipe(r,
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "limonite_powder"),
+                IIngredient.of("pileLimonite"),
+                RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID, "powder/limonite"));
+
+        // Malachite Powder
+        TerrafirmacraftRecipeManager.addQuernRecipe(r,
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "malachite_powder"),
+                IIngredient.of("pileMalachite"),
+                RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID, "powder/malachite"));
+
+        // Bio pulp
+        TerrafirmacraftRecipeManager.addQuernRecipe(r,
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "bio_pulp"),
+                IIngredient.of("treeLeaves"),
+                RecipeHelper.getItemStack(Mods.THERMAL_FOUNDATION.ID, "material", 816));
+        TerrafirmacraftRecipeManager.addQuernRecipe(r,
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "bio_pulp_alt"),
+                IIngredient.of("treeSapling"),
+                RecipeHelper.getItemStack(Mods.THERMAL_FOUNDATION.ID, "material", 816));
+
+        // Enderpearl Ingot Recycling
+        TerrafirmacraftRecipeManager.addQuernRecipe(r,
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "enderpearl_ingot_recycling"),
+                IIngredient.of("ingotEnder"),
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/enderpearl_powder"));
+
+        for (OreProcessingTypes type : OreProcessingTypes.values()) {
+            // Small Ore Quern
+            TerrafirmacraftRecipeManager.addQuernRecipe(r,
+                    new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "ore/pile/" + type.getPrimaryName() + "_2"),
+                    IIngredient.of(
+                            RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID, "ore/small/" + type.getPrimaryName())),
+                    RecipeHelper
+                            .getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/pile/" + type.getPrimaryName(), 0, 2));
+
+            // Poor Ore Quern
+            TerrafirmacraftRecipeManager.addQuernRecipe(r,
+                    new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "ore/pile/" + type.getPrimaryName() + "_3"),
+                    IIngredient
+                            .of(RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID, "ore/" + type.getPrimaryName(), 1)),
+                    RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/pile/" + type.getPrimaryName(), 0, 3));
+
+            // Normal Ore Quern
+            TerrafirmacraftRecipeManager.addQuernRecipe(r,
+                    new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "ore/pile/" + type.getPrimaryName() + "_5"),
+                    IIngredient
+                            .of(RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID, "ore/" + type.getPrimaryName(), 0)),
+                    RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/pile/" + type.getPrimaryName(), 0, 5));
+
+            // Rich Ore Quern
+            TerrafirmacraftRecipeManager.addQuernRecipe(r,
+                    new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "ore/pile/" + type.getPrimaryName() + "_7"),
+                    IIngredient
+                            .of(RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID, "ore/" + type.getPrimaryName(), 2)),
+                    RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/pile/" + type.getPrimaryName(), 0, 7));
+        }
+    }
+
+    @Override
     public void registerSieveRecipes(FMLPostInitializationEvent r) {
         // Remove all
         ExNihiloRecipeManager.removeAllSieveRecipes();
     }
 
     @Override
-    public void registerSagMillRecipes(FMLPostInitializationEvent r) {
-        // Remove All
-        EnderIORecipeManager.removeAllSagMillRecipes();
-
-        for (OreProcessingTypes type : OreProcessingTypes.values()) {
-
-            // Small Ore Pulverizing
-            EnderIORecipeManager.registerSagMillRecipe(
-                    new RecipeInput(
-                            RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID, "ore/small/" + type.getPrimaryName())),
-                    new RecipeOutput[] {
-                            new RecipeOutput(RecipeHelper
-                                    .getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/pile/" + type.getPrimaryName(), 0, 2)
-                                    .copy(), 1.00F),
-                            new RecipeOutput(RecipeHelper
-                                    .getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/pile/" + type.getProductA(), 0).copy(),
-                                    0.10F)
-                    },
-                    2000,
-                    RecipeBonusType.MULTIPLY_OUTPUT,
-                    RecipeLevel.IGNORE);
-
-            // Poor Ore Pulverizing
-            EnderIORecipeManager.registerSagMillRecipe(
-                    new RecipeInput(
-                            RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID, "ore/" + type.getPrimaryName(), 1)),
-                    new RecipeOutput[] {
-                            new RecipeOutput(RecipeHelper
-                                    .getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/pile/" + type.getPrimaryName(), 0, 3)
-                                    .copy(), 1.00F),
-                            new RecipeOutput(RecipeHelper
-                                    .getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/pile/" + type.getProductA(), 0).copy(),
-                                    0.15F)
-                    },
-                    3000,
-                    RecipeBonusType.MULTIPLY_OUTPUT,
-                    RecipeLevel.IGNORE);
-
-            // Normal Ore Pulverizing
-            EnderIORecipeManager.registerSagMillRecipe(
-                    new RecipeInput(
-                            RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID, "ore/" + type.getPrimaryName(), 0)),
-                    new RecipeOutput[] {
-                            new RecipeOutput(RecipeHelper
-                                    .getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/pile/" + type.getPrimaryName(), 0, 5)
-                                    .copy(), 1.00F),
-                            new RecipeOutput(RecipeHelper
-                                    .getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/pile/" + type.getProductA(), 0).copy(),
-                                    0.25F)
-                    },
-                    5000,
-                    RecipeBonusType.MULTIPLY_OUTPUT,
-                    RecipeLevel.IGNORE);
-
-            // Rich Ore Pulverizing
-            EnderIORecipeManager.registerSagMillRecipe(
-                    new RecipeInput(
-                            RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID, "ore/" + type.getPrimaryName(), 2)),
-                    new RecipeOutput[] {
-                            new RecipeOutput(RecipeHelper
-                                    .getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/pile/" + type.getPrimaryName(), 0, 7)
-                                    .copy(), 1.00F),
-                            new RecipeOutput(RecipeHelper
-                                    .getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/pile/" + type.getProductA(), 0).copy(),
-                                    0.35F)
-                    },
-                    7000,
-                    RecipeBonusType.MULTIPLY_OUTPUT,
-                    RecipeLevel.IGNORE);
-
-            // Leaves Recycling
-            EnderIORecipeManager.registerSagMillRecipe(
-                    "treeLeaves",
-                    new RecipeOutput[] {
-                            new RecipeOutput(
-                                    RecipeHelper.getItemStack(Mods.THERMAL_FOUNDATION.ID, "material", 816).copy(),
-                                    1.00F),
-                            new RecipeOutput(RecipeHelper.getItemStack(Mods.ENDER_IO.ID, "item_material", 46).copy(),
-                                    0.20F),
-                            new RecipeOutput(RecipeHelper.getItemStack(Mods.ENDER_IO.ID, "item_material", 46).copy(),
-                                    0.10F)
-                    },
-                    1600,
-                    RecipeBonusType.CHANCE_ONLY,
-                    RecipeLevel.IGNORE);
-
-            // Sapling Recycling
-            EnderIORecipeManager.registerSagMillRecipe(
-                    "treeSapling",
-                    new RecipeOutput[] {
-                            new RecipeOutput(
-                                    RecipeHelper.getItemStack(Mods.THERMAL_FOUNDATION.ID, "material", 816).copy(),
-                                    1.00F),
-                            new RecipeOutput(RecipeHelper.getItemStack(Mods.MINECRAFT.ID, "stick").copy(), 0.25F),
-                            new RecipeOutput(RecipeHelper.getItemStack(Mods.ENDER_IO.ID, "item_material", 47).copy(),
-                                    0.10F)
-                    },
-                    1600,
-                    RecipeBonusType.CHANCE_ONLY,
-                    RecipeLevel.IGNORE);
-        }
-    }
-
-    @Override
     public void registerCrusherRecipes(FMLPostInitializationEvent r) {
         // Remove All
         ImmersiveEngineeringRecipeManager.removeAllCrusherRecipes();
+
+        for (OreProcessingTypes type : OreProcessingTypes.values()) {
+            // Small Ore Pulverizin
+            ImmersiveEngineeringRecipeManager.addCrusherRecipe(
+                    RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID, "ore/small/" + type.getPrimaryName()),
+                    RecipeHelper
+                            .getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/pile/" + type.getPrimaryName(), 0, 2),
+                    new Object[] {
+                            RecipeHelper
+                                    .getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/pile/" + type.getProductA(), 0),
+                            0.10F
+                    },
+                    2000);
+
+            // Poor Ore Pulverizing
+            ImmersiveEngineeringRecipeManager.addCrusherRecipe(
+                    RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID, "ore/" + type.getPrimaryName(), 1),
+                    RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/pile/" + type.getPrimaryName(), 0, 3),
+                    new Object[] {
+                            RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/pile/" + type.getProductA(), 0),
+                            0.15F
+                    },
+                    3000);
+
+            // Normal Ore Pulverizing
+            ImmersiveEngineeringRecipeManager.addCrusherRecipe(
+                    RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID, "ore/" + type.getPrimaryName(), 0),
+                    RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/pile/" + type.getPrimaryName(), 0, 5),
+                    new Object[] {
+                            RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/pile/" + type.getProductA(), 0),
+                            0.25F
+                    },
+                    5000);
+
+            // Rich Ore Pulverizing
+            ImmersiveEngineeringRecipeManager.addCrusherRecipe(
+                    RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID, "ore/" + type.getPrimaryName(), 2),
+                    RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/pile/" + type.getPrimaryName(), 0, 7),
+                    new Object[] {
+                            RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/pile/" + type.getProductA(), 0),
+                            0.35F
+                    },
+                    7000);
+        }
+
+        // Leaves Recycling
+        ImmersiveEngineeringRecipeManager.addCrusherRecipe(
+                "treeLeaves",
+                RecipeHelper.getItemStack(Mods.THERMAL_FOUNDATION.ID, "material", 816),
+                new Object[] {
+                        RecipeHelper.getItemStack(Mods.MINECRAFT.ID, "stick"), 0.25F
+                },
+                1600);
+
+        // Sapling Recycling
+        ImmersiveEngineeringRecipeManager.addCrusherRecipe(
+                "treeSapling",
+                RecipeHelper.getItemStack(Mods.THERMAL_FOUNDATION.ID, "material", 816),
+                new Object[] {
+                        RecipeHelper.getItemStack(Mods.MINECRAFT.ID, "stick"), 0.25F
+                },
+                1600);
     }
 }

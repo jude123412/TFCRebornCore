@@ -12,15 +12,11 @@ import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.registries.IForgeRegistry;
 
-import crazypants.enderio.base.recipe.RecipeBonusType;
-import crazypants.enderio.base.recipe.RecipeLevel;
-import crazypants.enderio.base.recipe.RecipeOutput;
 import tfcreborncore.objects.RCItems;
 import tfcreborncore.recipe.ICompatModule;
 import tfcreborncore.recipe.RecipeHelper;
 import tfcreborncore.recipe.enums.Mods;
 import tfcreborncore.recipe.enums.ThermalToolMaterialTypes;
-import tfcreborncore.recipe.manager.EnderIORecipeManager;
 import tfcreborncore.recipe.manager.ImmersiveEngineeringRecipeManager;
 import tfcreborncore.recipe.manager.MinecraftRecipeManager;
 import tfcreborncore.recipe.manager.TerrafirmacraftRecipeManager;
@@ -363,42 +359,6 @@ public class ThermalExpansionCompat implements ICompatModule {
                 new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "quern/powder/basalz_powder"),
                 IIngredient.of("rodBasalz"),
                 RecipeHelper.getItemStack(Mods.THERMAL_FOUNDATION.ID, "material", 2053, 2));
-    }
-
-    @Override
-    public void registerSagMillRecipes(FMLPostInitializationEvent r) {
-        // Blizz Powder
-        EnderIORecipeManager.registerSagMillRecipe(
-                "rodBlizz",
-                new RecipeOutput[] {
-                        new RecipeOutput(RecipeHelper.getItemStack(Mods.THERMAL_FOUNDATION.ID, "material", 2049, 2)),
-                        new RecipeOutput(RecipeHelper.getItemStack(Mods.THERMAL_FOUNDATION.ID, "material", 2049), 0.20F)
-                },
-                1600,
-                RecipeBonusType.CHANCE_ONLY,
-                RecipeLevel.IGNORE);
-
-        // Blitz Powder
-        EnderIORecipeManager.registerSagMillRecipe(
-                "rodBlitz",
-                new RecipeOutput[] {
-                        new RecipeOutput(RecipeHelper.getItemStack(Mods.THERMAL_FOUNDATION.ID, "material", 2051, 2)),
-                        new RecipeOutput(RecipeHelper.getItemStack(Mods.THERMAL_FOUNDATION.ID, "material", 2051), 0.20F)
-                },
-                1600,
-                RecipeBonusType.CHANCE_ONLY,
-                RecipeLevel.IGNORE);
-
-        // Basalz Powder
-        EnderIORecipeManager.registerSagMillRecipe(
-                "rodBasalz",
-                new RecipeOutput[] {
-                        new RecipeOutput(RecipeHelper.getItemStack(Mods.THERMAL_FOUNDATION.ID, "material", 2053, 2)),
-                        new RecipeOutput(RecipeHelper.getItemStack(Mods.THERMAL_FOUNDATION.ID, "material", 2053), 0.20F)
-                },
-                1600,
-                RecipeBonusType.CHANCE_ONLY,
-                RecipeLevel.IGNORE);
     }
 
     @Override

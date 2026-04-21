@@ -694,6 +694,7 @@ public class TFCRebornCoreCompat implements ICompatModule {
         ForestryRecipeManager.removeAllCarpenterRecipes();
         ForestryRecipeManager.removeAllFabricatorRecipes();
 
+        // Redstone Electron Tube
         ForestryRecipeManager.addCarpenterRecipe(4 * S,
                 RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/electron_tube_housing"),
                 RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/redstone_electron_tube"),

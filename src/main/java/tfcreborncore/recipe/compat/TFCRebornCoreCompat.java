@@ -1,5 +1,7 @@
 package tfcreborncore.recipe.compat;
 
+import static tfcreborncore.recipe.RecipeHelper.S;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -116,6 +118,17 @@ public class TFCRebornCoreCompat implements ICompatModule {
                 "SK",
                 'S', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/latex_coated_wood_sheet"),
                 'K', "knife");
+
+        // Redstone Electron Tube
+        MinecraftRecipeManager.addShapedRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shaped/electron_tube/redstone"),
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/redstone_electron_tube"),
+                "H",
+                "G",
+                "B",
+                'H', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/electron_tube_housing"),
+                'G', "slimeball",
+                'B', "electronTubeBaseRedstone");
 
         // Ore Processing
         for (OreProcessingTypes type : OreProcessingTypes.values()) {
@@ -361,6 +374,43 @@ public class TFCRebornCoreCompat implements ICompatModule {
 
     @Override
     public void registerWeldingRecipes(IForgeRegistry<WeldingRecipe> r) {
+        // Redstone Resistor Stage 2
+        TerrafirmacraftRecipeManager.addWeldingRecipe(
+                r,
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "anvil/welding/redstone_resistor_stage_2"),
+                RecipeHelper.getIIngredient("boltRedAlloy"),
+                RecipeHelper.getIIngredient(Mods.TFC_REBORN_CORE.ID, "item/redstone_resistor_stage_1", 0),
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/redstone_resistor_stage_2", 0),
+                Metal.Tier.TIER_II,
+                null);
+
+        // Redstone Resistor Stage 3
+        TerrafirmacraftRecipeManager.addWeldingRecipe(r,
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "anvil/welding/redstone_resistor_stage_3"),
+                RecipeHelper.getIIngredient("stripGold"),
+                RecipeHelper.getIIngredient(Mods.TFC_REBORN_CORE.ID, "item/redstone_resistor_stage_2", 0),
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/redstone_resistor_stage_3", 0),
+                Metal.Tier.TIER_II,
+                null);
+
+        // Redstone Resistor
+        TerrafirmacraftRecipeManager.addWeldingRecipe(r,
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "anvil/welding/redstone_resistor"),
+                RecipeHelper.getIIngredient(Mods.TFC_REBORN_CORE.ID, "item/redstone_resistor_stage_2", 0),
+                RecipeHelper.getIIngredient(Mods.TFC_REBORN_CORE.ID, "item/redstone_resistor_stage_3", 0),
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/redstone_resistor", 0),
+                Metal.Tier.TIER_II,
+                null);
+
+        // Radiator Matrix
+        TerrafirmacraftRecipeManager.addWeldingRecipe(r,
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "anvil/welding/radiator_matrix"),
+                RecipeHelper.getIIngredient("ingotDoubleIron"),
+                RecipeHelper.getIIngredient(Mods.TFC_REBORN_CORE.ID, "item/radiator_piping", 0),
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/radiator_matrix", 0),
+                Metal.Tier.TIER_II,
+                null);
+
         // Metal Processing
         for (Metal metal : TFCRegistries.METALS.getValuesCollection()) {
             if (metal.isUsable() && metal.isToolMetal()) {
@@ -643,6 +693,13 @@ public class TFCRebornCoreCompat implements ICompatModule {
         // Forestry Recipe Removal
         ForestryRecipeManager.removeAllCarpenterRecipes();
         ForestryRecipeManager.removeAllFabricatorRecipes();
+
+        ForestryRecipeManager.addCarpenterRecipe(4 * S,
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/electron_tube_housing"),
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/redstone_electron_tube"),
+                RecipeHelper.getFluidStack("latex", 50),
+                "T",
+                'T', "electronTubeBaseRedstone");
 
         // Thermionic Fabricator Recipes
         // These need to be registered first

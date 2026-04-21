@@ -14,8 +14,8 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.oredict.OreDictionary;
-
 import net.minecraftforge.registries.IForgeRegistry;
+
 import tfcreborncore.Tags;
 import tfcreborncore.objects.items.ItemRCMetal;
 import tfcreborncore.objects.items.enums.ItemRCMetalType;
@@ -144,14 +144,14 @@ public class TFCTechCompat implements ICompatModule {
         for (Metal metal : TFCRegistries.METALS.getValuesCollection()) {
             if (metal.isUsable()) {
                 // Rackwheel Recipe Removal
-                MinecraftRecipeManager.removeRecipeByOutput(RecipeHelper.getItemStack(ItemTechMetal.get(metal, ItemTechMetal.ItemType.RACKWHEEL)));
+                MinecraftRecipeManager.removeRecipeByOutput(
+                        RecipeHelper.getItemStack(ItemTechMetal.get(metal, ItemTechMetal.ItemType.RACKWHEEL)));
             }
         }
     }
 
     @Override
     public void registerAnvilRecipes(IForgeRegistry<AnvilRecipe> r) {
-
         // Tin Sleeve
         TerrafirmacraftRecipeManager.addAnvilRecipe(r,
                 new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "anvil/working/sleeve/tin"),
@@ -161,8 +161,7 @@ public class TFCTechCompat implements ICompatModule {
                 null,
                 ForgeRule.BEND_ANY,
                 ForgeRule.BEND_ANY,
-                ForgeRule.BEND_ANY
-                );
+                ForgeRule.BEND_ANY);
 
         // Brass Sleeve
         TerrafirmacraftRecipeManager.addAnvilRecipe(r,
@@ -173,8 +172,7 @@ public class TFCTechCompat implements ICompatModule {
                 null,
                 ForgeRule.BEND_ANY,
                 ForgeRule.BEND_ANY,
-                ForgeRule.BEND_ANY
-        );
+                ForgeRule.BEND_ANY);
 
         // Steel Sleeve
         TerrafirmacraftRecipeManager.addAnvilRecipe(r,
@@ -185,8 +183,7 @@ public class TFCTechCompat implements ICompatModule {
                 null,
                 ForgeRule.BEND_ANY,
                 ForgeRule.BEND_ANY,
-                ForgeRule.BEND_ANY
-        );
+                ForgeRule.BEND_ANY);
 
         // Metal Processing
         for (Metal metal : TFCRegistries.METALS.getValuesCollection()) {

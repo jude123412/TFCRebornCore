@@ -21,7 +21,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import tfcreborncore.objects.items.enums.ItemRCAnyMetalType;
-import tfcreborncore.objects.items.enums.ItemRCMetalType;
 
 /*
  * Original code from TFC Tech's ItemTechMetal (EUPL v1.2)
@@ -50,7 +49,7 @@ public class ItemRCAnyMetal extends ItemTFC implements IMetalItem {
     }
 
     @Nullable
-    public static ItemRCAnyMetal get(Metal metal, ItemRCMetalType type) {
+    public static ItemRCAnyMetal get(Metal metal, ItemRCAnyMetalType type) {
         return TUBE_MAP.get(metal).get(type);
     }
 

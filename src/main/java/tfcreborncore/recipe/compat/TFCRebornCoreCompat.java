@@ -21,9 +21,11 @@ import net.minecraftforge.registries.IForgeRegistry;
 
 import tfcreborncore.Tags;
 import tfcreborncore.objects.RCItems;
+import tfcreborncore.objects.items.ItemRCAnyMetal;
 import tfcreborncore.objects.items.ItemRCMetal;
 import tfcreborncore.objects.items.ItemRCTool;
 import tfcreborncore.objects.items.ItemRCUniversalWeapon;
+import tfcreborncore.objects.items.enums.ItemRCAnyMetalType;
 import tfcreborncore.objects.items.enums.ItemRCMetalType;
 import tfcreborncore.objects.items.enums.ItemRCToolType;
 import tfcreborncore.recipe.ICompatModule;
@@ -341,7 +343,19 @@ public class TFCRebornCoreCompat implements ICompatModule {
                         ForgeRule.HIT_ANY,
                         ForgeRule.SHRINK_ANY);
 
+                // Pipe Frame
+                TerrafirmacraftRecipeManager.addAnvilRecipe(r,
+                        new ResourceLocation(Mods.TFC_REBORN_CORE.ID,
+                                "anvil/working/pipe_frame/" + metal.getRegistryName().getPath().toLowerCase()),
+                        RecipeHelper.getIIngredient(ItemMetal.get(metal, Metal.ItemType.DOUBLE_INGOT)),
+                        RecipeHelper.getItemStack(ItemRCAnyMetal.get(metal, ItemRCAnyMetalType.PIPE_FRAME)),
+                        metal.getTier(),
+                        null,
+                        ForgeRule.DRAW_NOT_LAST,
+                        ForgeRule.BEND_NOT_LAST,
+                        ForgeRule.HIT_LAST);
             }
+
             if (metal.isToolMetal()) {
                 // Wire Cutter Head
                 TerrafirmacraftRecipeManager.addAnvilRecipe(r,
@@ -370,8 +384,20 @@ public class TFCRebornCoreCompat implements ICompatModule {
                         null,
                         ForgeRule.BEND_ANY,
                         ForgeRule.BEND_ANY,
-                        ForgeRule.DRAW_ANY);
+                        ForgeRule.DRAW_NOT_LAST);
             }
+
+            // Electron Tube Base
+            TerrafirmacraftRecipeManager.addAnvilRecipe(r,
+                    new ResourceLocation(Mods.TFC_REBORN_CORE.ID,
+                            "anvil/working/electron_tube_base/" + metal.getRegistryName().getPath().toLowerCase()),
+                    RecipeHelper.getIIngredient(ItemMetal.get(metal, Metal.ItemType.INGOT)),
+                    RecipeHelper.getItemStack(ItemRCAnyMetal.get(metal, ItemRCAnyMetalType.ELECTRON_TUBE_BASE)),
+                    metal.getTier(),
+                    null,
+                    ForgeRule.DRAW_ANY,
+                    ForgeRule.BEND_ANY,
+                    ForgeRule.HIT_LAST);
         }
     }
 

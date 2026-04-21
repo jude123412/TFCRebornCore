@@ -22,16 +22,15 @@ public enum ItemRCType {
     WOOD_SHEET(Size.SMALL, Weight.MEDIUM, true),
     LATEX_COATED_WOOD_SHEET(Size.SMALL, Weight.MEDIUM, true),
 
-    // Electrical components (light)
-    ELECTRICAL_DOODAR_BASE_PLATE(Size.SMALL, Weight.LIGHT, true),
-    ELECTRICAL_DOODAR_HOUSING(Size.SMALL, Weight.LIGHT, true),
-    ELECTRICAL_THINGAMAJIG_STAGE_1(Size.SMALL, Weight.LIGHT, true),
-    ELECTRICAL_THINGAMAJIG_STAGE_2(Size.SMALL, Weight.LIGHT, true),
-    ELECTRICAL_THINGAMAJIG_STAGE_3(Size.SMALL, Weight.LIGHT, true),
+    // Electrical components
+    ELECTRON_TUBE_HOUSING(Size.SMALL, Weight.LIGHT, true),
+    REDSTONE_RESISTOR_STAGE_1(Size.SMALL, Weight.LIGHT, true),
+    REDSTONE_RESISTOR_STAGE_2(Size.SMALL, Weight.LIGHT, true),
+    REDSTONE_RESISTOR_STAGE_3(Size.SMALL, Weight.LIGHT, true),
 
     // Finished electrical items
-    ELECTRICAL_DOODAR(Size.VERY_SMALL, Weight.MEDIUM, true),
-    ELECTRICAL_THINGAMAJIG(Size.VERY_SMALL, Weight.MEDIUM, true),
+    REDSTONE_ELECTRON_TUBE(Size.VERY_SMALL, Weight.MEDIUM, true),
+    REDSTONE_RESISTOR(Size.VERY_SMALL, Weight.MEDIUM, true),
 
     // Heavy components
     RF_CONTROL_CIRCUIT(Size.LARGE, Weight.HEAVY, true),
@@ -65,6 +64,7 @@ public enum ItemRCType {
     GLASS_INSULATOR(Size.NORMAL, Weight.LIGHT, true),
     RADIATOR_PIPING(Size.SMALL, Weight.MEDIUM, true),
     RADIATOR_MATRIX(Size.NORMAL, Weight.MEDIUM, true),
+    BRICK_MOLD(Size.SMALL, Weight.MEDIUM, "brickMold", false, true),
     SLAG(Size.VERY_SMALL, Weight.VERY_LIGHT, "crystalSlag", true),
     RICH_SLAG(Size.VERY_SMALL, Weight.VERY_LIGHT, "crystalSlagRich", true);
 
@@ -75,6 +75,7 @@ public enum ItemRCType {
     private final Size size;
     private final Weight weight;
     private final boolean canStack;
+    private final boolean hasContainerItem;
     private final String dictionary;
 
     private final Function<ItemRCType, ItemRC> factory;
@@ -84,18 +85,27 @@ public enum ItemRCType {
     // ---------------------------------------------------------------------
 
     ItemRCType(Size size, Weight weight, boolean canStack) {
-        this(size, weight, canStack, null, ItemRC::new);
+        this(size, weight, canStack, false, null, ItemRC::new);
+    }
+
+    ItemRCType(Size size, Weight weight, boolean canStack, boolean hasContainerItem) {
+        this(size, weight, canStack, hasContainerItem, null, ItemRC::new);
     }
 
     ItemRCType(Size size, Weight weight, String ore, boolean canStack) {
-        this(size, weight, canStack, ore, ItemRC::new);
+        this(size, weight, canStack, false, ore, ItemRC::new);
     }
 
-    ItemRCType(Size size, Weight weight, boolean canStack, String ore,
+    ItemRCType(Size size, Weight weight, String ore, boolean canStack, boolean hasContainerItem) {
+        this(size, weight, canStack, hasContainerItem, ore, ItemRC::new);
+    }
+
+    ItemRCType(Size size, Weight weight, boolean canStack, boolean hasContainerItem, String ore,
                Function<ItemRCType, ItemRC> factory) {
         this.size = size;
         this.weight = weight;
         this.canStack = canStack;
+        this.hasContainerItem = hasContainerItem;
         this.dictionary = ore;
         this.factory = factory;
     }
@@ -118,6 +128,10 @@ public enum ItemRCType {
 
     public boolean canStack() {
         return canStack;
+    }
+
+    public boolean hasContainerItem() {
+        return hasContainerItem;
     }
 
     // ---------------------------------------------------------------------

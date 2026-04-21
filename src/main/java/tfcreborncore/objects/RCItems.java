@@ -21,11 +21,13 @@ import com.google.common.collect.ImmutableList;
 
 import tfcreborncore.Tags;
 import tfcreborncore.objects.items.ItemRC;
+import tfcreborncore.objects.items.ItemRCAnyMetal;
 import tfcreborncore.objects.items.ItemRCLumber;
 import tfcreborncore.objects.items.ItemRCMetal;
 import tfcreborncore.objects.items.ItemRCOre;
 import tfcreborncore.objects.items.ItemRCTool;
 import tfcreborncore.objects.items.ItemRCUniversalWeapon;
+import tfcreborncore.objects.items.enums.ItemRCAnyMetalType;
 import tfcreborncore.objects.items.enums.ItemRCLumberType;
 import tfcreborncore.objects.items.enums.ItemRCMetalType;
 import tfcreborncore.objects.items.enums.ItemRCOreType;
@@ -40,6 +42,7 @@ public class RCItems {
     private static ImmutableList<Item> allUniversalWeaponItems;
     private static ImmutableList<Item> allRegularItems;
     private static ImmutableList<Item> allWoodItems;
+    private static ImmutableList<Item> allAnyMetalItems;
 
     public static void registerItems(RegistryEvent.Register<Item> event) {
         registerOreItems(event);
@@ -48,6 +51,7 @@ public class RCItems {
         registerAllUniversalWeaponItems(event);
         registerRegularItems(event);
         registerLumberWoodItems(event);
+        registerAnyMetalItems(event);
     }
 
     public static void registerItemColors(final ColorHandlerEvent.Item event) {
@@ -56,6 +60,7 @@ public class RCItems {
         registerToolItemColor(event);
         registerUniversalWeaponItemColor(event);
         registerLumberItemColor(event);
+        registerAnyMetalItemColor(event);
     }
 
     public static void registerItemModels(ModelRegistryEvent event) {
@@ -204,6 +209,48 @@ public class RCItems {
         allWoodItems = forestryWoodItems.build();
     }
 
+    public static void registerAnyMetalItems(RegistryEvent.Register<Item> event) {
+        IForgeRegistry<Item> registry = event.getRegistry();
+
+        ImmutableList.Builder<Item> anyMetalItems = ImmutableList.builder();
+        for (Metal metal : TFCRegistries.METALS) {
+            String metalName = metal.getRegistryName().getPath().toLowerCase();
+            String base = metal.isToolMetal() ? "metal/tool/head/" + metalName : "metal/" + metalName;
+
+            for (ItemRCAnyMetalType type : ItemRCAnyMetalType.values()) {
+
+                String name = base + "_" + type.toString().toLowerCase();
+
+                boolean usableMetals = type.isUsableMetalsOnly();
+
+                if (usableMetals && metal.isUsable()) {
+                    registerAnyMetalItem(registry, name, metal, type, anyMetalItems);
+                }
+                if (!usableMetals) {
+                    registerAnyMetalItem(registry, name, metal, type, anyMetalItems);
+                }
+            }
+        }
+
+        allAnyMetalItems = anyMetalItems.build();
+    }
+
+    private static void registerAnyMetalItem(IForgeRegistry<Item> registry, String name, Metal metal,
+                                             ItemRCAnyMetalType type, ImmutableList.Builder<Item> list) {
+        Item metalType = register(registry, name,
+                ItemRCAnyMetalType.Create(metal, type),
+                CreativeTabsRC.CT_ITEMS);
+
+        ItemRCAnyMetal metalItemType = (ItemRCAnyMetal) metalType;
+        String path = metalItemType.getMetal().getRegistryName().getPath().toLowerCase();
+
+        OreDictionary.registerOre(
+                toPascalCaseAlt(type.toString().toLowerCase()) + toPascalCase(path),
+                metalItemType);
+
+        list.add(metalType);
+    }
+
     private static void registerOreItemColor(final ColorHandlerEvent.Item event) {
         ImmutableList<Item> oreItems = getAllOreItems();
         if (oreItems == null || oreItems.isEmpty()) return;
@@ -294,6 +341,24 @@ public class RCItems {
         }
     }
 
+    private static void registerAnyMetalItemColor(final ColorHandlerEvent.Item event) {
+        ImmutableList<Item> metalItems = getAllAnyMetalItems();
+        if (metalItems == null || metalItems.isEmpty()) return;
+
+        for (Item item : metalItems) {
+            if (!(item instanceof ItemRCAnyMetal metalItem)) continue;
+
+            int color = getMetalColor(metalItem.getMetal());
+
+            IItemColor handler = (stack, tintIndex) -> {
+                if (tintIndex != 0) return 0xFFFFFF;
+                return color;
+            };
+
+            event.getItemColors().registerItemColorHandler(handler, item);
+        }
+    }
+
     private static void registerModels(ModelRegistryEvent event) {
         for (Item item : getAllOreItems()) {
             ItemRCOre oreItem = (ItemRCOre) item;
@@ -335,6 +400,13 @@ public class RCItems {
                     new ResourceLocation(Tags.MODID, "wood/lumber"),
                     "inventory"));
         }
+
+        for (Item item : getAllAnyMetalItems()) {
+            ItemRCAnyMetal metalItem = (ItemRCAnyMetal) item;
+            ModelLoader.setCustomModelResourceLocation(metalItem, 0, new ModelResourceLocation(
+                    new ResourceLocation(Tags.MODID, "metal/" + metalItem.getType().name().toLowerCase()),
+                    "inventory"));
+        }
     }
 
     public static ImmutableList<Item> getAllOreItems() {
@@ -359,6 +431,10 @@ public class RCItems {
 
     public static ImmutableList<Item> getAllLumberItems() {
         return allWoodItems;
+    }
+
+    public static ImmutableList<Item> getAllAnyMetalItems() {
+        return allAnyMetalItems;
     }
 
     public static String toPascalCase(String input) {

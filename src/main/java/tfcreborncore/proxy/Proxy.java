@@ -17,7 +17,6 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import tfcreborncore.Tags;
 import tfcreborncore.objects.RCItems;
 import tfcreborncore.recipe.CompatManager;
-import tfcreborncore.recipe.MetalRecipes;
 import tfcreborncore.recipe.manager.MinecraftRecipeManager;
 
 @Mod.EventBusSubscriber(modid = Tags.MODID)
@@ -32,7 +31,6 @@ public class Proxy {
 
     @SubscribeEvent(priority = EventPriority.LOW)
     public static void registerRecipes(RegistryEvent.Register<IRecipe> event) {
-        MetalRecipes.registerShapedSkillRecipe();
         CompatManager.loadOreDictionaries(event);
         CompatManager.loadCraftingRecipes(event);
         MinecraftRecipeManager.RECIPE_LIST.forEach(event.getRegistry()::register);
@@ -40,19 +38,16 @@ public class Proxy {
 
     @SubscribeEvent
     public static void registerAnvilRecipes(RegistryEvent.Register<AnvilRecipe> event) {
-        MetalRecipes.registerAnvilRecipes(event);
         CompatManager.loadAnvilRecipes(event);
     }
 
     @SubscribeEvent
     public static void registerWeldingRecipes(RegistryEvent.Register<WeldingRecipe> event) {
-        MetalRecipes.registerWeldingRecipes(event);
         CompatManager.loadWeldingRecipes(event);
     }
 
     @SubscribeEvent
     public static void registerQuernRecipes(RegistryEvent.Register<QuernRecipe> event) {
-        MetalRecipes.registerQuernRecipes(event);
         CompatManager.loadQuernRecipes(event);
     }
 

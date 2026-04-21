@@ -24,6 +24,8 @@ item.tfcreborncore.tool.universal_weapon.name=%s Universal Weapon
 
 # Metal Items
 item.tfcreborncore.metal.rackwheel_half.name=%s Rackwheel Half
+item.tfcreborncore.metal.electron_tube_base.name=%s Electron Tube Base
+item.tfcreborncore.metal.pipe_frame.name=%s Pipe Frame
 
 # Creative Tabs
 itemGroup.tfcreborncore.items=TFC: Reborn Core Items
@@ -32,25 +34,38 @@ itemGroup.tfcreborncore.items=TFC: Reborn Core Items
 item.tfcreborncore.wood.lumber.name=%s Lumber
 
 # Regular Items
+# Metal Press Components (non-stackable)
 item.tfcreborncore.item.metal_press_sleeve.name=Metal Press Mold: Sleeve
 item.tfcreborncore.item.metal_press_rackwheel_piece.name=Metal Press Mold: Rackwheel Piece
 item.tfcreborncore.item.metal_press_rackwheel.name=Metal Press Mold: Rackwheel
 item.tfcreborncore.item.metal_press_long_rod.name=Metal Press Mold: Long Rod
 item.tfcreborncore.item.metal_press_bolt.name=Metal Press Mold: Bolt
 item.tfcreborncore.item.metal_press_screw.name=Metal Press Mold: Screw
+
+# Wood sheets
 item.tfcreborncore.item.wood_sheet.name=Wood Sheet
 item.tfcreborncore.item.latex_coated_wood_sheet.name=Latex Coated Wood Sheet
-item.tfcreborncore.item.electrical_doodar_base_plate.name=Electrical Doodar Base Plate
-item.tfcreborncore.item.electrical_doodar_housing.name=Electrical Doodar Housing
-item.tfcreborncore.item.electrical_thingamajig_stage_1.name=Electrical Thingamajig Stage 1
-item.tfcreborncore.item.electrical_thingamajig_stage_2.name=Electrical Thingamajig Stage 2
-item.tfcreborncore.item.electrical_thingamajig_stage_3.name=Electrical Thingamajig Stage 3
-item.tfcreborncore.item.electrical_doodar.name=Electrical Doodar
-item.tfcreborncore.item.electrical_thingamajig.name=Electrical Thingamajig
+
+# Electrical components
+item.tfcreborncore.item.electron_tube_housing.name=Electron Tube Housing
+item.tfcreborncore.item.redstone_resistor_stage_1.name=Redstone Resistor Stage 1
+item.tfcreborncore.item.redstone_resistor_stage_2.name=Redstone Resistor Stage 2
+item.tfcreborncore.item.redstone_resistor_stage_3.name=Redstone Resistor Stage 3
+
+# Finished electrical items
+item.tfcreborncore.item.redstone_electron_tube.name=Redstone Electron Tube
+item.tfcreborncore.item.redstone_resistor.name=Redstone Resistor
+
+# Heavy components
 item.tfcreborncore.item.rf_control_circuit.name=RF Control Circuit
-item.tfcreborncore.item.hardened_glass_mix.name=Hardened Glass Mix
+item.tfcreborncore.item.brass_piston.name=Brass Piston
+
+# Fuels
 item.tfcreborncore.item.lignite_coke.name=Lignite Coke
 item.tfcreborncore.item.bituminous_coal_coke.name=Bituminous Coal Coke
+
+# Dust
+item.tfcreborncore.item.hardened_glass_mix.name=Hardened Glass Mix
 item.tfcreborncore.item.coal_powder.name=Coal Powder
 item.tfcreborncore.item.synthetic_graphite_mix.name=Synthetic Graphite Mix
 item.tfcreborncore.item.wood_powder.name=Wood Powder
@@ -59,6 +74,8 @@ item.tfcreborncore.item.enderpearl_powder.name=Enderpearl Powder
 item.tfcreborncore.item.obsidian_powder.name=Obsidian Powder
 item.tfcreborncore.item.snow_powder.name=Powdered Snow
 item.tfcreborncore.item.apatite_powder.name=Apatite Powder
+
+# Misc
 item.tfcreborncore.item.unfired_clay_sheet.name=Unfired Clay Sheet
 item.tfcreborncore.item.clay_sheet.name=Clay Sheet
 item.tfcreborncore.item.nickel_plated_capacitor_cell.name=Nickel-Plated Capacitor Cell
@@ -69,12 +86,11 @@ item.tfcreborncore.item.hi_tech_capacitor_cell.name=HV Capacitor Cell
 item.tfcreborncore.item.unfired_ceramic_insulator.name=Unfired Ceramic Insulator
 item.tfcreborncore.item.ceramic_insulator.name=Ceramic Insulator
 item.tfcreborncore.item.glass_insulator.name=Glass Insulator
-item.tfcreborncore.item.brass_piston.name=Brass Piston
 item.tfcreborncore.item.radiator_piping.name=Radiator Piping
 item.tfcreborncore.item.radiator_matrix.name=Radiator Matrix
+item.tfcreborncore.item.brick_mold.name=Brick Mold
 item.tfcreborncore.item.slag.name=Slag
 item.tfcreborncore.item.rich_slag.name=Rich Slag
-
 
 # New Heating Values
 tfc.enum.extendedheat.warming=Warming

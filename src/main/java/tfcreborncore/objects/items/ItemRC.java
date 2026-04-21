@@ -25,6 +25,7 @@ public class ItemRC extends ItemTFC {
         if (!CROSS_MOD_MAP.containsKey(type.toString())) {
             CROSS_MOD_MAP.put(type.toString(), type);
         }
+        if (type.hasContainerItem()) this.setContainerItem(this);
     }
 
     public ItemRCType getType() {
@@ -37,12 +38,12 @@ public class ItemRC extends ItemTFC {
     }
 
     @Override
-    public @NotNull Size getSize(@NotNull ItemStack itemStack) {
+    public @NotNull Size getSize(@NotNull ItemStack stack) {
         return type.getSize();
     }
 
     @Override
-    public @NotNull Weight getWeight(@NotNull ItemStack itemStack) {
+    public @NotNull Weight getWeight(@NotNull ItemStack stack) {
         return type.getWeight();
     }
 

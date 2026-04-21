@@ -8,7 +8,6 @@ import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLLoadCompleteEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
@@ -56,10 +55,6 @@ public class TFCRebornCore {
         CompatManager.loadSieveRecipes(event);
         CompatManager.loadItemMetal(event);
         CompatManager.loadCrusherRecipes(event);
-    }
-
-    @EventHandler
-    public void loadComplete(FMLLoadCompleteEvent event) {
         CompatManager.loadForestryRecipes(event);
     }
 

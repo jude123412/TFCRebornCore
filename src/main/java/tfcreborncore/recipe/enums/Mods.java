@@ -9,7 +9,7 @@ public enum Mods {
     FRAMED_COMPACTING_DRAWERS("framedcompactdrawers"),
     TERRAFIRMACRAFT("tfc"),
     BAUBLELICIOUS("baublelicious"),
-    BAUBLES("baubles"),
+    BUBBLES("baubles"),
     FIRMALIFE("firmalife"),
     TFC_METALLUM("tfcmetallum"),
     TFC_REBORN_CORE("tfcreborncore"),

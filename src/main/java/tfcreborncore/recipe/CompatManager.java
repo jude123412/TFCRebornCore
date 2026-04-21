@@ -9,7 +9,6 @@ import net.dries007.tfc.api.recipes.barrel.BarrelRecipe;
 import net.dries007.tfc.api.recipes.quern.QuernRecipe;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.event.RegistryEvent;
-import net.minecraftforge.fml.common.event.FMLLoadCompleteEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 
 import tfcreborncore.recipe.compat.BaubleliciousCompat;
@@ -21,6 +20,7 @@ import tfcreborncore.recipe.compat.OpenGliderCompat;
 import tfcreborncore.recipe.compat.StorageDrawersCompat;
 import tfcreborncore.recipe.compat.TFCRebornCoreCompat;
 import tfcreborncore.recipe.compat.TFCTechCompat;
+import tfcreborncore.recipe.compat.TerrafirmacraftCompat;
 import tfcreborncore.recipe.compat.ThermalExpansionCompat;
 
 public final class CompatManager {
@@ -38,6 +38,7 @@ public final class CompatManager {
         modules.add(new ThermalExpansionCompat());
         modules.add(new BinniesCompat());
         modules.add(new OpenGliderCompat());
+        modules.add(new TerrafirmacraftCompat());
     }
 
     public static void loadOreDictionaries(RegistryEvent.Register<IRecipe> event) {
@@ -100,7 +101,7 @@ public final class CompatManager {
         }
     }
 
-    public static void loadForestryRecipes(FMLLoadCompleteEvent event) {
+    public static void loadForestryRecipes(FMLPostInitializationEvent event) {
         for (ICompatModule module : modules) {
             if (module.areRecipesLoadable()) module.registerForestryRecipes(event);
         }

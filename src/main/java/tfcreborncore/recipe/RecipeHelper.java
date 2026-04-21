@@ -11,6 +11,8 @@ import net.minecraftforge.fml.common.registry.ForgeRegistries;
 
 public class RecipeHelper {
 
+    public static int S = 20;
+
     // Returns an ItemStack with amount or ItemStack.EMPTY if item doesn't exist
     public static ItemStack getItemStack(String modId, String itemId, int metaId, int amount) {
         ResourceLocation location = new ResourceLocation(modId, itemId);

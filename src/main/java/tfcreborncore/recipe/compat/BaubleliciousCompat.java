@@ -27,7 +27,7 @@ public class BaubleliciousCompat implements ICompatModule {
     public List<String> dependencies() {
         return Arrays.asList(
                 Mods.BAUBLELICIOUS.ID,
-                Mods.BAUBLES.ID,
+                Mods.BUBBLES.ID,
                 Mods.TERRAFIRMACRAFT.ID,
                 Mods.TFC_TECH.ID);
     }
@@ -147,18 +147,6 @@ public class BaubleliciousCompat implements ICompatModule {
                 'S', "stickSignalum",
                 'B', RecipeHelper.getItemStack(Mods.BAUBLELICIOUS.ID, "itemamulet"),
                 'I', "ingotSteel");
-
-        // Miner's Ring
-        MinecraftRecipeManager.addShapedRecipe(
-                new ResourceLocation(Tags.MODID, "ring/miners"),
-                RecipeHelper.getItemStack(Mods.BAUBLES.ID, "ring"),
-                " G ",
-                "SBS",
-                " I ",
-                'G', "gemFlawedOpal",
-                'S', "stickSterlingSilver",
-                'B', RecipeHelper.getItemStack(Mods.BAUBLELICIOUS.ID, "itemring"),
-                'I', "ingotAnyBronze");
     }
 
     @Override

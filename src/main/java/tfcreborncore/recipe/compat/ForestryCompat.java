@@ -1,15 +1,15 @@
 package tfcreborncore.recipe.compat;
 
+import static tfcreborncore.recipe.RecipeHelper.S;
+
 import java.util.Arrays;
 import java.util.List;
 
 import net.dries007.tfc.api.recipes.barrel.BarrelRecipe;
 import net.dries007.tfc.objects.inventory.ingredient.IIngredient;
-import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;
-import net.minecraftforge.fml.common.event.FMLLoadCompleteEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.registries.IForgeRegistry;
@@ -107,7 +107,7 @@ public class ForestryCompat implements ICompatModule {
         // Pipette
         MinecraftRecipeManager.addShapedRecipe(
                 new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shaped/pipette"),
-                RecipeHelper.getItemStack(Mods.FORESTRY.ID, "wrench"),
+                RecipeHelper.getItemStack(Mods.FORESTRY.ID, "pipette"),
                 "R ",
                 " B",
                 'R', "rubber",
@@ -124,6 +124,35 @@ public class ForestryCompat implements ICompatModule {
                 'S', "sheetAnyBronze",
                 'C', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/rf_control_circuit"),
                 'P', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/brass_piston"));
+
+        // Peat Brick
+        MinecraftRecipeManager.addShapelessRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shapeless/mold/brick/peat"),
+                RecipeHelper.getItemStack(Mods.FORESTRY.ID, "peat"),
+                "peat",
+                "brickMold");
+
+        // Bituminous Peat
+        MinecraftRecipeManager.addShapedRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shaped/peat/bituminous"),
+                RecipeHelper.getItemStack(Mods.FORESTRY.ID, "sturdy_machine"),
+                " A ",
+                "BPB",
+                " A ",
+                'A', "dustAsh",
+                'B', "brickPeat",
+                'P', RecipeHelper.getItemStack(Mods.FORESTRY.ID, "propolis"));
+
+        // Bituminous Peat Alt
+        MinecraftRecipeManager.addShapedRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shaped/peat/bituminous/alt"),
+                RecipeHelper.getItemStack(Mods.FORESTRY.ID, "sturdy_machine"),
+                " A ",
+                "BPB",
+                " A ",
+                'A', "dustAsh",
+                'B', "brickPeat",
+                'P', "gemCoal");
     }
 
     @Override
@@ -146,10 +175,11 @@ public class ForestryCompat implements ICompatModule {
     }
 
     @Override
-    public void registerForestryRecipes(FMLLoadCompleteEvent r) {
+    public void registerForestryRecipes(FMLPostInitializationEvent r) {
+        // Carpenter Recipes
         // Portable Beealyzer
         ForestryRecipeManager.addCarpenterRecipe(1200,
-                ItemStack.EMPTY,
+                null,
                 RecipeHelper.getItemStack(Mods.FORESTRY.ID, "portable_alyzer"),
                 RecipeHelper.getFluidStack("latex", 2000),
                 "SPS",
@@ -161,14 +191,187 @@ public class ForestryCompat implements ICompatModule {
                 'G', "gemNormal");
 
         // Sturdy Casing
-        ForestryRecipeManager.addCarpenterRecipe(1200,
+        ForestryRecipeManager.addCarpenterRecipe(600,
                 RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/rf_control_circuit"),
                 RecipeHelper.getItemStack(Mods.FORESTRY.ID, "sturdy_machine"),
                 RecipeHelper.getFluidStack("creosote", 250),
                 " S ",
-                "SPS",
+                "SGS",
+                "PSP",
+                'S', "sheetAnyBronze",
+                'G', "gearAnyBronze",
+                'P', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/brass_piston"));
+
+        // Hardened Casing
+        ForestryRecipeManager.addCarpenterRecipe(30 * S,
+                null,
+                RecipeHelper.getItemStack(Mods.FORESTRY.ID, "hardened_machine"),
+                RecipeHelper.getFluidStack("fresh_water", 5000),
+                "GGG",
+                "GCG",
+                "GGG",
+                'G', "gemChipped",
+                'C', RecipeHelper.getItemStack(Mods.FORESTRY.ID, "sturdy_machine"));
+        ForestryRecipeManager.addCarpenterRecipe(25 * S,
+                null,
+                RecipeHelper.getItemStack(Mods.FORESTRY.ID, "hardened_machine"),
+                RecipeHelper.getFluidStack("fresh_water", 5000),
+                "G G",
+                "GCG",
+                "G G",
+                'G', "gemFlawed",
+                'C', RecipeHelper.getItemStack(Mods.FORESTRY.ID, "sturdy_machine"));
+        ForestryRecipeManager.addCarpenterRecipe(20 * S,
+                null,
+                RecipeHelper.getItemStack(Mods.FORESTRY.ID, "hardened_machine"),
+                RecipeHelper.getFluidStack("fresh_water", 5000),
+                "G G",
+                " C ",
+                "G G",
+                'G', "gemNormal",
+                'C', RecipeHelper.getItemStack(Mods.FORESTRY.ID, "sturdy_machine"));
+        ForestryRecipeManager.addCarpenterRecipe(15 * S,
+                null,
+                RecipeHelper.getItemStack(Mods.FORESTRY.ID, "hardened_machine"),
+                RecipeHelper.getFluidStack("fresh_water", 5000),
+                "GCG",
+                'G', "gemFlawless",
+                'C', RecipeHelper.getItemStack(Mods.FORESTRY.ID, "sturdy_machine"));
+        ForestryRecipeManager.addCarpenterRecipe(10 * S,
+                null,
+                RecipeHelper.getItemStack(Mods.FORESTRY.ID, "hardened_machine"),
+                RecipeHelper.getFluidStack("fresh_water", 5000),
+                "C",
+                "G",
+                'G', "gemExquisite",
+                'C', RecipeHelper.getItemStack(Mods.FORESTRY.ID, "sturdy_machine"));
+
+        // Impregnated Casing
+        ForestryRecipeManager.addCarpenterRecipe(20 * S,
+                null,
+                RecipeHelper.getItemStack(Mods.FORESTRY.ID, "impregnated_casing"),
+                RecipeHelper.getFluidStack("seed.oil", 250),
+                "LLL",
+                "L L",
+                "LLL",
+                'L', "lumber");
+
+        // Woven Silk
+        ForestryRecipeManager.addCarpenterRecipe(10 * S,
+                null,
+                RecipeHelper.getItemStack(Mods.FORESTRY.ID, "crafting_material", 3),
+                RecipeHelper.getFluidStack("fresh_water", 500),
+                "SSS",
+                "SSS",
+                "SSS",
+                'S', RecipeHelper.getItemStack(Mods.FORESTRY.ID, "crafting_material", 2));
+
+        // Dissipation Charge
+        ForestryRecipeManager.addCarpenterRecipe(10 * S,
+                null,
+                RecipeHelper.getItemStack(Mods.FORESTRY.ID, "crafting_material", 4),
+                RecipeHelper.getFluidStack("fresh_water", 1000),
+                "HRH",
+                "RCR",
+                "GRG",
+                'H', "dropHoneydew",
+                'R', "dropRoyalJelly",
+                'C', RecipeHelper.getItemStack(Mods.FORESTRY.ID, "can"),
+                'G', "dustGunpowder");
+
+        // Scented Paneling
+        ForestryRecipeManager.addCarpenterRecipe(4 * S,
+                null,
+                RecipeHelper.getItemStack(Mods.FORESTRY.ID, "crafting_material", 6),
+                RecipeHelper.getFluidStack("for.honey", 500),
+                " R ",
+                "WWW",
+                "BPB",
+                'R', "dropRoyalJelly",
+                'W', "lumber",
+                'B', RecipeHelper.getItemStack(Mods.FORESTRY.ID, "beeswax"),
+                'P', RecipeHelper.getItemStack(Mods.FORESTRY.ID, "pollen", 0));
+
+        // Spectacles
+        ForestryRecipeManager.addCarpenterRecipe(15 * S,
+                null,
+                RecipeHelper.getItemStack(Mods.FORESTRY.ID, "naturalist_helmet"),
+                RecipeHelper.getFluidStack("fresh_water", 250),
+                "RRR",
+                "GRG",
+                "RRR",
+                'R', "stickIron",
+                'G', "paneGlassColorless");
+
+        // Basic Circuit Board
+        ForestryRecipeManager.addCarpenterRecipe(10 * S,
+                null,
+                RecipeHelper.getItemStack(Mods.FORESTRY.ID, "chipsets", 0),
+                RecipeHelper.getFluidStack("fresh_water", 1000),
+                " S ",
+                "RCR",
+                " S ",
+                'S', "sheetTin",
+                'R', "dustRedstone",
+                'C', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/rf_control_circuit", 0));
+
+        // Enhanced Circuit Board
+        ForestryRecipeManager.addCarpenterRecipe(20 * S,
+                null,
+                RecipeHelper.getItemStack(Mods.FORESTRY.ID, "chipsets", 1),
+                RecipeHelper.getFluidStack("fresh_water", 1000),
+                " S ",
+                "RCR",
                 " S ",
                 'S', "sheetAnyBronze",
-                'P', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/brass_piston"));
+                'R', "dustRedstone",
+                'C', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/rf_control_circuit", 0));
+
+        // Refined Circuit Board
+        ForestryRecipeManager.addCarpenterRecipe(30 * S,
+                null,
+                RecipeHelper.getItemStack(Mods.FORESTRY.ID, "chipsets", 2),
+                RecipeHelper.getFluidStack("fresh_water", 1000),
+                " S ",
+                "RCR",
+                " S ",
+                'S', "sheetIron",
+                'R', "dustRedstone",
+                'C', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/rf_control_circuit", 0));
+
+        // Intricate Circuit Board
+        ForestryRecipeManager.addCarpenterRecipe(40 * S,
+                null,
+                RecipeHelper.getItemStack(Mods.FORESTRY.ID, "chipsets", 3),
+                RecipeHelper.getFluidStack("fresh_water", 1000),
+                " S ",
+                "RCR",
+                " S ",
+                'S', "sheetLumium",
+                'R', "dustRedstone",
+                'C', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/rf_control_circuit", 0));
+
+        // Soldering Iron
+        ForestryRecipeManager.addCarpenterRecipe(10 * S,
+                null,
+                RecipeHelper.getItemStack(Mods.FORESTRY.ID, "soldering_iron"),
+                RecipeHelper.getFluidStack("fresh_water", 1000),
+                "L  ",
+                " L ",
+                "  S",
+                'L', "stickLongIron",
+                'S', "stickWood");
+
+        // Thermionic Fabricator Recipes
+        // Flexible Casing
+        ForestryRecipeManager.addFabricatorRecipe(null,
+                RecipeHelper.getFluidStack("glass", 500),
+                RecipeHelper.getItemStack(Mods.FORESTRY.ID, "flexible_casing"),
+                "SGS",
+                "B B",
+                "SGS",
+                'S', "sheetAnyBronze",
+                'G', "gemNormal",
+                'B', "slimeball");
     }
 }

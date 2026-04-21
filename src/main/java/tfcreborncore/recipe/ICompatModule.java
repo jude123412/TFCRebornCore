@@ -9,7 +9,6 @@ import net.dries007.tfc.api.recipes.quern.QuernRecipe;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Loader;
-import net.minecraftforge.fml.common.event.FMLLoadCompleteEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.registries.IForgeRegistry;
 
@@ -37,7 +36,7 @@ public interface ICompatModule {
 
     default void registerCrusherRecipes(FMLPostInitializationEvent r) {}
 
-    default void registerForestryRecipes(FMLLoadCompleteEvent r) {}
+    default void registerForestryRecipes(FMLPostInitializationEvent r) {}
 
     default boolean areRecipesLoadable() {
         for (String dep : dependencies()) {

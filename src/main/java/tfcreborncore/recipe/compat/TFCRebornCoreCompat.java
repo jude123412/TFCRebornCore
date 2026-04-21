@@ -301,48 +301,6 @@ public class TFCRebornCoreCompat implements ICompatModule {
         // Metal Processing
         for (Metal metal : TFCRegistries.METALS.getValuesCollection()) {
             if (metal.isUsable()) {
-                // Rackwheel Piece
-                TerrafirmacraftRecipeManager.addAnvilRecipe(r,
-                        new ResourceLocation(
-                                Tags.MODID,
-                                "anvil/working/" + ItemTechMetal.ItemType.RACKWHEEL_PIECE +
-                                        metal.getRegistryName().getPath().toLowerCase()),
-                        RecipeHelper.getIIngredient(ItemMetal.get(metal, Metal.ItemType.INGOT)),
-                        RecipeHelper.getItemStack(ItemTechMetal.get(metal, ItemTechMetal.ItemType.RACKWHEEL_PIECE)),
-                        metal.getTier(),
-                        null,
-                        ForgeRule.UPSET_THIRD_LAST,
-                        ForgeRule.DRAW_SECOND_LAST,
-                        ForgeRule.UPSET_LAST);
-
-                // Rod
-                TerrafirmacraftRecipeManager.addAnvilRecipe(r,
-                        new ResourceLocation(
-                                Tags.MODID,
-                                "anvil/working/" + ItemTechMetal.ItemType.ROD +
-                                        metal.getRegistryName().getPath().toLowerCase()),
-                        RecipeHelper.getIIngredient(ItemMetal.get(metal, Metal.ItemType.INGOT)),
-                        RecipeHelper.getItemStack(ItemTechMetal.get(metal, ItemTechMetal.ItemType.ROD)),
-                        metal.getTier(),
-                        null,
-                        ForgeRule.HIT_THIRD_LAST,
-                        ForgeRule.DRAW_SECOND_LAST,
-                        ForgeRule.HIT_LAST);
-
-                // Strip
-                TerrafirmacraftRecipeManager.addAnvilRecipe(r,
-                        new ResourceLocation(
-                                Tags.MODID,
-                                "anvil/working/" + ItemTechMetal.ItemType.STRIP +
-                                        metal.getRegistryName().getPath().toLowerCase()),
-                        RecipeHelper.getIIngredient(ItemMetal.get(metal, Metal.ItemType.INGOT)),
-                        RecipeHelper.getItemStack(ItemTechMetal.get(metal, ItemTechMetal.ItemType.STRIP)),
-                        metal.getTier(),
-                        null,
-                        ForgeRule.HIT_ANY,
-                        ForgeRule.HIT_ANY,
-                        ForgeRule.SHRINK_ANY);
-
                 // Pipe Frame
                 TerrafirmacraftRecipeManager.addAnvilRecipe(r,
                         new ResourceLocation(Mods.TFC_REBORN_CORE.ID,
@@ -458,6 +416,7 @@ public class TFCRebornCoreCompat implements ICompatModule {
             }
 
             if (metal.isUsable()) {
+                // Rackwheel Half
                 TerrafirmacraftRecipeManager.addWeldingRecipe(r,
                         new ResourceLocation(
                                 Mods.TFC_REBORN_CORE.ID,
@@ -466,17 +425,6 @@ public class TFCRebornCoreCompat implements ICompatModule {
                         RecipeHelper.getIIngredient(ItemTechMetal.get(metal, ItemTechMetal.ItemType.RACKWHEEL_PIECE)),
                         RecipeHelper.getIIngredient(ItemTechMetal.get(metal, ItemTechMetal.ItemType.RACKWHEEL_PIECE)),
                         RecipeHelper.getItemStack(ItemRCMetal.get(metal, ItemRCMetalType.RACKWHEEL_HALF)),
-                        metal.getTier(),
-                        null);
-
-                // Rackwheel
-                TerrafirmacraftRecipeManager.addWeldingRecipe(r,
-                        new ResourceLocation(Mods.TFC_REBORN_CORE.ID,
-                                "anvil/welding/" + ItemTechMetal.ItemType.RACKWHEEL + "/" +
-                                        metal.getRegistryName().getPath().toLowerCase()),
-                        RecipeHelper.getIIngredient(ItemRCMetal.get(metal, ItemRCMetalType.RACKWHEEL_HALF)),
-                        RecipeHelper.getIIngredient(ItemRCMetal.get(metal, ItemRCMetalType.RACKWHEEL_HALF)),
-                        RecipeHelper.getItemStack(ItemTechMetal.get(metal, ItemTechMetal.ItemType.RACKWHEEL)),
                         metal.getTier(),
                         null);
             }

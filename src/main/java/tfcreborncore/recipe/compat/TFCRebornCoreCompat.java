@@ -8,7 +8,6 @@ import net.dries007.tfc.api.recipes.anvil.AnvilRecipe;
 import net.dries007.tfc.api.recipes.quern.QuernRecipe;
 import net.dries007.tfc.api.registries.TFCRegistries;
 import net.dries007.tfc.api.types.Metal;
-import net.dries007.tfc.objects.inventory.ingredient.IIngredient;
 import net.dries007.tfc.objects.items.metal.ItemMetal;
 import net.dries007.tfc.util.forge.ForgeRule;
 import net.dries007.tfc.util.skills.SmithingSkill;
@@ -267,76 +266,111 @@ public class TFCRebornCoreCompat implements ICompatModule {
 
     @Override
     public void registerAnvilRecipes(IForgeRegistry<AnvilRecipe> r) {
+        // Redstone Resistor Stage 1
+        TerrafirmacraftRecipeManager.addAnvilRecipe(r,
+                new ResourceLocation(
+                        Mods.TFC_REBORN_CORE.ID,
+                        "anvil/working/redstone_resistor/stage_1"),
+                RecipeHelper.getIIngredient("ingotRedstone"),
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/redstone_resistor_stage_1", 0, 10),
+                Metal.Tier.TIER_II,
+                null,
+                ForgeRule.HIT_THIRD_LAST,
+                ForgeRule.BEND_SECOND_LAST,
+                ForgeRule.HIT_LAST);
+
+        // Radiator Piping
+        TerrafirmacraftRecipeManager.addAnvilRecipe(r,
+                new ResourceLocation(
+                        Mods.TFC_REBORN_CORE.ID,
+                        "anvil/working/radiator_piping"),
+                RecipeHelper.getIIngredient("ingotIron"),
+                RecipeHelper.getItemStack(
+                        Mods.TFC_REBORN_CORE.ID,
+                        "item/radiator_piping",
+                        0,
+                        1),
+                Metal.Tier.TIER_II,
+                null,
+                ForgeRule.BEND_THIRD_LAST,
+                ForgeRule.UPSET_SECOND_LAST,
+                ForgeRule.DRAW_LAST);
+
         // Metal Processing
         for (Metal metal : TFCRegistries.METALS.getValuesCollection()) {
             if (metal.isUsable()) {
-                // General inputs
-                IIngredient<ItemStack> ingredientIngot = IIngredient
-                        .of(new ItemStack(ItemMetal.get(metal, Metal.ItemType.INGOT)));
-
                 // Rackwheel Piece
-                ItemStack rackwheelPiece = new ItemStack(
-                        ItemTechMetal.get(metal, ItemTechMetal.ItemType.RACKWHEEL_PIECE));
-
-                r.register(new AnvilRecipe(
-                        new ResourceLocation(Tags.MODID,
+                TerrafirmacraftRecipeManager.addAnvilRecipe(r,
+                        new ResourceLocation(
+                                Tags.MODID,
                                 "anvil/working/" + ItemTechMetal.ItemType.RACKWHEEL_PIECE +
                                         metal.getRegistryName().getPath().toLowerCase()),
-                        ingredientIngot, rackwheelPiece, metal.getTier(), null, ForgeRule.UPSET_THIRD_LAST,
-                        ForgeRule.DRAW_SECOND_LAST, ForgeRule.UPSET_LAST));
+                        RecipeHelper.getIIngredient(ItemMetal.get(metal, Metal.ItemType.INGOT)),
+                        RecipeHelper.getItemStack(ItemTechMetal.get(metal, ItemTechMetal.ItemType.RACKWHEEL_PIECE)),
+                        metal.getTier(),
+                        null,
+                        ForgeRule.UPSET_THIRD_LAST,
+                        ForgeRule.DRAW_SECOND_LAST,
+                        ForgeRule.UPSET_LAST);
 
                 // Rod
-                ItemStack rod = new ItemStack(
-                        ItemTechMetal.get(metal, ItemTechMetal.ItemType.ROD), 2);
-
-                r.register(new AnvilRecipe(
-                        new ResourceLocation(Tags.MODID,
+                TerrafirmacraftRecipeManager.addAnvilRecipe(r,
+                        new ResourceLocation(
+                                Tags.MODID,
                                 "anvil/working/" + ItemTechMetal.ItemType.ROD +
                                         metal.getRegistryName().getPath().toLowerCase()),
-                        ingredientIngot, rod, metal.getTier(), null, ForgeRule.HIT_THIRD_LAST,
-                        ForgeRule.DRAW_SECOND_LAST, ForgeRule.HIT_LAST));
+                        RecipeHelper.getIIngredient(ItemMetal.get(metal, Metal.ItemType.INGOT)),
+                        RecipeHelper.getItemStack(ItemTechMetal.get(metal, ItemTechMetal.ItemType.ROD)),
+                        metal.getTier(),
+                        null,
+                        ForgeRule.HIT_THIRD_LAST,
+                        ForgeRule.DRAW_SECOND_LAST,
+                        ForgeRule.HIT_LAST);
 
                 // Strip
-                ItemStack strip = new ItemStack(
-                        ItemTechMetal.get(metal, ItemTechMetal.ItemType.STRIP), 2);
-
-                r.register(new AnvilRecipe(
-                        new ResourceLocation(Tags.MODID,
+                TerrafirmacraftRecipeManager.addAnvilRecipe(r,
+                        new ResourceLocation(
+                                Tags.MODID,
                                 "anvil/working/" + ItemTechMetal.ItemType.STRIP +
                                         metal.getRegistryName().getPath().toLowerCase()),
-                        ingredientIngot, strip, metal.getTier(), null, ForgeRule.HIT_ANY,
-                        ForgeRule.HIT_ANY, ForgeRule.SHRINK_ANY));
+                        RecipeHelper.getIIngredient(ItemMetal.get(metal, Metal.ItemType.INGOT)),
+                        RecipeHelper.getItemStack(ItemTechMetal.get(metal, ItemTechMetal.ItemType.STRIP)),
+                        metal.getTier(),
+                        null,
+                        ForgeRule.HIT_ANY,
+                        ForgeRule.HIT_ANY,
+                        ForgeRule.SHRINK_ANY);
 
             }
             if (metal.isToolMetal()) {
-                // General inputs
-                IIngredient<ItemStack> ingredientIngotDouble = IIngredient
-                        .of(new ItemStack(ItemMetal.get(metal, Metal.ItemType.DOUBLE_INGOT)));
-
-                IIngredient<ItemStack> ingredientIngot = IIngredient
-                        .of(new ItemStack(ItemMetal.get(metal, Metal.ItemType.INGOT)));
-
                 // Wire Cutter Head
-                ItemStack wireCutterHead = new ItemStack(
-                        ItemRCMetal.get(metal, ItemRCMetalType.WIRE_CUTTER_HEAD));
-
-                r.register(new AnvilRecipe(
-                        new ResourceLocation(Tags.MODID,
+                TerrafirmacraftRecipeManager.addAnvilRecipe(r,
+                        new ResourceLocation(
+                                Tags.MODID,
                                 "anvil/working/" + ItemRCMetalType.WIRE_CUTTER_HEAD +
                                         metal.getRegistryName().getPath().toLowerCase()),
-                        ingredientIngot, wireCutterHead, metal.getTier(), null, ForgeRule.BEND_ANY,
-                        ForgeRule.HIT_SECOND_LAST, ForgeRule.DRAW_ANY));
+                        RecipeHelper.getIIngredient(ItemMetal.get(metal, Metal.ItemType.INGOT)),
+                        RecipeHelper.getItemStack(ItemRCMetal.get(metal, ItemRCMetalType.WIRE_CUTTER_HEAD)),
+                        metal.getTier(),
+                        null,
+                        ForgeRule.BEND_ANY,
+                        ForgeRule.HIT_SECOND_LAST,
+                        ForgeRule.DRAW_ANY);
 
                 // Unfinished Universal Weapon Head
-                ItemStack unfinishedUniversalWeaponHead = new ItemStack(
-                        ItemRCMetal.get(metal, ItemRCMetalType.UNFINISHED_UNIVERSAL_WEAPON_HEAD));
-
-                r.register(new AnvilRecipe(
-                        new ResourceLocation(Tags.MODID,
-                                "anvil/working/" + "unfinished_universal_weapon_head" +
+                TerrafirmacraftRecipeManager.addAnvilRecipe(r,
+                        new ResourceLocation(
+                                Tags.MODID,
+                                "anvil/working/unfinished_universal_weapon_head" +
                                         metal.getRegistryName().getPath().toLowerCase()),
-                        ingredientIngotDouble, unfinishedUniversalWeaponHead, metal.getTier(), null, ForgeRule.BEND_ANY,
-                        ForgeRule.BEND_ANY, ForgeRule.DRAW_ANY));
+                        RecipeHelper.getIIngredient(ItemMetal.get(metal, Metal.ItemType.DOUBLE_INGOT)),
+                        RecipeHelper
+                                .getItemStack(ItemRCMetal.get(metal, ItemRCMetalType.UNFINISHED_UNIVERSAL_WEAPON_HEAD)),
+                        metal.getTier(),
+                        null,
+                        ForgeRule.BEND_ANY,
+                        ForgeRule.BEND_ANY,
+                        ForgeRule.DRAW_ANY);
             }
         }
     }
@@ -346,93 +380,79 @@ public class TFCRebornCoreCompat implements ICompatModule {
         // Metal Processing
         for (Metal metal : TFCRegistries.METALS.getValuesCollection()) {
             if (metal.isUsable() && metal.isToolMetal()) {
-                IIngredient<ItemStack> ingredientIngotDouble = IIngredient
-                        .of(new ItemStack(ItemMetal.get(metal, Metal.ItemType.DOUBLE_INGOT)));
-
-                IIngredient<ItemStack> ingredientIngot = IIngredient
-                        .of(new ItemStack(ItemMetal.get(metal, Metal.ItemType.INGOT)));
-
                 // Unfinished Mining Hammer Head
-                ItemStack miningHammerHeadUnfinished = new ItemStack(
-                        ItemRCMetal.get(metal, ItemRCMetalType.UNFINISHED_MINING_HAMMER_HEAD));
-                if (!miningHammerHeadUnfinished.isEmpty())
-                    r.register(new WeldingRecipe(
-                            new ResourceLocation(Tags.MODID,
-                                    "anvil/welding/" + ItemRCMetalType.UNFINISHED_MINING_HAMMER_HEAD + "/" +
-                                            metal.getRegistryName().getPath().toLowerCase()),
-                            ingredientIngotDouble,
-                            IIngredient.of(new ItemStack(ItemMetal.get(metal, Metal.ItemType.HAMMER_HEAD))),
-                            miningHammerHeadUnfinished, metal.getTier(), SmithingSkill.Type.TOOLS));
+                TerrafirmacraftRecipeManager.addWeldingRecipe(r,
+                        new ResourceLocation(
+                                Mods.TFC_REBORN_CORE.ID,
+                                "anvil/welding/" + ItemRCMetalType.UNFINISHED_MINING_HAMMER_HEAD + "/" +
+                                        metal.getRegistryName().getPath().toLowerCase()),
+                        RecipeHelper.getIIngredient(ItemMetal.get(metal, Metal.ItemType.DOUBLE_INGOT)),
+                        RecipeHelper.getIIngredient(ItemMetal.get(metal, Metal.ItemType.HAMMER_HEAD)),
+                        RecipeHelper
+                                .getItemStack(ItemRCMetal.get(metal, ItemRCMetalType.UNFINISHED_MINING_HAMMER_HEAD)),
+                        metal.getTier(),
+                        SmithingSkill.Type.TOOLS);
 
                 // Mining Hammer Head
-                ItemStack miningHammerHead = new ItemStack(
-                        ItemRCMetal.get(metal, ItemRCMetalType.MINING_HAMMER_HEAD));
-                if (!miningHammerHead.isEmpty())
-                    r.register(new WeldingRecipe(
-                            new ResourceLocation(Tags.MODID,
-                                    "anvil/welding/" + ItemRCMetalType.MINING_HAMMER_HEAD + "/" +
-                                            metal.getRegistryName().getPath().toLowerCase()),
-                            ingredientIngotDouble,
-                            IIngredient.of(new ItemStack(
-                                    ItemRCMetal.get(metal, ItemRCMetalType.UNFINISHED_MINING_HAMMER_HEAD))),
-                            miningHammerHead, metal.getTier(), SmithingSkill.Type.TOOLS));
+                TerrafirmacraftRecipeManager.addWeldingRecipe(r,
+                        new ResourceLocation(
+                                Mods.TFC_REBORN_CORE.ID,
+                                "anvil/welding/" + ItemRCMetalType.MINING_HAMMER_HEAD + "/" +
+                                        metal.getRegistryName().getPath().toLowerCase()),
+                        RecipeHelper.getIIngredient(ItemMetal.get(metal, Metal.ItemType.DOUBLE_INGOT)),
+                        RecipeHelper
+                                .getIIngredient(ItemRCMetal.get(metal, ItemRCMetalType.UNFINISHED_MINING_HAMMER_HEAD)),
+                        RecipeHelper.getItemStack(ItemRCMetal.get(metal, ItemRCMetalType.MINING_HAMMER_HEAD)),
+                        metal.getTier(),
+                        SmithingSkill.Type.TOOLS);
 
                 // Unfinished Excavator Head
-                ItemStack excavatorHeadUnfinished = new ItemStack(
-                        ItemRCMetal.get(metal, ItemRCMetalType.UNFINISHED_EXCAVATOR_HEAD));
-                if (!excavatorHeadUnfinished.isEmpty())
-                    r.register(new WeldingRecipe(
-                            new ResourceLocation(Tags.MODID,
-                                    "anvil/welding/" + ItemRCMetalType.UNFINISHED_EXCAVATOR_HEAD + "/" +
-                                            metal.getRegistryName().getPath().toLowerCase()),
-                            ingredientIngot,
-                            IIngredient.of(new ItemStack(ItemMetal.get(metal, Metal.ItemType.SHOVEL_HEAD))),
-                            excavatorHeadUnfinished, metal.getTier(), SmithingSkill.Type.TOOLS));
+                TerrafirmacraftRecipeManager.addWeldingRecipe(r,
+                        new ResourceLocation(
+                                Mods.TFC_REBORN_CORE.ID,
+                                "anvil/welding/" + ItemRCMetalType.UNFINISHED_EXCAVATOR_HEAD + "/" +
+                                        metal.getRegistryName().getPath().toLowerCase()),
+                        RecipeHelper.getIIngredient(ItemMetal.get(metal, Metal.ItemType.INGOT)),
+                        RecipeHelper.getIIngredient(ItemMetal.get(metal, Metal.ItemType.SHOVEL_HEAD)),
+                        RecipeHelper.getItemStack(ItemRCMetal.get(metal, ItemRCMetalType.UNFINISHED_EXCAVATOR_HEAD)),
+                        metal.getTier(),
+                        SmithingSkill.Type.TOOLS);
 
                 // Excavator Head
-                ItemStack excavatorHead = new ItemStack(
-                        ItemRCMetal.get(metal, ItemRCMetalType.EXCAVATOR_HEAD));
-                if (!excavatorHead.isEmpty())
-                    r.register(new WeldingRecipe(
-                            new ResourceLocation(Tags.MODID,
-                                    "anvil/welding/" + ItemRCMetalType.EXCAVATOR_HEAD + "/" +
-                                            metal.getRegistryName().getPath().toLowerCase()),
-                            ingredientIngot,
-                            IIngredient.of(new ItemStack(
-                                    ItemRCMetal.get(metal, ItemRCMetalType.UNFINISHED_EXCAVATOR_HEAD))),
-                            excavatorHead, metal.getTier(), SmithingSkill.Type.TOOLS));
+                TerrafirmacraftRecipeManager.addWeldingRecipe(r,
+                        new ResourceLocation(
+                                Mods.TFC_REBORN_CORE.ID,
+                                "anvil/welding/" + ItemRCMetalType.EXCAVATOR_HEAD + "/" +
+                                        metal.getRegistryName().getPath().toLowerCase()),
+                        RecipeHelper.getIIngredient(ItemMetal.get(metal, Metal.ItemType.INGOT)),
+                        RecipeHelper.getIIngredient(ItemRCMetal.get(metal, ItemRCMetalType.UNFINISHED_EXCAVATOR_HEAD)),
+                        RecipeHelper.getItemStack(ItemRCMetal.get(metal, ItemRCMetalType.EXCAVATOR_HEAD)),
+                        metal.getTier(),
+                        SmithingSkill.Type.TOOLS);
             }
 
             if (metal.isUsable()) {
-                IIngredient<ItemStack> ingredientRackwheelPiece = IIngredient
-                        .of(new ItemStack(ItemTechMetal.get(metal, ItemTechMetal.ItemType.RACKWHEEL_PIECE)));
-
-                ItemStack rackwheelHalf = new ItemStack(
-                        ItemRCMetal.get(metal, ItemRCMetalType.RACKWHEEL_HALF));
-
-                IIngredient<ItemStack> ingredientRackwheelHalf = IIngredient
-                        .of(rackwheelHalf);
-
-                ItemStack rackwheel = new ItemStack(
-                        ItemTechMetal.get(metal, ItemTechMetal.ItemType.RACKWHEEL));
-
-                // Rackwheel Half
-                r.register(new WeldingRecipe(
-                        new ResourceLocation(Tags.MODID,
+                TerrafirmacraftRecipeManager.addWeldingRecipe(r,
+                        new ResourceLocation(
+                                Mods.TFC_REBORN_CORE.ID,
                                 "anvil/welding/" + ItemRCMetalType.RACKWHEEL_HALF + "/" +
                                         metal.getRegistryName().getPath().toLowerCase()),
-                        ingredientRackwheelPiece,
-                        ingredientRackwheelPiece,
-                        rackwheelHalf, metal.getTier(), null));
+                        RecipeHelper.getIIngredient(ItemTechMetal.get(metal, ItemTechMetal.ItemType.RACKWHEEL_PIECE)),
+                        RecipeHelper.getIIngredient(ItemTechMetal.get(metal, ItemTechMetal.ItemType.RACKWHEEL_PIECE)),
+                        RecipeHelper.getItemStack(ItemRCMetal.get(metal, ItemRCMetalType.RACKWHEEL_HALF)),
+                        metal.getTier(),
+                        null);
 
                 // Rackwheel
-                r.register(new WeldingRecipe(
-                        new ResourceLocation(Tags.MODID,
+                TerrafirmacraftRecipeManager.addWeldingRecipe(r,
+                        new ResourceLocation(Mods.TFC_REBORN_CORE.ID,
                                 "anvil/welding/" + ItemTechMetal.ItemType.RACKWHEEL + "/" +
                                         metal.getRegistryName().getPath().toLowerCase()),
-                        ingredientRackwheelHalf,
-                        ingredientRackwheelHalf,
-                        rackwheel, metal.getTier(), null));
+                        RecipeHelper.getIIngredient(ItemRCMetal.get(metal, ItemRCMetalType.RACKWHEEL_HALF)),
+                        RecipeHelper.getIIngredient(ItemRCMetal.get(metal, ItemRCMetalType.RACKWHEEL_HALF)),
+                        RecipeHelper.getItemStack(ItemTechMetal.get(metal, ItemTechMetal.ItemType.RACKWHEEL)),
+                        metal.getTier(),
+                        null);
             }
         }
     }
@@ -449,83 +469,83 @@ public class TFCRebornCoreCompat implements ICompatModule {
         // Wood Powder
         TerrafirmacraftRecipeManager.addQuernRecipe(r,
                 new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "wood_powder"),
-                IIngredient.of("lumber"),
+                RecipeHelper.getIIngredient("lumber"),
                 RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/wood_powder"));
 
         // Coal Powder
         TerrafirmacraftRecipeManager.addQuernRecipe(r,
                 new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "coal_powder"),
-                IIngredient.of("gemLignite"),
+                RecipeHelper.getIIngredient("gemLignite"),
                 RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/coal_powder"));
         TerrafirmacraftRecipeManager.addQuernRecipe(r,
                 new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "coal_powder_alt"),
-                IIngredient.of("gemCoal"),
+                RecipeHelper.getIIngredient("gemCoal"),
                 RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/coal_powder", 0, 2));
 
         // Snow Powder
         TerrafirmacraftRecipeManager.addQuernRecipe(r,
                 new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "snow_powder"),
-                IIngredient.of(RecipeHelper.getItemStack(Mods.MINECRAFT.ID, "snow")),
+                RecipeHelper.getIIngredient(RecipeHelper.getItemStack(Mods.MINECRAFT.ID, "snow")),
                 RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/snow_powder", 0, 2));
 
         // Obsidian Powder
         TerrafirmacraftRecipeManager.addQuernRecipe(r,
                 new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "obsidian_powder"),
-                IIngredient.of(RecipeHelper.getItemStack(Mods.MINECRAFT.ID, "obsidian")),
+                RecipeHelper.getIIngredient(RecipeHelper.getItemStack(Mods.MINECRAFT.ID, "obsidian")),
                 RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/obsidian_powder", 0, 2));
 
         // Enderpearl Powder
         TerrafirmacraftRecipeManager.addQuernRecipe(r,
                 new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "enderpearl_powder"),
-                IIngredient.of("gemEnder"),
+                RecipeHelper.getIIngredient("gemEnder"),
                 RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/enderpearl_powder"));
 
         // Certus Quartz Powder
         TerrafirmacraftRecipeManager.addQuernRecipe(r,
                 new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "certus_quartz_powder"),
-                IIngredient.of("crystalCertusQuartz"),
+                RecipeHelper.getIIngredient("crystalCertusQuartz"),
                 RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/certus_quartz_powder"));
         TerrafirmacraftRecipeManager.addQuernRecipe(r,
                 new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "certus_quartz_powder_alt_1"),
-                IIngredient.of("crystalPureCertusQuartz"),
+                RecipeHelper.getIIngredient("crystalPureCertusQuartz"),
                 RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/certus_quartz_powder"));
         TerrafirmacraftRecipeManager.addQuernRecipe(r,
                 new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "certus_quartz_powder_alt_2"),
-                IIngredient.of(RecipeHelper.getItemStack("appliedenergistics2", "material", 1)),
+                RecipeHelper.getIIngredient(RecipeHelper.getItemStack("appliedenergistics2", "material", 1)),
                 RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/certus_quartz_powder"));
 
         // Hematite Powder
         TerrafirmacraftRecipeManager.addQuernRecipe(r,
                 new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "hematite_powder"),
-                IIngredient.of("pileHematite"),
+                RecipeHelper.getIIngredient("pileHematite"),
                 RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID, "powder/hematite"));
 
         // Limonite Powder
         TerrafirmacraftRecipeManager.addQuernRecipe(r,
                 new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "limonite_powder"),
-                IIngredient.of("pileLimonite"),
+                RecipeHelper.getIIngredient("pileLimonite"),
                 RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID, "powder/limonite"));
 
         // Malachite Powder
         TerrafirmacraftRecipeManager.addQuernRecipe(r,
                 new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "malachite_powder"),
-                IIngredient.of("pileMalachite"),
+                RecipeHelper.getIIngredient("pileMalachite"),
                 RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID, "powder/malachite"));
 
         // Apatite Powder
         TerrafirmacraftRecipeManager.addQuernRecipe(r,
                 new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "apatite_powder"),
-                IIngredient.of("gemApatite"),
+                RecipeHelper.getIIngredient("gemApatite"),
                 RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/apatite_powder"));
 
         // Bio pulp
         TerrafirmacraftRecipeManager.addQuernRecipe(r,
                 new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "bio_pulp"),
-                IIngredient.of("treeLeaves"),
+                RecipeHelper.getIIngredient("treeLeaves"),
                 RecipeHelper.getItemStack(Mods.THERMAL_FOUNDATION.ID, "material", 816));
         TerrafirmacraftRecipeManager.addQuernRecipe(r,
                 new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "bio_pulp_alt"),
-                IIngredient.of("treeSapling"),
+                RecipeHelper.getIIngredient("treeSapling"),
                 RecipeHelper.getItemStack(Mods.THERMAL_FOUNDATION.ID, "material", 816));
 
         // Ore Processing
@@ -533,7 +553,7 @@ public class TFCRebornCoreCompat implements ICompatModule {
             // Small Ore Quern
             TerrafirmacraftRecipeManager.addQuernRecipe(r,
                     new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "ore/pile/" + type.getPrimaryName() + "_2"),
-                    IIngredient.of(
+                    RecipeHelper.getIIngredient(
                             RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID, "ore/small/" + type.getPrimaryName())),
                     RecipeHelper
                             .getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/pile/" + type.getPrimaryName(), 0, 2));
@@ -541,37 +561,31 @@ public class TFCRebornCoreCompat implements ICompatModule {
             // Poor Ore Quern
             TerrafirmacraftRecipeManager.addQuernRecipe(r,
                     new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "ore/pile/" + type.getPrimaryName() + "_3"),
-                    IIngredient
-                            .of(RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID, "ore/" + type.getPrimaryName(), 1)),
+                    RecipeHelper.getIIngredient(Mods.TERRAFIRMACRAFT.ID, "ore/" + type.getPrimaryName(), 1),
                     RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/pile/" + type.getPrimaryName(), 0, 3));
 
             // Normal Ore Quern
             TerrafirmacraftRecipeManager.addQuernRecipe(r,
                     new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "ore/pile/" + type.getPrimaryName() + "_5"),
-                    IIngredient
-                            .of(RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID, "ore/" + type.getPrimaryName(), 0)),
+                    RecipeHelper.getIIngredient(Mods.TERRAFIRMACRAFT.ID, "ore/" + type.getPrimaryName(), 0),
                     RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/pile/" + type.getPrimaryName(), 0, 5));
 
             // Rich Ore Quern
             TerrafirmacraftRecipeManager.addQuernRecipe(r,
                     new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "ore/pile/" + type.getPrimaryName() + "_7"),
-                    IIngredient
-                            .of(RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID, "ore/" + type.getPrimaryName(), 2)),
+                    RecipeHelper.getIIngredient(Mods.TERRAFIRMACRAFT.ID, "ore/" + type.getPrimaryName(), 2),
                     RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/pile/" + type.getPrimaryName(), 0, 7));
         }
 
         // Metal Processing
         for (Metal metal : TFCRegistries.METALS.getValuesCollection()) {
             if (metal.isUsable()) {
-
                 // Ingot to Dust
-                IIngredient<ItemStack> ingredientIngot = IIngredient
-                        .of(new ItemStack(ItemMetal.get(metal, Metal.ItemType.INGOT)));
-
-                ItemStack dust = new ItemStack(
-                        ItemMetal.get(metal, Metal.ItemType.DUST));
-                r.register(new QuernRecipe(ingredientIngot, dust).setRegistryName(Tags.MODID,
-                        "quern/" + metal.getRegistryName().getPath().toLowerCase() + "/dust"));
+                TerrafirmacraftRecipeManager.addQuernRecipe(r,
+                        new ResourceLocation(Mods.TFC_REBORN_CORE.ID,
+                                "quern/" + metal.getRegistryName().getPath().toLowerCase() + "/dust"),
+                        RecipeHelper.getIIngredient(ItemMetal.get(metal, Metal.ItemType.INGOT)),
+                        RecipeHelper.getItemStack(ItemMetal.get(metal, Metal.ItemType.DUST)));
             }
         }
     }
@@ -588,7 +602,7 @@ public class TFCRebornCoreCompat implements ICompatModule {
         ImmersiveEngineeringRecipeManager.removeAllCrusherRecipes();
 
         for (OreProcessingTypes type : OreProcessingTypes.values()) {
-            // Small Ore Pulverizin
+            // Small Ore Crushing
             ImmersiveEngineeringRecipeManager.addCrusherRecipe(
                     RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID, "ore/small/" + type.getPrimaryName()),
                     RecipeHelper
@@ -600,7 +614,7 @@ public class TFCRebornCoreCompat implements ICompatModule {
                     },
                     2000);
 
-            // Poor Ore Pulverizing
+            // Poor Ore Crushing
             ImmersiveEngineeringRecipeManager.addCrusherRecipe(
                     RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID, "ore/" + type.getPrimaryName(), 1),
                     RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/pile/" + type.getPrimaryName(), 0, 3),
@@ -610,7 +624,7 @@ public class TFCRebornCoreCompat implements ICompatModule {
                     },
                     3000);
 
-            // Normal Ore Pulverizing
+            // Normal Ore Crushing
             ImmersiveEngineeringRecipeManager.addCrusherRecipe(
                     RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID, "ore/" + type.getPrimaryName(), 0),
                     RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/pile/" + type.getPrimaryName(), 0, 5),
@@ -620,7 +634,7 @@ public class TFCRebornCoreCompat implements ICompatModule {
                     },
                     5000);
 
-            // Rich Ore Pulverizing
+            // Rich Ore Crushing
             ImmersiveEngineeringRecipeManager.addCrusherRecipe(
                     RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID, "ore/" + type.getPrimaryName(), 2),
                     RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/pile/" + type.getPrimaryName(), 0, 7),
@@ -657,6 +671,7 @@ public class TFCRebornCoreCompat implements ICompatModule {
         ForestryRecipeManager.removeAllFabricatorRecipes();
 
         // Thermionic Fabricator Recipes
+        // These need to be registered first
         // Sand to Molten Glass
         for (ItemStack stack : OreDictionary.getOres("sand")) {
             ForestryRecipeManager.addFabricatorSmeltingRecipe(stack,

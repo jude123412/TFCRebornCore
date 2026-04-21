@@ -6,6 +6,7 @@ import java.util.function.Supplier;
 
 import net.dries007.tfc.api.capability.metal.CapabilityMetalItem;
 import net.dries007.tfc.api.capability.metal.MetalItemHandler;
+import net.dries007.tfc.api.recipes.WeldingRecipe;
 import net.dries007.tfc.api.recipes.anvil.AnvilRecipe;
 import net.dries007.tfc.api.recipes.barrel.BarrelRecipe;
 import net.dries007.tfc.api.recipes.barrel.BarrelRecipeFluidMixing;
@@ -91,6 +92,33 @@ public class TerrafirmacraftRecipeManager {
                                       ForgeRule... forgeRules) {
         r.register(new AnvilRecipe(regName, inputStack,
                 outputStack, minTier, skillType, forgeRules));
+    }
+
+    /**
+     * Registers a new TFC anvil welding recipe.
+     * <p>
+     * Welding recipes combine two input ingredients on the anvil to produce a
+     * single output item. This method constructs a {@link WeldingRecipe} using the
+     * provided inputs, output, minimum hammer tier, and smithing skill type, then
+     * registers it into the supplied {@link IForgeRegistry}. The recipe is assigned
+     * the provided {@link ResourceLocation} as its registry name.
+     * <p>
+     * Welding requires both input items to be heated appropriately and placed
+     * together on the anvil before performing the required smithing actions.
+     *
+     * @param r         The welding recipe registry.
+     * @param regName   The unique registry name for the recipe.
+     * @param inputA    The first ingredient required for welding.
+     * @param inputB    The second ingredient required for welding.
+     * @param result    The resulting {@link ItemStack} produced by welding.
+     * @param minTier   The minimum metal tier of anvil required to perform the weld.
+     * @param skillType The smithing skill category used for XP gain.
+     */
+    public static void addWeldingRecipe(IForgeRegistry<WeldingRecipe> r, ResourceLocation regName,
+                                        IIngredient<ItemStack> inputA,
+                                        IIngredient<ItemStack> inputB, ItemStack result, Metal.Tier minTier,
+                                        SmithingSkill.Type skillType) {
+        r.register(new WeldingRecipe(regName, inputA, inputB, result, minTier, skillType));
     }
 
     /**

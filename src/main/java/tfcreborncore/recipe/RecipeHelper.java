@@ -1,5 +1,6 @@
 package tfcreborncore.recipe;
 
+import net.dries007.tfc.objects.inventory.ingredient.IIngredient;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -32,6 +33,42 @@ public class RecipeHelper {
     // Returns an ItemStack without meta value
     public static ItemStack getItemStack(String modId, String itemId) {
         return getItemStack(modId, itemId, 0);
+    }
+
+    // Returns an ItemStack from an Item
+    public static ItemStack getItemStack(Item item) {
+        return new ItemStack(item);
+    }
+
+    // Returns an IIngredient from and Item
+    public static IIngredient<ItemStack> getIIngredient(Item item) {
+        return IIngredient.of(item);
+    }
+
+    // Returns an IIngredient from and Item
+    public static IIngredient<ItemStack> getIIngredient(ItemStack item) {
+        return IIngredient.of(item);
+    }
+
+    // Returns an IIngredient from and Ore Dictionary
+    public static IIngredient<ItemStack> getIIngredient(String ore) {
+        return IIngredient.of(ore);
+    }
+
+    // Returns an IIngredient from ModID and ItemID
+    public static IIngredient<ItemStack> getIIngredient(String modId, String itemId) {
+        return IIngredient.of(getItemStack(modId, itemId));
+    }
+
+    // Returns an IIngredient from ModID, ItemID and Meta
+    public static IIngredient<ItemStack> getIIngredient(String modId, String itemId, int meta) {
+        return IIngredient.of(getItemStack(modId, itemId, meta));
+    }
+
+    // Returns an IIngredient from ModID, ItemID
+    // and Meta while allowing Stack Size
+    public static IIngredient<ItemStack> getIIngredient(String modId, String itemId, int meta, int amount) {
+        return IIngredient.of(getItemStack(modId, itemId, meta, amount));
     }
 
     // Returns a Fluid

@@ -135,7 +135,7 @@ public class ForestryCompat implements ICompatModule {
         // Bituminous Peat
         MinecraftRecipeManager.addShapedRecipe(
                 new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shaped/peat/bituminous"),
-                RecipeHelper.getItemStack(Mods.FORESTRY.ID, "sturdy_machine"),
+                RecipeHelper.getItemStack(Mods.FORESTRY.ID, "bituminous_peat"),
                 " A ",
                 "BPB",
                 " A ",
@@ -146,7 +146,7 @@ public class ForestryCompat implements ICompatModule {
         // Bituminous Peat Alt
         MinecraftRecipeManager.addShapedRecipe(
                 new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shaped/peat/bituminous/alt"),
-                RecipeHelper.getItemStack(Mods.FORESTRY.ID, "sturdy_machine"),
+                RecipeHelper.getItemStack(Mods.FORESTRY.ID, "bituminous_peat"),
                 " A ",
                 "BPB",
                 " A ",

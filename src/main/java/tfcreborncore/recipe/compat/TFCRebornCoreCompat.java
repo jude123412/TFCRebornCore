@@ -396,8 +396,8 @@ public class TFCRebornCoreCompat implements ICompatModule {
                     metal.getTier(),
                     null,
                     ForgeRule.DRAW_ANY,
-                    ForgeRule.BEND_ANY,
-                    ForgeRule.HIT_LAST);
+                    ForgeRule.DRAW_ANY,
+                    ForgeRule.HIT_NOT_LAST);
         }
     }
 

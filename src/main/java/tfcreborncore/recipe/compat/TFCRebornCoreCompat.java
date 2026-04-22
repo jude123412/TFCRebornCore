@@ -162,7 +162,7 @@ public class TFCRebornCoreCompat implements ICompatModule {
                     new ResourceLocation(Mods.TFC_REBORN_CORE.ID,
                             "crafting/shapeless/damage/smashing/ore/small/" + type.getPrimaryName()),
                     2,
-                    RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/pile/" + type.getPrimaryName(), 0, 1),
+                    RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/crushed/" + type.getPrimaryName(), 0, 1),
                     "hammer",
                     RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID, "ore/small/" + type.getPrimaryName()));
 
@@ -171,7 +171,7 @@ public class TFCRebornCoreCompat implements ICompatModule {
                     new ResourceLocation(Mods.TFC_REBORN_CORE.ID,
                             "crafting/shapeless/damage/smashing/ore/poor/" + type.getPrimaryName()),
                     2,
-                    RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/pile/" + type.getPrimaryName(), 0, 2),
+                    RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/crushed/" + type.getPrimaryName(), 0, 2),
                     "hammer",
                     RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID, "ore/" + type.getPrimaryName(), 1));
 
@@ -180,7 +180,7 @@ public class TFCRebornCoreCompat implements ICompatModule {
                     new ResourceLocation(Mods.TFC_REBORN_CORE.ID,
                             "crafting/shapeless/damage/smashing/ore/normal/" + type.getPrimaryName()),
                     2,
-                    RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/pile/" + type.getPrimaryName(), 0, 3),
+                    RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/crushed/" + type.getPrimaryName(), 0, 3),
                     "hammer",
                     RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID, "ore/" + type.getPrimaryName(), 0));
 
@@ -189,20 +189,20 @@ public class TFCRebornCoreCompat implements ICompatModule {
                     new ResourceLocation(Mods.TFC_REBORN_CORE.ID,
                             "crafting/shapeless/damage/smashing/ore/rich/" + type.getPrimaryName()),
                     2,
-                    RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/pile/" + type.getPrimaryName(), 0, 5),
+                    RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/crushed/" + type.getPrimaryName(), 0, 5),
                     "hammer",
                     RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID, "ore/" + type.getPrimaryName(), 2));
 
-            // Pile Compressing
+            // crushed Compressing
             MinecraftRecipeManager.addShapelessRecipe(
                     new ResourceLocation(Mods.TFC_REBORN_CORE.ID,
-                            "crafting/shapeless/compressing/pile/" + type.getPrimaryName()),
+                            "crafting/shapeless/compressing/crushed/" + type.getPrimaryName()),
                     RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/cube/" + type.getPrimaryName()),
-                    RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/pile/" + type.getPrimaryName()),
-                    RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/pile/" + type.getPrimaryName()),
-                    RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/pile/" + type.getPrimaryName()),
-                    RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/pile/" + type.getPrimaryName()),
-                    RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/pile/" + type.getPrimaryName()));
+                    RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/crushed/" + type.getPrimaryName()),
+                    RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/crushed/" + type.getPrimaryName()),
+                    RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/crushed/" + type.getPrimaryName()),
+                    RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/crushed/" + type.getPrimaryName()),
+                    RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/crushed/" + type.getPrimaryName()));
 
             // Cube Compressing
             MinecraftRecipeManager.addShapelessRecipe(
@@ -641,19 +641,19 @@ public class TFCRebornCoreCompat implements ICompatModule {
         // Hematite Powder
         TerrafirmacraftRecipeManager.addQuernRecipe(
                 new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "hematite_powder"),
-                RecipeHelper.getIIngredient("pileHematite"),
+                RecipeHelper.getIIngredient("crushedHematite"),
                 RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID, "powder/hematite"));
 
         // Limonite Powder
         TerrafirmacraftRecipeManager.addQuernRecipe(
                 new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "limonite_powder"),
-                RecipeHelper.getIIngredient("pileLimonite"),
+                RecipeHelper.getIIngredient("crushedLimonite"),
                 RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID, "powder/limonite"));
 
         // Malachite Powder
         TerrafirmacraftRecipeManager.addQuernRecipe(
                 new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "malachite_powder"),
-                RecipeHelper.getIIngredient("pileMalachite"),
+                RecipeHelper.getIIngredient("crushedMalachite"),
                 RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID, "powder/malachite"));
 
         // Apatite Powder
@@ -676,29 +676,29 @@ public class TFCRebornCoreCompat implements ICompatModule {
         for (OreProcessingTypes type : OreProcessingTypes.values()) {
             // Small Ore Quern
             TerrafirmacraftRecipeManager.addQuernRecipe(
-                    new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "ore/pile/" + type.getPrimaryName() + "_2"),
+                    new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "ore/crushed/" + type.getPrimaryName() + "_2"),
                     RecipeHelper.getIIngredient(
                             RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID, "ore/small/" + type.getPrimaryName())),
                     RecipeHelper
-                            .getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/pile/" + type.getPrimaryName(), 0, 2));
+                            .getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/crushed/" + type.getPrimaryName(), 0, 2));
 
             // Poor Ore Quern
             TerrafirmacraftRecipeManager.addQuernRecipe(
-                    new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "ore/pile/" + type.getPrimaryName() + "_3"),
+                    new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "ore/crushed/" + type.getPrimaryName() + "_3"),
                     RecipeHelper.getIIngredient(Mods.TERRAFIRMACRAFT.ID, "ore/" + type.getPrimaryName(), 1),
-                    RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/pile/" + type.getPrimaryName(), 0, 3));
+                    RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/crushed/" + type.getPrimaryName(), 0, 3));
 
             // Normal Ore Quern
             TerrafirmacraftRecipeManager.addQuernRecipe(
-                    new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "ore/pile/" + type.getPrimaryName() + "_5"),
+                    new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "ore/crushed/" + type.getPrimaryName() + "_5"),
                     RecipeHelper.getIIngredient(Mods.TERRAFIRMACRAFT.ID, "ore/" + type.getPrimaryName(), 0),
-                    RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/pile/" + type.getPrimaryName(), 0, 5));
+                    RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/crushed/" + type.getPrimaryName(), 0, 5));
 
             // Rich Ore Quern
             TerrafirmacraftRecipeManager.addQuernRecipe(
-                    new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "ore/pile/" + type.getPrimaryName() + "_7"),
+                    new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "ore/crushed/" + type.getPrimaryName() + "_7"),
                     RecipeHelper.getIIngredient(Mods.TERRAFIRMACRAFT.ID, "ore/" + type.getPrimaryName(), 2),
-                    RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/pile/" + type.getPrimaryName(), 0, 7));
+                    RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/crushed/" + type.getPrimaryName(), 0, 7));
         }
 
         // Metal Processing
@@ -724,10 +724,10 @@ public class TFCRebornCoreCompat implements ICompatModule {
             ImmersiveEngineeringRecipeManager.addCrusherRecipe(
                     RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID, "ore/small/" + type.getPrimaryName()),
                     RecipeHelper
-                            .getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/pile/" + type.getPrimaryName(), 0, 2),
+                            .getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/crushed/" + type.getPrimaryName(), 0, 2),
                     new Object[] {
                             RecipeHelper
-                                    .getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/pile/" + type.getProductA(), 0),
+                                    .getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/crushed/" + type.getProductA(), 0),
                             0.10F
                     },
                     2000);
@@ -735,9 +735,9 @@ public class TFCRebornCoreCompat implements ICompatModule {
             // Poor Ore Crushing
             ImmersiveEngineeringRecipeManager.addCrusherRecipe(
                     RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID, "ore/" + type.getPrimaryName(), 1),
-                    RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/pile/" + type.getPrimaryName(), 0, 3),
+                    RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/crushed/" + type.getPrimaryName(), 0, 3),
                     new Object[] {
-                            RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/pile/" + type.getProductA(), 0),
+                            RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/crushed/" + type.getProductA(), 0),
                             0.15F
                     },
                     3000);
@@ -745,9 +745,9 @@ public class TFCRebornCoreCompat implements ICompatModule {
             // Normal Ore Crushing
             ImmersiveEngineeringRecipeManager.addCrusherRecipe(
                     RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID, "ore/" + type.getPrimaryName(), 0),
-                    RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/pile/" + type.getPrimaryName(), 0, 5),
+                    RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/crushed/" + type.getPrimaryName(), 0, 5),
                     new Object[] {
-                            RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/pile/" + type.getProductA(), 0),
+                            RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/crushed/" + type.getProductA(), 0),
                             0.25F
                     },
                     5000);
@@ -755,9 +755,9 @@ public class TFCRebornCoreCompat implements ICompatModule {
             // Rich Ore Crushing
             ImmersiveEngineeringRecipeManager.addCrusherRecipe(
                     RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID, "ore/" + type.getPrimaryName(), 2),
-                    RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/pile/" + type.getPrimaryName(), 0, 7),
+                    RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/crushed/" + type.getPrimaryName(), 0, 7),
                     new Object[] {
-                            RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/pile/" + type.getProductA(), 0),
+                            RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/crushed/" + type.getProductA(), 0),
                             0.35F
                     },
                     7000);

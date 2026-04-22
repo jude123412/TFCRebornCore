@@ -13,7 +13,7 @@ import tfcreborncore.objects.items.ItemRCOre;
 
 public enum ItemRCOreType {
 
-    PILE(5, Size.VERY_SMALL, Weight.VERY_LIGHT),
+    CRUSHED(5, Size.VERY_SMALL, Weight.VERY_LIGHT),
     CUBE(25, Size.NORMAL, Weight.LIGHT),
     BAR(100, Size.LARGE, Weight.MEDIUM);
 

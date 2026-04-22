@@ -74,7 +74,7 @@ public class ItemRCOre extends ItemTFC implements IMetalItem {
     public String getItemStackDisplayName(@Nonnull ItemStack stack) {
         String metalName = (new TextComponentTranslation(
                 "item.tfc.ore." + ore.getRegistryName().getPath().toLowerCase() + ".name")).getFormattedText();
-        return (new TextComponentTranslation("item.tfcreborncore.ore_item." + type.name().toLowerCase() + ".name",
+        return (new TextComponentTranslation("item.tfcreborncore.ore." + type.name().toLowerCase() + ".name",
                 metalName)).getFormattedText();
     }
 

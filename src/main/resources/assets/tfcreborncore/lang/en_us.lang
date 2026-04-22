@@ -1,7 +1,7 @@
 # Ore Processing Items
-item.tfcreborncore.ore_item.pile.name=Pile of Crushed %s
-item.tfcreborncore.ore_item.cube.name=Compressed %s Cube
-item.tfcreborncore.ore_item.bar.name=Compressed %s Bar
+item.tfcreborncore.ore.crushed.name=Crushed %s
+item.tfcreborncore.ore.cube.name=%s Cube
+item.tfcreborncore.ore.bar.name=%s Bar
 
 # Mining Hammer
 item.tfcreborncore.metal.unfinished_mining_hammer_head.name=Unfinished %s Mining Hammer Head

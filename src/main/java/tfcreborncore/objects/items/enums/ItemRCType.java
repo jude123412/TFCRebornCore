@@ -22,9 +22,11 @@ public enum ItemRCType {
     METAL_PRESS_BOLT(Size.NORMAL, Weight.MEDIUM, false),
     METAL_PRESS_SCREW(Size.NORMAL, Weight.MEDIUM, false),
 
-    // Wood sheets
+    // Circuit Board components
     WOOD_SHEET(Size.SMALL, Weight.MEDIUM, true),
     LATEX_COATED_WOOD_SHEET(Size.SMALL, Weight.MEDIUM, true),
+    BASIC_CIRCUIT_BOARD(Size.SMALL, Weight.HEAVY, true),
+    GOOD_CIRCUIT_BOARD(Size.SMALL, Weight.HEAVY, true),
 
     // Electrical components
     ELECTRON_TUBE_HOUSING(Size.SMALL, Weight.LIGHT, true),

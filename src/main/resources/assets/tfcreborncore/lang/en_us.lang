@@ -42,9 +42,11 @@ item.tfcreborncore.item.metal_press_long_rod.name=Metal Press Mold: Long Rod
 item.tfcreborncore.item.metal_press_bolt.name=Metal Press Mold: Bolt
 item.tfcreborncore.item.metal_press_screw.name=Metal Press Mold: Screw
 
-# Wood sheets
+# Circuit Board components
 item.tfcreborncore.item.wood_sheet.name=Wood Sheet
 item.tfcreborncore.item.latex_coated_wood_sheet.name=Latex Coated Wood Sheet
+item.tfcreborncore.item.basic_circuit_board.name=Basic Circuit Board
+item.tfcreborncore.item.good_circuit_board.name=Good Circuit Board
 
 # Electrical components
 item.tfcreborncore.item.electron_tube_housing.name=Electron Tube Housing

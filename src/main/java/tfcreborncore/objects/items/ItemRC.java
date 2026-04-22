@@ -15,6 +15,11 @@ import org.jetbrains.annotations.Nullable;
 
 import tfcreborncore.objects.items.enums.ItemRCType;
 
+/*
+ * Original code from TFC Tech's ItemTechMetal (EUPL v1.2)
+ * Modified to create ItemRCTool
+ * Modified by xXjudeXx on 2026-03-25
+ */
 public class ItemRC extends ItemTFC implements IMetalItem {
 
     public static final Map<String, ItemRCType> CROSS_MOD_MAP = new HashMap<>();

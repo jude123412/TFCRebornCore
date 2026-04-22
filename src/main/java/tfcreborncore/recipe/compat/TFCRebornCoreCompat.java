@@ -762,10 +762,12 @@ public class TFCRebornCoreCompat implements ICompatModule {
     public void registerForestryRecipes(FMLPostInitializationEvent r) {
         // Redstone Electron Tube
         ForestryRecipeManager.addCarpenterRecipe(4 * S,
-                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/electron_tube_housing"),
+                null,
                 RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/redstone_electron_tube"),
                 RecipeHelper.getFluidStack("latex", 50),
+                "B",
                 "T",
+                'B', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/electron_tube_housing"),
                 'T', "electronTubeBaseRedstone");
 
         // Thermionic Fabricator Recipes

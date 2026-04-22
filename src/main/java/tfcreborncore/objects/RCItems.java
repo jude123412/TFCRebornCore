@@ -215,14 +215,11 @@ public class RCItems {
         ImmutableList.Builder<Item> anyMetalItems = ImmutableList.builder();
         for (Metal metal : TFCRegistries.METALS) {
             String metalName = metal.getRegistryName().getPath().toLowerCase();
-            String base = metal.isToolMetal() ? "metal/tool/head/" + metalName : "metal/" + metalName;
 
             for (ItemRCAnyMetalType type : ItemRCAnyMetalType.values()) {
-
-                String name = base + "_" + type.toString().toLowerCase();
+                String name = "metal/" + type.toString().toLowerCase() + "/" + metalName;
 
                 boolean usableMetals = type.isUsableMetalsOnly();
-
                 if (usableMetals && metal.isUsable()) {
                     registerAnyMetalItem(registry, name, metal, type, anyMetalItems);
                 }

@@ -304,9 +304,6 @@ public class TFCRebornCoreCompat implements ICompatModule {
         // Clay Sheet
         TerrafirmacraftRecipeManager.addItemHeat(RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/clay_sheet"),
                 0.2F, 2000, false);
-        // Ceramic Insulator
-        TerrafirmacraftRecipeManager.addItemHeat(
-                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/ceramic_insulator"), 0.2F, 2000, false);
 
         // Redstone Resistor Stage 1
         TerrafirmacraftRecipeManager.addItemMetal(

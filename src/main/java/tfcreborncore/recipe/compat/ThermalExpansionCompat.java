@@ -782,13 +782,6 @@ public class ThermalExpansionCompat implements ICompatModule {
     }
 
     @Override
-    public void registerItemModification(FMLPostInitializationEvent r) {
-        // Hardened Glass
-        TerrafirmacraftRecipeManager.addItemHeat(RecipeHelper.getItemStack(Mods.THERMAL_FOUNDATION.ID, "glass", 3),
-                0.4F, 1600, false);
-    }
-
-    @Override
     public void registerTerrafirmacraftRecipes(FMLPostInitializationEvent r) {
         // Hardened Glass
         TerrafirmacraftRecipeManager.addHeatTransformRecipe(

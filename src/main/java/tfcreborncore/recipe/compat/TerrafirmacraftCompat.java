@@ -49,9 +49,6 @@ public class TerrafirmacraftCompat implements ICompatModule {
 
     @Override
     public void registerItemModification(FMLPostInitializationEvent r) {
-        // Graphite Powder
-        TerrafirmacraftRecipeManager.addItemHeat(RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID, "powder/graphite"),
-                0.6F, 2000, false);
         // Brass Mechanisms
         TerrafirmacraftRecipeManager.addItemMetal(
                 RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID, "brass_mechanisms"), DefaultMetals.BRASS,

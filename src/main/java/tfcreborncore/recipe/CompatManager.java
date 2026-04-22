@@ -18,6 +18,7 @@ import tfcreborncore.recipe.compat.TFCRebornCoreCompat;
 import tfcreborncore.recipe.compat.TFCTechCompat;
 import tfcreborncore.recipe.compat.TerrafirmacraftCompat;
 import tfcreborncore.recipe.compat.ThermalExpansionCompat;
+import tfcreborncore.recipe.compat.WaterFlasksCompat;
 
 public final class CompatManager {
 
@@ -35,6 +36,7 @@ public final class CompatManager {
         modules.add(new BinniesCompat());
         modules.add(new OpenGliderCompat());
         modules.add(new TerrafirmacraftCompat());
+        modules.add(new WaterFlasksCompat());
     }
 
     public static void loadOreDictionaries(RegistryEvent.Register<IRecipe> event) {

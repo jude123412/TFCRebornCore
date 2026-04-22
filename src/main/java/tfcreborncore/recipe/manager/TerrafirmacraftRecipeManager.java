@@ -17,6 +17,9 @@ import net.dries007.tfc.api.recipes.anvil.AnvilRecipe;
 import net.dries007.tfc.api.recipes.barrel.BarrelRecipe;
 import net.dries007.tfc.api.recipes.barrel.BarrelRecipeFluidMixing;
 import net.dries007.tfc.api.recipes.heat.HeatRecipeSimple;
+import net.dries007.tfc.api.recipes.knapping.KnappingRecipe;
+import net.dries007.tfc.api.recipes.knapping.KnappingRecipeSimple;
+import net.dries007.tfc.api.recipes.knapping.KnappingType;
 import net.dries007.tfc.api.recipes.quern.QuernRecipe;
 import net.dries007.tfc.api.registries.TFCRegistries;
 import net.dries007.tfc.api.types.Metal;
@@ -101,6 +104,12 @@ public class TerrafirmacraftRecipeManager {
                                    boolean isBloomeryFuel) {
         Fuel fuel = new Fuel(IIngredient.of(inputStack), burnTicks, temperature, isForgeFuel, isBloomeryFuel);
         if (FuelManager.canRegister(fuel)) FuelManager.addFuel(fuel);
+    }
+
+    public static void addKnappingRecipe(ResourceLocation regName, KnappingType type, ItemStack result,
+                                         String... pattern) {
+        KnappingRecipe recipe = new KnappingRecipeSimple(type, true, result, pattern).setRegistryName(regName);
+        TFCRegistries.KNAPPING.register(recipe);
     }
 
     public static void addHeatTransformRecipe(ResourceLocation regName, IIngredient<ItemStack> inputStack,

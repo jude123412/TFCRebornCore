@@ -5,6 +5,7 @@ import static tfcreborncore.recipe.RecipeHelper.S;
 import java.util.Arrays;
 import java.util.List;
 
+import net.dries007.tfc.api.recipes.knapping.KnappingType;
 import net.dries007.tfc.api.registries.TFCRegistries;
 import net.dries007.tfc.api.types.Metal;
 import net.dries007.tfc.objects.items.metal.ItemMetal;
@@ -331,6 +332,28 @@ public class TFCRebornCoreCompat implements ICompatModule {
 
     @Override
     public void registerTerrafirmacraftRecipes(FMLPostInitializationEvent r) {
+        // Unfired Ceramic Sheet
+        TerrafirmacraftRecipeManager.addKnappingRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "knapping/clay/unfired_ceramic_sheet"),
+                KnappingType.CLAY,
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/unfired_clay_sheet", 0, 2),
+                "     ",
+                "XXXXX",
+                "     ",
+                "XXXXX",
+                "     ");
+
+        // Unfired Ceramic Insulator
+        TerrafirmacraftRecipeManager.addKnappingRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "knapping/clay/unfired_ceramic_insulator"),
+                KnappingType.CLAY,
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/unfired_ceramic_insulator", 0, 2),
+                "XX XX",
+                " XXX ",
+                "     ",
+                "XX XX",
+                " XXX ");
+
         // Graphite Powder
         TerrafirmacraftRecipeManager.addHeatTransformRecipe(
                 new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "heat/transform/graphite"),

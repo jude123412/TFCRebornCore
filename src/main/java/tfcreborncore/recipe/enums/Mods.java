@@ -23,6 +23,7 @@ public enum Mods {
     BINNIE_EXTRA_TREES("extratrees"),
     BINNIE_GENETICS("genetics"),
     OPEN_GLIDER("openglider"),
+    WATER_FLASKS("waterflasks"),
     FORESTRY("forestry");
 
     public final String ID;

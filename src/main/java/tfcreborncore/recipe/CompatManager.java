@@ -60,6 +60,7 @@ public final class CompatManager {
                 module.registerExNihiloRecipes(event);
                 module.registerImmersiveEngineeringRecipes(event);
                 module.registerForestryRecipes(event);
+                module.registerTFCTechRecipes(event);
             }
         }
     }

@@ -81,6 +81,21 @@ public class TerrafirmacraftRecipeManager {
                 k -> (Supplier) () -> new MetalItemHandler(metal, amount, canMelt));
     }
 
+    /**
+     * Registers custom heat properties for a specific {@link ItemStack} in TFC.
+     * <p>
+     * Depending on whether the item is forgeable, this creates either a
+     * {@link ForgeableHeatableHandler} or a standard {@link ItemHeatHandler}.
+     * The handler defines the item's heat capacity, melting temperature, and
+     * whether it can be worked on the anvil. The mapping is stored in
+     * {@link CapabilityItemHeat#CUSTOM_ITEMS} using an {@link IIngredient}
+     * wrapper as the lookup key.
+     *
+     * @param inputStack      The item to assign heat properties to.
+     * @param heatCapacity    The amount of heat the item can store.
+     * @param meltTemperature The temperature at which the item melts.
+     * @param isForgable      Whether the item can be forged on the anvil.
+     */
     @SuppressWarnings("unchecked")
     public static void addItemHeat(ItemStack inputStack, float heatCapacity, int meltTemperature, boolean isForgable) {
         if (isForgable) {
@@ -92,13 +107,47 @@ public class TerrafirmacraftRecipeManager {
         }
     }
 
+    /**
+     * Registers custom food statistics for a specific {@link ItemStack} in TFC.
+     * <p>
+     * This assigns a {@link FoodHandler} containing a {@link FoodData} instance
+     * that defines the nutritional profile, decay rate, and hydration value of
+     * the item. The mapping is stored in {@link CapabilityFood#CUSTOM_FOODS}
+     * using an {@link IIngredient} wrapper as the lookup key.
+     *
+     * @param inputStack The food item to assign nutritional data to.
+     * @param hunger     The hunger value restored by the food.
+     * @param water      The amount of water restored.
+     * @param saturation The saturation modifier.
+     * @param decay      The decay rate of the food.
+     * @param grain      Grain nutrition value.
+     * @param vegtable   Vegetable nutrition value.
+     * @param fruit      Fruit nutrition value.
+     * @param protein    Protein nutrition value.
+     * @param dairy      Dairy nutrition value.
+     */
     @SuppressWarnings("unchecked")
     public static void addItemFoodStats(ItemStack inputStack, int hunger, float water, float saturation, float decay,
                                         float grain, float vegtable, float fruit, float protein, float dairy) {
-        CapabilityFood.CUSTOM_FOODS.put(IIngredient.of(inputStack), (Supplier) () -> new FoodHandler(null,
+        CapabilityFood.CUSTOM_FOODS.put(IIngredient.of(inputStack), (Supplier) () -> new FoodHandler(
+                null,
                 new FoodData(hunger, water, saturation, grain, fruit, vegtable, protein, dairy, decay)));
     }
 
+    /**
+     * Registers a custom fuel definition for a specific {@link ItemStack} in TFC.
+     * <p>
+     * This creates a {@link Fuel} entry defining burn duration, burn temperature,
+     * and whether the item can be used as forge or bloomery fuel. If the fuel
+     * passes validation via {@link FuelManager#canRegister(Fuel)}, it is added to
+     * the global fuel registry.
+     *
+     * @param inputStack     The item to register as a fuel source.
+     * @param burnTicks      How long the fuel burns (in ticks).
+     * @param temperature    The burn temperature produced by the fuel.
+     * @param isForgeFuel    Whether the fuel is valid for forges.
+     * @param isBloomeryFuel Whether the fuel is valid for bloomeries.
+     */
     @SuppressWarnings("unchecked")
     public static void addItemFuel(ItemStack inputStack, int burnTicks, float temperature, boolean isForgeFuel,
                                    boolean isBloomeryFuel) {
@@ -106,12 +155,39 @@ public class TerrafirmacraftRecipeManager {
         if (FuelManager.canRegister(fuel)) FuelManager.addFuel(fuel);
     }
 
+    /**
+     * Registers a new TFC knapping recipe.
+     *
+     * This creates a {@link KnappingRecipeSimple} using the specified knapping
+     * type, output item, and pattern. The recipe is assigned the provided
+     * {@link ResourceLocation} and registered directly into
+     * {@link TFCRegistries#KNAPPING}.
+     *
+     * @param regName The unique registry name for the recipe.
+     * @param type    The knapping type (e.g., clay, leather, stone).
+     * @param result  The resulting item produced by the knapping pattern.
+     * @param pattern The knapping grid pattern, using 'X' for filled and ' ' for empty.
+     */
     public static void addKnappingRecipe(ResourceLocation regName, KnappingType type, ItemStack result,
                                          String... pattern) {
         KnappingRecipe recipe = new KnappingRecipeSimple(type, true, result, pattern).setRegistryName(regName);
         TFCRegistries.KNAPPING.register(recipe);
     }
 
+    /**
+     * Registers a new TFC heat‑transform recipe.
+     *
+     * Heat transform recipes convert an input item into an output item once it
+     * reaches a specified temperature. This creates a {@link HeatRecipeSimple}
+     * using the provided input ingredient, output item, and transformation
+     * temperature, assigns the given {@link ResourceLocation}, and registers it
+     * into {@link TFCRegistries#HEAT}.
+     *
+     * @param regName              The unique registry name for the recipe.
+     * @param inputStack           The ingredient that will transform when heated.
+     * @param result               The resulting item after transformation.
+     * @param transformTemperature The temperature required to trigger the transform.
+     */
     public static void addHeatTransformRecipe(ResourceLocation regName, IIngredient<ItemStack> inputStack,
                                               ItemStack result, float transformTemperature) {
         HeatRecipeSimple recipe = (HeatRecipeSimple) new HeatRecipeSimple(inputStack, result, transformTemperature)

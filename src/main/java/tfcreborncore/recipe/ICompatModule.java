@@ -27,6 +27,8 @@ public interface ICompatModule {
 
     default void registerForestryRecipes(FMLPostInitializationEvent r) {}
 
+    default void registerTFCTechRecipes(FMLPostInitializationEvent r) {}
+
     default boolean areRecipesLoadable() {
         for (String dep : dependencies()) {
             if (!Loader.isModLoaded(dep)) {

@@ -35,6 +35,7 @@ import tfcreborncore.recipe.manager.ExNihiloRecipeManager;
 import tfcreborncore.recipe.manager.ForestryRecipeManager;
 import tfcreborncore.recipe.manager.ImmersiveEngineeringRecipeManager;
 import tfcreborncore.recipe.manager.MinecraftRecipeManager;
+import tfcreborncore.recipe.manager.TFCTechRecipeManager;
 import tfcreborncore.recipe.manager.TerrafirmacraftRecipeManager;
 import tfctech.objects.items.metal.ItemTechMetal;
 
@@ -812,5 +813,23 @@ public class TFCRebornCoreCompat implements ICompatModule {
             ForestryRecipeManager.addFabricatorSmeltingRecipe(stack,
                     RecipeHelper.getFluidStack("glass", 375), 1500);
         }
+    }
+
+    @Override
+    public void registerTFCTechRecipes(FMLPostInitializationEvent r) {
+        TFCTechRecipeManager.addGlassWorkingRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "glass/working/electron_tube_housing"),
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/electron_tube_housing"),
+                " XXX ",
+                "X   X",
+                "X   X",
+                "XX XX",
+                " X X ");
+
+        TFCTechRecipeManager.addSmelteryRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "smeltery/recycle/electron_tube_housing"),
+                RecipeHelper.getFluidStack("glass", 250),
+                800,
+                RecipeHelper.getIIngredient(Mods.TFC_REBORN_CORE.ID, "item/electron_tube_housing"));
     }
 }

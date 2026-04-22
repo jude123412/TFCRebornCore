@@ -782,7 +782,21 @@ public class ThermalExpansionCompat implements ICompatModule {
     }
 
     @Override
+    public void registerItemModification(FMLPostInitializationEvent r) {
+        // Hardened Glass
+        TerrafirmacraftRecipeManager.addItemHeat(RecipeHelper.getItemStack(Mods.THERMAL_FOUNDATION.ID, "glass", 3),
+                0.4F, 1600, false);
+    }
+
+    @Override
     public void registerTerrafirmacraftRecipes(FMLPostInitializationEvent r) {
+        // Hardened Glass
+        TerrafirmacraftRecipeManager.addHeatTransformRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "heat/transform/hardened_glass"),
+                RecipeHelper.getIIngredient(Mods.TFC_REBORN_CORE.ID, "item/hardened_glass_mix"),
+                RecipeHelper.getItemStack(Mods.THERMAL_FOUNDATION.ID, "glass", 3),
+                1400);
+
         // Blizz Rod
         TerrafirmacraftRecipeManager.addBarrelRecipe(
                 new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "barrel/transform/blizz_rod"),

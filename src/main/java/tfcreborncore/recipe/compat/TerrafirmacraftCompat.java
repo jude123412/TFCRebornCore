@@ -12,6 +12,8 @@ import tfcreborncore.recipe.ICompatModule;
 import tfcreborncore.recipe.RecipeHelper;
 import tfcreborncore.recipe.enums.Mods;
 import tfcreborncore.recipe.manager.MinecraftRecipeManager;
+import tfcreborncore.recipe.manager.TerrafirmacraftRecipeManager;
+import tfcreborncore.types.DefaultMetals;
 
 public class TerrafirmacraftCompat implements ICompatModule {
 
@@ -43,5 +45,16 @@ public class TerrafirmacraftCompat implements ICompatModule {
                 RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID, "ceramics/unfired/clay_brick"),
                 "clay",
                 "brickMold");
+    }
+
+    @Override
+    public void registerItemModification(FMLPostInitializationEvent r) {
+        // Graphite Powder
+        TerrafirmacraftRecipeManager.addItemHeat(RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID, "powder/graphite"),
+                0.6F, 2000, false);
+        // Brass Mechanisms
+        TerrafirmacraftRecipeManager.addItemMetal(
+                RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID, "brass_mechanisms"), DefaultMetals.BRASS,
+                50, true);
     }
 }

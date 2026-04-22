@@ -5,7 +5,6 @@ import java.util.List;
 
 import net.dries007.tfc.api.types.Metal;
 import net.dries007.tfc.objects.inventory.ingredient.IIngredient;
-import net.dries007.tfc.types.DefaultMetals;
 import net.dries007.tfc.util.forge.ForgeRule;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ResourceLocation;
@@ -18,6 +17,7 @@ import tfcreborncore.recipe.RecipeHelper;
 import tfcreborncore.recipe.enums.Mods;
 import tfcreborncore.recipe.manager.MinecraftRecipeManager;
 import tfcreborncore.recipe.manager.TerrafirmacraftRecipeManager;
+import tfcreborncore.types.DefaultMetals;
 
 public class BaubleliciousCompat implements ICompatModule {
 

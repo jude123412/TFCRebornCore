@@ -35,6 +35,7 @@ import tfcreborncore.recipe.manager.ForestryRecipeManager;
 import tfcreborncore.recipe.manager.ImmersiveEngineeringRecipeManager;
 import tfcreborncore.recipe.manager.MinecraftRecipeManager;
 import tfcreborncore.recipe.manager.TerrafirmacraftRecipeManager;
+import tfcreborncore.types.DefaultMetals;
 import tfctech.objects.items.metal.ItemTechMetal;
 
 public class TFCRebornCoreCompat implements ICompatModule {
@@ -290,6 +291,65 @@ public class TFCRebornCoreCompat implements ICompatModule {
 
     @Override
     public void registerItemModification(FMLPostInitializationEvent r) {
+        // Hardened Glass Mix
+        TerrafirmacraftRecipeManager.addItemHeat(
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/hardened_glass_mix"), 0.2F, 1400, false);
+        // Unfired Clay Sheet
+        TerrafirmacraftRecipeManager.addItemHeat(
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/unfired_clay_sheet"), 0.2F, 2000, false);
+        // Unfired Ceramic Insulator
+        TerrafirmacraftRecipeManager.addItemHeat(
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/unfired_ceramic_insulator"), 0.2F, 2000,
+                false);
+        // Clay Sheet
+        TerrafirmacraftRecipeManager.addItemHeat(RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/clay_sheet"),
+                0.2F, 2000, false);
+        // Ceramic Insulator
+        TerrafirmacraftRecipeManager.addItemHeat(
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/ceramic_insulator"), 0.2F, 2000, false);
+
+        // Redstone Resistor Stage 1
+        TerrafirmacraftRecipeManager.addItemMetal(
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/redstone_resistor_stage_1"),
+                DefaultMetals.REDSTONE, 10, true);
+        // Redstone Resistor Stage 2
+        TerrafirmacraftRecipeManager.addItemMetal(
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/redstone_resistor_stage_2"),
+                DefaultMetals.REDSTONE, 10, true);
+        // Redstone Resistor Stage 3
+        TerrafirmacraftRecipeManager.addItemMetal(
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/redstone_resistor_stage_3"),
+                DefaultMetals.REDSTONE, 10, true);
+        // Redstone Resistor (Complete)
+        TerrafirmacraftRecipeManager.addItemMetal(
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/redstone_resistor"), DefaultMetals.REDSTONE,
+                20, true);
+        // Brass Piston
+        TerrafirmacraftRecipeManager.addItemMetal(
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/brass_piston"), DefaultMetals.BRASS, 750,
+                true);
+        // Radiator Piping
+        TerrafirmacraftRecipeManager.addItemMetal(
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/radiator_piping"), DefaultMetals.WROUGHT_IRON,
+                100, true);
+        // Radiator Matrix
+        TerrafirmacraftRecipeManager.addItemMetal(
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/radiator_matrix"), DefaultMetals.WROUGHT_IRON,
+                300, true);
+
+        // Lignite Coke
+        TerrafirmacraftRecipeManager.addItemFuel(
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/lignite_coke"), 4000, 1415.0F, true, false);
+        // Bituminous Coal Coke
+        TerrafirmacraftRecipeManager.addItemFuel(
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/bituminous_coal_coke"), 4400, 1500.0F, true,
+                false);
+
+        // Synthetic Graphite
+        TerrafirmacraftRecipeManager.addItemHeat(
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/synthetic_graphite_mix"), 0.6F, 2000, false);
+
+        // Metal Processing
         for (Metal type : TFCRegistries.METALS.getValuesCollection()) {
             // Find a block if it exists?
             List<ItemStack> maybeBlock = OreDictionary
@@ -304,6 +364,27 @@ public class TFCRebornCoreCompat implements ICompatModule {
 
     @Override
     public void registerTerrafirmacraftRecipes(FMLPostInitializationEvent r) {
+        // Graphite Powder
+        TerrafirmacraftRecipeManager.addHeatTransformRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "heat/transform/graphite"),
+                RecipeHelper.getIIngredient(Mods.TFC_REBORN_CORE.ID, "item/synthetic_graphite_mix"),
+                RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID, "powder/graphite"),
+                1599);
+
+        // Ceramic Sheet
+        TerrafirmacraftRecipeManager.addHeatTransformRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "heat/transform/ceramic_sheet"),
+                RecipeHelper.getIIngredient(Mods.TFC_REBORN_CORE.ID, "item/unfired_clay_sheet"),
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/clay_sheet"),
+                1599);
+
+        // Ceramic Insulator
+        TerrafirmacraftRecipeManager.addHeatTransformRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "heat/transform/ceramic_insulator"),
+                RecipeHelper.getIIngredient(Mods.TFC_REBORN_CORE.ID, "item/unfired_ceramic_insulator"),
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/ceramic_insulator"),
+                1599);
+
         // Treated Wood Lumber
         TerrafirmacraftRecipeManager.addBarrelRecipe(
                 new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "barrel/transform/treated_wood_lumber"),

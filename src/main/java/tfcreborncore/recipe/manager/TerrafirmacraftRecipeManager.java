@@ -4,18 +4,24 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Supplier;
 
+import net.dries007.tfc.api.capability.forge.ForgeableHeatableHandler;
+import net.dries007.tfc.api.capability.heat.CapabilityItemHeat;
+import net.dries007.tfc.api.capability.heat.ItemHeatHandler;
 import net.dries007.tfc.api.capability.metal.CapabilityMetalItem;
 import net.dries007.tfc.api.capability.metal.MetalItemHandler;
 import net.dries007.tfc.api.recipes.WeldingRecipe;
 import net.dries007.tfc.api.recipes.anvil.AnvilRecipe;
 import net.dries007.tfc.api.recipes.barrel.BarrelRecipe;
 import net.dries007.tfc.api.recipes.barrel.BarrelRecipeFluidMixing;
+import net.dries007.tfc.api.recipes.heat.HeatRecipeSimple;
 import net.dries007.tfc.api.recipes.quern.QuernRecipe;
 import net.dries007.tfc.api.registries.TFCRegistries;
 import net.dries007.tfc.api.types.Metal;
 import net.dries007.tfc.objects.inventory.ingredient.IIngredient;
 import net.dries007.tfc.objects.inventory.ingredient.IngredientFluidItem;
 import net.dries007.tfc.util.forge.ForgeRule;
+import net.dries007.tfc.util.fuel.Fuel;
+import net.dries007.tfc.util.fuel.FuelManager;
 import net.dries007.tfc.util.skills.SmithingSkill;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
@@ -67,6 +73,31 @@ public class TerrafirmacraftRecipeManager {
     public static void addItemMetal(ItemStack inputStack, Metal metal, int amount, boolean canMelt) {
         CapabilityMetalItem.CUSTOM_METAL_ITEMS.computeIfAbsent(IIngredient.of(inputStack),
                 k -> (Supplier) () -> new MetalItemHandler(metal, amount, canMelt));
+    }
+
+    @SuppressWarnings("unchecked")
+    public static void addItemHeat(ItemStack inputStack, float heatCapacity, int meltTemperature, boolean isForgable) {
+        if (isForgable) {
+            CapabilityItemHeat.CUSTOM_ITEMS.computeIfAbsent(IIngredient.of(inputStack),
+                    k -> (Supplier) () -> new ForgeableHeatableHandler(null, heatCapacity, meltTemperature));
+        } else {
+            CapabilityItemHeat.CUSTOM_ITEMS.computeIfAbsent(IIngredient.of(inputStack),
+                    k -> (Supplier) () -> new ItemHeatHandler(null, heatCapacity, meltTemperature));
+        }
+    }
+
+    @SuppressWarnings("unchecked")
+    public static void addItemFuel(ItemStack inputStack, int burnTicks, float temperature, boolean isForgeFuel,
+                                   boolean isBloomeryFuel) {
+        Fuel fuel = new Fuel(IIngredient.of(inputStack), burnTicks, temperature, isForgeFuel, isBloomeryFuel);
+        if (FuelManager.canRegister(fuel)) FuelManager.addFuel(fuel);
+    }
+
+    public static void addHeatTransformRecipe(ResourceLocation regName, IIngredient<ItemStack> inputStack,
+                                              ItemStack result, float transformTemperature) {
+        HeatRecipeSimple recipe = (HeatRecipeSimple) new HeatRecipeSimple(inputStack, result, transformTemperature)
+                .setRegistryName(regName);
+        TFCRegistries.HEAT.register(recipe);
     }
 
     /**

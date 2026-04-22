@@ -35,7 +35,6 @@ import tfcreborncore.recipe.manager.ForestryRecipeManager;
 import tfcreborncore.recipe.manager.ImmersiveEngineeringRecipeManager;
 import tfcreborncore.recipe.manager.MinecraftRecipeManager;
 import tfcreborncore.recipe.manager.TerrafirmacraftRecipeManager;
-import tfcreborncore.types.DefaultMetals;
 import tfctech.objects.items.metal.ItemTechMetal;
 
 public class TFCRebornCoreCompat implements ICompatModule {
@@ -304,35 +303,6 @@ public class TFCRebornCoreCompat implements ICompatModule {
         // Clay Sheet
         TerrafirmacraftRecipeManager.addItemHeat(RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/clay_sheet"),
                 0.2F, 2000, false);
-
-        // Redstone Resistor Stage 1
-        TerrafirmacraftRecipeManager.addItemMetal(
-                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/redstone_resistor_stage_1"),
-                DefaultMetals.REDSTONE, 10, true);
-        // Redstone Resistor Stage 2
-        TerrafirmacraftRecipeManager.addItemMetal(
-                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/redstone_resistor_stage_2"),
-                DefaultMetals.REDSTONE, 10, true);
-        // Redstone Resistor Stage 3
-        TerrafirmacraftRecipeManager.addItemMetal(
-                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/redstone_resistor_stage_3"),
-                DefaultMetals.REDSTONE, 10, true);
-        // Redstone Resistor (Complete)
-        TerrafirmacraftRecipeManager.addItemMetal(
-                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/redstone_resistor"), DefaultMetals.REDSTONE,
-                20, true);
-        // Brass Piston
-        TerrafirmacraftRecipeManager.addItemMetal(
-                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/brass_piston"), DefaultMetals.BRASS, 750,
-                true);
-        // Radiator Piping
-        TerrafirmacraftRecipeManager.addItemMetal(
-                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/radiator_piping"), DefaultMetals.WROUGHT_IRON,
-                100, true);
-        // Radiator Matrix
-        TerrafirmacraftRecipeManager.addItemMetal(
-                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/radiator_matrix"), DefaultMetals.WROUGHT_IRON,
-                300, true);
 
         // Lignite Coke
         TerrafirmacraftRecipeManager.addItemFuel(

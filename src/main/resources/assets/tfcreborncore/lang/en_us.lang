@@ -48,13 +48,7 @@ item.tfcreborncore.item.latex_coated_wood_sheet.name=Latex Coated Wood Sheet
 
 # Electrical components
 item.tfcreborncore.item.electron_tube_housing.name=Electron Tube Housing
-item.tfcreborncore.item.redstone_resistor_stage_1.name=Redstone Resistor Stage 1
-item.tfcreborncore.item.redstone_resistor_stage_2.name=Redstone Resistor Stage 2
-item.tfcreborncore.item.redstone_resistor_stage_3.name=Redstone Resistor Stage 3
-
-# Finished electrical items
 item.tfcreborncore.item.redstone_electron_tube.name=Redstone Electron Tube
-item.tfcreborncore.item.redstone_resistor.name=Redstone Resistor
 
 # Heavy components
 item.tfcreborncore.item.rf_control_circuit.name=RF Control Circuit
@@ -75,6 +69,14 @@ item.tfcreborncore.item.obsidian_powder.name=Obsidian Powder
 item.tfcreborncore.item.snow_powder.name=Powdered Snow
 item.tfcreborncore.item.apatite_powder.name=Apatite Powder
 
+# Metals
+item.tfcreborncore.item.redstone_resistor_stage_1.name=Redstone Resistor Stage 1
+item.tfcreborncore.item.redstone_resistor_stage_2.name=Redstone Resistor Stage 2
+item.tfcreborncore.item.redstone_resistor_stage_3.name=Redstone Resistor Stage 3
+item.tfcreborncore.item.redstone_resistor.name=Redstone Resistor
+item.tfcreborncore.item.radiator_piping.name=Radiator Piping
+item.tfcreborncore.item.radiator_matrix.name=Radiator Matrix
+
 # Misc
 item.tfcreborncore.item.unfired_clay_sheet.name=Unfired Clay Sheet
 item.tfcreborncore.item.clay_sheet.name=Clay Sheet
@@ -86,8 +88,6 @@ item.tfcreborncore.item.hi_tech_capacitor_cell.name=HV Capacitor Cell
 item.tfcreborncore.item.unfired_ceramic_insulator.name=Unfired Ceramic Insulator
 item.tfcreborncore.item.ceramic_insulator.name=Ceramic Insulator
 item.tfcreborncore.item.glass_insulator.name=Glass Insulator
-item.tfcreborncore.item.radiator_piping.name=Radiator Piping
-item.tfcreborncore.item.radiator_matrix.name=Radiator Matrix
 item.tfcreborncore.item.brick_mold.name=Brick Mold
 item.tfcreborncore.item.slag.name=Slag
 item.tfcreborncore.item.rich_slag.name=Rich Slag

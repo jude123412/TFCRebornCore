@@ -3,8 +3,10 @@ package tfcreborncore.objects.items;
 import java.util.HashMap;
 import java.util.Map;
 
+import net.dries007.tfc.api.capability.metal.IMetalItem;
 import net.dries007.tfc.api.capability.size.Size;
 import net.dries007.tfc.api.capability.size.Weight;
+import net.dries007.tfc.api.types.Metal;
 import net.dries007.tfc.objects.items.ItemTFC;
 import net.minecraft.item.ItemStack;
 
@@ -13,7 +15,7 @@ import org.jetbrains.annotations.Nullable;
 
 import tfcreborncore.objects.items.enums.ItemRCType;
 
-public class ItemRC extends ItemTFC {
+public class ItemRC extends ItemTFC implements IMetalItem {
 
     public static final Map<String, ItemRCType> CROSS_MOD_MAP = new HashMap<>();
 
@@ -50,5 +52,25 @@ public class ItemRC extends ItemTFC {
     @Override
     public boolean canStack(@NotNull ItemStack stack) {
         return type.canStack();
+    }
+
+    @Override
+    public @Nullable Metal getMetal(ItemStack itemStack) {
+        return type.getMetal();
+    }
+
+    @Override
+    public int getSmeltAmount(ItemStack itemStack) {
+        return type.getMeltingAmount();
+    }
+
+    @Override
+    public boolean canMelt(ItemStack stack) {
+        return type.canMelt();
+    }
+
+    @Override
+    public float getMeltTemp(ItemStack stack) {
+        return type.getMetal().getMeltTemp();
     }
 }

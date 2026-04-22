@@ -4,9 +4,13 @@ import java.util.function.Function;
 
 import net.dries007.tfc.api.capability.size.Size;
 import net.dries007.tfc.api.capability.size.Weight;
+import net.dries007.tfc.api.registries.TFCRegistries;
+import net.dries007.tfc.api.types.Metal;
 import net.minecraft.item.Item;
+import net.minecraft.util.ResourceLocation;
 
 import tfcreborncore.objects.items.ItemRC;
+import tfcreborncore.types.DefaultMetals;
 
 public enum ItemRCType {
 
@@ -24,17 +28,8 @@ public enum ItemRCType {
 
     // Electrical components
     ELECTRON_TUBE_HOUSING(Size.SMALL, Weight.LIGHT, true),
-    REDSTONE_RESISTOR_STAGE_1(Size.SMALL, Weight.LIGHT, true),
-    REDSTONE_RESISTOR_STAGE_2(Size.SMALL, Weight.LIGHT, true),
-    REDSTONE_RESISTOR_STAGE_3(Size.SMALL, Weight.LIGHT, true),
-
-    // Finished electrical items
     REDSTONE_ELECTRON_TUBE(Size.VERY_SMALL, Weight.MEDIUM, true),
-    REDSTONE_RESISTOR(Size.VERY_SMALL, Weight.MEDIUM, true),
-
-    // Heavy components
     RF_CONTROL_CIRCUIT(Size.LARGE, Weight.HEAVY, true),
-    BRASS_PISTON(Size.VERY_LARGE, Weight.HEAVY, true),
 
     // Fuels
     LIGNITE_COKE(Size.SMALL, Weight.MEDIUM, "gemLigniteCoke", true),
@@ -51,6 +46,15 @@ public enum ItemRCType {
     SNOW_POWDER(Size.SMALL, Weight.VERY_LIGHT, "dustSnow", true),
     APATITE_POWDER(Size.SMALL, Weight.VERY_LIGHT, "dustApatite", true),
 
+    // Metal
+    REDSTONE_RESISTOR_STAGE_1(Size.SMALL, Weight.LIGHT, DefaultMetals.REDSTONE, 10, true, true),
+    REDSTONE_RESISTOR_STAGE_2(Size.SMALL, Weight.LIGHT, DefaultMetals.REDSTONE, 10, true, true),
+    REDSTONE_RESISTOR_STAGE_3(Size.SMALL, Weight.LIGHT, DefaultMetals.REDSTONE, 10, true, true),
+    REDSTONE_RESISTOR(Size.VERY_SMALL, Weight.MEDIUM, DefaultMetals.REDSTONE, 20, true, true),
+    BRASS_PISTON(Size.VERY_LARGE, Weight.HEAVY, DefaultMetals.BRASS, 750, true, true),
+    RADIATOR_PIPING(Size.SMALL, Weight.MEDIUM, DefaultMetals.WROUGHT_IRON, 100, true, true),
+    RADIATOR_MATRIX(Size.NORMAL, Weight.MEDIUM, DefaultMetals.WROUGHT_IRON, 300, true, true),
+
     // Misc
     UNFIRED_CLAY_SHEET(Size.NORMAL, Weight.LIGHT, true),
     CLAY_SHEET(Size.NORMAL, Weight.LIGHT, true),
@@ -62,8 +66,6 @@ public enum ItemRCType {
     UNFIRED_CERAMIC_INSULATOR(Size.NORMAL, Weight.LIGHT, true),
     CERAMIC_INSULATOR(Size.NORMAL, Weight.LIGHT, true),
     GLASS_INSULATOR(Size.NORMAL, Weight.LIGHT, true),
-    RADIATOR_PIPING(Size.SMALL, Weight.MEDIUM, true),
-    RADIATOR_MATRIX(Size.NORMAL, Weight.MEDIUM, true),
     BRICK_MOLD(Size.SMALL, Weight.MEDIUM, "brickMold", false, true),
     SLAG(Size.VERY_SMALL, Weight.VERY_LIGHT, "crystalSlag", true),
     RICH_SLAG(Size.VERY_SMALL, Weight.VERY_LIGHT, "crystalSlagRich", true);
@@ -74,9 +76,12 @@ public enum ItemRCType {
 
     private final Size size;
     private final Weight weight;
+    private final String dictionary;
+    private final Metal metal;
+    private final int meltingAmount;
+    private final boolean canMelt;
     private final boolean canStack;
     private final boolean hasContainerItem;
-    private final String dictionary;
 
     private final Function<ItemRCType, ItemRC> factory;
 
@@ -85,28 +90,36 @@ public enum ItemRCType {
     // ---------------------------------------------------------------------
 
     ItemRCType(Size size, Weight weight, boolean canStack) {
-        this(size, weight, canStack, false, null, ItemRC::new);
+        this(size, weight, null, null, 0, false, canStack, false, ItemRC::new);
+    }
+
+    ItemRCType(Size size, Weight weight, ResourceLocation metal, int meltingAmount, boolean canMelt, boolean canStack) {
+        this(size, weight, null, metal, meltingAmount, canMelt, canStack, false, ItemRC::new);
     }
 
     ItemRCType(Size size, Weight weight, boolean canStack, boolean hasContainerItem) {
-        this(size, weight, canStack, hasContainerItem, null, ItemRC::new);
+        this(size, weight, null, null, 0, false, canStack, hasContainerItem, ItemRC::new);
     }
 
     ItemRCType(Size size, Weight weight, String ore, boolean canStack) {
-        this(size, weight, canStack, false, ore, ItemRC::new);
+        this(size, weight, ore, null, 0, false, canStack, false, ItemRC::new);
     }
 
     ItemRCType(Size size, Weight weight, String ore, boolean canStack, boolean hasContainerItem) {
-        this(size, weight, canStack, hasContainerItem, ore, ItemRC::new);
+        this(size, weight, ore, null, 0, false, canStack, hasContainerItem, ItemRC::new);
     }
 
-    ItemRCType(Size size, Weight weight, boolean canStack, boolean hasContainerItem, String ore,
+    ItemRCType(Size size, Weight weight, String ore, ResourceLocation metal, int meltingAmount, boolean canMelt,
+               boolean canStack, boolean hasContainerItem,
                Function<ItemRCType, ItemRC> factory) {
         this.size = size;
         this.weight = weight;
+        this.dictionary = ore;
+        this.metal = TFCRegistries.METALS.getValue(metal);
+        this.meltingAmount = meltingAmount;
+        this.canMelt = canMelt;
         this.canStack = canStack;
         this.hasContainerItem = hasContainerItem;
-        this.dictionary = ore;
         this.factory = factory;
     }
 
@@ -124,6 +137,18 @@ public enum ItemRCType {
 
     public String getDictionary() {
         return dictionary;
+    }
+
+    public Metal getMetal() {
+        return metal;
+    }
+
+    public int getMeltingAmount() {
+        return meltingAmount;
+    }
+
+    public boolean canMelt() {
+        return canMelt;
     }
 
     public boolean canStack() {

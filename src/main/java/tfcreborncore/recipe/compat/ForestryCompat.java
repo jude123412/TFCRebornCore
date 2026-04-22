@@ -154,6 +154,13 @@ public class ForestryCompat implements ICompatModule {
     }
 
     @Override
+    public void registerItemModification(FMLPostInitializationEvent r) {
+        // Honeyed Slice
+        TerrafirmacraftRecipeManager.addItemFoodStats(RecipeHelper.getItemStack(Mods.FORESTRY.ID, "honeyed_slice"), 4,
+                0, 2, 1, 1, 0, 0, 0, 0);
+    }
+
+    @Override
     public void registerTerrafirmacraftRecipes(FMLPostInitializationEvent r) {
         // Compost
         TerrafirmacraftRecipeManager.addBarrelRecipe(

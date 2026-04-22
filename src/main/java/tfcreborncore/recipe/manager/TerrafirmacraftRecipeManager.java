@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Supplier;
 
+import net.dries007.tfc.api.capability.food.CapabilityFood;
+import net.dries007.tfc.api.capability.food.FoodData;
+import net.dries007.tfc.api.capability.food.FoodHandler;
 import net.dries007.tfc.api.capability.forge.ForgeableHeatableHandler;
 import net.dries007.tfc.api.capability.heat.CapabilityItemHeat;
 import net.dries007.tfc.api.capability.heat.ItemHeatHandler;
@@ -84,6 +87,13 @@ public class TerrafirmacraftRecipeManager {
             CapabilityItemHeat.CUSTOM_ITEMS.computeIfAbsent(IIngredient.of(inputStack),
                     k -> (Supplier) () -> new ItemHeatHandler(null, heatCapacity, meltTemperature));
         }
+    }
+
+    @SuppressWarnings("unchecked")
+    public static void addItemFoodStats(ItemStack inputStack, int hunger, float water, float saturation, float decay,
+                                        float grain, float vegtable, float fruit, float protein, float dairy) {
+        CapabilityFood.CUSTOM_FOODS.put(IIngredient.of(inputStack), (Supplier) () -> new FoodHandler(null,
+                new FoodData(hunger, water, saturation, grain, fruit, vegtable, protein, dairy, decay)));
     }
 
     @SuppressWarnings("unchecked")

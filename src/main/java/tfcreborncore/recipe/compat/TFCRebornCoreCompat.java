@@ -304,6 +304,24 @@ public class TFCRebornCoreCompat implements ICompatModule {
 
     @Override
     public void registerTerrafirmacraftRecipes(FMLPostInitializationEvent r) {
+        // Treated Wood Lumber
+        TerrafirmacraftRecipeManager.addBarrelRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "barrel/transform/treated_wood_lumber"),
+                RecipeHelper.getIIngredient("creosote", 25),
+                RecipeHelper.getIIngredient("lumber"),
+                null,
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "wood/lumber/treated_wood"),
+                8);
+
+        // Latex Coated Wood Sheet
+        TerrafirmacraftRecipeManager.addBarrelRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "barrel/transform/latex_coated_wood_sheet"),
+                RecipeHelper.getIIngredient("latex", 50),
+                RecipeHelper.getIIngredient(Mods.TFC_REBORN_CORE.ID, "item/wood_sheet"),
+                null,
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/latex_coated_wood_sheet"),
+                8);
+
         // Redstone Resistor Stage 1
         TerrafirmacraftRecipeManager.addAnvilRecipe(
                 new ResourceLocation(

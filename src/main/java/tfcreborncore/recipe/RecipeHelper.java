@@ -71,6 +71,11 @@ public class RecipeHelper {
         return IIngredient.of(getItemStack(modId, itemId, meta, amount));
     }
 
+    // Returns an IIngredient from Fluid Name and Amount
+    public static IIngredient<FluidStack> getIIngredient(String name, int amount) {
+        return IIngredient.of(getFluidStack(name, amount));
+    }
+
     // Returns a Fluid
     public static Fluid getFluid(String fluidName) {
         return FluidRegistry.getFluid(fluidName);

@@ -2,11 +2,13 @@ package tfcreborncore.objects.items;
 
 import java.util.EnumMap;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
+import net.dries007.tfc.ConfigTFC;
 import net.dries007.tfc.api.capability.forge.ForgeableHeatableHandler;
 import net.dries007.tfc.api.capability.metal.IMetalItem;
 import net.dries007.tfc.api.capability.size.Size;
@@ -14,10 +16,16 @@ import net.dries007.tfc.api.capability.size.Weight;
 import net.dries007.tfc.api.types.Metal;
 import net.dries007.tfc.api.types.Ore;
 import net.dries007.tfc.objects.items.ItemTFC;
+import net.dries007.tfc.util.Helpers;
+import net.minecraft.client.resources.I18n;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.text.TextComponentTranslation;
+import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -25,6 +33,7 @@ import tfcreborncore.objects.items.enums.ItemRCOreType;
 
 /*
  * Original code from TFC Tech's ItemTechMetal (EUPL v1.2)
+ * and Terrafirmacrafts ItemOreTFC, also (EUPL v1.2)
  * Modified to create ItemRCTool
  * Modified by xXjudeXx on 2026-03-21
  */
@@ -73,6 +82,64 @@ public class ItemRCOre extends ItemTFC implements IMetalItem {
     @Override
     public ICapabilityProvider initCapabilities(@Nonnull ItemStack stack, @Nullable NBTTagCompound nbt) {
         return new ForgeableHeatableHandler(nbt, ore.getMetal().getSpecificHeat(), ore.getMetal().getMeltTemp());
+    }
+
+    @SideOnly(Side.CLIENT)
+    public void addInformation(@Nonnull ItemStack stack, @Nullable World worldIn, @Nonnull List<String> tooltip,
+                               @Nonnull ITooltipFlag flagIn) {
+        if (ore.getMetal() != null) {
+            int smeltAmount = this.getSmeltAmount(stack);
+            int meltTemp = (int) this.getMeltTemp(stack);
+            switch (ConfigTFC.Client.TOOLTIP.oreTooltipMode) {
+                case HIDE:
+                case UNIT_ONLY:
+                    String info = String.format("%s: %s",
+                            I18n.format(Helpers.getTypeName(ore.getMetal())),
+                            I18n.format("tfc.tooltip.units", smeltAmount));
+                    tooltip.add(info);
+                    break;
+                case TOTAL_ONLY:
+                    String stackTotal = String.format("%s: %s",
+                            I18n.format(Helpers.getTypeName(ore.getMetal())),
+                            I18n.format("tfc.tooltip.units.total", smeltAmount * stack.getCount()));
+                    tooltip.add(stackTotal);
+                    break;
+                case ALL_INFO:
+                    String infoTotal;
+                    if (stack.getCount() > 1) {
+                        infoTotal = String.format("%s: %s",
+                                I18n.format(Helpers.getTypeName(ore.getMetal())),
+                                I18n.format("tfc.tooltip.units.info_total",
+                                        smeltAmount, smeltAmount * stack.getCount()));
+                    } else {
+                        infoTotal = String.format("%s: %s",
+                                I18n.format(Helpers.getTypeName(ore.getMetal())),
+                                I18n.format("tfc.tooltip.units", smeltAmount),
+                                I18n.format("tfc.tooltip.melttemp", meltTemp));
+                    }
+
+                    tooltip.add(infoTotal);
+                    break;
+                case ADVANCED:
+                    String advancedTotal;
+                    if (stack.getCount() > 1) {
+                        advancedTotal = String.format("%s: %s: %s",
+                                I18n.format(Helpers.getTypeName(ore.getMetal())),
+                                I18n.format("tfc.tooltip.units.info_total",
+                                        smeltAmount, smeltAmount * stack.getCount()),
+                                I18n.format("tfc.tooltip.melttemp", meltTemp));
+                    } else {
+                        advancedTotal = String.format("%s: %s: %s",
+                                I18n.format(Helpers.getTypeName(ore.getMetal())),
+                                I18n.format("tfc.tooltip.units", smeltAmount),
+                                I18n.format("tfc.tooltip.melttemp", meltTemp));
+                    }
+
+                    tooltip.add(advancedTotal);
+                default:
+                    break;
+            }
+        }
     }
 
     @Nonnull

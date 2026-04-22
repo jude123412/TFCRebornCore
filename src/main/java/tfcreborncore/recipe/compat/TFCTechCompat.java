@@ -3,8 +3,6 @@ package tfcreborncore.recipe.compat;
 import java.util.Arrays;
 import java.util.List;
 
-import net.dries007.tfc.api.recipes.WeldingRecipe;
-import net.dries007.tfc.api.recipes.anvil.AnvilRecipe;
 import net.dries007.tfc.api.registries.TFCRegistries;
 import net.dries007.tfc.api.types.Metal;
 import net.dries007.tfc.objects.items.metal.ItemMetal;
@@ -14,7 +12,6 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.oredict.OreDictionary;
-import net.minecraftforge.registries.IForgeRegistry;
 
 import tfcreborncore.Tags;
 import tfcreborncore.objects.items.ItemRCMetal;
@@ -151,9 +148,10 @@ public class TFCTechCompat implements ICompatModule {
     }
 
     @Override
-    public void registerAnvilRecipes(IForgeRegistry<AnvilRecipe> r) {
+    public void registerTerrafirmacraftRecipes(FMLPostInitializationEvent event) {
+        // Metal Processing
         // Tin Sleeve
-        TerrafirmacraftRecipeManager.addAnvilRecipe(r,
+        TerrafirmacraftRecipeManager.addAnvilRecipe(
                 new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "anvil/working/sleeve/tin"),
                 RecipeHelper.getIIngredient("ingotTin"),
                 RecipeHelper.getItemStack(Mods.TFC_TECH.ID, "metal/tin_sleeve"),
@@ -164,7 +162,7 @@ public class TFCTechCompat implements ICompatModule {
                 ForgeRule.BEND_ANY);
 
         // Brass Sleeve
-        TerrafirmacraftRecipeManager.addAnvilRecipe(r,
+        TerrafirmacraftRecipeManager.addAnvilRecipe(
                 new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "anvil/working/sleeve/brass"),
                 RecipeHelper.getIIngredient("ingotBrass"),
                 RecipeHelper.getItemStack(Mods.TFC_TECH.ID, "metal/brass_sleeve"),
@@ -175,7 +173,7 @@ public class TFCTechCompat implements ICompatModule {
                 ForgeRule.BEND_ANY);
 
         // Steel Sleeve
-        TerrafirmacraftRecipeManager.addAnvilRecipe(r,
+        TerrafirmacraftRecipeManager.addAnvilRecipe(
                 new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "anvil/working/sleeve/steel"),
                 RecipeHelper.getIIngredient("ingotSteel"),
                 RecipeHelper.getItemStack(Mods.TFC_TECH.ID, "metal/steel_sleeve"),
@@ -185,11 +183,10 @@ public class TFCTechCompat implements ICompatModule {
                 ForgeRule.BEND_ANY,
                 ForgeRule.BEND_ANY);
 
-        // Metal Processing
         for (Metal metal : TFCRegistries.METALS.getValuesCollection()) {
             if (metal.isUsable()) {
                 // Rackwheel Piece
-                TerrafirmacraftRecipeManager.addAnvilRecipe(r,
+                TerrafirmacraftRecipeManager.addAnvilRecipe(
                         new ResourceLocation(
                                 Tags.MODID,
                                 "anvil/working/" + ItemTechMetal.ItemType.RACKWHEEL_PIECE +
@@ -203,7 +200,7 @@ public class TFCTechCompat implements ICompatModule {
                         ForgeRule.UPSET_LAST);
 
                 // Rod
-                TerrafirmacraftRecipeManager.addAnvilRecipe(r,
+                TerrafirmacraftRecipeManager.addAnvilRecipe(
                         new ResourceLocation(
                                 Tags.MODID,
                                 "anvil/working/" + ItemTechMetal.ItemType.ROD +
@@ -217,7 +214,7 @@ public class TFCTechCompat implements ICompatModule {
                         ForgeRule.HIT_LAST);
 
                 // Strip
-                TerrafirmacraftRecipeManager.addAnvilRecipe(r,
+                TerrafirmacraftRecipeManager.addAnvilRecipe(
                         new ResourceLocation(
                                 Tags.MODID,
                                 "anvil/working/" + ItemTechMetal.ItemType.STRIP +
@@ -229,17 +226,9 @@ public class TFCTechCompat implements ICompatModule {
                         ForgeRule.HIT_ANY,
                         ForgeRule.HIT_ANY,
                         ForgeRule.SHRINK_ANY);
-            }
-        }
-    }
 
-    @Override
-    public void registerWeldingRecipes(IForgeRegistry<WeldingRecipe> r) {
-        // Metal Processing
-        for (Metal metal : TFCRegistries.METALS.getValuesCollection()) {
-            if (metal.isUsable()) {
                 // Rackwheel
-                TerrafirmacraftRecipeManager.addWeldingRecipe(r,
+                TerrafirmacraftRecipeManager.addWeldingRecipe(
                         new ResourceLocation(Mods.TFC_REBORN_CORE.ID,
                                 "anvil/welding/" + ItemTechMetal.ItemType.RACKWHEEL + "/" +
                                         metal.getRegistryName().getPath().toLowerCase()),

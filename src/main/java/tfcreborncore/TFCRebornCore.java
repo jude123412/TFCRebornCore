@@ -51,11 +51,7 @@ public class TFCRebornCore {
     @EventHandler
     // postInit "Handle interaction with other mods, complete your setup based on this." (Remove if not needed)
     public void postInit(FMLPostInitializationEvent event) {
-        CompatManager.loadRecipeRemoval(event);
-        CompatManager.loadSieveRecipes(event);
-        CompatManager.loadItemMetal(event);
-        CompatManager.loadCrusherRecipes(event);
-        CompatManager.loadForestryRecipes(event);
+        CompatManager.loadModuleRecipes(event);
     }
 
     @EventHandler

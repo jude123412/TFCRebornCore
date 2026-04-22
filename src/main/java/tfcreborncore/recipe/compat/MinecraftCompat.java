@@ -5,16 +5,12 @@ import static tfcreborncore.recipe.RecipeHelper.getItemStack;
 import java.util.Arrays;
 import java.util.List;
 
-import net.dries007.tfc.api.recipes.WeldingRecipe;
-import net.dries007.tfc.api.recipes.barrel.BarrelRecipe;
-import net.dries007.tfc.api.recipes.quern.QuernRecipe;
 import net.dries007.tfc.objects.inventory.ingredient.IIngredient;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.oredict.OreDictionary;
-import net.minecraftforge.registries.IForgeRegistry;
 
 import tfcreborncore.recipe.ICompatModule;
 import tfcreborncore.recipe.RecipeHelper;
@@ -55,27 +51,21 @@ public class MinecraftCompat implements ICompatModule {
     public void registerCraftingRecipe(RegistryEvent.Register<IRecipe> r) {}
 
     @Override
-    public void registerWeldingRecipes(IForgeRegistry<WeldingRecipe> r) {}
-
-    @Override
-    public void registerQuernRecipes(IForgeRegistry<QuernRecipe> r) {
+    public void registerTerrafirmacraftRecipes(FMLPostInitializationEvent r) {
         // Redstone Ingot Recycling
-        TerrafirmacraftRecipeManager.addQuernRecipe(r,
+        TerrafirmacraftRecipeManager.addQuernRecipe(
                 new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "redstone_ingot_recycling"),
                 IIngredient.of("ingotRedstone"),
                 RecipeHelper.getItemStack(Mods.MINECRAFT.ID, "redstone"));
 
         // Glowstone Ingot Recycling
-        TerrafirmacraftRecipeManager.addQuernRecipe(r,
+        TerrafirmacraftRecipeManager.addQuernRecipe(
                 new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "glowstone_ingot_recycling"),
                 IIngredient.of("ingotGlowstone"),
                 RecipeHelper.getItemStack(Mods.MINECRAFT.ID, "glowstone_dust"));
-    }
 
-    @Override
-    public void registerBarrelRecipes(IForgeRegistry<BarrelRecipe> r) {
         // Redstone Dust from Witch Water
-        TerrafirmacraftRecipeManager.addBarrelRecipe(r,
+        TerrafirmacraftRecipeManager.addBarrelRecipe(
                 new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "barrel/transform/redstone"),
                 IIngredient.of(RecipeHelper.getFluidStack("witchwater", 100)),
                 IIngredient.of("dustCopper"),
@@ -84,7 +74,7 @@ public class MinecraftCompat implements ICompatModule {
                 8);
 
         // Glowstone Dust from Witch Water
-        TerrafirmacraftRecipeManager.addBarrelRecipe(r,
+        TerrafirmacraftRecipeManager.addBarrelRecipe(
                 new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "barrel/transform/glowstone"),
                 IIngredient.of(RecipeHelper.getFluidStack("witchwater", 100)),
                 IIngredient.of("dustGold"),
@@ -93,7 +83,7 @@ public class MinecraftCompat implements ICompatModule {
                 8);
 
         // Enderpearl Powder from Witch Water
-        TerrafirmacraftRecipeManager.addBarrelRecipe(r,
+        TerrafirmacraftRecipeManager.addBarrelRecipe(
                 new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "barrel/transform/enderpearl"),
                 IIngredient.of(RecipeHelper.getFluidStack("witchwater", 100)),
                 IIngredient.of("dustBismuth"),
@@ -102,7 +92,7 @@ public class MinecraftCompat implements ICompatModule {
                 8);
 
         // Blaze Rod from Witch Water
-        TerrafirmacraftRecipeManager.addBarrelRecipe(r,
+        TerrafirmacraftRecipeManager.addBarrelRecipe(
                 new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "barrel/transform/blaze_rod"),
                 IIngredient.of(RecipeHelper.getFluidStack("witchwater", 250)),
                 IIngredient.of("stickRoseGold"),
@@ -111,7 +101,7 @@ public class MinecraftCompat implements ICompatModule {
                 8);
 
         // Obsidian from Witch Water
-        TerrafirmacraftRecipeManager.addBarrelRecipe(r,
+        TerrafirmacraftRecipeManager.addBarrelRecipe(
                 new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "barrel/transform/obsidian"),
                 IIngredient.of(RecipeHelper.getFluidStack("witchwater", 250)),
                 IIngredient.of("cobblestone"),
@@ -121,7 +111,7 @@ public class MinecraftCompat implements ICompatModule {
     }
 
     @Override
-    public void registerCrusherRecipes(FMLPostInitializationEvent r) {
+    public void registerImmersiveEngineeringRecipes(FMLPostInitializationEvent r) {
         // Blaze Powder
         ImmersiveEngineeringRecipeManager.addCrusherRecipe(
                 "rodBlaze",

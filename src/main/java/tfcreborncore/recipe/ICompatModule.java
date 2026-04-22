@@ -2,15 +2,10 @@ package tfcreborncore.recipe;
 
 import java.util.List;
 
-import net.dries007.tfc.api.recipes.WeldingRecipe;
-import net.dries007.tfc.api.recipes.anvil.AnvilRecipe;
-import net.dries007.tfc.api.recipes.barrel.BarrelRecipe;
-import net.dries007.tfc.api.recipes.quern.QuernRecipe;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
-import net.minecraftforge.registries.IForgeRegistry;
 
 public interface ICompatModule {
 
@@ -22,19 +17,13 @@ public interface ICompatModule {
 
     default void registerCraftingRecipe(RegistryEvent.Register<IRecipe> r) {}
 
-    default void registerItemMetal(FMLPostInitializationEvent r) {}
+    default void registerItemModification(FMLPostInitializationEvent r) {}
 
-    default void registerBarrelRecipes(IForgeRegistry<BarrelRecipe> r) {}
+    default void registerTerrafirmacraftRecipes(FMLPostInitializationEvent r) {}
 
-    default void registerAnvilRecipes(IForgeRegistry<AnvilRecipe> r) {}
+    default void registerExNihiloRecipes(FMLPostInitializationEvent r) {}
 
-    default void registerWeldingRecipes(IForgeRegistry<WeldingRecipe> r) {}
-
-    default void registerQuernRecipes(IForgeRegistry<QuernRecipe> r) {}
-
-    default void registerSieveRecipes(FMLPostInitializationEvent r) {}
-
-    default void registerCrusherRecipes(FMLPostInitializationEvent r) {}
+    default void registerImmersiveEngineeringRecipes(FMLPostInitializationEvent r) {}
 
     default void registerForestryRecipes(FMLPostInitializationEvent r) {}
 

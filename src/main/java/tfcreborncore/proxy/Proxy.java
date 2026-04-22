@@ -1,9 +1,5 @@
 package tfcreborncore.proxy;
 
-import net.dries007.tfc.api.recipes.WeldingRecipe;
-import net.dries007.tfc.api.recipes.anvil.AnvilRecipe;
-import net.dries007.tfc.api.recipes.barrel.BarrelRecipe;
-import net.dries007.tfc.api.recipes.quern.QuernRecipe;
 import net.dries007.tfc.util.fuel.FuelManager;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -34,26 +30,6 @@ public class Proxy {
         CompatManager.loadOreDictionaries(event);
         CompatManager.loadCraftingRecipes(event);
         MinecraftRecipeManager.RECIPE_LIST.forEach(event.getRegistry()::register);
-    }
-
-    @SubscribeEvent
-    public static void registerAnvilRecipes(RegistryEvent.Register<AnvilRecipe> event) {
-        CompatManager.loadAnvilRecipes(event);
-    }
-
-    @SubscribeEvent
-    public static void registerWeldingRecipes(RegistryEvent.Register<WeldingRecipe> event) {
-        CompatManager.loadWeldingRecipes(event);
-    }
-
-    @SubscribeEvent
-    public static void registerQuernRecipes(RegistryEvent.Register<QuernRecipe> event) {
-        CompatManager.loadQuernRecipes(event);
-    }
-
-    @SubscribeEvent
-    public static void registerBarrelRecipes(RegistryEvent.Register<BarrelRecipe> event) {
-        CompatManager.loadBarrelRecipes(event);
     }
 
     @SubscribeEvent

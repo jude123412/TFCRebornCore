@@ -3,10 +3,6 @@ package tfcreborncore.recipe;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.dries007.tfc.api.recipes.WeldingRecipe;
-import net.dries007.tfc.api.recipes.anvil.AnvilRecipe;
-import net.dries007.tfc.api.recipes.barrel.BarrelRecipe;
-import net.dries007.tfc.api.recipes.quern.QuernRecipe;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
@@ -47,63 +43,22 @@ public final class CompatManager {
         }
     }
 
-    public static void loadRecipeRemoval(FMLPostInitializationEvent event) {
-        for (ICompatModule module : modules) {
-            if (module.areRecipesLoadable()) module.registerRecipeRemoval(event);
-        }
-    }
-
     public static void loadCraftingRecipes(RegistryEvent.Register<IRecipe> event) {
         for (ICompatModule module : modules) {
             if (module.areRecipesLoadable()) module.registerCraftingRecipe(event);
         }
     }
 
-    public static void loadItemMetal(FMLPostInitializationEvent event) {
+    public static void loadModuleRecipes(FMLPostInitializationEvent event) {
         for (ICompatModule module : modules) {
-            if (module.areRecipesLoadable()) module.registerItemMetal(event);
-        }
-    }
-
-    public static void loadBarrelRecipes(RegistryEvent.Register<BarrelRecipe> event) {
-        for (ICompatModule module : modules) {
-            if (module.areRecipesLoadable()) module.registerBarrelRecipes(event.getRegistry());
-        }
-    }
-
-    public static void loadAnvilRecipes(RegistryEvent.Register<AnvilRecipe> event) {
-        for (ICompatModule module : modules) {
-            if (module.areRecipesLoadable()) module.registerAnvilRecipes(event.getRegistry());
-        }
-    }
-
-    public static void loadWeldingRecipes(RegistryEvent.Register<WeldingRecipe> event) {
-        for (ICompatModule module : modules) {
-            if (module.areRecipesLoadable()) module.registerWeldingRecipes(event.getRegistry());
-        }
-    }
-
-    public static void loadQuernRecipes(RegistryEvent.Register<QuernRecipe> event) {
-        for (ICompatModule module : modules) {
-            if (module.areRecipesLoadable()) module.registerQuernRecipes(event.getRegistry());
-        }
-    }
-
-    public static void loadSieveRecipes(FMLPostInitializationEvent event) {
-        for (ICompatModule module : modules) {
-            if (module.areRecipesLoadable()) module.registerSieveRecipes(event);
-        }
-    }
-
-    public static void loadCrusherRecipes(FMLPostInitializationEvent event) {
-        for (ICompatModule module : modules) {
-            if (module.areRecipesLoadable()) module.registerCrusherRecipes(event);
-        }
-    }
-
-    public static void loadForestryRecipes(FMLPostInitializationEvent event) {
-        for (ICompatModule module : modules) {
-            if (module.areRecipesLoadable()) module.registerForestryRecipes(event);
+            if (module.areRecipesLoadable()) {
+                module.registerRecipeRemoval(event);
+                module.registerItemModification(event);
+                module.registerTerrafirmacraftRecipes(event);
+                module.registerExNihiloRecipes(event);
+                module.registerImmersiveEngineeringRecipes(event);
+                module.registerForestryRecipes(event);
+            }
         }
     }
 }

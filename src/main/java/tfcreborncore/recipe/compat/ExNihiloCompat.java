@@ -6,14 +6,12 @@ import static tfcreborncore.recipe.RecipeHelper.getItemStack;
 import java.util.Arrays;
 import java.util.List;
 
-import net.dries007.tfc.api.recipes.barrel.BarrelRecipe;
 import net.dries007.tfc.objects.inventory.ingredient.IIngredient;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
-import net.minecraftforge.registries.IForgeRegistry;
 
 import tfcreborncore.Tags;
 import tfcreborncore.recipe.ICompatModule;
@@ -92,20 +90,20 @@ public class ExNihiloCompat implements ICompatModule {
     }
 
     @Override
-    public void registerBarrelRecipes(IForgeRegistry<BarrelRecipe> r) {
+    public void registerTerrafirmacraftRecipes(FMLPostInitializationEvent r) {
         // Witch Water
-        TerrafirmacraftRecipeManager.addBarrelRecipe(r,
+        TerrafirmacraftRecipeManager.addBarrelRecipe(
                 new ResourceLocation(Tags.MODID, "barrel/transform/witch_water"),
                 IIngredient.of(getFluidStack("salt_water", 1000)),
                 IIngredient.of(getItemStack(Mods.EX_NIHILO_CREATIO.ID, "item_material", 3)),
                 getFluidStack("witchwater", 1000), ItemStack.EMPTY, 8);
-        TerrafirmacraftRecipeManager.addBarrelRecipeFluidMixin(r,
+        TerrafirmacraftRecipeManager.addBarrelRecipeFluidMixin(
                 new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "barrel/mixing/witch_water"),
                 IIngredient.of(getFluidStack("salt_water", 9000)),
                 getFluidStack("witchwater", 1000), getFluidStack("witchwater", 10000), 0);
 
         // Scented Hive
-        TerrafirmacraftRecipeManager.addBarrelRecipe(r,
+        TerrafirmacraftRecipeManager.addBarrelRecipe(
                 new ResourceLocation(Tags.MODID, "barrel/transform/scented_hive"),
                 IIngredient.of(getFluidStack("seed.oil", 1000)),
                 IIngredient.of(RecipeHelper.getItemStack(Mods.EX_NIHILO_CREATIO.ID, "hive", 0)), null,
@@ -113,7 +111,7 @@ public class ExNihiloCompat implements ICompatModule {
     }
 
     @Override
-    public void registerSieveRecipes(FMLPostInitializationEvent e) {
+    public void registerExNihiloRecipes(FMLPostInitializationEvent e) {
         // Gravel Sieving
         ExNihiloRecipeManager.registerSieveRecipe("gravel", getItemStack("tfc", "ore/small/tetrahedrite"), 0.04F,
                 0.04F);

@@ -3,7 +3,6 @@ package tfcreborncore.recipe.compat;
 import java.util.Arrays;
 import java.util.List;
 
-import net.dries007.tfc.api.recipes.anvil.AnvilRecipe;
 import net.dries007.tfc.api.types.Metal;
 import net.dries007.tfc.objects.inventory.ingredient.IIngredient;
 import net.dries007.tfc.types.DefaultMetals;
@@ -12,7 +11,6 @@ import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
-import net.minecraftforge.registries.IForgeRegistry;
 
 import tfcreborncore.Tags;
 import tfcreborncore.recipe.ICompatModule;
@@ -150,15 +148,17 @@ public class BaubleliciousCompat implements ICompatModule {
     }
 
     @Override
-    public void registerItemMetal(FMLPostInitializationEvent r) {
+    public void registerItemModification(FMLPostInitializationEvent r) {
+        // Gold Ring = Gold
         TerrafirmacraftRecipeManager.addItemMetal(RecipeHelper.getItemStack(Mods.BAUBLELICIOUS.ID, "itemring"),
                 DefaultMetals.GOLD,
                 100, true);
     }
 
     @Override
-    public void registerAnvilRecipes(IForgeRegistry<AnvilRecipe> r) {
-        TerrafirmacraftRecipeManager.addAnvilRecipe(r,
+    public void registerTerrafirmacraftRecipes(FMLPostInitializationEvent r) {
+        // Gold Ring
+        TerrafirmacraftRecipeManager.addAnvilRecipe(
                 new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "anvil/working/gold_ring"), IIngredient.of("ingotGold"),
                 RecipeHelper.getItemStack(Mods.BAUBLELICIOUS.ID, "itemring"), Metal.Tier.TIER_I, null,
                 ForgeRule.BEND_ANY, ForgeRule.BEND_ANY, ForgeRule.BEND_ANY);

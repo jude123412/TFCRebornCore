@@ -28,11 +28,11 @@ public enum OreProcessingTypes {
     NATIVE_OSMIUM("zircon", "osmium", "zirconium", 0x908FA8),
     BAUXITE("sphalerite", "aluminium", "zinc", 0xD7652F),
     WOLFRAMITE("rutile", "tungsten", "titanium", 0x4F2C25),
-    COBALTITE("native_ardite", "cobalt", "ardite", 0x216AE2),
+    COBALTITE("native_ardite", "cobalt", "ardite", 0x87BCF2),
     RUTILE("wolframite", "titanium", "tungsten", 0x915638),
     THORIANITE("galena", "thorium", "lead", 0x3D2B34),
     PYROLUSITE("magnesite", "manganese", "magnesium", 0x585A5E),
-    MAGNESITE("pyrolusite", "magnesium", "manganese", 0x686A68),
+    MAGNESITE("pyrolusite", "magnesium", "manganese", 0xB7B2AD),
     ZIRCON("native_silver", "zirconium", "silver", 0x696915);
 
     // ---------------------------------------------------------------------

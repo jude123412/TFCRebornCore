@@ -352,7 +352,7 @@ public class TFCRebornCoreCompat implements ICompatModule {
             MinecraftRecipeManager.addShapelessRecipe(
                     new ResourceLocation(Mods.TFC_REBORN_CORE.ID,
                             "crafting/shapeless/compressing/bar/pellet/double/" + type.getPrimaryName()),
-                    RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/bar/" + type.getPrimaryName()),
+                    RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/bar/" + type.getPrimaryName(), 0, 2),
                     RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/pellet_double/" + type.getPrimaryName()),
                     RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/pellet_double/" + type.getPrimaryName()),
                     RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/pellet_double/" + type.getPrimaryName()),

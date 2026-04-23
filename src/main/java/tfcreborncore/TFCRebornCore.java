@@ -17,8 +17,8 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import tfcreborncore.loot_tables.LootTables;
 import tfcreborncore.recipe.CompatManager;
-import tfcreborncore.recipe.enums.LootTables;
 
 @Mod(modid = Tags.MODID, version = Tags.VERSION, name = Tags.MODNAME, acceptedMinecraftVersions = "[1.12.2]")
 public class TFCRebornCore {

@@ -1,6 +1,8 @@
-package tfcreborncore.recipe.enums;
+package tfcreborncore.loot_tables;
 
 import net.minecraft.util.ResourceLocation;
+
+import tfcreborncore.recipe.enums.Mods;
 
 public enum LootTables {
 

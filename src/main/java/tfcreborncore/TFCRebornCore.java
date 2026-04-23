@@ -3,6 +3,7 @@ package tfcreborncore;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.crafting.IRecipe;
+import net.minecraft.world.storage.loot.LootTableList;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -17,6 +18,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import tfcreborncore.recipe.CompatManager;
+import tfcreborncore.recipe.enums.LootTables;
 
 @Mod(modid = Tags.MODID, version = Tags.VERSION, name = Tags.MODNAME, acceptedMinecraftVersions = "[1.12.2]")
 public class TFCRebornCore {
@@ -30,6 +32,9 @@ public class TFCRebornCore {
         MinecraftForge.EVENT_BUS.register(this);
         LOGGER.info("I am " + Tags.MODNAME + " + at version " + Tags.VERSION);
         CompatManager.init();
+
+        // Register Loot Tables
+        for (LootTables table : LootTables.values()) LootTableList.register(table.getResourceLocation());
     }
 
     @SubscribeEvent

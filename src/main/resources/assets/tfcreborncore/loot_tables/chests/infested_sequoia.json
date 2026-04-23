@@ -1,0 +1,209 @@
+{
+  "pools": [
+    {
+      "name": "main_pool",
+      "rolls": 3,
+      "entries": [
+        {
+          "type": "item",
+          "name": "minecraft:string",
+          "weight": 75,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 1,
+                "max": 6
+              }
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "minecraft:rotten_flesh",
+          "weight": 50,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 1,
+                "max": 4
+              }
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "minecraft:spider_eye",
+          "weight": 50,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 1,
+                "max": 2
+              }
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "firmalife:rennet",
+          "weight": 25,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 1,
+                "max": 2
+              }
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "tfc:food/barley_bread",
+          "weight": 25,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 1,
+                "max": 2
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ores_pool",
+      "rolls": 3,
+      "entries": [
+        {
+          "type": "item",
+          "name": "tfc:metal/ingot/copper",
+          "weight": 100,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 0,
+                "max": 2
+              }
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "tfc:metal/ingot/gold",
+          "weight": 40,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 1,
+                "max": 3
+              }
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "tfc:gem/diamond",
+          "weight": 20,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 1,
+                "max": 2
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "tools_pool",
+      "rolls": 3,
+      "entries": [
+        {
+          "type": "item",
+          "name": "tfc:metal/knife/copper",
+          "weight": 100,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 0,
+                "max": 1
+              }
+            },
+            {
+              "function": "set_damage",
+              "damage": {
+                "min": 0.1,
+                "max": 0.5
+              }
+            },
+            {
+              "function": "set_nbt",
+              "tag": "{display:{Name:\"§7Weathered Copper Knife\"}}"
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "tfc:metal/hoe/copper",
+          "weight": 100,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 0,
+                "max": 1
+              }
+            },
+            {
+              "function": "set_damage",
+              "damage": {
+                "min": 0.1,
+                "max": 0.5
+              }
+            },
+            {
+              "function": "set_nbt",
+              "tag": "{display:{Name:\"§7Weathered Copper Hoe\"}}"
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "tfc:metal/javelin/copper",
+          "weight": 100,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 0,
+                "max": 1
+              }
+            },
+            {
+              "function": "set_damage",
+              "damage": {
+                "min": 0.1,
+                "max": 0.5
+              }
+            },
+            {
+              "function": "set_nbt",
+              "tag": "{display:{Name:\"§7Weathered Copper Javelin\"}}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

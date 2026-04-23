@@ -119,17 +119,6 @@
           "type": "item",
           "name": "tfc:metal/axe/copper",
           "weight": 50
-        },
-        {
-          "type": "item",
-          "name": "tfcreborncore:metal/tool/universal_weapon/copper",
-          "weight": 200,
-          "functions": [
-            {
-              "function": "set_nbt",
-              "tag": "{display:{Name:\"§dxXjudeXx's Universal Weapon\"},ench:[{id:16,lvl:5s},{id:34,lvl:3s}]}"
-            }
-          ]
         }
       ]
     }

@@ -156,7 +156,7 @@
         {
           "type": "item",
           "name": "tfc:metal/hoe/copper",
-          "weight": 100,
+          "weight": 70,
           "functions": [
             {
               "function": "set_count",
@@ -181,7 +181,7 @@
         {
           "type": "item",
           "name": "tfc:metal/javelin/copper",
-          "weight": 100,
+          "weight": 40,
           "functions": [
             {
               "function": "set_count",
@@ -200,6 +200,17 @@
             {
               "function": "set_nbt",
               "tag": "{display:{Name:\"§7Weathered Copper Javelin\"}}"
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "tfcreborncore:metal/tool/universal_weapon/copper",
+          "weight": 200,
+          "functions": [
+            {
+              "function": "set_nbt",
+              "tag": "{display:{Name:\"§dxXjudeXx's Universal Weapon\"},ench:[{id:16,lvl:5s},{id:34,lvl:3s}]}"
             }
           ]
         }

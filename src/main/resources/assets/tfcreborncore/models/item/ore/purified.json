@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "tfcreborncore:items/ore/bar"
+    "layer0": "tfcreborncore:items/ore/purified"
   }
 }

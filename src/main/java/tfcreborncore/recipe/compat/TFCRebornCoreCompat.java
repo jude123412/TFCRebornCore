@@ -135,12 +135,21 @@ public class TFCRebornCoreCompat implements ICompatModule {
 
     @Override
     public void registerCraftingRecipe(RegistryEvent.Register<IRecipe> r) {
-        // Brick Mold
+        // Ingot Mold
         MinecraftRecipeManager.addShapedDamageRecipe(
-                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shaped/mold/brick"),
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shaped/mold/ingot"),
                 1,
-                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/brick_mold"),
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/ingot_mold"),
                 "SK",
+                'S', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/latex_coated_wood_sheet"),
+                'K', "knife");
+
+        // Pellet Mold
+        MinecraftRecipeManager.addShapedDamageRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shaped/mold/pellet"),
+                1,
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/pellet_mold"),
+                "KS",
                 'S', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/latex_coated_wood_sheet"),
                 'K', "knife");
 
@@ -193,26 +202,83 @@ public class TFCRebornCoreCompat implements ICompatModule {
                     "hammer",
                     RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID, "ore/" + type.getPrimaryName(), 2));
 
-            // crushed Compressing
+            // Pellet
             MinecraftRecipeManager.addShapelessRecipe(
                     new ResourceLocation(Mods.TFC_REBORN_CORE.ID,
-                            "crafting/shapeless/compressing/crushed/" + type.getPrimaryName()),
-                    RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/cube/" + type.getPrimaryName()),
+                            "crafting/shapeless/mold/pellet/crushed/" + type.getPrimaryName()),
+                    RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/pellet/" + type.getPrimaryName()),
+                    "moldPellet",
                     RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/crushed/" + type.getPrimaryName()),
                     RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/crushed/" + type.getPrimaryName()),
                     RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/crushed/" + type.getPrimaryName()),
                     RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/crushed/" + type.getPrimaryName()),
                     RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/crushed/" + type.getPrimaryName()));
 
-            // Cube Compressing
+            // Double Pellet
             MinecraftRecipeManager.addShapelessRecipe(
                     new ResourceLocation(Mods.TFC_REBORN_CORE.ID,
-                            "crafting/shapeless/compressing/cube/" + type.getPrimaryName()),
+                            "crafting/shapeless/mold/pellet/double/purified/" + type.getPrimaryName()),
+                    RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/pellet_double/" + type.getPrimaryName()),
+                    "moldPellet",
+                    RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/purified/" + type.getPrimaryName()),
+                    RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/purified/" + type.getPrimaryName()),
+                    RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/purified/" + type.getPrimaryName()),
+                    RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/purified/" + type.getPrimaryName()),
+                    RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/purified/" + type.getPrimaryName()));
+
+            MinecraftRecipeManager.addShapelessRecipe(
+                    new ResourceLocation(Mods.TFC_REBORN_CORE.ID,
+                            "crafting/shapeless/compressing/pellet/double/" + type.getPrimaryName()),
+                    RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/pellet_double/" + type.getPrimaryName()),
+                    RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/pellet/" + type.getPrimaryName()),
+                    RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/pellet/" + type.getPrimaryName()));
+
+            // Triple Pellet
+            MinecraftRecipeManager.addShapelessRecipe(
+                    new ResourceLocation(Mods.TFC_REBORN_CORE.ID,
+                            "crafting/shapeless/compressing/pellet/triple/" + type.getPrimaryName()),
+                    RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/pellet_triple/" + type.getPrimaryName()),
+                    RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/pellet/" + type.getPrimaryName()),
+                    RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/pellet/" + type.getPrimaryName()),
+                    RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/pellet/" + type.getPrimaryName()));
+
+            MinecraftRecipeManager.addShapelessRecipe(
+                    new ResourceLocation(Mods.TFC_REBORN_CORE.ID,
+                            "crafting/shapeless/compressing/pellet/triple/mix/" + type.getPrimaryName()),
+                    RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/pellet_triple/" + type.getPrimaryName()),
+                    RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/pellet/" + type.getPrimaryName()),
+                    RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/pellet_double/" + type.getPrimaryName()));
+
+            // Bar
+            MinecraftRecipeManager.addShapelessRecipe(
+                    new ResourceLocation(Mods.TFC_REBORN_CORE.ID,
+                            "crafting/shapeless/compressing/bar/pellet/" + type.getPrimaryName()),
                     RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/bar/" + type.getPrimaryName()),
-                    RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/cube/" + type.getPrimaryName()),
-                    RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/cube/" + type.getPrimaryName()),
-                    RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/cube/" + type.getPrimaryName()),
-                    RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/cube/" + type.getPrimaryName()));
+                    RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/pellet/" + type.getPrimaryName()),
+                    RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/pellet/" + type.getPrimaryName()),
+                    RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/pellet/" + type.getPrimaryName()),
+                    RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/pellet/" + type.getPrimaryName()),
+                    "moldIngot");
+
+            MinecraftRecipeManager.addShapelessRecipe(
+                    new ResourceLocation(Mods.TFC_REBORN_CORE.ID,
+                            "crafting/shapeless/compressing/bar/pellet/double/" + type.getPrimaryName()),
+                    RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/bar/" + type.getPrimaryName()),
+                    RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/pellet_double/" + type.getPrimaryName()),
+                    RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/pellet_double/" + type.getPrimaryName()),
+                    RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/pellet_double/" + type.getPrimaryName()),
+                    RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/pellet_double/" + type.getPrimaryName()),
+                    "moldIngot");
+
+            MinecraftRecipeManager.addShapelessRecipe(
+                    new ResourceLocation(Mods.TFC_REBORN_CORE.ID,
+                            "crafting/shapeless/compressing/bar/pellet/triple/" + type.getPrimaryName()),
+                    RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/bar/" + type.getPrimaryName(), 0, 3),
+                    RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/pellet_triple/" + type.getPrimaryName()),
+                    RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/pellet_triple/" + type.getPrimaryName()),
+                    RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/pellet_triple/" + type.getPrimaryName()),
+                    RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/pellet_triple/" + type.getPrimaryName()),
+                    "moldIngot");
         }
 
         // Metal Recipes

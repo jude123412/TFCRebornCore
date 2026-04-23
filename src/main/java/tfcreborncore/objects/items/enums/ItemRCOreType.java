@@ -14,7 +14,10 @@ import tfcreborncore.objects.items.ItemRCOre;
 public enum ItemRCOreType {
 
     CRUSHED(5, Size.VERY_SMALL, Weight.VERY_LIGHT),
-    CUBE(25, Size.NORMAL, Weight.LIGHT),
+    PURIFIED(10, Size.VERY_SMALL, Weight.VERY_LIGHT),
+    PELLET(25, Size.NORMAL, Weight.LIGHT),
+    PELLET_DOUBLE(50, Size.LARGE, Weight.MEDIUM),
+    PELLET_TRIPLE(75, Size.LARGE, Weight.HEAVY),
     BAR(100, Size.LARGE, Weight.MEDIUM);
 
     // ---------------------------------------------------------------------

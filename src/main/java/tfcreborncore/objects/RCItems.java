@@ -82,7 +82,8 @@ public class RCItems {
 
                     ItemRCOre ItemType = (ItemRCOre) oreType;
                     String path = ItemType.getOre().getRegistryName().getPath().toLowerCase();
-                    OreDictionary.registerOre(type.toString().toLowerCase() + toPascalCase(path), ItemType);
+                    OreDictionary.registerOre(toPascalCaseAlt(type.toString().toLowerCase()) + toPascalCase(path),
+                            ItemType);
                     oreItems.add(oreType);
                 }
             }

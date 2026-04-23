@@ -135,6 +135,16 @@ public class TFCRebornCoreCompat implements ICompatModule {
 
     @Override
     public void registerCraftingRecipe(RegistryEvent.Register<IRecipe> r) {
+        // Wood Sheet
+        MinecraftRecipeManager.addShapedRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shaped/wood_sheet"),
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/wood_sheet"),
+                " W ",
+                "WSW",
+                " W ",
+                'W', "dustWood",
+                'S', "slimeball");
+
         // Ingot Mold
         MinecraftRecipeManager.addShapedDamageRecipe(
                 new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shaped/mold/ingot"),
@@ -163,6 +173,85 @@ public class TFCRebornCoreCompat implements ICompatModule {
                 'H', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/electron_tube_housing"),
                 'G', "slimeball",
                 'B', "electronTubeBaseRedstone");
+
+        // RF Control Circuit
+        MinecraftRecipeManager.addShapedRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shaped/rf_control_circuit"),
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/rf_control_circuit"),
+                "TBT",
+                "RWR",
+                "AAA",
+                'T', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/redstone_electron_tube"),
+                'B', "sheetAnyBronze",
+                'R', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/redstone_resistor"),
+                'W', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/basic_circuit_board"),
+                'A', "stripRedAlloy");
+
+        // Hardened Glass Mix
+        MinecraftRecipeManager.addShapelessRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shapeless/hardened_glass_mix"),
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/hardened_glass_mix"),
+                "dustFlux",
+                "dustObsidian",
+                "dustHematite");
+
+        // Hardened Glass Mix Alt
+        MinecraftRecipeManager.addShapelessRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shapeless/hardened_glass_mix_alt"),
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/hardened_glass_mix"),
+                "dustFlux",
+                "dustObsidian",
+                "dustLimonite");
+
+        // Synthetic Graphite Mix
+        MinecraftRecipeManager.addShapelessRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shapeless/synthetic_graphite_mix"),
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/synthetic_graphite_mix"),
+                "dustFlux",
+                "dustCoal",
+                "dustWood");
+
+        // Brass Piston
+        MinecraftRecipeManager.addShapedRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shaped/brass_piston"),
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/brass_piston"),
+                " B ",
+                "ISI",
+                "IMI",
+                'B', "sheetBrass",
+                'I', "ingotBrass",
+                'S', "stickLongBrass",
+                'M', RecipeHelper.getItemStack("tfc", "brass_mechanisms"));
+
+        // Nickel-Plated Capacitor Cell
+        MinecraftRecipeManager.addShapedRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shaped/nickel_plated_capacitor_cell"),
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/nickel_plated_capacitor_cell"),
+                "N",
+                "C",
+                'N', "sheetNickel",
+                'C', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/clay_sheet"));
+
+        // Ceramic Capacitor Block
+        MinecraftRecipeManager.addShapedRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shaped/ceramic_capacitor_block"),
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/ceramic_capacitor_block"),
+                "SCS",
+                "NCN",
+                "SCS",
+                'S', "screwNickelSilver",
+                'C', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/nickel_plated_capacitor_cell"),
+                'N', "sheetNickel");
+
+        // Basic Circuit Board
+        MinecraftRecipeManager.addShapedRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shaped/basic_circuit_board"),
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/basic_circuit_board"),
+                "SSS",
+                "SWS",
+                "SSS",
+                'S', "stripCopper",
+                'W', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/wood_sheet"));
 
         // Ore Processing
         for (OreProcessingTypes type : OreProcessingTypes.values()) {
@@ -850,8 +939,24 @@ public class TFCRebornCoreCompat implements ICompatModule {
 
     @Override
     public void registerForestryRecipes(FMLPostInitializationEvent r) {
+        // RF Control Circuit 2x
+        ForestryRecipeManager.addCarpenterRecipe(
+                5 * S,
+                null,
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/rf_control_circuit", 0, 2),
+                RecipeHelper.getFluidStack("250", 1000),
+                "TBT",
+                "RWR",
+                "AAA",
+                'T', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/redstone_electron_tube"),
+                'B', "sheetAnyBronze",
+                'R', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/redstone_resistor"),
+                'W', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/good_circuit_board"),
+                'A', "stripRedAlloy");
+
         // Redstone Electron Tube
-        ForestryRecipeManager.addCarpenterRecipe(4 * S,
+        ForestryRecipeManager.addCarpenterRecipe(
+                4 * S,
                 null,
                 RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/redstone_electron_tube"),
                 RecipeHelper.getFluidStack("latex", 50),
@@ -859,6 +964,59 @@ public class TFCRebornCoreCompat implements ICompatModule {
                 "T",
                 'B', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/electron_tube_housing"),
                 'T', "electronTubeBaseRedstone");
+
+        // LV Capacitor Cell
+        ForestryRecipeManager.addCarpenterRecipe(
+                5 * S,
+                null,
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/basic_capacitor_cell"),
+                RecipeHelper.getFluidStack("creosote", 1000),
+                " S ",
+                "ACA",
+                " S ",
+                'S', "screwCopper",
+                'A', "sheetCopper",
+                'C', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/ceramic_capacitor_block"));
+
+        // MV Capacitor Cell
+        ForestryRecipeManager.addCarpenterRecipe(
+                10 * S,
+                null,
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/advanced_capacitor_cell"),
+                RecipeHelper.getFluidStack("creosote", 1000),
+                "CWC",
+                "SGS",
+                "CWC",
+                'C', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/basic_capacitor_cell"),
+                'W', "wireGold",
+                'S', "screwGold",
+                'G', "sheetGold");
+
+        // HV Capacitor Cell
+        ForestryRecipeManager.addCarpenterRecipe(
+                4 * S,
+                null,
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/hi_tech_capacitor_cell"),
+                RecipeHelper.getFluidStack("creosote", 1000),
+                "CWC",
+                "SGS",
+                "CWC",
+                'C', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/advanced_capacitor_cell"),
+                'W', "wireSteel",
+                'S', "screwSteel",
+                'G', "sheetSteel");
+
+        // Good Circuit Board
+        ForestryRecipeManager.addCarpenterRecipe(
+                4 * S,
+                null,
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/good_circuit_board", 0, 4),
+                RecipeHelper.getFluidStack("creosote", 250),
+                "SSS",
+                "SWS",
+                "SSS",
+                'S', "stripGold",
+                'W', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/latex_coated_wood_sheet"));
 
         // Thermionic Fabricator Recipes
         // These need to be registered first
@@ -892,10 +1050,25 @@ public class TFCRebornCoreCompat implements ICompatModule {
                 "XX XX",
                 " X X ");
 
+        TFCTechRecipeManager.addGlassWorkingRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "glass/working/glass_insulator"),
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/glass_insulator"),
+                "XX XX",
+                " XXX ",
+                "XX XX",
+                " XXX ",
+                "XX XX");
+
         TFCTechRecipeManager.addSmelteryRecipe(
                 new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "smeltery/recycle/electron_tube_housing"),
                 RecipeHelper.getFluidStack("glass", 250),
                 800,
                 RecipeHelper.getIIngredient(Mods.TFC_REBORN_CORE.ID, "item/electron_tube_housing"));
+
+        TFCTechRecipeManager.addSmelteryRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "smeltery/recycle/glass_insulator"),
+                RecipeHelper.getFluidStack("glass", 250),
+                800,
+                RecipeHelper.getIIngredient(Mods.TFC_REBORN_CORE.ID, "item/glass_insulator"));
     }
 }

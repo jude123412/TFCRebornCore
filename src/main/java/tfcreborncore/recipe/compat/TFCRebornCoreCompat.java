@@ -253,6 +253,19 @@ public class TFCRebornCoreCompat implements ICompatModule {
                 'S', "stripCopper",
                 'W', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/wood_sheet"));
 
+        // Redstone Resistor
+        MinecraftRecipeManager.addShapedRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shaped/redstone_resistor"),
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/redstone_resistor"),
+                "SD ",
+                "LCR",
+                " DS",
+                'S', "slimeball",
+                'D', "dustCoal",
+                'L', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/redstone_resistor_part_a"),
+                'C', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/redstone_resistor_part_b"),
+                'R', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/redstone_resistor_part_c"));
+
         // Ore Processing
         for (OreProcessingTypes type : OreProcessingTypes.values()) {
             // Small Ore Smashing
@@ -488,6 +501,7 @@ public class TFCRebornCoreCompat implements ICompatModule {
 
     @Override
     public void registerTerrafirmacraftRecipes(FMLPostInitializationEvent r) {
+        // Knapping Recipes
         // Unfired Ceramic Sheet
         TerrafirmacraftRecipeManager.addKnappingRecipe(
                 new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "knapping/clay/unfired_ceramic_sheet"),
@@ -510,6 +524,7 @@ public class TFCRebornCoreCompat implements ICompatModule {
                 "XX XX",
                 " XXX ");
 
+        // Heating Recipes
         // Graphite Powder
         TerrafirmacraftRecipeManager.addHeatTransformRecipe(
                 new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "heat/transform/graphite"),
@@ -531,6 +546,7 @@ public class TFCRebornCoreCompat implements ICompatModule {
                 RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/ceramic_insulator"),
                 1599);
 
+        // Barrel Recipes
         // Treated Wood Lumber
         TerrafirmacraftRecipeManager.addBarrelRecipe(
                 new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "barrel/transform/treated_wood_lumber"),
@@ -549,13 +565,40 @@ public class TFCRebornCoreCompat implements ICompatModule {
                 RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/latex_coated_wood_sheet"),
                 8);
 
-        // Redstone Resistor Stage 1
+        // Anvil Working Recipes
+        // Redstone Resistor Part A
         TerrafirmacraftRecipeManager.addAnvilRecipe(
                 new ResourceLocation(
                         Mods.TFC_REBORN_CORE.ID,
-                        "anvil/working/redstone_resistor/stage_1"),
+                        "anvil/working/redstone_resistor/part_a"),
                 RecipeHelper.getIIngredient("ingotRedstone"),
-                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/redstone_resistor_stage_1", 0, 10),
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/redstone_resistor_part_a", 0, 10),
+                Metal.Tier.TIER_II,
+                null,
+                ForgeRule.HIT_THIRD_LAST,
+                ForgeRule.BEND_SECOND_LAST,
+                ForgeRule.HIT_LAST);
+
+        // Redstone Resistor Part B
+        TerrafirmacraftRecipeManager.addAnvilRecipe(
+                new ResourceLocation(
+                        Mods.TFC_REBORN_CORE.ID,
+                        "anvil/working/redstone_resistor/part_b"),
+                RecipeHelper.getIIngredient("ingotGold"),
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/redstone_resistor_part_b", 0, 10),
+                Metal.Tier.TIER_II,
+                null,
+                ForgeRule.HIT_THIRD_LAST,
+                ForgeRule.BEND_SECOND_LAST,
+                ForgeRule.HIT_LAST);
+
+        // Redstone Resistor Part C
+        TerrafirmacraftRecipeManager.addAnvilRecipe(
+                new ResourceLocation(
+                        Mods.TFC_REBORN_CORE.ID,
+                        "anvil/working/redstone_resistor/part_c"),
+                RecipeHelper.getIIngredient("ingotRedstone"),
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/redstone_resistor_part_c", 0, 10),
                 Metal.Tier.TIER_II,
                 null,
                 ForgeRule.HIT_THIRD_LAST,
@@ -639,32 +682,7 @@ public class TFCRebornCoreCompat implements ICompatModule {
                     ForgeRule.HIT_NOT_LAST);
         }
 
-        // Redstone Resistor Stage 2
-        TerrafirmacraftRecipeManager.addWeldingRecipe(
-                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "anvil/welding/redstone_resistor_stage_2"),
-                RecipeHelper.getIIngredient("boltRedAlloy"),
-                RecipeHelper.getIIngredient(Mods.TFC_REBORN_CORE.ID, "item/redstone_resistor_stage_1", 0),
-                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/redstone_resistor_stage_2", 0),
-                Metal.Tier.TIER_II,
-                null);
-
-        // Redstone Resistor Stage 3
-        TerrafirmacraftRecipeManager.addWeldingRecipe(
-                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "anvil/welding/redstone_resistor_stage_3"),
-                RecipeHelper.getIIngredient("stripGold"),
-                RecipeHelper.getIIngredient(Mods.TFC_REBORN_CORE.ID, "item/redstone_resistor_stage_2", 0),
-                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/redstone_resistor_stage_3", 0),
-                Metal.Tier.TIER_II,
-                null);
-
-        // Redstone Resistor
-        TerrafirmacraftRecipeManager.addWeldingRecipe(
-                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "anvil/welding/redstone_resistor"),
-                RecipeHelper.getIIngredient(Mods.TFC_REBORN_CORE.ID, "item/redstone_resistor_stage_2", 0),
-                RecipeHelper.getIIngredient(Mods.TFC_REBORN_CORE.ID, "item/redstone_resistor_stage_3", 0),
-                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/redstone_resistor", 0),
-                Metal.Tier.TIER_II,
-                null);
+        // Welding Recipes
 
         // Radiator Matrix
         TerrafirmacraftRecipeManager.addWeldingRecipe(
@@ -958,7 +976,7 @@ public class TFCRebornCoreCompat implements ICompatModule {
         ForestryRecipeManager.addCarpenterRecipe(
                 4 * S,
                 null,
-                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/redstone_electron_tube"),
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/redstone_electron_tube", 0, 2),
                 RecipeHelper.getFluidStack("latex", 50),
                 "B",
                 "T",
@@ -1017,6 +1035,20 @@ public class TFCRebornCoreCompat implements ICompatModule {
                 "SSS",
                 'S', "stripGold",
                 'W', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/latex_coated_wood_sheet"));
+
+        // Redstone Resistor
+        ForestryRecipeManager.addCarpenterRecipe(
+                4 * S,
+                null,
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/redstone_resistor", 0, 2),
+                RecipeHelper.getFluidStack("latex", 50),
+                " D ",
+                "LCR",
+                " D ",
+                'D', "dustCoal",
+                'L', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/redstone_resistor_part_a"),
+                'C', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/redstone_resistor_part_b"),
+                'R', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/redstone_resistor_part_c"));
 
         // Thermionic Fabricator Recipes
         // These need to be registered first

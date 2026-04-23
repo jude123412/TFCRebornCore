@@ -49,10 +49,10 @@ public enum ItemRCType {
     APATITE_POWDER(Size.SMALL, Weight.VERY_LIGHT, "dustApatite", true),
 
     // Metal
-    REDSTONE_RESISTOR_STAGE_1(Size.SMALL, Weight.LIGHT, DefaultMetals.REDSTONE, 10, true, true),
-    REDSTONE_RESISTOR_STAGE_2(Size.SMALL, Weight.LIGHT, DefaultMetals.REDSTONE, 10, true, true),
-    REDSTONE_RESISTOR_STAGE_3(Size.SMALL, Weight.LIGHT, DefaultMetals.REDSTONE, 10, true, true),
-    REDSTONE_RESISTOR(Size.VERY_SMALL, Weight.MEDIUM, DefaultMetals.REDSTONE, 20, true, true),
+    REDSTONE_RESISTOR_PART_A(Size.SMALL, Weight.LIGHT, DefaultMetals.REDSTONE, 10, true, true),
+    REDSTONE_RESISTOR_PART_B(Size.SMALL, Weight.LIGHT, DefaultMetals.REDSTONE, 10, true, true),
+    REDSTONE_RESISTOR_PART_C(Size.SMALL, Weight.LIGHT, DefaultMetals.REDSTONE, 10, true, true),
+    REDSTONE_RESISTOR(Size.VERY_SMALL, Weight.MEDIUM, DefaultMetals.REDSTONE, 30, true, true),
     BRASS_PISTON(Size.VERY_LARGE, Weight.HEAVY, DefaultMetals.BRASS, 750, true, true),
     RADIATOR_PIPING(Size.SMALL, Weight.MEDIUM, DefaultMetals.WROUGHT_IRON, 100, true, true),
     RADIATOR_MATRIX(Size.NORMAL, Weight.MEDIUM, DefaultMetals.WROUGHT_IRON, 300, true, true),

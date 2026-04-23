@@ -75,9 +75,9 @@ item.tfcreborncore.item.snow_powder.name=Powdered Snow
 item.tfcreborncore.item.apatite_powder.name=Apatite Powder
 
 # Metals
-item.tfcreborncore.item.redstone_resistor_stage_1.name=Redstone Resistor Stage 1
-item.tfcreborncore.item.redstone_resistor_stage_2.name=Redstone Resistor Stage 2
-item.tfcreborncore.item.redstone_resistor_stage_3.name=Redstone Resistor Stage 3
+item.tfcreborncore.item.redstone_resistor_part_a.name=Redstone Resistor Left Segment
+item.tfcreborncore.item.redstone_resistor_part_b.name=Redstone Resistor Center Segment
+item.tfcreborncore.item.redstone_resistor_part_c.name=Redstone Resistor Right Segment
 item.tfcreborncore.item.redstone_resistor.name=Redstone Resistor
 item.tfcreborncore.item.radiator_piping.name=Radiator Piping
 item.tfcreborncore.item.radiator_matrix.name=Radiator Matrix

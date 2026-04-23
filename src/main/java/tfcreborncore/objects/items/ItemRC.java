@@ -3,12 +3,17 @@ package tfcreborncore.objects.items;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.annotation.Nonnull;
+
+import net.dries007.tfc.api.capability.forge.ForgeableHeatableHandler;
 import net.dries007.tfc.api.capability.metal.IMetalItem;
 import net.dries007.tfc.api.capability.size.Size;
 import net.dries007.tfc.api.capability.size.Weight;
 import net.dries007.tfc.api.types.Metal;
 import net.dries007.tfc.objects.items.ItemTFC;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraftforge.common.capabilities.ICapabilityProvider;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -57,6 +62,14 @@ public class ItemRC extends ItemTFC implements IMetalItem {
     @Override
     public boolean canStack(@NotNull ItemStack stack) {
         return type.canStack();
+    }
+
+    @Nullable
+    @Override
+    public ICapabilityProvider initCapabilities(@Nonnull ItemStack stack, @Nullable NBTTagCompound nbt) {
+        return type.getMetal() != null ?
+                new ForgeableHeatableHandler(nbt, type.getMetal().getSpecificHeat(), type.getMetal().getMeltTemp()) :
+                null;
     }
 
     @Override

@@ -6,10 +6,10 @@ import javax.annotation.Nonnull;
 
 import net.dries007.tfc.api.capability.size.Size;
 import net.dries007.tfc.api.capability.size.Weight;
-import net.dries007.tfc.api.types.Ore;
 import net.minecraft.item.Item;
 
 import tfcreborncore.objects.items.ItemRCOre;
+import tfcreborncore.recipe.enums.OreProcessingTypes;
 
 public enum ItemRCOreType {
 
@@ -28,7 +28,7 @@ public enum ItemRCOreType {
     private final Size size;
     private final Weight weight;
 
-    private final BiFunction<Ore, ItemRCOreType, Item> supplier;
+    private final BiFunction<OreProcessingTypes, ItemRCOreType, Item> supplier;
 
     // ---------------------------------------------------------------------
     // Constructor
@@ -38,7 +38,8 @@ public enum ItemRCOreType {
         this(meltingAmount, size, weight, ItemRCOre::new);
     }
 
-    ItemRCOreType(int meltingAmount, Size size, Weight weight, @Nonnull BiFunction<Ore, ItemRCOreType, Item> supplier) {
+    ItemRCOreType(int meltingAmount, Size size, Weight weight,
+                  @Nonnull BiFunction<OreProcessingTypes, ItemRCOreType, Item> supplier) {
         this.meltingAmount = meltingAmount;
         this.size = size;
         this.weight = weight;
@@ -65,7 +66,7 @@ public enum ItemRCOreType {
     // Factory
     // ---------------------------------------------------------------------
 
-    public static Item Create(Ore ore, ItemRCOreType type) {
-        return type.supplier.apply(ore, type);
+    public static Item Create(OreProcessingTypes processingType, ItemRCOreType type) {
+        return type.supplier.apply(processingType, type);
     }
 }

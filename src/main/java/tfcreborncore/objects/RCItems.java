@@ -2,7 +2,6 @@ package tfcreborncore.objects;
 
 import net.dries007.tfc.api.registries.TFCRegistries;
 import net.dries007.tfc.api.types.Metal;
-import net.dries007.tfc.api.types.Ore;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.renderer.color.IItemColor;
 import net.minecraft.creativetab.CreativeTabs;
@@ -33,6 +32,7 @@ import tfcreborncore.objects.items.enums.ItemRCMetalType;
 import tfcreborncore.objects.items.enums.ItemRCOreType;
 import tfcreborncore.objects.items.enums.ItemRCToolType;
 import tfcreborncore.objects.items.enums.ItemRCType;
+import tfcreborncore.recipe.enums.OreProcessingTypes;
 
 public class RCItems {
 
@@ -71,13 +71,13 @@ public class RCItems {
         IForgeRegistry<Item> registry = event.getRegistry();
 
         ImmutableList.Builder<Item> oreItems = ImmutableList.builder();
-        for (Ore ore : TFCRegistries.ORES) {
-            if (ore.isGraded()) {
+        for (OreProcessingTypes processingType : OreProcessingTypes.values()) {
+            if (processingType.getOre().isGraded()) {
                 for (ItemRCOreType type : ItemRCOreType.values()) {
                     String base = "ore/" + type.toString().toLowerCase() + "/" +
-                            ore.getRegistryName().getPath().toLowerCase();
+                            processingType.getOre().getRegistryName().getPath().toLowerCase();
                     Item oreType = register(registry, base,
-                            ItemRCOreType.Create(ore, type),
+                            ItemRCOreType.Create(processingType, type),
                             CreativeTabsRC.CT_ITEMS);
 
                     ItemRCOre ItemType = (ItemRCOre) oreType;
@@ -493,22 +493,7 @@ public class RCItems {
     }
 
     private static int getOreColor(ItemRCOre oreItem) {
-        Ore ore = oreItem.getOre();
-        int color;
-        if (ore.getRegistryName().getPath().contains("garnierite")) color = 0x5A664B;
-        else if (ore.getRegistryName().getPath().contains("stibnite")) color = 0xA0A7D3;
-        else if (ore.getRegistryName().getPath().contains("spodumene")) color = 0xECD3FF;
-        else if (ore.getRegistryName().getPath().contains("bauxite")) color = 0xD7652F;
-        else if (ore.getRegistryName().getPath().contains("rutile")) color = 0x915638;
-        else if (ore.getRegistryName().getPath().contains("malachite")) color = 0x78C9AF;
-        else if (ore.getRegistryName().getPath().contains("tetrahedrite")) color = 0x938CA5;
-        else if (ore.getRegistryName().getPath().contains("magnetite")) color = 0x7F8E8A;
-        else if (ore.getRegistryName().getPath().contains("hematite")) color = 0xC96266;
-        else if (ore.getRegistryName().getPath().contains("limonite")) color = 0x4D2F27;
-        else {
-            color = ore.getMetal().getColor() & 0xFFFFFF;
-        }
-        return color;
+        return oreItem.getProcessingType().getOreColor() & 0xFFFFFF;
     }
 
     private static int getMetalColor(Metal metal) {

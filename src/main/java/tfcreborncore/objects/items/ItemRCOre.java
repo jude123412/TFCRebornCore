@@ -30,6 +30,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import org.jetbrains.annotations.NotNull;
 
 import tfcreborncore.objects.items.enums.ItemRCOreType;
+import tfcreborncore.recipe.enums.OreProcessingTypes;
 
 /*
  * Original code from TFC Tech's ItemTechMetal (EUPL v1.2)
@@ -39,19 +40,19 @@ import tfcreborncore.objects.items.enums.ItemRCOreType;
  */
 public class ItemRCOre extends ItemTFC implements IMetalItem {
 
-    private static final Map<Ore, EnumMap<ItemRCOreType, ItemRCOre>> ORE_MAP = new HashMap<>();
+    private static final Map<OreProcessingTypes, EnumMap<ItemRCOreType, ItemRCOre>> ORE_MAP = new HashMap<>();
 
-    private final Ore ore;
+    private final OreProcessingTypes processingType;
     private final ItemRCOreType type;
 
-    public ItemRCOre(Ore ore, ItemRCOreType type) {
+    public ItemRCOre(OreProcessingTypes processingType, ItemRCOreType type) {
         super();
-        this.ore = ore;
+        this.processingType = processingType;
         this.type = type;
-        if (!ORE_MAP.containsKey(ore)) {
-            ORE_MAP.put(ore, new EnumMap<>(ItemRCOreType.class));
+        if (!ORE_MAP.containsKey(processingType)) {
+            ORE_MAP.put(processingType, new EnumMap<>(ItemRCOreType.class));
         }
-        ORE_MAP.get(ore).put(type, this);
+        ORE_MAP.get(processingType).put(type, this);
         setNoRepair();
     }
 
@@ -73,7 +74,8 @@ public class ItemRCOre extends ItemTFC implements IMetalItem {
     @Nonnull
     public String getItemStackDisplayName(@Nonnull ItemStack stack) {
         String metalName = (new TextComponentTranslation(
-                "item.tfc.ore." + ore.getRegistryName().getPath().toLowerCase() + ".name")).getFormattedText();
+                "item.tfc.ore." + processingType.getOre().getRegistryName().getPath().toLowerCase() + ".name"))
+                        .getFormattedText();
         return (new TextComponentTranslation("item.tfcreborncore.ore." + type.name().toLowerCase() + ".name",
                 metalName)).getFormattedText();
     }
@@ -81,26 +83,27 @@ public class ItemRCOre extends ItemTFC implements IMetalItem {
     @Nullable
     @Override
     public ICapabilityProvider initCapabilities(@Nonnull ItemStack stack, @Nullable NBTTagCompound nbt) {
-        return new ForgeableHeatableHandler(nbt, ore.getMetal().getSpecificHeat(), ore.getMetal().getMeltTemp());
+        return new ForgeableHeatableHandler(nbt, processingType.getMetal().getSpecificHeat(),
+                processingType.getMetal().getMeltTemp());
     }
 
     @SideOnly(Side.CLIENT)
     public void addInformation(@Nonnull ItemStack stack, @Nullable World worldIn, @Nonnull List<String> tooltip,
                                @Nonnull ITooltipFlag flagIn) {
-        if (ore.getMetal() != null) {
+        if (processingType.getMetal() != null) {
             int smeltAmount = this.getSmeltAmount(stack);
             int meltTemp = (int) this.getMeltTemp(stack);
             switch (ConfigTFC.Client.TOOLTIP.oreTooltipMode) {
                 case HIDE:
                 case UNIT_ONLY:
                     String info = String.format("%s: %s",
-                            I18n.format(Helpers.getTypeName(ore.getMetal())),
+                            I18n.format(Helpers.getTypeName(processingType.getMetal())),
                             I18n.format("tfc.tooltip.units", smeltAmount));
                     tooltip.add(info);
                     break;
                 case TOTAL_ONLY:
                     String stackTotal = String.format("%s: %s",
-                            I18n.format(Helpers.getTypeName(ore.getMetal())),
+                            I18n.format(Helpers.getTypeName(processingType.getMetal())),
                             I18n.format("tfc.tooltip.units.total", smeltAmount * stack.getCount()));
                     tooltip.add(stackTotal);
                     break;
@@ -108,12 +111,12 @@ public class ItemRCOre extends ItemTFC implements IMetalItem {
                     String infoTotal;
                     if (stack.getCount() > 1) {
                         infoTotal = String.format("%s: %s",
-                                I18n.format(Helpers.getTypeName(ore.getMetal())),
+                                I18n.format(Helpers.getTypeName(processingType.getMetal())),
                                 I18n.format("tfc.tooltip.units.info_total",
                                         smeltAmount, smeltAmount * stack.getCount()));
                     } else {
                         infoTotal = String.format("%s: %s",
-                                I18n.format(Helpers.getTypeName(ore.getMetal())),
+                                I18n.format(Helpers.getTypeName(processingType.getMetal())),
                                 I18n.format("tfc.tooltip.units", smeltAmount),
                                 I18n.format("tfc.tooltip.melttemp", meltTemp));
                     }
@@ -124,13 +127,13 @@ public class ItemRCOre extends ItemTFC implements IMetalItem {
                     String advancedTotal;
                     if (stack.getCount() > 1) {
                         advancedTotal = String.format("%s: %s: %s",
-                                I18n.format(Helpers.getTypeName(ore.getMetal())),
+                                I18n.format(Helpers.getTypeName(processingType.getMetal())),
                                 I18n.format("tfc.tooltip.units.info_total",
                                         smeltAmount, smeltAmount * stack.getCount()),
                                 I18n.format("tfc.tooltip.melttemp", meltTemp));
                     } else {
                         advancedTotal = String.format("%s: %s: %s",
-                                I18n.format(Helpers.getTypeName(ore.getMetal())),
+                                I18n.format(Helpers.getTypeName(processingType.getMetal())),
                                 I18n.format("tfc.tooltip.units", smeltAmount),
                                 I18n.format("tfc.tooltip.melttemp", meltTemp));
                     }
@@ -145,20 +148,24 @@ public class ItemRCOre extends ItemTFC implements IMetalItem {
     @Nonnull
     @Override
     public Metal getMetal(ItemStack itemStack) {
-        return ore.getMetal();
+        return this.processingType.getMetal();
     }
 
     @Override
     public int getSmeltAmount(ItemStack itemStack) {
-        return type.getMeltingAmount();
+        return this.type.getMeltingAmount();
     }
 
     @Override
     public boolean canMelt(ItemStack stack) {
-        return ore.canMelt();
+        return this.processingType.getOre().canMelt();
     }
 
     public Ore getOre() {
-        return ore;
+        return this.processingType.getOre();
+    }
+
+    public OreProcessingTypes getProcessingType() {
+        return this.processingType;
     }
 }

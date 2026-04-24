@@ -4,7 +4,6 @@ import java.util.Arrays;
 import java.util.List;
 
 import net.dries007.tfc.api.types.Metal;
-import net.dries007.tfc.objects.inventory.ingredient.IIngredient;
 import net.dries007.tfc.util.forge.ForgeRule;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ResourceLocation;
@@ -159,7 +158,8 @@ public class BaubleliciousCompat implements ICompatModule {
     public void registerTerrafirmacraftRecipes(FMLPostInitializationEvent r) {
         // Gold Ring
         TerrafirmacraftRecipeManager.addAnvilRecipe(
-                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "anvil/working/gold_ring"), IIngredient.of("ingotGold"),
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "anvil/working/gold_ring"),
+                RecipeHelper.getIIngredient("ingotGold"),
                 RecipeHelper.getItemStack(Mods.BAUBLELICIOUS.ID, "itemring"), Metal.Tier.TIER_I, null,
                 ForgeRule.BEND_ANY, ForgeRule.BEND_ANY, ForgeRule.BEND_ANY);
     }

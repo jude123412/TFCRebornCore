@@ -151,6 +151,138 @@ public class ForestryCompat implements ICompatModule {
                 'A', "dustAsh",
                 'B', "brickPeat",
                 'P', "gemCoal");
+
+        // Copper Electron Tube
+        MinecraftRecipeManager.addShapedRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shaped/electron_tube/copper"),
+                RecipeHelper.getItemStack(Mods.FORESTRY.ID, "thermionic_tubes", 0),
+                "H",
+                "G",
+                "B",
+                'H', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/electron_tube_housing"),
+                'G', "slimeball",
+                'B', "electronTubeBaseCopper");
+
+        // Tin Electron Tube
+        MinecraftRecipeManager.addShapedRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shaped/electron_tube/tin"),
+                RecipeHelper.getItemStack(Mods.FORESTRY.ID, "thermionic_tubes", 1),
+                "H",
+                "G",
+                "B",
+                'H', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/electron_tube_housing"),
+                'G', "slimeball",
+                'B', "electronTubeBaseTin");
+
+        // Bronze Electron Tube
+        MinecraftRecipeManager.addShapedRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shaped/electron_tube/bronze"),
+                RecipeHelper.getItemStack(Mods.FORESTRY.ID, "thermionic_tubes", 2),
+                "H",
+                "G",
+                "B",
+                'H', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/electron_tube_housing"),
+                'G', "slimeball",
+                'B', "electronTubeBaseBronze");
+
+        // Iron Electron Tube
+        MinecraftRecipeManager.addShapedRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shaped/electron_tube/iron"),
+                RecipeHelper.getItemStack(Mods.FORESTRY.ID, "thermionic_tubes", 3),
+                "H",
+                "G",
+                "B",
+                'H', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/electron_tube_housing"),
+                'G', "slimeball",
+                'B', "electronTubeBaseIron");
+
+        // Gold Electron Tube
+        MinecraftRecipeManager.addShapedRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shaped/electron_tube/gold"),
+                RecipeHelper.getItemStack(Mods.FORESTRY.ID, "thermionic_tubes", 4),
+                "H",
+                "G",
+                "B",
+                'H', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/electron_tube_housing"),
+                'G', "slimeball",
+                'B', "electronTubeBaseGold");
+
+        // Mithril Electron Tube
+        MinecraftRecipeManager.addShapedRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shaped/electron_tube/mithril"),
+                RecipeHelper.getItemStack(Mods.FORESTRY.ID, "thermionic_tubes", 5),
+                "H",
+                "G",
+                "B",
+                'H', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/electron_tube_housing"),
+                'G', "slimeball",
+                'B', "electronTubeBaseMithril");
+
+        // Black Bronze Electron Tube
+        MinecraftRecipeManager.addShapedRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shaped/electron_tube/black_bronze"),
+                RecipeHelper.getItemStack(Mods.FORESTRY.ID, "thermionic_tubes", 6),
+                "H",
+                "G",
+                "B",
+                'H', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/electron_tube_housing"),
+                'G', "slimeball",
+                'B', "electronTubeBaseBlackBronze");
+
+        // Rose Gold Electron Tube
+        MinecraftRecipeManager.addShapedRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shaped/electron_tube/rose_gold"),
+                RecipeHelper.getItemStack(Mods.FORESTRY.ID, "thermionic_tubes", 7),
+                "H",
+                "G",
+                "B",
+                'H', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/electron_tube_housing"),
+                'G', "slimeball",
+                'B', "electronTubeBaseRoseGold");
+
+        // Bismuth Bronze Electron Tube
+        MinecraftRecipeManager.addShapedRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shaped/electron_tube/bismuth_bronze"),
+                RecipeHelper.getItemStack(Mods.FORESTRY.ID, "thermionic_tubes", 9),
+                "H",
+                "G",
+                "B",
+                'H', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/electron_tube_housing"),
+                'G', "slimeball",
+                'B', "electronTubeBaseBismuthBronze");
+
+        // Cobalt Electron Tube
+        MinecraftRecipeManager.addShapedRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shaped/electron_tube/cobalt"),
+                RecipeHelper.getItemStack(Mods.FORESTRY.ID, "thermionic_tubes", 10),
+                "H",
+                "G",
+                "B",
+                'H', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/electron_tube_housing"),
+                'G', "slimeball",
+                'B', "electronTubeBaseCobalt");
+
+        // HSLA Steel Electron Tube
+        MinecraftRecipeManager.addShapedRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shaped/electron_tube/hsla_steel"),
+                RecipeHelper.getItemStack(Mods.FORESTRY.ID, "thermionic_tubes", 11),
+                "H",
+                "G",
+                "B",
+                'H', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/electron_tube_housing"),
+                'G', "slimeball",
+                'B', "electronTubeBaseHslaSteel");
+
+        // Enderpearl Electron Tube
+        MinecraftRecipeManager.addShapedRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shaped/electron_tube/ender"),
+                RecipeHelper.getItemStack(Mods.FORESTRY.ID, "thermionic_tubes", 12),
+                "H",
+                "G",
+                "B",
+                'H', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/electron_tube_housing"),
+                'G', "slimeball",
+                'B', "electronTubeBaseEnder");
     }
 
     @Override
@@ -366,7 +498,6 @@ public class ForestryCompat implements ICompatModule {
                 'L', "stickLongIron",
                 'S', "stickWood");
 
-        // Thermionic Fabricator Recipes
         // Flexible Casing
         ForestryRecipeManager.addFabricatorRecipe(null,
                 RecipeHelper.getFluidStack("glass", 500),

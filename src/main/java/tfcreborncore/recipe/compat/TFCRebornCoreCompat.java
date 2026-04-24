@@ -972,17 +972,6 @@ public class TFCRebornCoreCompat implements ICompatModule {
                 'W', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/good_circuit_board"),
                 'A', "stripRedAlloy");
 
-        // Redstone Electron Tube
-        ForestryRecipeManager.addCarpenterRecipe(
-                4 * S,
-                null,
-                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/redstone_electron_tube", 0, 2),
-                RecipeHelper.getFluidStack("latex", 50),
-                "B",
-                "T",
-                'B', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/electron_tube_housing"),
-                'T', "electronTubeBaseRedstone");
-
         // LV Capacitor Cell
         ForestryRecipeManager.addCarpenterRecipe(
                 5 * S,

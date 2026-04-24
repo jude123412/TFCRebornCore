@@ -1,5 +1,6 @@
 package tfcreborncore.objects;
 
+import net.dries007.tfc.ConfigTFC;
 import net.dries007.tfc.api.registries.TFCRegistries;
 import net.dries007.tfc.api.types.Metal;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -118,6 +119,12 @@ public class RCItems {
                     OreDictionary.registerOre(
                             toPascalCaseAlt(type.toString().toLowerCase()) + toPascalCase(path),
                             metalItemType);
+
+                    if (metal.getRegistryName().getPath().contains("wrought_iron") && ConfigTFC.General.MISC.dictionaryIron) {
+                        OreDictionary.registerOre(
+                                toPascalCaseAlt(type.toString().toLowerCase()) + "Iron",
+                                metalItemType);
+                    }
 
                     metalItems.add(metalType);
                 }
@@ -245,6 +252,11 @@ public class RCItems {
         OreDictionary.registerOre(
                 toPascalCaseAlt(type.toString().toLowerCase()) + toPascalCase(path),
                 metalItemType);
+        if (metal.getRegistryName().getPath().contains("wrought_iron") && ConfigTFC.General.MISC.dictionaryIron) {
+            OreDictionary.registerOre(
+                    toPascalCaseAlt(type.toString().toLowerCase()) + "Iron",
+                    metalItemType);
+        }
 
         list.add(metalType);
     }

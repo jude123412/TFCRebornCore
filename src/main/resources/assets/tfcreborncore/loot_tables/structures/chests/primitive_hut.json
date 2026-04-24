@@ -103,22 +103,58 @@
         {
           "type": "item",
           "name": "tfc:metal/sword/copper",
-          "weight": 50
+          "weight": 50,
+          "functions": [
+            {
+              "function": "set_damage",
+              "damage": {
+                "min": 0.1,
+                "max": 0.75
+              }
+            }
+          ]
         },
         {
           "type": "item",
           "name": "tfc:metal/pick/copper",
-          "weight": 75
+          "weight": 75,
+          "functions": [
+            {
+              "function": "set_damage",
+              "damage": {
+                "min": 0.1,
+                "max": 0.75
+              }
+            }
+          ]
         },
         {
           "type": "item",
           "name": "tfc:metal/shovel/copper",
-          "weight": 50
+          "weight": 50,
+          "functions": [
+            {
+              "function": "set_damage",
+              "damage": {
+                "min": 0.1,
+                "max": 0.75
+              }
+            }
+          ]
         },
         {
           "type": "item",
           "name": "tfc:metal/axe/copper",
-          "weight": 50
+          "weight": 50,
+          "functions": [
+            {
+              "function": "set_damage",
+              "damage": {
+                "min": 0.1,
+                "max": 0.75
+              }
+            }
+          ]
         }
       ]
     }

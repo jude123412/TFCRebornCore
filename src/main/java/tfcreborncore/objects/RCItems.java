@@ -120,8 +120,7 @@ public class RCItems {
                             toPascalCaseAlt(type.toString().toLowerCase()) + toPascalCase(path),
                             metalItemType);
 
-                    if (metal.getRegistryName().getPath().contains("wrought_iron") &&
-                            ConfigTFC.General.MISC.dictionaryIron) {
+                    if (metal.getRegistryName().getPath().contains("wrought_iron") && ConfigTFC.General.MISC.dictionaryIron) {
                         OreDictionary.registerOre(
                                 toPascalCaseAlt(type.toString().toLowerCase()) + "Iron",
                                 metalItemType);

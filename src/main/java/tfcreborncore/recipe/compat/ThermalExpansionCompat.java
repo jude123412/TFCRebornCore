@@ -3,6 +3,7 @@ package tfcreborncore.recipe.compat;
 import java.util.Arrays;
 import java.util.List;
 
+import net.dries007.tfc.objects.inventory.ingredient.IIngredient;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;
@@ -792,8 +793,8 @@ public class ThermalExpansionCompat implements ICompatModule {
         // Blizz Rod
         TerrafirmacraftRecipeManager.addBarrelRecipe(
                 new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "barrel/transform/blizz_rod"),
-                RecipeHelper.getIIngredient("witchwater", 250),
-                RecipeHelper.getIIngredient("stickCobalt"),
+                IIngredient.of(RecipeHelper.getFluidStack("witchwater", 250)),
+                IIngredient.of("stickCobalt"),
                 null,
                 RecipeHelper.getItemStack(Mods.THERMAL_FOUNDATION.ID, "material", 2048),
                 8);
@@ -801,8 +802,8 @@ public class ThermalExpansionCompat implements ICompatModule {
         // Blitz Rod
         TerrafirmacraftRecipeManager.addBarrelRecipe(
                 new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "barrel/transform/blitz_rod"),
-                RecipeHelper.getIIngredient("witchwater", 250),
-                RecipeHelper.getIIngredient("stickGold"),
+                IIngredient.of(RecipeHelper.getFluidStack("witchwater", 250)),
+                IIngredient.of("stickGold"),
                 null,
                 RecipeHelper.getItemStack(Mods.THERMAL_FOUNDATION.ID, "material", 2050),
                 8);
@@ -810,8 +811,8 @@ public class ThermalExpansionCompat implements ICompatModule {
         // Basalz Rod
         TerrafirmacraftRecipeManager.addBarrelRecipe(
                 new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "barrel/transform/basalz_rod"),
-                RecipeHelper.getIIngredient("witchwater", 250),
-                RecipeHelper.getIIngredient("stickMagnesiumDiboride"),
+                IIngredient.of(RecipeHelper.getFluidStack("witchwater", 250)),
+                IIngredient.of("stickMagnesiumDiboride"),
                 null,
                 RecipeHelper.getItemStack(Mods.THERMAL_FOUNDATION.ID, "material", 2052),
                 8);
@@ -819,19 +820,19 @@ public class ThermalExpansionCompat implements ICompatModule {
         // Blizz Powder
         TerrafirmacraftRecipeManager.addQuernRecipe(
                 new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "quern/powder/blizz_powder"),
-                RecipeHelper.getIIngredient("rodBlizz"),
+                IIngredient.of("rodBlizz"),
                 RecipeHelper.getItemStack(Mods.THERMAL_FOUNDATION.ID, "material", 2049, 2));
 
         // Blitz Powder
         TerrafirmacraftRecipeManager.addQuernRecipe(
                 new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "quern/powder/blitz_powder"),
-                RecipeHelper.getIIngredient("rodBlitz"),
+                IIngredient.of("rodBlitz"),
                 RecipeHelper.getItemStack(Mods.THERMAL_FOUNDATION.ID, "material", 2051, 2));
 
         // Basalz Powder
         TerrafirmacraftRecipeManager.addQuernRecipe(
                 new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "quern/powder/basalz_powder"),
-                RecipeHelper.getIIngredient("rodBasalz"),
+                IIngredient.of("rodBasalz"),
                 RecipeHelper.getItemStack(Mods.THERMAL_FOUNDATION.ID, "material", 2053, 2));
     }
 

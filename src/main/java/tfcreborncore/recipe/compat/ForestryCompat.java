@@ -26,9 +26,6 @@ public class ForestryCompat implements ICompatModule {
         return Arrays.asList(
                 Mods.FORESTRY.ID,
                 Mods.TFC_METALLUM.ID,
-                Mods.TFC_TECH.ID,
-                Mods.TERRAFIRMACRAFT.ID,
-                Mods.TFC_REBORN_CORE.ID,
                 Mods.IMMERSIVE_ENGINEERING.ID);
     }
 

@@ -49,9 +49,6 @@ public class TFCRebornCoreCompat implements ICompatModule {
     @Override
     public List<String> dependencies() {
         return Arrays.asList(
-                Mods.MINECRAFT.ID,
-                Mods.TERRAFIRMACRAFT.ID,
-                Mods.TFC_TECH.ID,
                 Mods.TFC_METALLUM.ID,
                 Mods.EX_NIHILO_CREATIO.ID,
                 Mods.IMMERSIVE_ENGINEERING.ID,

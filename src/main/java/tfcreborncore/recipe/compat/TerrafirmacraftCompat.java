@@ -3,6 +3,7 @@ package tfcreborncore.recipe.compat;
 import java.util.Arrays;
 import java.util.List;
 
+import net.dries007.tfc.objects.inventory.ingredient.IIngredient;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;
@@ -21,7 +22,7 @@ public class TerrafirmacraftCompat implements ICompatModule {
     public List<String> dependencies() {
         return Arrays.asList(
                 Mods.TERRAFIRMACRAFT.ID,
-                Mods.TFC_REBORN_CORE.ID);
+                Mods.TFC_METALLUM.ID);
     }
 
     @Override
@@ -53,5 +54,20 @@ public class TerrafirmacraftCompat implements ICompatModule {
         TerrafirmacraftRecipeManager.addItemMetal(
                 RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID, "brass_mechanisms"), DefaultMetals.BRASS,
                 50, true);
+    }
+
+    @Override
+    public void registerTerrafirmacraftRecipes(FMLPostInitializationEvent r) {
+        // Redstone Ingot Recycling
+        TerrafirmacraftRecipeManager.addQuernRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "redstone_ingot_recycling"),
+                IIngredient.of("ingotRedstone"),
+                RecipeHelper.getItemStack(Mods.MINECRAFT.ID, "redstone"));
+
+        // Glowstone Ingot Recycling
+        TerrafirmacraftRecipeManager.addQuernRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "glowstone_ingot_recycling"),
+                IIngredient.of("ingotGlowstone"),
+                RecipeHelper.getItemStack(Mods.MINECRAFT.ID, "glowstone_dust"));
     }
 }

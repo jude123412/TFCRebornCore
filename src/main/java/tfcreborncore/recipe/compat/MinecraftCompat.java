@@ -52,18 +52,6 @@ public class MinecraftCompat implements ICompatModule {
 
     @Override
     public void registerTerrafirmacraftRecipes(FMLPostInitializationEvent r) {
-        // Redstone Ingot Recycling
-        TerrafirmacraftRecipeManager.addQuernRecipe(
-                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "redstone_ingot_recycling"),
-                IIngredient.of("ingotRedstone"),
-                RecipeHelper.getItemStack(Mods.MINECRAFT.ID, "redstone"));
-
-        // Glowstone Ingot Recycling
-        TerrafirmacraftRecipeManager.addQuernRecipe(
-                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "glowstone_ingot_recycling"),
-                IIngredient.of("ingotGlowstone"),
-                RecipeHelper.getItemStack(Mods.MINECRAFT.ID, "glowstone_dust"));
-
         // Redstone Dust from Witch Water
         TerrafirmacraftRecipeManager.addBarrelRecipe(
                 new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "barrel/transform/redstone"),

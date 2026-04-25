@@ -40,18 +40,31 @@
 dependencies {
     implementation rfg.deobf("curse.maven:terrafirmacraft-1.7.23.181-302973:3645502") // TFC 1.7.23.181
     implementation rfg.deobf("curse.maven:tfc-tech-unofficial-1.2.16-340660:3209033") // TFC Tech Unofficial 1.2.16
-    implementation rfg.deobf("curse.maven:tfc-decoration-1.0.9-414667:3510190") // TFC Decoration 1.0.9
-    implementation rfg.deobf("curse.maven:journey-map-5.7.1p3-32274:5172461") // Journey Map 5.7.1p3
     implementation rfg.deobf("curse.maven:immersive-engineering-0.12.98-231951:2974106") // Immersive Engineering 0.12.98
-    implementation rfg.deobf("curse.maven:ex-nihilo-0.4.7.2-274456:2817545") // Ex Nihilo 0.4.7.2
-    implementation rfg.deobf("curse.maven:forestry-5.8.2.427-59751:7398359") // Forestry 5.8.2.427
-    implementation rfg.deobf("curse.maven:binnies-mods-patched-2.5.1.213-899182:7731146") // Binnies Mods Patched 2.5.1.213
-    implementation rfg.deobf("curse.maven:magneticraft-2.8.5-224808:3791484") // Magneticraft 2.8.5
     implementation rfg.deobf("curse.maven:groovy-script-1.4.1-687577:7813868") // Groovy Script 1.4.1
+
+    // TFC Decoration Testing
+    compileOnly rfg.deobf("curse.maven:tfc-decoration-1.0.9-414667:3510190") // TFC Decoration 1.0.9
+    // runtimeOnlyNonPublishable rfg.deobf("curse.maven:tfc-decoration-1.0.9-414667:3510190")
+
+    // Ex Nihilo Testing
+    compileOnly rfg.deobf("curse.maven:ex-nihilo-0.4.7.2-274456:2817545") // Ex Nihilo 0.4.7.2
+    // runtimeOnlyNonPublishable rfg.deobf("curse.maven:ex-nihilo-0.4.7.2-274456:2817545")
+
+    // Magneticraft Testing
+    compileOnly rfg.deobf("curse.maven:magneticraft-2.8.5-224808:3791484") // Magneticraft 2.8.5
+    // runtimeOnlyNonPublishable rfg.deobf("curse.maven:magneticraft-2.8.5-224808:3791484")
+
+    // Forestry Testing
+    compileOnly rfg.deobf("curse.maven:forestry-5.8.2.427-59751:7398359") // Forestry 5.8.2.427
+    // runtimeOnlyNonPublishable rfg.deobf("curse.maven:forestry-5.8.2.427-59751:7398359")
+
+    // Binnie's Mods Testing
+    compileOnly rfg.deobf("curse.maven:binnies-mods-patched-2.5.1.213-899182:7731146") // Binnie's Mods Patched 2.5.1.213
+    // runtimeOnlyNonPublishable rfg.deobf("curse.maven:binnies-mods-patched-2.5.1.213-899182:7731146")
 
     runtimeOnlyNonPublishable rfg.deobf("curse.maven:baublelicious-1.4.0.4-223951:2532880") // Baublelicious 1.4.0.4
     runtimeOnlyNonPublishable rfg.deobf("curse.maven:storage-drawers-5.5.3-223852:5981297") // Storage Drawers 5.5.3
-
     runtimeOnlyNonPublishable rfg.deobf("curse.maven:tfc-rocks-plus-1.3.6-376298:3260513") // TFC Rocks+ 1.3.6
     runtimeOnlyNonPublishable rfg.deobf("curse.maven:firmalife-0.5.1-453394:3612887") // TFC Firmalife 0.5.1
     runtimeOnlyNonPublishable rfg.deobf("curse.maven:tfc-metallum-1.4.8-1489345:7851380") // TFC Metallum 1.4.8
@@ -63,5 +76,4 @@ dependencies {
     runtimeOnlyNonPublishable rfg.deobf("curse.maven:chameleon-4.1.3-230497:2450900") // Chameleon 4.1.3
     runtimeOnlyNonPublishable rfg.deobf("curse.maven:bubbles-2.4.10-995393:7736064") // Bubbles 2.4.10
     runtimeOnlyNonPublishable rfg.deobf("curse.maven:model-loader-1.1.7-277663:2744735") // Model Loader 1.1.7
-
 }

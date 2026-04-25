@@ -5,7 +5,6 @@ import static tfcreborncore.recipe.RecipeHelper.S;
 import java.util.Arrays;
 import java.util.List;
 
-import net.dries007.tfc.objects.inventory.ingredient.IIngredient;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;
@@ -294,15 +293,15 @@ public class ForestryCompat implements ICompatModule {
         // Compost
         TerrafirmacraftRecipeManager.addBarrelRecipe(
                 new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "barrel/composting/vegetable"),
-                IIngredient.of(RecipeHelper.getFluidStack("tannin", 50)),
-                IIngredient.of("categoryVegetable"),
+                RecipeHelper.getIIngredient("tannin", 50),
+                RecipeHelper.getIIngredient("categoryVegetable"),
                 null,
                 RecipeHelper.getItemStack(Mods.FORESTRY.ID, "fertilizer_bio"),
                 72);
         TerrafirmacraftRecipeManager.addBarrelRecipe(
                 new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "barrel/composting/fruit"),
-                IIngredient.of(RecipeHelper.getFluidStack("tannin", 50)),
-                IIngredient.of("categoryFruit"),
+                RecipeHelper.getIIngredient("tannin", 50),
+                RecipeHelper.getIIngredient("categoryFruit"),
                 null,
                 RecipeHelper.getItemStack(Mods.FORESTRY.ID, "fertilizer_bio"),
                 72);

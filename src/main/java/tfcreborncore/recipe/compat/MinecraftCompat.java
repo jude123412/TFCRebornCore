@@ -23,9 +23,9 @@ public class MinecraftCompat implements ICompatModule {
     @Override
     public List<String> dependencies() {
         return Arrays.asList(
-                Mods.TFC_TECH.ID,
                 Mods.TFC_METALLUM.ID,
-                Mods.TERRAFIRMACRAFT.ID);
+                Mods.EX_NIHILO_CREATIO.ID,
+                Mods.IMMERSIVE_ENGINEERING.ID);
     }
 
     @Override

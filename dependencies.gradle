@@ -58,7 +58,7 @@ dependencies {
 
     // Forestry Testing
     compileOnly rfg.deobf("curse.maven:forestry-5.8.2.427-59751:7398359") // Forestry 5.8.2.427
-//     runtimeOnlyNonPublishable rfg.deobf("curse.maven:forestry-5.8.2.427-59751:7398359")
+    // runtimeOnlyNonPublishable rfg.deobf("curse.maven:forestry-5.8.2.427-59751:7398359")
 
     // Binnie's Mods Testing
     compileOnly rfg.deobf("curse.maven:binnies-mods-patched-2.5.1.213-899182:7731146") // Binnie's Mods Patched 2.5.1.213

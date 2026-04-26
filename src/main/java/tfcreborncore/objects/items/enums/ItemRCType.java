@@ -57,9 +57,9 @@ public enum ItemRCType {
     RADIATOR_PIPING(Size.SMALL, Weight.MEDIUM, DefaultMetals.WROUGHT_IRON, 100, true, true),
     RADIATOR_MATRIX(Size.NORMAL, Weight.MEDIUM, DefaultMetals.WROUGHT_IRON, 300, true, true),
 
-    // Wood Molds
-    INGOT_MOLD(Size.SMALL, Weight.MEDIUM, "moldIngot", false, true),
-    PELLET_MOLD(Size.SMALL, Weight.MEDIUM, "moldPellet", false, true),
+    // Wood Forms
+    INGOT_FORM(Size.SMALL, Weight.MEDIUM, "formIngot", false, true),
+    PELLET_FORM(Size.SMALL, Weight.MEDIUM, "formPellet", false, true),
 
     // Misc
     UNFIRED_CLAY_SHEET(Size.NORMAL, Weight.LIGHT, true),

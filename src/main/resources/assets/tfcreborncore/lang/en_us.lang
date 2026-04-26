@@ -82,9 +82,9 @@ item.tfcreborncore.item.redstone_resistor.name=Redstone Resistor
 item.tfcreborncore.item.radiator_piping.name=Radiator Piping
 item.tfcreborncore.item.radiator_matrix.name=Radiator Matrix
 
-# Wood Molds
-item.tfcreborncore.item.ingot_mold.name=Ingot Mold
-item.tfcreborncore.item.pellet_mold.name=Pellet Mold
+# Wood Form
+item.tfcreborncore.item.ingot_form.name=Ingot Form
+item.tfcreborncore.item.pellet_form.name=Pellet Form
 
 # Misc
 item.tfcreborncore.item.unfired_clay_sheet.name=Unfired Clay Sheet

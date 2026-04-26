@@ -141,20 +141,20 @@ public class TFCRebornCoreCompat implements ICompatModule {
                 'W', "dustWood",
                 'S', "slimeball");
 
-        // Ingot Mold
+        // Ingot Form
         MinecraftRecipeManager.addShapedDamageRecipe(
-                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shaped/mold/ingot"),
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shaped/form/ingot"),
                 1,
-                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/ingot_mold"),
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/ingot_form"),
                 "SK",
                 'S', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/latex_coated_wood_sheet"),
                 'K', "knife");
 
-        // Pellet Mold
+        // Pellet Form
         MinecraftRecipeManager.addShapedDamageRecipe(
-                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shaped/mold/pellet"),
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shaped/form/pellet"),
                 1,
-                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/pellet_mold"),
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/pellet_form"),
                 "KS",
                 'S', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/latex_coated_wood_sheet"),
                 'K', "knife");
@@ -303,9 +303,9 @@ public class TFCRebornCoreCompat implements ICompatModule {
             // Pellet
             MinecraftRecipeManager.addShapelessRecipe(
                     new ResourceLocation(Mods.TFC_REBORN_CORE.ID,
-                            "crafting/shapeless/mold/pellet/crushed/" + type.getPrimaryName()),
+                            "crafting/shapeless/form/pellet/crushed/" + type.getPrimaryName()),
                     RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/pellet/" + type.getPrimaryName()),
-                    "moldPellet",
+                    "formPellet",
                     RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/crushed/" + type.getPrimaryName()),
                     RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/crushed/" + type.getPrimaryName()),
                     RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/crushed/" + type.getPrimaryName()),
@@ -315,9 +315,9 @@ public class TFCRebornCoreCompat implements ICompatModule {
             // Double Pellet
             MinecraftRecipeManager.addShapelessRecipe(
                     new ResourceLocation(Mods.TFC_REBORN_CORE.ID,
-                            "crafting/shapeless/mold/pellet/double/purified/" + type.getPrimaryName()),
+                            "crafting/shapeless/form/pellet/double/purified/" + type.getPrimaryName()),
                     RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/pellet_double/" + type.getPrimaryName()),
-                    "moldPellet",
+                    "formPellet",
                     RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/purified/" + type.getPrimaryName()),
                     RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/purified/" + type.getPrimaryName()),
                     RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/purified/" + type.getPrimaryName()),
@@ -356,7 +356,7 @@ public class TFCRebornCoreCompat implements ICompatModule {
                     RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/pellet/" + type.getPrimaryName()),
                     RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/pellet/" + type.getPrimaryName()),
                     RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/pellet/" + type.getPrimaryName()),
-                    "moldIngot");
+                    "formIngot");
 
             MinecraftRecipeManager.addShapelessRecipe(
                     new ResourceLocation(Mods.TFC_REBORN_CORE.ID,
@@ -366,7 +366,7 @@ public class TFCRebornCoreCompat implements ICompatModule {
                     RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/pellet_double/" + type.getPrimaryName()),
                     RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/pellet_double/" + type.getPrimaryName()),
                     RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/pellet_double/" + type.getPrimaryName()),
-                    "moldIngot");
+                    "formIngot");
 
             MinecraftRecipeManager.addShapelessRecipe(
                     new ResourceLocation(Mods.TFC_REBORN_CORE.ID,
@@ -376,7 +376,7 @@ public class TFCRebornCoreCompat implements ICompatModule {
                     RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/pellet_triple/" + type.getPrimaryName()),
                     RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/pellet_triple/" + type.getPrimaryName()),
                     RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/pellet_triple/" + type.getPrimaryName()),
-                    "moldIngot");
+                    "formIngot");
         }
 
         // Metal Recipes

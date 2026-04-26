@@ -120,10 +120,10 @@ public class ForestryCompat implements ICompatModule {
 
         // Peat Brick
         MinecraftRecipeManager.addShapelessRecipe(
-                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shapeless/mold/ingot/peat"),
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shapeless/form/ingot/peat"),
                 RecipeHelper.getItemStack(Mods.FORESTRY.ID, "peat"),
                 "peat",
-                "moldIngot");
+                "formIngot");
 
         // Bituminous Peat
         MinecraftRecipeManager.addShapedRecipe(

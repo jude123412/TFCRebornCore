@@ -32,13 +32,13 @@ public class MinecraftCompat implements ICompatModule {
     public void registerOreDictionaries(RegistryEvent.Register<IRecipe> r) {
         // GemEnder
         OreDictionary.registerOre("gemEnder",
-                RecipeHelper.getItemStack("minecraft", "ender_pearl"));
+                RecipeHelper.getItemStack(Mods.MINECRAFT.ID, "ender_pearl"));
         // GemEnderEye
         OreDictionary.registerOre("gemEnderEye",
-                RecipeHelper.getItemStack("minecraft", "ender_eye"));
+                RecipeHelper.getItemStack(Mods.MINECRAFT.ID, "ender_eye"));
         // DustGunpowder
         OreDictionary.registerOre("dustGunpowder",
-                RecipeHelper.getItemStack("minecraft", "gunpowder"));
+                RecipeHelper.getItemStack(Mods.MINECRAFT.ID, "gunpowder"));
     }
 
     @Override

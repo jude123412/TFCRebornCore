@@ -20,7 +20,6 @@ public class ThermalExpansionCompat implements ICompatModule {
     @Override
     public List<String> dependencies() {
         return Arrays.asList(
-                Mods.TFC_METALLUM.ID,
                 Mods.TFC_TECH.ID,
                 Mods.THERMAL_FOUNDATION.ID,
                 Mods.THERMAL_DYNAMICS.ID,

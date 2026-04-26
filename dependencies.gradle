@@ -40,6 +40,7 @@
 dependencies {
     implementation rfg.deobf("curse.maven:terrafirmacraft-1.7.23.181-302973:3645502") // TFC 1.7.23.181
     implementation rfg.deobf("curse.maven:tfc-tech-unofficial-1.2.16-340660:3209033") // TFC Tech Unofficial 1.2.16
+    implementation rfg.deobf("curse.maven:tfc-metallum-1.4.8-1489345:7851380") // TFC Metallum 1.4.8
     implementation rfg.deobf("curse.maven:immersive-engineering-0.12.98-231951:2974106") // Immersive Engineering 0.12.98
     implementation rfg.deobf("curse.maven:groovy-script-1.4.1-687577:7813868") // Groovy Script 1.4.1
 
@@ -57,17 +58,19 @@ dependencies {
 
     // Forestry Testing
     compileOnly rfg.deobf("curse.maven:forestry-5.8.2.427-59751:7398359") // Forestry 5.8.2.427
-    // runtimeOnlyNonPublishable rfg.deobf("curse.maven:forestry-5.8.2.427-59751:7398359")
+//     runtimeOnlyNonPublishable rfg.deobf("curse.maven:forestry-5.8.2.427-59751:7398359")
 
     // Binnie's Mods Testing
     compileOnly rfg.deobf("curse.maven:binnies-mods-patched-2.5.1.213-899182:7731146") // Binnie's Mods Patched 2.5.1.213
     // runtimeOnlyNonPublishable rfg.deobf("curse.maven:binnies-mods-patched-2.5.1.213-899182:7731146")
 
+    // Optional mods
     runtimeOnlyNonPublishable rfg.deobf("curse.maven:baublelicious-1.4.0.4-223951:2532880") // Baublelicious 1.4.0.4
     runtimeOnlyNonPublishable rfg.deobf("curse.maven:storage-drawers-5.5.3-223852:5981297") // Storage Drawers 5.5.3
     runtimeOnlyNonPublishable rfg.deobf("curse.maven:tfc-rocks-plus-1.3.6-376298:3260513") // TFC Rocks+ 1.3.6
     runtimeOnlyNonPublishable rfg.deobf("curse.maven:firmalife-0.5.1-453394:3612887") // TFC Firmalife 0.5.1
-    runtimeOnlyNonPublishable rfg.deobf("curse.maven:tfc-metallum-1.4.8-1489345:7851380") // TFC Metallum 1.4.8
+
+    // Other mods dependancies
     runtimeOnlyNonPublishable rfg.deobf("curse.maven:jeids-1.0.4-snapshot-thin-296289:3581715") // Just Enough Ids 1.0.4-Snapshot-Thin
     runtimeOnlyNonPublishable rfg.deobf("curse.maven:mixin-bootstrap-1.1.0-357178:3437402") // Mixin Bootstrap 1.1.0
     runtimeOnlyNonPublishable rfg.deobf("curse.maven:redstone-flux-2.1.1.1-270789:2920436") // Redstone Flux 2.1.1.1

@@ -21,8 +21,7 @@ public class TerrafirmacraftCompat implements ICompatModule {
     @Override
     public List<String> dependencies() {
         return Arrays.asList(
-                Mods.TERRAFIRMACRAFT.ID,
-                Mods.TFC_METALLUM.ID);
+                Mods.TERRAFIRMACRAFT.ID);
     }
 
     @Override

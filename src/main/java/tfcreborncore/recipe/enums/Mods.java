@@ -24,6 +24,7 @@ public enum Mods {
     BINNIE_GENETICS("genetics"),
     OPEN_GLIDER("openglider"),
     WATER_FLASKS("waterflasks"),
+    APPLIED_ENERGISTICS_2("appliedenergistics2"),
     FORESTRY("forestry");
 
     public final String ID;

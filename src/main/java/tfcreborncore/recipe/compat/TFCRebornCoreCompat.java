@@ -52,7 +52,8 @@ public class TFCRebornCoreCompat implements ICompatModule {
                 Mods.EX_NIHILO_CREATIO.ID,
                 Mods.IMMERSIVE_ENGINEERING.ID,
                 Mods.THERMAL_FOUNDATION.ID,
-                Mods.FORESTRY.ID);
+                Mods.FORESTRY.ID,
+                Mods.APPLIED_ENERGISTICS_2.ID);
     }
 
     @Override

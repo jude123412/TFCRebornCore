@@ -1,5 +1,6 @@
 package tfcreborncore.recipe.compat;
 
+import static tfcreborncore.recipe.RecipeHelper.S;
 import static tfcreborncore.recipe.RecipeHelper.getItemStack;
 
 import java.util.Arrays;
@@ -15,6 +16,7 @@ import net.minecraftforge.oredict.OreDictionary;
 import tfcreborncore.recipe.ICompatModule;
 import tfcreborncore.recipe.RecipeHelper;
 import tfcreborncore.recipe.enums.Mods;
+import tfcreborncore.recipe.manager.ForestryRecipeManager;
 import tfcreborncore.recipe.manager.ImmersiveEngineeringRecipeManager;
 import tfcreborncore.recipe.manager.MinecraftRecipeManager;
 import tfcreborncore.recipe.manager.TerrafirmacraftRecipeManager;
@@ -25,7 +27,8 @@ public class MinecraftCompat implements ICompatModule {
     public List<String> dependencies() {
         return Arrays.asList(
                 Mods.EX_NIHILO_CREATIO.ID,
-                Mods.IMMERSIVE_ENGINEERING.ID);
+                Mods.IMMERSIVE_ENGINEERING.ID,
+                Mods.FORESTRY.ID);
     }
 
     @Override
@@ -119,5 +122,17 @@ public class MinecraftCompat implements ICompatModule {
                         RecipeHelper.getItemStack(Mods.MINECRAFT.ID, "blaze_powder", 0), 0.50F
                 },
                 1600);
+    }
+
+    @Override
+    public void registerForestryRecipes(FMLPostInitializationEvent r) {
+        // Paper
+        ForestryRecipeManager.addCarpenterRecipe(10 * S,
+                null,
+                RecipeHelper.getItemStack(Mods.MINECRAFT.ID, "paper"),
+                RecipeHelper.getFluidStack("fresh_water", 250),
+                "W",
+                "W",
+                'W', "dustWood");
     }
 }

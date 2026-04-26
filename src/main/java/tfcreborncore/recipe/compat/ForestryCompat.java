@@ -493,6 +493,25 @@ public class ForestryCompat implements ICompatModule {
                 'L', "stickLongIron",
                 'S', "stickWood");
 
+        // Carton
+        ForestryRecipeManager.addCarpenterRecipe(2 * S,
+                null,
+                RecipeHelper.getItemStack(Mods.FORESTRY.ID, "carton"),
+                RecipeHelper.getFluidStack("fresh_water", 1000),
+                " P ",
+                "P P",
+                " P ",
+                'P', "paper");
+
+        // Impregnated Stick
+        ForestryRecipeManager.addCarpenterRecipe(8 * S,
+                null,
+                RecipeHelper.getItemStack(Mods.FORESTRY.ID, "oak_stick", 0, 2),
+                RecipeHelper.getFluidStack("seed.oil", 100),
+                "L",
+                "L",
+                'L', "lumber");
+
         // Flexible Casing
         ForestryRecipeManager.addFabricatorRecipe(null,
                 RecipeHelper.getFluidStack("glass", 500),

@@ -832,6 +832,16 @@ public class ThermalExpansionCompat implements ICompatModule {
                 new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "quern/powder/basalz_powder"),
                 RecipeHelper.getIIngredient("rodBasalz"),
                 RecipeHelper.getItemStack(Mods.THERMAL_FOUNDATION.ID, "material", 2053, 2));
+
+        // Bio pulp
+        TerrafirmacraftRecipeManager.addQuernRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "bio_pulp"),
+                RecipeHelper.getIIngredient("treeLeaves"),
+                RecipeHelper.getItemStack(Mods.THERMAL_FOUNDATION.ID, "material", 816));
+        TerrafirmacraftRecipeManager.addQuernRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "bio_pulp_alt"),
+                RecipeHelper.getIIngredient("treeSapling"),
+                RecipeHelper.getItemStack(Mods.THERMAL_FOUNDATION.ID, "material", 816));
     }
 
     @Override
@@ -860,6 +870,24 @@ public class ThermalExpansionCompat implements ICompatModule {
                 RecipeHelper.getItemStack(Mods.THERMAL_FOUNDATION.ID, "material", 2053, 3),
                 new Object[] {
                         RecipeHelper.getItemStack(Mods.THERMAL_FOUNDATION.ID, "material", 2053), 0.50F
+                },
+                1600);
+
+        // Leaves Recycling
+        ImmersiveEngineeringRecipeManager.addCrusherRecipe(
+                "treeLeaves",
+                RecipeHelper.getItemStack(Mods.THERMAL_FOUNDATION.ID, "material", 816),
+                new Object[] {
+                        RecipeHelper.getItemStack(Mods.MINECRAFT.ID, "stick"), 0.25F
+                },
+                1600);
+
+        // Sapling Recycling
+        ImmersiveEngineeringRecipeManager.addCrusherRecipe(
+                "treeSapling",
+                RecipeHelper.getItemStack(Mods.THERMAL_FOUNDATION.ID, "material", 816),
+                new Object[] {
+                        RecipeHelper.getItemStack(Mods.MINECRAFT.ID, "stick"), 0.25F
                 },
                 1600);
     }

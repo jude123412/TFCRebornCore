@@ -24,7 +24,8 @@ public class ForestryCompat implements ICompatModule {
     public List<String> dependencies() {
         return Arrays.asList(
                 Mods.FORESTRY.ID,
-                Mods.IMMERSIVE_ENGINEERING.ID);
+                Mods.IMMERSIVE_ENGINEERING.ID,
+                Mods.TFC_DECORATION.ID);
     }
 
     @Override
@@ -511,6 +512,30 @@ public class ForestryCompat implements ICompatModule {
                 "L",
                 "L",
                 'L', "lumber");
+
+        // Mouldy Wheat
+        ForestryRecipeManager.addMoistenerFuelRecipe(
+                RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID, "food/wheat"),
+                RecipeHelper.getItemStack(Mods.FORESTRY.ID, "mouldy_wheat"),
+                1,
+                600
+        );
+
+        // Decaying Wheat
+        ForestryRecipeManager.addMoistenerFuelRecipe(
+                RecipeHelper.getItemStack(Mods.FORESTRY.ID, "mouldy_wheat"),
+                RecipeHelper.getItemStack(Mods.FORESTRY.ID, "decaying_wheat"),
+                1,
+                800
+        );
+
+        // Mulch Wheat
+        ForestryRecipeManager.addMoistenerFuelRecipe(
+                RecipeHelper.getItemStack(Mods.FORESTRY.ID, "decaying_wheat"),
+                RecipeHelper.getItemStack(Mods.FORESTRY.ID, "mulch"),
+                1,
+                1000
+        );
 
         // Flexible Casing
         ForestryRecipeManager.addFabricatorRecipe(null,

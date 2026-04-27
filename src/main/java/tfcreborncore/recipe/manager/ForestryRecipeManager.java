@@ -1,5 +1,10 @@
 package tfcreborncore.recipe.manager;
 
+import com.cleanroommc.groovyscript.core.mixin.forestry.MoistenerRecipeManagerAccessor;
+import forestry.api.fuels.FuelManager;
+import forestry.api.fuels.MoistenerFuel;
+import forestry.api.recipes.IMoistenerRecipe;
+import forestry.factory.recipes.MoistenerRecipe;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 
@@ -14,6 +19,7 @@ import forestry.factory.recipes.CarpenterRecipe;
 import forestry.factory.recipes.FabricatorRecipe;
 import forestry.factory.recipes.FabricatorSmeltingRecipe;
 import forestry.factory.recipes.FabricatorSmeltingRecipeManager;
+import tfcreborncore.recipe.ExceptionHelper;
 
 public class ForestryRecipeManager {
 
@@ -132,5 +138,66 @@ public class ForestryRecipeManager {
 
         IFabricatorSmeltingRecipe recipe = new FabricatorSmeltingRecipe(input, result, meltingPoint);
         FabricatorSmeltingRecipeManager.recipes.add(recipe);
+    }
+
+    /**
+     * Removes all Forestry Moistener recipes.
+     * <p>
+     * This clears the internal recipe list accessed through
+     * {@link MoistenerRecipeManagerAccessor#getRecipes()}, removing all default
+     * and mod‑added Moistener recipes. Use this when replacing or rebuilding the
+     * entire Moistener processing set.
+     */
+    public static void removeAllMoistenerRecipes() {
+        MoistenerRecipeManagerAccessor.getRecipes().clear();
+        FuelManager.moistenerResource.clear();
+    }
+
+    /**
+     * Registers a new Forestry Moistener item-processing recipe.
+     *
+     * Moistener recipes define how an input item slowly transforms into another
+     * item over time inside the Moistener. This method validates the input and
+     * output stacks, creates a {@link MoistenerRecipe} with the specified
+     * processing time (converted to milliseconds), and adds it directly to the
+     * Moistener recipe list via {@link MoistenerRecipeManagerAccessor#getRecipes()}.
+     *
+     * @param input   The item to be processed inside the Moistener.
+     * @param result  The resulting item produced after moistening completes.
+     * @param time    The processing time (in ticks) before the transformation finishes.
+     */
+    public static void addMoistenerRecipe(ItemStack input,
+                                          ItemStack result,
+                                          int time) {
+        ExceptionHelper.requireNonEmpty(input, "Moistener recipe input cannot be null or empty!");
+        ExceptionHelper.requireNonEmpty(result, "Moistener recipe result cannot be null or empty!");
+        ExceptionHelper.requireNonZero(time, "Moistener recipe time cannot be 0!");
+
+        IMoistenerRecipe recipe = new MoistenerRecipe(input, result, time * 1000);
+        MoistenerRecipeManagerAccessor.getRecipes().add(recipe);
+    }
+
+    /**
+     * Registers a new Forestry Moistener fuel entry.
+     *
+     * Moistener fuel determines how the machine progresses through its internal
+     * stages. Each fuel item contributes a specific amount of progress and may
+     * transform into a resulting item when consumed. This method validates the
+     * inputs, creates a {@link MoistenerFuel} instance, and registers it into
+     * {@link FuelManager#moistenerResource}.
+     *
+     * @param input          The fuel item consumed by the Moistener.
+     * @param result         The resulting item produced after the fuel is consumed.
+     * @param stage          The Moistener stage this fuel contributes toward.
+     * @param moistenerValue The amount of progress added by the fuel.
+     */
+    public static void addMoistenerFuelRecipe(ItemStack input, ItemStack result, int stage, int moistenerValue) {
+        ExceptionHelper.requireNonEmpty(input, "Moistener recipe input cannot be null or empty!");
+        ExceptionHelper.requireNonEmpty(result, "Moistener recipe result cannot be null or empty!");
+        ExceptionHelper.requireNonZero(stage, "Moistener recipe stage cannot be 0!");
+        ExceptionHelper.requireNonZero(moistenerValue, "Moistener value cannot be 0!");
+
+        MoistenerFuel fuel = new MoistenerFuel(input, result, stage, moistenerValue);
+        FuelManager.moistenerResource.put(input, fuel);
     }
 }

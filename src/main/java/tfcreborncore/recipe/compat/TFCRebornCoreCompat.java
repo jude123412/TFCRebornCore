@@ -128,6 +128,8 @@ public class TFCRebornCoreCompat implements ICompatModule {
         ForestryRecipeManager.removeAllCarpenterRecipes();
         // Thermionic Fabricator
         ForestryRecipeManager.removeAllFabricatorRecipes();
+        // Moistener
+        ForestryRecipeManager.removeAllMoistenerRecipes();
     }
 
     @Override

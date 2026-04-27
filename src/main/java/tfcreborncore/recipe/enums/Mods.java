@@ -25,6 +25,7 @@ public enum Mods {
     OPEN_GLIDER("openglider"),
     WATER_FLASKS("waterflasks"),
     APPLIED_ENERGISTICS_2("appliedenergistics2"),
+    TFC_DECORATION("tfc_decoration"),
     FORESTRY("forestry");
 
     public final String ID;

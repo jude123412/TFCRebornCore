@@ -585,10 +585,40 @@ public class ForestryCompat implements ICompatModule {
                 "HPH",
                 "PCP",
                 "GPG",
-                "H", "dropHoney",
-                "P", "itemPollen",
-                "C", RecipeHelper.getItemStack(Mods.FORESTRY.ID, "can"),
-                "G", "dustGunpowder");
+                'H', "dropHoney",
+                'P', "itemPollen",
+                'C', RecipeHelper.getItemStack(Mods.FORESTRY.ID, "can"),
+                'G', "dustGunpowder");
+
+        // Analyzer
+        ForestryRecipeManager.addCarpenterRecipe(
+                15 * S,
+                null,
+                RecipeHelper.getItemStack(Mods.FORESTRY.ID, "analyzer", 0),
+                RecipeHelper.getFluidStack("latex", 1000),
+                "BAB",
+                "SCS",
+                "BSB",
+                'B', "screwAnyBronze",
+                'A', RecipeHelper.getItemStack(Mods.FORESTRY.ID, "portable_alyzer"),
+                'S', "sheetAluminium",
+                'C', RecipeHelper.getItemStack(Mods.FORESTRY.ID, "sturdy_machine")
+        );
+
+        // Escritoire
+        ForestryRecipeManager.addCarpenterRecipe(
+                10 * S,
+                null,
+                RecipeHelper.getItemStack(Mods.FORESTRY.ID, "escritoire", 0),
+                RecipeHelper.getFluidStack("seed.oil", 500),
+                "P  ",
+                "LLL",
+                "S S",
+                'P', "plankWood",
+                'L', "lumber",
+                'S', "stickWood"
+
+        );
 
         // Mouldy Wheat
         ForestryRecipeManager.addMoistenerFuelRecipe(

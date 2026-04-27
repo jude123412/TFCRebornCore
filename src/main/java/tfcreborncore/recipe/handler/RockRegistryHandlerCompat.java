@@ -24,11 +24,20 @@ public class RockRegistryHandlerCompat implements ICompatModule {
     @Override
     public void registerForestryRecipes(FMLPostInitializationEvent r) {
         for (Rock rock : TFCRegistries.ROCKS) {
+            // Mossy Bricks
             ForestryRecipeManager.addMoistenerRecipe(
                     RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID,
                             "bricks/" + rock.getRegistryName().getPath().toLowerCase()),
                     RecipeHelper.getItemStack(Mods.TFC_DECORATION.ID,
                             "mossy_bricks/" + rock.getRegistryName().getPath().toLowerCase()),
+                    8);
+
+            // Mossy Cobble
+            ForestryRecipeManager.addMoistenerRecipe(
+                    RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID,
+                            "cobble/" + rock.getRegistryName().getPath().toLowerCase()),
+                    RecipeHelper.getItemStack(Mods.TFC_DECORATION.ID,
+                            "mossy_cobble/" + rock.getRegistryName().getPath().toLowerCase()),
                     8);
         }
     }

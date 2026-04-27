@@ -525,14 +525,14 @@ public class ForestryCompat implements ICompatModule {
         ForestryRecipeManager.addMoistenerFuelRecipe(
                 RecipeHelper.getItemStack(Mods.FORESTRY.ID, "mouldy_wheat"),
                 RecipeHelper.getItemStack(Mods.FORESTRY.ID, "decaying_wheat"),
-                1,
+                2,
                 800);
 
         // Mulch Wheat
         ForestryRecipeManager.addMoistenerFuelRecipe(
                 RecipeHelper.getItemStack(Mods.FORESTRY.ID, "decaying_wheat"),
                 RecipeHelper.getItemStack(Mods.FORESTRY.ID, "mulch"),
-                1,
+                3,
                 1000);
 
         // Flexible Casing

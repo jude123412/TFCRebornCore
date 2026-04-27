@@ -11,8 +11,8 @@ public class ExceptionHelper {
      * registration. If the stack is {@code null} or {@link ItemStack#isEmpty()},
      * an {@link IllegalArgumentException} is thrown with the provided message.
      *
-     * @param item     The item stack to validate.
-     * @param message  The exception message to use if validation fails.
+     * @param item    The item stack to validate.
+     * @param message The exception message to use if validation fails.
      */
     public static void requireNonEmpty(ItemStack item, String message) {
         if (item == null || item.isEmpty())
@@ -27,8 +27,8 @@ public class ExceptionHelper {
      * zero, an {@link IllegalArgumentException} is thrown with the provided
      * message.
      *
-     * @param number   The number to validate.
-     * @param message  The exception message to use if validation fails.
+     * @param number  The number to validate.
+     * @param message The exception message to use if validation fails.
      */
     public static void requireNonZero(int number, String message) {
         if (number == 0)

@@ -518,24 +518,21 @@ public class ForestryCompat implements ICompatModule {
                 RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID, "food/wheat"),
                 RecipeHelper.getItemStack(Mods.FORESTRY.ID, "mouldy_wheat"),
                 1,
-                600
-        );
+                600);
 
         // Decaying Wheat
         ForestryRecipeManager.addMoistenerFuelRecipe(
                 RecipeHelper.getItemStack(Mods.FORESTRY.ID, "mouldy_wheat"),
                 RecipeHelper.getItemStack(Mods.FORESTRY.ID, "decaying_wheat"),
                 1,
-                800
-        );
+                800);
 
         // Mulch Wheat
         ForestryRecipeManager.addMoistenerFuelRecipe(
                 RecipeHelper.getItemStack(Mods.FORESTRY.ID, "decaying_wheat"),
                 RecipeHelper.getItemStack(Mods.FORESTRY.ID, "mulch"),
                 1,
-                1000
-        );
+                1000);
 
         // Flexible Casing
         ForestryRecipeManager.addFabricatorRecipe(null,

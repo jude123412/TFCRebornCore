@@ -1,24 +1,24 @@
 package tfcreborncore.recipe.manager;
 
-import com.cleanroommc.groovyscript.core.mixin.forestry.MoistenerRecipeManagerAccessor;
-import forestry.api.fuels.FuelManager;
-import forestry.api.fuels.MoistenerFuel;
-import forestry.api.recipes.IMoistenerRecipe;
-import forestry.factory.recipes.MoistenerRecipe;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 
 import com.cleanroommc.groovyscript.core.mixin.forestry.CarpenterRecipeManagerAccessor;
 import com.cleanroommc.groovyscript.core.mixin.forestry.FabricatorRecipeManagerAccessor;
+import com.cleanroommc.groovyscript.core.mixin.forestry.MoistenerRecipeManagerAccessor;
 
+import forestry.api.fuels.FuelManager;
+import forestry.api.fuels.MoistenerFuel;
 import forestry.api.recipes.ICarpenterRecipe;
 import forestry.api.recipes.IFabricatorRecipe;
 import forestry.api.recipes.IFabricatorSmeltingRecipe;
+import forestry.api.recipes.IMoistenerRecipe;
 import forestry.core.recipes.ShapedRecipeCustom;
 import forestry.factory.recipes.CarpenterRecipe;
 import forestry.factory.recipes.FabricatorRecipe;
 import forestry.factory.recipes.FabricatorSmeltingRecipe;
 import forestry.factory.recipes.FabricatorSmeltingRecipeManager;
+import forestry.factory.recipes.MoistenerRecipe;
 import tfcreborncore.recipe.ExceptionHelper;
 
 public class ForestryRecipeManager {
@@ -162,9 +162,9 @@ public class ForestryRecipeManager {
      * processing time (converted to milliseconds), and adds it directly to the
      * Moistener recipe list via {@link MoistenerRecipeManagerAccessor#getRecipes()}.
      *
-     * @param input   The item to be processed inside the Moistener.
-     * @param result  The resulting item produced after moistening completes.
-     * @param time    The processing time (in ticks) before the transformation finishes.
+     * @param input  The item to be processed inside the Moistener.
+     * @param result The resulting item produced after moistening completes.
+     * @param time   The processing time (in ticks) before the transformation finishes.
      */
     public static void addMoistenerRecipe(ItemStack input,
                                           ItemStack result,

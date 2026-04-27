@@ -30,7 +30,7 @@ public class RockRegistryHandlerCompat implements ICompatModule {
                             "bricks/" + rock.getRegistryName().getPath().toLowerCase()),
                     RecipeHelper.getItemStack(Mods.TFC_DECORATION.ID,
                             "mossy_bricks/" + rock.getRegistryName().getPath().toLowerCase()),
-                    8);
+                    20);
 
             // Mossy Cobble
             ForestryRecipeManager.addMoistenerRecipe(
@@ -38,6 +38,14 @@ public class RockRegistryHandlerCompat implements ICompatModule {
                             "cobble/" + rock.getRegistryName().getPath().toLowerCase()),
                     RecipeHelper.getItemStack(Mods.TFC_DECORATION.ID,
                             "mossy_cobble/" + rock.getRegistryName().getPath().toLowerCase()),
+                    20);
+
+            // Grass
+            ForestryRecipeManager.addMoistenerRecipe(
+                    RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID,
+                            "dirt/" + rock.getRegistryName().getPath().toLowerCase()),
+                    RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID,
+                            "grass/" + rock.getRegistryName().getPath().toLowerCase()),
                     8);
         }
     }

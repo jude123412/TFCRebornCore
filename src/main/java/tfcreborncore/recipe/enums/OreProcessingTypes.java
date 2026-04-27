@@ -43,8 +43,6 @@ public enum OreProcessingTypes {
     private final String productB;
     private final String productC;
     private final int oreColor;
-    private final Ore ore;
-    private final Metal metal;
 
     // ---------------------------------------------------------------------
     // Constructor
@@ -55,8 +53,6 @@ public enum OreProcessingTypes {
         this.productB = productB;
         this.productC = productC;
         this.oreColor = oreColor;
-        this.ore = TFCRegistries.ORES.getValue(new ResourceLocation(Mods.TERRAFIRMACRAFT.ID, name().toLowerCase()));
-        this.metal = TFCRegistries.METALS.getValue(new ResourceLocation(Mods.TERRAFIRMACRAFT.ID, productB));
     }
 
     // ---------------------------------------------------------------------
@@ -84,10 +80,10 @@ public enum OreProcessingTypes {
     }
 
     public Ore getOre() {
-        return this.ore;
+        return TFCRegistries.ORES.getValue(new ResourceLocation(Mods.TERRAFIRMACRAFT.ID, name().toLowerCase()));
     }
 
     public Metal getMetal() {
-        return this.metal;
+        return TFCRegistries.METALS.getValue(new ResourceLocation(Mods.TERRAFIRMACRAFT.ID, productB));
     }
 }

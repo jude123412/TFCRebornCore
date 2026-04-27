@@ -73,19 +73,21 @@ public class RCItems {
 
         ImmutableList.Builder<Item> oreItems = ImmutableList.builder();
         for (OreProcessingTypes processingType : OreProcessingTypes.values()) {
-            if (processingType.getOre().isGraded()) {
-                for (ItemRCOreType type : ItemRCOreType.values()) {
-                    String base = "ore/" + type.toString().toLowerCase() + "/" +
-                            processingType.getOre().getRegistryName().getPath().toLowerCase();
-                    Item oreType = register(registry, base,
-                            ItemRCOreType.Create(processingType, type),
-                            CreativeTabsRC.CT_ITEMS);
+            if (processingType.getOre() != null) {
+                if (processingType.getOre().isGraded()) {
+                    for (ItemRCOreType type : ItemRCOreType.values()) {
+                        String base = "ore/" + type.toString().toLowerCase() + "/" +
+                                processingType.getOre().getRegistryName().getPath().toLowerCase();
+                        Item oreType = register(registry, base,
+                                ItemRCOreType.Create(processingType, type),
+                                CreativeTabsRC.CT_ITEMS);
 
-                    ItemRCOre ItemType = (ItemRCOre) oreType;
-                    String path = ItemType.getOre().getRegistryName().getPath().toLowerCase();
-                    OreDictionary.registerOre(toPascalCaseAlt(type.toString().toLowerCase()) + toPascalCase(path),
-                            ItemType);
-                    oreItems.add(oreType);
+                        ItemRCOre ItemType = (ItemRCOre) oreType;
+                        String path = ItemType.getOre().getRegistryName().getPath().toLowerCase();
+                        OreDictionary.registerOre(toPascalCaseAlt(type.toString().toLowerCase()) + toPascalCase(path),
+                                ItemType);
+                        oreItems.add(oreType);
+                    }
                 }
             }
         }

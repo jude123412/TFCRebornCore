@@ -40,7 +40,6 @@
 dependencies {
     implementation rfg.deobf("curse.maven:terrafirmacraft-1.7.23.181-302973:3645502") // TFC 1.7.23.181
     implementation rfg.deobf("curse.maven:tfc-tech-unofficial-1.2.16-340660:3209033") // TFC Tech Unofficial 1.2.16
-    implementation rfg.deobf("curse.maven:tfc-metallum-1.4.8-1489345:7851380") // TFC Metallum 1.4.8
     implementation rfg.deobf("curse.maven:immersive-engineering-0.12.98-231951:2974106") // Immersive Engineering 0.12.98
     implementation rfg.deobf("curse.maven:groovy-script-1.4.1-687577:7813868") // Groovy Script 1.4.1
 
@@ -69,6 +68,7 @@ dependencies {
     // runtimeOnlyNonPublishable rfg.deobf("curse.maven:storage-drawers-5.5.3-223852:5981297") // Storage Drawers 5.5.3
     // runtimeOnlyNonPublishable rfg.deobf("curse.maven:tfc-rocks-plus-1.3.6-376298:3260513") // TFC Rocks+ 1.3.6
     // runtimeOnlyNonPublishable rfg.deobf("curse.maven:firmalife-0.5.1-453394:3612887") // TFC Firmalife 0.5.1
+    // runtimeOnlyNonPublishable rfg.deobf("curse.maven:tfc-metallum-1.4.8-1489345:7851380") // TFC Metallum 1.4.8
 
     // Other mods dependancies
     runtimeOnlyNonPublishable rfg.deobf("curse.maven:jeids-1.0.4-snapshot-thin-296289:3581715") // Just Enough Ids 1.0.4-Snapshot-Thin

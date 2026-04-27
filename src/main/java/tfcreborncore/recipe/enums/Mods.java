@@ -1,5 +1,7 @@
 package tfcreborncore.recipe.enums;
 
+import net.minecraftforge.fml.common.Loader;
+
 public enum Mods {
 
     EX_NIHILO_CREATIO("exnihilocreatio"),
@@ -36,6 +38,10 @@ public enum Mods {
     }
 
     public final String getName() {
-        return ID;
+        return this.ID;
+    }
+
+    public final boolean isModLoaded() {
+        return Loader.isModLoaded(this.ID);
     }
 }

@@ -9,7 +9,6 @@ import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
-import net.minecraftforge.oredict.OreDictionary;
 
 import tfcreborncore.recipe.ICompatModule;
 import tfcreborncore.recipe.RecipeHelper;
@@ -17,6 +16,7 @@ import tfcreborncore.recipe.enums.Mods;
 import tfcreborncore.recipe.manager.ForestryRecipeManager;
 import tfcreborncore.recipe.manager.MinecraftRecipeManager;
 import tfcreborncore.recipe.manager.TerrafirmacraftRecipeManager;
+import tfcreborncore.recipe.manager.builders.TFCFoodBuilder;
 
 public class ForestryCompat implements ICompatModule {
 
@@ -27,15 +27,6 @@ public class ForestryCompat implements ICompatModule {
                 Mods.IMMERSIVE_ENGINEERING.ID,
                 Mods.TFC_METALLUM.ID,
                 Mods.TFC_DECORATION.ID);
-    }
-
-    @Override
-    public void registerOreDictionaries(RegistryEvent.Register<IRecipe> r) {
-        // Sweetener
-        OreDictionary.registerOre("sweetener",
-                RecipeHelper.getItemStack("forestry", "honey_drop"));
-        OreDictionary.registerOre("sweetener",
-                RecipeHelper.getItemStack("forestry", "honeydew"));
     }
 
     @Override
@@ -285,8 +276,80 @@ public class ForestryCompat implements ICompatModule {
     @Override
     public void registerItemModification(FMLPostInitializationEvent r) {
         // Honeyed Slice
-        TerrafirmacraftRecipeManager.addItemFoodStats(RecipeHelper.getItemStack(Mods.FORESTRY.ID, "honeyed_slice"), 4,
-                0, 2, 1, 1, 0, 0, 0, 0);
+        TFCFoodBuilder.create()
+                .item(RecipeHelper.getItemStack(Mods.FORESTRY.ID, "honeyed_slice"))
+                .hunger(4)
+                .saturation(2)
+                .decay(1)
+                .grain(1)
+                .register();
+
+        // Cherry
+        TFCFoodBuilder.create()
+                .item(RecipeHelper.getItemStack(Mods.FORESTRY.ID, "fruits", 0))
+                .hunger(2)
+                .water(5.0F)
+                .saturation(0.2F)
+                .decay(4.0F)
+                .fruit(1.0F)
+                .register();
+        // Walnut
+        TFCFoodBuilder.create()
+                .item(RecipeHelper.getItemStack(Mods.FORESTRY.ID, "fruits", 1))
+                .hunger(2)
+                .saturation(0.1F)
+                .decay(0.4F)
+                .grain(0.1F)
+                .register();
+
+        // Chestnut
+        TFCFoodBuilder.create()
+                .item(RecipeHelper.getItemStack(Mods.FORESTRY.ID, "fruits", 2))
+                .hunger(2)
+                .saturation(0.1F)
+                .decay(0.4F)
+                .grain(0.1F)
+                .register();
+
+        // Lemon
+        TFCFoodBuilder.create()
+                .item(RecipeHelper.getItemStack(Mods.FORESTRY.ID, "fruits", 3))
+                .hunger(2)
+                .water(5.0F)
+                .saturation(0.2F)
+                .decay(2.0F)
+                .fruit(0.8F)
+                .register();
+
+        // Plum
+        TFCFoodBuilder.create()
+                .item(RecipeHelper.getItemStack(Mods.FORESTRY.ID, "fruits", 4))
+                .hunger(2)
+                .water(5.0F)
+                .saturation(0.4F)
+                .decay(2.86f)
+                .fruit(0.8F)
+                .register();
+
+        // Date
+        TFCFoodBuilder.create()
+                .item(RecipeHelper.getItemStack(Mods.FORESTRY.ID, "fruits", 5))
+                .hunger(2)
+                .water(5.0F)
+                .saturation(0.4F)
+                .decay(2.1F)
+                .fruit(0.4F)
+                .register();
+
+        // Papaya
+        TFCFoodBuilder.create()
+                .item(RecipeHelper.getItemStack(Mods.FORESTRY.ID, "fruits", 6))
+                .hunger(2)
+                .water(5.0F)
+                .saturation(0.4F)
+                .decay(1.6F)
+                .fruit(1.2F)
+                .register();
     }
 
     @Override
@@ -513,6 +576,19 @@ public class ForestryCompat implements ICompatModule {
                 "L",
                 "L",
                 'L', "lumber");
+
+        // Iodine Capsule
+        ForestryRecipeManager.addCarpenterRecipe(15 * S,
+                null,
+                RecipeHelper.getItemStack(Mods.FORESTRY.ID, "iodine_capsule"),
+                RecipeHelper.getFluidStack("fresh_water", 1000),
+                "HPH",
+                "PCP",
+                "GPG",
+                "H", "dropHoney",
+                "P", "itemPollen",
+                "C", RecipeHelper.getItemStack(Mods.FORESTRY.ID, "can"),
+                "G", "dustGunpowder");
 
         // Mouldy Wheat
         ForestryRecipeManager.addMoistenerFuelRecipe(

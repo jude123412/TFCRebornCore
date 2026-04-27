@@ -43,9 +43,6 @@ public class TFCRebornCoreCompat implements ICompatModule {
     }
 
     @Override
-    public void registerOreDictionaries(RegistryEvent.Register<IRecipe> r) {}
-
-    @Override
     public void registerRecipeRemoval(FMLPostInitializationEvent r) {
         // Terrafirmacraft
         // Quern

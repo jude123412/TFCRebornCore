@@ -11,7 +11,6 @@ import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
-import net.minecraftforge.oredict.OreDictionary;
 
 import tfcreborncore.recipe.ICompatModule;
 import tfcreborncore.recipe.RecipeHelper;
@@ -29,19 +28,6 @@ public class MinecraftCompat implements ICompatModule {
                 Mods.EX_NIHILO_CREATIO.ID,
                 Mods.IMMERSIVE_ENGINEERING.ID,
                 Mods.FORESTRY.ID);
-    }
-
-    @Override
-    public void registerOreDictionaries(RegistryEvent.Register<IRecipe> r) {
-        // GemEnder
-        OreDictionary.registerOre("gemEnder",
-                RecipeHelper.getItemStack(Mods.MINECRAFT.ID, "ender_pearl"));
-        // GemEnderEye
-        OreDictionary.registerOre("gemEnderEye",
-                RecipeHelper.getItemStack(Mods.MINECRAFT.ID, "ender_eye"));
-        // DustGunpowder
-        OreDictionary.registerOre("dustGunpowder",
-                RecipeHelper.getItemStack(Mods.MINECRAFT.ID, "gunpowder"));
     }
 
     @Override

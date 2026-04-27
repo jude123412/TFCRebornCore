@@ -13,6 +13,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import tfcreborncore.Tags;
 import tfcreborncore.objects.RCItems;
 import tfcreborncore.recipe.CompatManager;
+import tfcreborncore.recipe.OreDictionaryLoader;
 import tfcreborncore.recipe.manager.MinecraftRecipeManager;
 
 @Mod.EventBusSubscriber(modid = Tags.MODID)
@@ -27,6 +28,7 @@ public class Proxy {
 
     @SubscribeEvent(priority = EventPriority.LOW)
     public static void registerRecipes(RegistryEvent.Register<IRecipe> event) {
+        OreDictionaryLoader.register();
         CompatManager.loadOreDictionaries(event);
         CompatManager.loadCraftingRecipes(event);
         MinecraftRecipeManager.RECIPE_LIST.forEach(event.getRegistry()::register);

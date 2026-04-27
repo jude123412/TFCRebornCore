@@ -4,9 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Supplier;
 
-import net.dries007.tfc.api.capability.food.CapabilityFood;
-import net.dries007.tfc.api.capability.food.FoodData;
-import net.dries007.tfc.api.capability.food.FoodHandler;
 import net.dries007.tfc.api.capability.forge.ForgeableHeatableHandler;
 import net.dries007.tfc.api.capability.heat.CapabilityItemHeat;
 import net.dries007.tfc.api.capability.heat.ItemHeatHandler;
@@ -105,33 +102,6 @@ public class TerrafirmacraftRecipeManager {
             CapabilityItemHeat.CUSTOM_ITEMS.computeIfAbsent(IIngredient.of(inputStack),
                     k -> (Supplier) () -> new ItemHeatHandler(null, heatCapacity, meltTemperature));
         }
-    }
-
-    /**
-     * Registers custom food statistics for a specific {@link ItemStack} in TFC.
-     * <p>
-     * This assigns a {@link FoodHandler} containing a {@link FoodData} instance
-     * that defines the nutritional profile, decay rate, and hydration value of
-     * the item. The mapping is stored in {@link CapabilityFood#CUSTOM_FOODS}
-     * using an {@link IIngredient} wrapper as the lookup key.
-     *
-     * @param inputStack The food item to assign nutritional data to.
-     * @param hunger     The hunger value restored by the food.
-     * @param water      The amount of water restored.
-     * @param saturation The saturation modifier.
-     * @param decay      The decay rate of the food.
-     * @param grain      Grain nutrition value.
-     * @param vegtable   Vegetable nutrition value.
-     * @param fruit      Fruit nutrition value.
-     * @param protein    Protein nutrition value.
-     * @param dairy      Dairy nutrition value.
-     */
-    @SuppressWarnings("unchecked")
-    public static void addItemFoodStats(ItemStack inputStack, int hunger, float water, float saturation, float decay,
-                                        float grain, float vegtable, float fruit, float protein, float dairy) {
-        CapabilityFood.CUSTOM_FOODS.put(IIngredient.of(inputStack), (Supplier) () -> new FoodHandler(
-                null,
-                new FoodData(hunger, water, saturation, grain, fruit, vegtable, protein, dairy, decay)));
     }
 
     /**

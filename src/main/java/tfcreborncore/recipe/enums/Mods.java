@@ -26,6 +26,7 @@ public enum Mods {
     WATER_FLASKS("waterflasks"),
     APPLIED_ENERGISTICS_2("appliedenergistics2"),
     TFC_DECORATION("tfc_decoration"),
+    TFC_ROCKS_PLUS("tfc_rocksplus"),
     FORESTRY("forestry");
 
     public final String ID;

@@ -21,6 +21,7 @@ import tfcreborncore.recipe.compat.ThermalExpansionCompat;
 import tfcreborncore.recipe.compat.WaterFlasksCompat;
 import tfcreborncore.recipe.handler.MetalRegistryHandlerCompat;
 import tfcreborncore.recipe.handler.OreRegistryHandlerCompat;
+import tfcreborncore.recipe.handler.RockRegistryHandlerCompat;
 
 public final class CompatManager {
 
@@ -41,6 +42,7 @@ public final class CompatManager {
         modules.add(new WaterFlasksCompat());
         modules.add(new OreRegistryHandlerCompat());
         modules.add(new MetalRegistryHandlerCompat());
+        modules.add(new RockRegistryHandlerCompat());
     }
 
     public static void loadOreDictionaries(RegistryEvent.Register<IRecipe> event) {

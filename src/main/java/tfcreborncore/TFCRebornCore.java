@@ -31,7 +31,6 @@ public class TFCRebornCore {
         // register to the event bus so that we can listen to events
         MinecraftForge.EVENT_BUS.register(this);
         LOGGER.info("I am " + Tags.MODNAME + " + at version " + Tags.VERSION);
-        CompatManager.init();
 
         // Register Loot Tables
         for (LootTables table : LootTables.values()) LootTableList.register(table.getResourceLocation());
@@ -51,7 +50,9 @@ public class TFCRebornCore {
 
     @EventHandler
     // load "Do your mod setup. Build whatever data structures you care about." (Remove if not needed)
-    public void init(FMLInitializationEvent event) {}
+    public void init(FMLInitializationEvent event) {
+        CompatManager.init();
+    }
 
     @EventHandler
     // postInit "Handle interaction with other mods, complete your setup based on this." (Remove if not needed)

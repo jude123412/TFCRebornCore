@@ -602,8 +602,7 @@ public class ForestryCompat implements ICompatModule {
                 'B', "screwAnyBronze",
                 'A', RecipeHelper.getItemStack(Mods.FORESTRY.ID, "portable_alyzer"),
                 'S', "sheetAluminium",
-                'C', RecipeHelper.getItemStack(Mods.FORESTRY.ID, "sturdy_machine")
-        );
+                'C', RecipeHelper.getItemStack(Mods.FORESTRY.ID, "sturdy_machine"));
 
         // Escritoire
         ForestryRecipeManager.addCarpenterRecipe(

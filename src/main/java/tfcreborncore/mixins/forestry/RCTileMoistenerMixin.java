@@ -2,7 +2,6 @@ package tfcreborncore.mixins.forestry;
 
 import net.dries007.tfc.objects.fluids.FluidsTFC;
 import net.minecraftforge.fluids.Fluid;
-import net.minecraftforge.fluids.FluidRegistry;
 
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
@@ -25,6 +24,6 @@ public class RCTileMoistenerMixin {
     // Allow TFC Fresh water to work for moistener
     @Inject(method = "<init>", at = @At("RETURN"))
     private void afterInit(CallbackInfo ci) {
-        this.resourceTank.setFilters(new Fluid[] { FluidRegistry.WATER, FluidsTFC.FRESH_WATER.get() });
+        this.resourceTank.setFilters(new Fluid[] { FluidsTFC.FRESH_WATER.get() });
     }
 }

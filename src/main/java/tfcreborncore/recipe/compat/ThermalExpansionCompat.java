@@ -125,7 +125,7 @@ public class ThermalExpansionCompat implements ICompatModule {
                 " ST",
                 'R', RecipeHelper.getItemStack(Mods.THERMAL_FOUNDATION.ID, "material", 513),
                 'S', "sheetGold",
-                'C', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/rf_control_circuit"),
+                'C', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/rf_control_circuit"),
                 'T', RecipeHelper.getItemStack(Mods.THERMAL_FOUNDATION.ID, "material", 514));
 
         // Drill Head

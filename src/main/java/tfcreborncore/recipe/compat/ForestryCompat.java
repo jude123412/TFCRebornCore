@@ -108,8 +108,8 @@ public class ForestryCompat implements ICompatModule {
                 "PSP",
                 'G', "gearAnyBronze",
                 'S', "sheetAnyBronze",
-                'C', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/rf_control_circuit"),
-                'P', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/brass_piston"));
+                'C', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/rf_control_circuit"),
+                'P', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/brass_piston"));
 
         // Peat Brick
         MinecraftRecipeManager.addShapelessRecipe(
@@ -147,7 +147,7 @@ public class ForestryCompat implements ICompatModule {
                 "H",
                 "G",
                 "B",
-                'H', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/electron_tube_housing"),
+                'H', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/electron_tube_housing"),
                 'G', "slimeball",
                 'B', "electronTubeBaseCopper");
 
@@ -158,7 +158,7 @@ public class ForestryCompat implements ICompatModule {
                 "H",
                 "G",
                 "B",
-                'H', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/electron_tube_housing"),
+                'H', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/electron_tube_housing"),
                 'G', "slimeball",
                 'B', "electronTubeBaseTin");
 
@@ -169,7 +169,7 @@ public class ForestryCompat implements ICompatModule {
                 "H",
                 "G",
                 "B",
-                'H', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/electron_tube_housing"),
+                'H', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/electron_tube_housing"),
                 'G', "slimeball",
                 'B', "electronTubeBaseBronze");
 
@@ -180,7 +180,7 @@ public class ForestryCompat implements ICompatModule {
                 "H",
                 "G",
                 "B",
-                'H', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/electron_tube_housing"),
+                'H', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/electron_tube_housing"),
                 'G', "slimeball",
                 'B', "electronTubeBaseIron");
 
@@ -191,7 +191,7 @@ public class ForestryCompat implements ICompatModule {
                 "H",
                 "G",
                 "B",
-                'H', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/electron_tube_housing"),
+                'H', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/electron_tube_housing"),
                 'G', "slimeball",
                 'B', "electronTubeBaseGold");
 
@@ -202,7 +202,7 @@ public class ForestryCompat implements ICompatModule {
                 "H",
                 "G",
                 "B",
-                'H', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/electron_tube_housing"),
+                'H', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/electron_tube_housing"),
                 'G', "slimeball",
                 'B', "electronTubeBaseMithril");
 
@@ -213,7 +213,7 @@ public class ForestryCompat implements ICompatModule {
                 "H",
                 "G",
                 "B",
-                'H', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/electron_tube_housing"),
+                'H', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/electron_tube_housing"),
                 'G', "slimeball",
                 'B', "electronTubeBaseBlackBronze");
 
@@ -224,7 +224,7 @@ public class ForestryCompat implements ICompatModule {
                 "H",
                 "G",
                 "B",
-                'H', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/electron_tube_housing"),
+                'H', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/electron_tube_housing"),
                 'G', "slimeball",
                 'B', "electronTubeBaseRoseGold");
 
@@ -235,7 +235,7 @@ public class ForestryCompat implements ICompatModule {
                 "H",
                 "G",
                 "B",
-                'H', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/electron_tube_housing"),
+                'H', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/electron_tube_housing"),
                 'G', "slimeball",
                 'B', "electronTubeBaseBismuthBronze");
 
@@ -246,7 +246,7 @@ public class ForestryCompat implements ICompatModule {
                 "H",
                 "G",
                 "B",
-                'H', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/electron_tube_housing"),
+                'H', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/electron_tube_housing"),
                 'G', "slimeball",
                 'B', "electronTubeBaseCobalt");
 
@@ -257,7 +257,7 @@ public class ForestryCompat implements ICompatModule {
                 "H",
                 "G",
                 "B",
-                'H', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/electron_tube_housing"),
+                'H', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/electron_tube_housing"),
                 'G', "slimeball",
                 'B', "electronTubeBaseHslaSteel");
 
@@ -268,9 +268,28 @@ public class ForestryCompat implements ICompatModule {
                 "H",
                 "G",
                 "B",
-                'H', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/electron_tube_housing"),
+                'H', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/electron_tube_housing"),
                 'G', "slimeball",
                 'B', "electronTubeBaseEnder");
+
+        // Ash Bricks
+        MinecraftRecipeManager.addShapedRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shaped/bricks/ash"),
+                RecipeHelper.getItemStack(Mods.FORESTRY.ID, "ash_brick", 0, 4),
+                "BMB",
+                "MBM",
+                "BMB",
+                'B', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/ash_brick"),
+                'M', "mortar");
+
+        // Ash Brick Stairs
+        MinecraftRecipeManager.addShapedRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shaped/stairs/ash"),
+                RecipeHelper.getItemStack(Mods.FORESTRY.ID, "ash_stairs", 0, 8),
+                "B  ",
+                "BB ",
+                "BBB",
+                'B', RecipeHelper.getItemStack(Mods.FORESTRY.ID, "ash_brick", 0));
     }
 
     @Override
@@ -388,7 +407,7 @@ public class ForestryCompat implements ICompatModule {
 
         // Sturdy Casing
         ForestryRecipeManager.addCarpenterRecipe(600,
-                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/rf_control_circuit"),
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/rf_control_circuit"),
                 RecipeHelper.getItemStack(Mods.FORESTRY.ID, "sturdy_machine"),
                 RecipeHelper.getFluidStack("creosote", 250),
                 " S ",
@@ -396,7 +415,7 @@ public class ForestryCompat implements ICompatModule {
                 "PSP",
                 'S', "sheetAnyBronze",
                 'G', "gearAnyBronze",
-                'P', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/brass_piston"));
+                'P', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/brass_piston"));
 
         // Hardened Casing
         ForestryRecipeManager.addCarpenterRecipe(30 * S,
@@ -509,7 +528,7 @@ public class ForestryCompat implements ICompatModule {
                 " S ",
                 'S', "sheetTin",
                 'R', "dustRedstone",
-                'C', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/rf_control_circuit", 0));
+                'C', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/rf_control_circuit", 0));
 
         // Enhanced Circuit Board
         ForestryRecipeManager.addCarpenterRecipe(20 * S,
@@ -521,7 +540,7 @@ public class ForestryCompat implements ICompatModule {
                 " S ",
                 'S', "sheetAnyBronze",
                 'R', "dustRedstone",
-                'C', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/rf_control_circuit", 0));
+                'C', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/rf_control_circuit", 0));
 
         // Refined Circuit Board
         ForestryRecipeManager.addCarpenterRecipe(30 * S,
@@ -533,7 +552,7 @@ public class ForestryCompat implements ICompatModule {
                 " S ",
                 'S', "sheetIron",
                 'R', "dustRedstone",
-                'C', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/rf_control_circuit", 0));
+                'C', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/rf_control_circuit", 0));
 
         // Intricate Circuit Board
         ForestryRecipeManager.addCarpenterRecipe(40 * S,
@@ -545,7 +564,7 @@ public class ForestryCompat implements ICompatModule {
                 " S ",
                 'S', "sheetLumium",
                 'R', "dustRedstone",
-                'C', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/rf_control_circuit", 0));
+                'C', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/rf_control_circuit", 0));
 
         // Soldering Iron
         ForestryRecipeManager.addCarpenterRecipe(10 * S,

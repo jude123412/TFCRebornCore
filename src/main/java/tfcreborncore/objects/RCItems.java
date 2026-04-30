@@ -192,7 +192,7 @@ public class RCItems {
 
         ImmutableList.Builder<Item> regularItems = ImmutableList.builder();
         for (ItemRCType type : ItemRCType.values()) {
-            String base = "item/" + type.toString().toLowerCase();
+            String base = "regular/" + type.toString().toLowerCase();
 
             Item regularItemType = register(registry, base, ItemRCType.Create(type), CreativeTabsRC.CT_ITEMS);
             if (type.getDictionary() != null) OreDictionary.registerOre(type.getDictionary(), regularItemType);

@@ -76,7 +76,7 @@ public class MinecraftCompat implements ICompatModule {
                 IIngredient.of(RecipeHelper.getFluidStack("witchwater", 100)),
                 IIngredient.of("dustBismuth"),
                 null,
-                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/enderpearl_powder"),
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/enderpearl_powder"),
                 8);
 
         // Blaze Rod from Witch Water

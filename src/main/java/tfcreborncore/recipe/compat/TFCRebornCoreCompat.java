@@ -79,7 +79,7 @@ public class TFCRebornCoreCompat implements ICompatModule {
         // Wood Sheet
         MinecraftRecipeManager.addShapedRecipe(
                 new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shaped/wood_sheet"),
-                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/wood_sheet"),
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/wood_sheet"),
                 " W ",
                 "WSW",
                 " W ",
@@ -90,48 +90,48 @@ public class TFCRebornCoreCompat implements ICompatModule {
         MinecraftRecipeManager.addShapedDamageRecipe(
                 new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shaped/form/ingot"),
                 1,
-                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/ingot_form"),
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/ingot_form"),
                 "SK",
-                'S', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/latex_coated_wood_sheet"),
+                'S', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/latex_coated_wood_sheet"),
                 'K', "knife");
 
         // Pellet Form
         MinecraftRecipeManager.addShapedDamageRecipe(
                 new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shaped/form/pellet"),
                 1,
-                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/pellet_form"),
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/pellet_form"),
                 "KS",
-                'S', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/latex_coated_wood_sheet"),
+                'S', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/latex_coated_wood_sheet"),
                 'K', "knife");
 
         // Redstone Electron Tube
         MinecraftRecipeManager.addShapedRecipe(
                 new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shaped/electron_tube/redstone"),
-                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/redstone_electron_tube"),
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/redstone_electron_tube"),
                 "H",
                 "G",
                 "B",
-                'H', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/electron_tube_housing"),
+                'H', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/electron_tube_housing"),
                 'G', "slimeball",
                 'B', "electronTubeBaseRedstone");
 
         // RF Control Circuit
         MinecraftRecipeManager.addShapedRecipe(
                 new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shaped/rf_control_circuit"),
-                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/rf_control_circuit"),
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/rf_control_circuit"),
                 "TBT",
                 "RWR",
                 "AAA",
-                'T', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/redstone_electron_tube"),
+                'T', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/redstone_electron_tube"),
                 'B', "sheetAnyBronze",
-                'R', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/redstone_resistor"),
-                'W', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/basic_circuit_board"),
+                'R', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/redstone_resistor"),
+                'W', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/basic_circuit_board"),
                 'A', "stripRedAlloy");
 
         // Hardened Glass Mix
         MinecraftRecipeManager.addShapelessRecipe(
                 new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shapeless/hardened_glass_mix"),
-                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/hardened_glass_mix"),
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/hardened_glass_mix"),
                 "dustFlux",
                 "dustObsidian",
                 "dustHematite");
@@ -139,7 +139,7 @@ public class TFCRebornCoreCompat implements ICompatModule {
         // Hardened Glass Mix Alt
         MinecraftRecipeManager.addShapelessRecipe(
                 new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shapeless/hardened_glass_mix_alt"),
-                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/hardened_glass_mix"),
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/hardened_glass_mix"),
                 "dustFlux",
                 "dustObsidian",
                 "dustLimonite");
@@ -147,7 +147,7 @@ public class TFCRebornCoreCompat implements ICompatModule {
         // Synthetic Graphite Mix
         MinecraftRecipeManager.addShapelessRecipe(
                 new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shapeless/synthetic_graphite_mix"),
-                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/synthetic_graphite_mix"),
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/synthetic_graphite_mix"),
                 "dustFlux",
                 "dustCoal",
                 "dustWood");
@@ -155,7 +155,7 @@ public class TFCRebornCoreCompat implements ICompatModule {
         // Brass Piston
         MinecraftRecipeManager.addShapedRecipe(
                 new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shaped/brass_piston"),
-                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/brass_piston"),
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/brass_piston"),
                 " B ",
                 "ISI",
                 "IMI",
@@ -167,74 +167,83 @@ public class TFCRebornCoreCompat implements ICompatModule {
         // Nickel-Plated Capacitor Cell
         MinecraftRecipeManager.addShapedRecipe(
                 new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shaped/nickel_plated_capacitor_cell"),
-                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/nickel_plated_capacitor_cell"),
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/nickel_plated_capacitor_cell"),
                 "N",
                 "C",
                 'N', "sheetNickel",
-                'C', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/clay_sheet"));
+                'C', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/clay_sheet"));
 
         // Ceramic Capacitor Block
         MinecraftRecipeManager.addShapedRecipe(
                 new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shaped/ceramic_capacitor_block"),
-                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/ceramic_capacitor_block"),
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/ceramic_capacitor_block"),
                 "SCS",
                 "NCN",
                 "SCS",
                 'S', "screwNickelSilver",
-                'C', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/nickel_plated_capacitor_cell"),
+                'C', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/nickel_plated_capacitor_cell"),
                 'N', "sheetNickel");
 
         // Basic Circuit Board
         MinecraftRecipeManager.addShapedRecipe(
                 new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shaped/basic_circuit_board"),
-                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/basic_circuit_board"),
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/basic_circuit_board"),
                 "SSS",
                 "SWS",
                 "SSS",
                 'S', "stripCopper",
-                'W', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/wood_sheet"));
+                'W', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/wood_sheet"));
 
         // Redstone Resistor
         MinecraftRecipeManager.addShapedRecipe(
                 new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shaped/redstone_resistor"),
-                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/redstone_resistor"),
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/redstone_resistor"),
                 "SD ",
                 "LCR",
                 " DS",
                 'S', "slimeball",
                 'D', "dustCoal",
-                'L', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/redstone_resistor_part_a"),
-                'C', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/redstone_resistor_part_b"),
-                'R', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/redstone_resistor_part_c"));
+                'L', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/redstone_resistor_part_a"),
+                'C', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/redstone_resistor_part_b"),
+                'R', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/redstone_resistor_part_c"));
+
+        // Ash Brick
+        MinecraftRecipeManager.addShapedRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shapeless/form/ingot/ash"),
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/ash_brick"),
+                "dustAsh",
+                "formIngot");
     }
 
     @Override
     public void registerItemModification(FMLPostInitializationEvent r) {
         // Hardened Glass Mix
         TerrafirmacraftRecipeManager.addItemHeat(
-                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/hardened_glass_mix"), 0.2F, 1400, false);
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/hardened_glass_mix"), 0.2F, 1400, false);
         // Unfired Clay Sheet
         TerrafirmacraftRecipeManager.addItemHeat(
-                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/unfired_clay_sheet"), 0.2F, 2000, false);
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/unfired_clay_sheet"), 0.2F, 2000, false);
         // Unfired Ceramic Insulator
         TerrafirmacraftRecipeManager.addItemHeat(
-                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/unfired_ceramic_insulator"), 0.2F, 2000,
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/unfired_ceramic_insulator"), 0.2F, 2000,
                 false);
         // Clay Sheet
-        TerrafirmacraftRecipeManager.addItemHeat(RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/clay_sheet"),
+        TerrafirmacraftRecipeManager.addItemHeat(
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/clay_sheet"),
                 0.2F, 2000, false);
 
         // Lignite Coke
         TerrafirmacraftRecipeManager.addItemFuel(
-                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/lignite_coke"), 4000, 1415.0F, true, false);
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/lignite_coke"), 4000, 1415.0F, true, false);
         // Bituminous Coal Coke
         TerrafirmacraftRecipeManager.addItemFuel(
-                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/bituminous_coal_coke"), 4400, 1500.0F, true,
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/bituminous_coal_coke"), 4400, 1500.0F, true,
                 false);
 
         // Synthetic Graphite
         TerrafirmacraftRecipeManager.addItemHeat(
-                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/synthetic_graphite_mix"), 0.6F, 2000, false);
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/synthetic_graphite_mix"), 0.6F, 2000,
+                false);
     }
 
     @Override
@@ -243,7 +252,7 @@ public class TFCRebornCoreCompat implements ICompatModule {
         TerrafirmacraftRecipeManager.addKnappingRecipe(
                 new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "knapping/clay/unfired_ceramic_sheet"),
                 KnappingType.CLAY,
-                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/unfired_clay_sheet", 0, 2),
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/unfired_clay_sheet", 0, 2),
                 "     ",
                 "XXXXX",
                 "     ",
@@ -254,7 +263,7 @@ public class TFCRebornCoreCompat implements ICompatModule {
         TerrafirmacraftRecipeManager.addKnappingRecipe(
                 new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "knapping/clay/unfired_ceramic_insulator"),
                 KnappingType.CLAY,
-                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/unfired_ceramic_insulator", 0, 2),
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/unfired_ceramic_insulator", 0, 2),
                 "XX XX",
                 " XXX ",
                 "     ",
@@ -272,14 +281,14 @@ public class TFCRebornCoreCompat implements ICompatModule {
         TerrafirmacraftRecipeManager.addHeatTransformRecipe(
                 new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "heat/transform/ceramic_sheet"),
                 RecipeHelper.getIIngredient(Mods.TFC_REBORN_CORE.ID, "item/unfired_clay_sheet"),
-                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/clay_sheet"),
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/clay_sheet"),
                 1599);
 
         // Ceramic Insulator
         TerrafirmacraftRecipeManager.addHeatTransformRecipe(
                 new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "heat/transform/ceramic_insulator"),
                 RecipeHelper.getIIngredient(Mods.TFC_REBORN_CORE.ID, "item/unfired_ceramic_insulator"),
-                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/ceramic_insulator"),
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/ceramic_insulator"),
                 1599);
 
         // Barrel Recipes
@@ -298,7 +307,7 @@ public class TFCRebornCoreCompat implements ICompatModule {
                 RecipeHelper.getIIngredient("latex", 50),
                 RecipeHelper.getIIngredient(Mods.TFC_REBORN_CORE.ID, "item/wood_sheet"),
                 null,
-                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/latex_coated_wood_sheet"),
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/latex_coated_wood_sheet"),
                 8);
 
         // Redstone Resistor Part A
@@ -307,7 +316,7 @@ public class TFCRebornCoreCompat implements ICompatModule {
                         Mods.TFC_REBORN_CORE.ID,
                         "anvil/working/redstone_resistor/part_a"),
                 RecipeHelper.getIIngredient("ingotRedstone"),
-                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/redstone_resistor_part_a", 0, 10),
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/redstone_resistor_part_a", 0, 10),
                 Metal.Tier.TIER_II,
                 null,
                 ForgeRule.HIT_THIRD_LAST,
@@ -320,7 +329,7 @@ public class TFCRebornCoreCompat implements ICompatModule {
                         Mods.TFC_REBORN_CORE.ID,
                         "anvil/working/redstone_resistor/part_b"),
                 RecipeHelper.getIIngredient("ingotGold"),
-                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/redstone_resistor_part_b", 0, 10),
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/redstone_resistor_part_b", 0, 10),
                 Metal.Tier.TIER_II,
                 null,
                 ForgeRule.HIT_THIRD_LAST,
@@ -333,7 +342,7 @@ public class TFCRebornCoreCompat implements ICompatModule {
                         Mods.TFC_REBORN_CORE.ID,
                         "anvil/working/redstone_resistor/part_c"),
                 RecipeHelper.getIIngredient("ingotRedstone"),
-                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/redstone_resistor_part_c", 0, 10),
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/redstone_resistor_part_c", 0, 10),
                 Metal.Tier.TIER_II,
                 null,
                 ForgeRule.HIT_THIRD_LAST,
@@ -362,7 +371,7 @@ public class TFCRebornCoreCompat implements ICompatModule {
                 new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "anvil/welding/radiator_matrix"),
                 RecipeHelper.getIIngredient("ingotDoubleIron"),
                 RecipeHelper.getIIngredient(Mods.TFC_REBORN_CORE.ID, "item/radiator_piping", 0),
-                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/radiator_matrix", 0),
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/radiator_matrix", 0),
                 Metal.Tier.TIER_II,
                 null);
 
@@ -370,49 +379,49 @@ public class TFCRebornCoreCompat implements ICompatModule {
         TerrafirmacraftRecipeManager.addQuernRecipe(
                 new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "wood_powder"),
                 RecipeHelper.getIIngredient("lumber"),
-                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/wood_powder"));
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/wood_powder"));
 
         // Coal Powder
         TerrafirmacraftRecipeManager.addQuernRecipe(
                 new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "coal_powder"),
                 RecipeHelper.getIIngredient("gemLignite"),
-                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/coal_powder"));
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/coal_powder"));
         TerrafirmacraftRecipeManager.addQuernRecipe(
                 new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "coal_powder_alt"),
                 RecipeHelper.getIIngredient("gemCoal"),
-                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/coal_powder", 0, 2));
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/coal_powder", 0, 2));
 
         // Snow Powder
         TerrafirmacraftRecipeManager.addQuernRecipe(
                 new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "snow_powder"),
                 RecipeHelper.getIIngredient(RecipeHelper.getItemStack(Mods.MINECRAFT.ID, "snow")),
-                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/snow_powder", 0, 2));
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/snow_powder", 0, 2));
 
         // Obsidian Powder
         TerrafirmacraftRecipeManager.addQuernRecipe(
                 new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "obsidian_powder"),
                 RecipeHelper.getIIngredient(RecipeHelper.getItemStack(Mods.MINECRAFT.ID, "obsidian")),
-                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/obsidian_powder", 0, 2));
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/obsidian_powder", 0, 2));
 
         // Enderpearl Powder
         TerrafirmacraftRecipeManager.addQuernRecipe(
                 new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "enderpearl_powder"),
                 RecipeHelper.getIIngredient("gemEnder"),
-                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/enderpearl_powder"));
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/enderpearl_powder"));
 
         // Certus Quartz Powder
         TerrafirmacraftRecipeManager.addQuernRecipe(
                 new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "certus_quartz_powder"),
                 RecipeHelper.getIIngredient("crystalCertusQuartz"),
-                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/certus_quartz_powder"));
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/certus_quartz_powder"));
         TerrafirmacraftRecipeManager.addQuernRecipe(
                 new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "certus_quartz_powder_alt_1"),
                 RecipeHelper.getIIngredient("crystalPureCertusQuartz"),
-                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/certus_quartz_powder"));
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/certus_quartz_powder"));
         TerrafirmacraftRecipeManager.addQuernRecipe(
                 new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "certus_quartz_powder_alt_2"),
                 RecipeHelper.getIIngredient(RecipeHelper.getItemStack("appliedenergistics2", "material", 1)),
-                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/certus_quartz_powder"));
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/certus_quartz_powder"));
 
         // Hematite Powder
         TerrafirmacraftRecipeManager.addQuernRecipe(
@@ -436,7 +445,7 @@ public class TFCRebornCoreCompat implements ICompatModule {
         TerrafirmacraftRecipeManager.addQuernRecipe(
                 new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "apatite_powder"),
                 RecipeHelper.getIIngredient("gemApatite"),
-                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/apatite_powder"));
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/apatite_powder"));
     }
 
     @Override
@@ -447,63 +456,63 @@ public class TFCRebornCoreCompat implements ICompatModule {
         // Wood Powder
         ImmersiveEngineeringRecipeManager.addCrusherRecipe(
                 "lumber",
-                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/wood_powder"),
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/wood_powder"),
                 null,
                 1600);
 
         // Coal Powder (Lignite)
         ImmersiveEngineeringRecipeManager.addCrusherRecipe(
                 "gemLignite",
-                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/coal_powder"),
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/coal_powder"),
                 null,
                 1600);
 
         // Coal Powder (Coal)
         ImmersiveEngineeringRecipeManager.addCrusherRecipe(
                 "gemCoal",
-                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/coal_powder", 0, 2),
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/coal_powder", 0, 2),
                 null,
                 1600);
 
         // Snow Powder
         ImmersiveEngineeringRecipeManager.addCrusherRecipe(
                 RecipeHelper.getItemStack(Mods.MINECRAFT.ID, "snow"),
-                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/snow_powder", 0, 2),
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/snow_powder", 0, 2),
                 null,
                 1600);
 
         // Obsidian Powder
         ImmersiveEngineeringRecipeManager.addCrusherRecipe(
                 RecipeHelper.getItemStack(Mods.MINECRAFT.ID, "obsidian"),
-                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/obsidian_powder", 0, 2),
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/obsidian_powder", 0, 2),
                 null,
                 3200);
 
         // Enderpearl Powder
         ImmersiveEngineeringRecipeManager.addCrusherRecipe(
                 "gemEnder",
-                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/enderpearl_powder"),
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/enderpearl_powder"),
                 null,
                 1600);
 
         // Certus Quartz Powder
         ImmersiveEngineeringRecipeManager.addCrusherRecipe(
                 "crystalCertusQuartz",
-                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/certus_quartz_powder"),
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/certus_quartz_powder"),
                 null,
                 1600);
 
         // Pure Certus Quartz Powder
         ImmersiveEngineeringRecipeManager.addCrusherRecipe(
                 "crystalPureCertusQuartz",
-                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/certus_quartz_powder"),
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/certus_quartz_powder"),
                 null,
                 1600);
 
         // Charged Certus Quartz Powder
         ImmersiveEngineeringRecipeManager.addCrusherRecipe(
                 RecipeHelper.getItemStack("appliedenergistics2", "material", 1),
-                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/certus_quartz_powder"),
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/certus_quartz_powder"),
                 null,
                 1600);
 
@@ -531,7 +540,7 @@ public class TFCRebornCoreCompat implements ICompatModule {
         // Apatite Powder
         ImmersiveEngineeringRecipeManager.addCrusherRecipe(
                 "gemApatite",
-                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/apatite_powder"),
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/apatite_powder"),
                 null,
                 1600);
     }
@@ -542,40 +551,40 @@ public class TFCRebornCoreCompat implements ICompatModule {
         ForestryRecipeManager.addCarpenterRecipe(
                 5 * S,
                 null,
-                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/rf_control_circuit", 0, 2),
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/rf_control_circuit", 0, 2),
                 RecipeHelper.getFluidStack("250", 1000),
                 "TBT",
                 "RWR",
                 "AAA",
-                'T', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/redstone_electron_tube"),
+                'T', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/redstone_electron_tube"),
                 'B', "sheetAnyBronze",
-                'R', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/redstone_resistor"),
-                'W', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/good_circuit_board"),
+                'R', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/redstone_resistor"),
+                'W', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/good_circuit_board"),
                 'A', "stripRedAlloy");
 
         // LV Capacitor Cell
         ForestryRecipeManager.addCarpenterRecipe(
                 5 * S,
                 null,
-                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/basic_capacitor_cell"),
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/basic_capacitor_cell"),
                 RecipeHelper.getFluidStack("creosote", 1000),
                 " S ",
                 "ACA",
                 " S ",
                 'S', "screwCopper",
                 'A', "sheetCopper",
-                'C', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/ceramic_capacitor_block"));
+                'C', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/ceramic_capacitor_block"));
 
         // MV Capacitor Cell
         ForestryRecipeManager.addCarpenterRecipe(
                 10 * S,
                 null,
-                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/advanced_capacitor_cell"),
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/advanced_capacitor_cell"),
                 RecipeHelper.getFluidStack("creosote", 1000),
                 "CWC",
                 "SGS",
                 "CWC",
-                'C', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/basic_capacitor_cell"),
+                'C', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/basic_capacitor_cell"),
                 'W', "wireGold",
                 'S', "screwGold",
                 'G', "sheetGold");
@@ -584,12 +593,12 @@ public class TFCRebornCoreCompat implements ICompatModule {
         ForestryRecipeManager.addCarpenterRecipe(
                 4 * S,
                 null,
-                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/hi_tech_capacitor_cell"),
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/hi_tech_capacitor_cell"),
                 RecipeHelper.getFluidStack("creosote", 1000),
                 "CWC",
                 "SGS",
                 "CWC",
-                'C', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/advanced_capacitor_cell"),
+                'C', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/advanced_capacitor_cell"),
                 'W', "wireSteel",
                 'S', "screwSteel",
                 'G', "sheetSteel");
@@ -598,27 +607,27 @@ public class TFCRebornCoreCompat implements ICompatModule {
         ForestryRecipeManager.addCarpenterRecipe(
                 4 * S,
                 null,
-                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/good_circuit_board", 0, 4),
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/good_circuit_board", 0, 4),
                 RecipeHelper.getFluidStack("creosote", 250),
                 "SSS",
                 "SWS",
                 "SSS",
                 'S', "stripGold",
-                'W', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/latex_coated_wood_sheet"));
+                'W', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/latex_coated_wood_sheet"));
 
         // Redstone Resistor
         ForestryRecipeManager.addCarpenterRecipe(
                 4 * S,
                 null,
-                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/redstone_resistor", 0, 2),
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/redstone_resistor", 0, 2),
                 RecipeHelper.getFluidStack("latex", 50),
                 " D ",
                 "LCR",
                 " D ",
                 'D', "dustCoal",
-                'L', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/redstone_resistor_part_a"),
-                'C', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/redstone_resistor_part_b"),
-                'R', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/redstone_resistor_part_c"));
+                'L', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/redstone_resistor_part_a"),
+                'C', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/redstone_resistor_part_b"),
+                'R', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/redstone_resistor_part_c"));
 
         // Thermionic Fabricator Recipes
         // These need to be registered first
@@ -645,7 +654,7 @@ public class TFCRebornCoreCompat implements ICompatModule {
     public void registerTFCTechRecipes(FMLPostInitializationEvent r) {
         TFCTechRecipeManager.addGlassWorkingRecipe(
                 new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "glass/working/electron_tube_housing"),
-                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/electron_tube_housing"),
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/electron_tube_housing"),
                 " XXX ",
                 "X   X",
                 "X   X",
@@ -654,7 +663,7 @@ public class TFCRebornCoreCompat implements ICompatModule {
 
         TFCTechRecipeManager.addGlassWorkingRecipe(
                 new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "glass/working/glass_insulator"),
-                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "item/glass_insulator"),
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/glass_insulator"),
                 "XX XX",
                 " XXX ",
                 "XX XX",

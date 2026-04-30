@@ -38,67 +38,68 @@ item.tfcreborncore.wood.lumber.name=%s Lumber
 
 # Regular Items
 # Metal Press Components (non-stackable)
-item.tfcreborncore.item.metal_press_sleeve.name=Metal Press Mold: Sleeve
-item.tfcreborncore.item.metal_press_rackwheel_piece.name=Metal Press Mold: Rackwheel Piece
-item.tfcreborncore.item.metal_press_rackwheel.name=Metal Press Mold: Rackwheel
-item.tfcreborncore.item.metal_press_long_rod.name=Metal Press Mold: Long Rod
-item.tfcreborncore.item.metal_press_bolt.name=Metal Press Mold: Bolt
-item.tfcreborncore.item.metal_press_screw.name=Metal Press Mold: Screw
+item.tfcreborncore.regular.metal_press_sleeve.name=Metal Press Mold: Sleeve
+item.tfcreborncore.regular.metal_press_rackwheel_piece.name=Metal Press Mold: Rackwheel Piece
+item.tfcreborncore.regular.metal_press_rackwheel.name=Metal Press Mold: Rackwheel
+item.tfcreborncore.regular.metal_press_long_rod.name=Metal Press Mold: Long Rod
+item.tfcreborncore.regular.metal_press_bolt.name=Metal Press Mold: Bolt
+item.tfcreborncore.regular.metal_press_screw.name=Metal Press Mold: Screw
 
 # Circuit Board components
-item.tfcreborncore.item.wood_sheet.name=Wood Sheet
-item.tfcreborncore.item.latex_coated_wood_sheet.name=Latex Coated Wood Sheet
-item.tfcreborncore.item.basic_circuit_board.name=Basic Circuit Board
-item.tfcreborncore.item.good_circuit_board.name=Good Circuit Board
+item.tfcreborncore.regular.wood_sheet.name=Wood Sheet
+item.tfcreborncore.regular.latex_coated_wood_sheet.name=Latex Coated Wood Sheet
+item.tfcreborncore.regular.basic_circuit_board.name=Basic Circuit Board
+item.tfcreborncore.regular.good_circuit_board.name=Good Circuit Board
 
 # Electrical components
-item.tfcreborncore.item.electron_tube_housing.name=Electron Tube Housing
-item.tfcreborncore.item.redstone_electron_tube.name=Redstone Electron Tube
+item.tfcreborncore.regular.electron_tube_housing.name=Electron Tube Housing
+item.tfcreborncore.regular.redstone_electron_tube.name=Redstone Electron Tube
 
 # Heavy components
-item.tfcreborncore.item.rf_control_circuit.name=RF Control Circuit
-item.tfcreborncore.item.brass_piston.name=Brass Piston
+item.tfcreborncore.regular.rf_control_circuit.name=RF Control Circuit
+item.tfcreborncore.regular.brass_piston.name=Brass Piston
 
 # Fuels
-item.tfcreborncore.item.lignite_coke.name=Lignite Coke
-item.tfcreborncore.item.bituminous_coal_coke.name=Bituminous Coal Coke
+item.tfcreborncore.regular.lignite_coke.name=Lignite Coke
+item.tfcreborncore.regular.bituminous_coal_coke.name=Bituminous Coal Coke
 
 # Dust
-item.tfcreborncore.item.hardened_glass_mix.name=Hardened Glass Mix
-item.tfcreborncore.item.coal_powder.name=Coal Powder
-item.tfcreborncore.item.synthetic_graphite_mix.name=Synthetic Graphite Mix
-item.tfcreborncore.item.wood_powder.name=Wood Powder
-item.tfcreborncore.item.certus_quartz_powder.name=Certus Quartz Powder
-item.tfcreborncore.item.enderpearl_powder.name=Enderpearl Powder
-item.tfcreborncore.item.obsidian_powder.name=Obsidian Powder
-item.tfcreborncore.item.snow_powder.name=Powdered Snow
-item.tfcreborncore.item.apatite_powder.name=Apatite Powder
+item.tfcreborncore.regular.hardened_glass_mix.name=Hardened Glass Mix
+item.tfcreborncore.regular.coal_powder.name=Coal Powder
+item.tfcreborncore.regular.synthetic_graphite_mix.name=Synthetic Graphite Mix
+item.tfcreborncore.regular.wood_powder.name=Wood Powder
+item.tfcreborncore.regular.certus_quartz_powder.name=Certus Quartz Powder
+item.tfcreborncore.regular.enderpearl_powder.name=Enderpearl Powder
+item.tfcreborncore.regular.obsidian_powder.name=Obsidian Powder
+item.tfcreborncore.regular.snow_powder.name=Powdered Snow
+item.tfcreborncore.regular.apatite_powder.name=Apatite Powder
 
 # Metals
-item.tfcreborncore.item.redstone_resistor_part_a.name=Redstone Resistor Left Segment
-item.tfcreborncore.item.redstone_resistor_part_b.name=Redstone Resistor Center Segment
-item.tfcreborncore.item.redstone_resistor_part_c.name=Redstone Resistor Right Segment
-item.tfcreborncore.item.redstone_resistor.name=Redstone Resistor
-item.tfcreborncore.item.radiator_piping.name=Radiator Piping
-item.tfcreborncore.item.radiator_matrix.name=Radiator Matrix
+item.tfcreborncore.regular.redstone_resistor_part_a.name=Redstone Resistor Left Segment
+item.tfcreborncore.regular.redstone_resistor_part_b.name=Redstone Resistor Center Segment
+item.tfcreborncore.regular.redstone_resistor_part_c.name=Redstone Resistor Right Segment
+item.tfcreborncore.regular.redstone_resistor.name=Redstone Resistor
+item.tfcreborncore.regular.radiator_piping.name=Radiator Piping
+item.tfcreborncore.regular.radiator_matrix.name=Radiator Matrix
 
 # Wood Form
-item.tfcreborncore.item.ingot_form.name=Ingot Form
-item.tfcreborncore.item.pellet_form.name=Pellet Form
+item.tfcreborncore.regular.ingot_form.name=Ingot Form
+item.tfcreborncore.regular.pellet_form.name=Pellet Form
 
 # Misc
-item.tfcreborncore.item.unfired_clay_sheet.name=Unfired Clay Sheet
-item.tfcreborncore.item.clay_sheet.name=Clay Sheet
-item.tfcreborncore.item.nickel_plated_capacitor_cell.name=Nickel-Plated Capacitor Cell
-item.tfcreborncore.item.ceramic_capacitor_block.name=Ceramic Capacitor Block
-item.tfcreborncore.item.basic_capacitor_cell.name=LV Capacitor Cell
-item.tfcreborncore.item.advanced_capacitor_cell.name=MV Capacitor Cell
-item.tfcreborncore.item.hi_tech_capacitor_cell.name=HV Capacitor Cell
-item.tfcreborncore.item.unfired_ceramic_insulator.name=Unfired Ceramic Insulator
-item.tfcreborncore.item.ceramic_insulator.name=Ceramic Insulator
-item.tfcreborncore.item.glass_insulator.name=Glass Insulator
-item.tfcreborncore.item.slag.name=Slag
-item.tfcreborncore.item.rich_slag.name=Rich Slag
+item.tfcreborncore.regular.unfired_clay_sheet.name=Unfired Clay Sheet
+item.tfcreborncore.regular.clay_sheet.name=Clay Sheet
+item.tfcreborncore.regular.nickel_plated_capacitor_cell.name=Nickel-Plated Capacitor Cell
+item.tfcreborncore.regular.ceramic_capacitor_block.name=Ceramic Capacitor Block
+item.tfcreborncore.regular.basic_capacitor_cell.name=LV Capacitor Cell
+item.tfcreborncore.regular.advanced_capacitor_cell.name=MV Capacitor Cell
+item.tfcreborncore.regular.hi_tech_capacitor_cell.name=HV Capacitor Cell
+item.tfcreborncore.regular.unfired_ceramic_insulator.name=Unfired Ceramic Insulator
+item.tfcreborncore.regular.ceramic_insulator.name=Ceramic Insulator
+item.tfcreborncore.regular.glass_insulator.name=Glass Insulator
+item.tfcreborncore.regular.ash_brick.name=Ash Brick
+item.tfcreborncore.regular.slag.name=Slag
+item.tfcreborncore.regular.rich_slag.name=Rich Slag
 
 # New Heating Values
 tfc.enum.extendedheat.warming=Warming

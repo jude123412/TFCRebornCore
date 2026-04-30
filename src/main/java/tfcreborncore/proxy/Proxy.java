@@ -30,7 +30,6 @@ public class Proxy {
     public static void registerRecipes(RegistryEvent.Register<IRecipe> event) {
         OreDictionaryLoader.register();
         CompatManager.loadOreDictionaries(event);
-        CompatManager.loadCraftingRecipes(event);
         MinecraftRecipeManager.RECIPE_LIST.forEach(event.getRegistry()::register);
     }
 

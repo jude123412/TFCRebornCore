@@ -5,9 +5,7 @@ import java.util.List;
 
 import net.dries007.tfc.api.types.Metal;
 import net.dries007.tfc.util.forge.ForgeRule;
-import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 
 import tfcreborncore.Tags;
@@ -35,7 +33,7 @@ public class BaubleliciousCompat implements ICompatModule {
     }
 
     @Override
-    public void registerCraftingRecipe(RegistryEvent.Register<IRecipe> r) {
+    public void registerCraftingRecipe(FMLPostInitializationEvent r) {
         // Amulet
         MinecraftRecipeManager.addShapelessDamageRecipe(
                 new ResourceLocation(Tags.MODID, "amulet"),

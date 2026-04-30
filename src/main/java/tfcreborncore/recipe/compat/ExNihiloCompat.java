@@ -4,9 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 
 import tfcreborncore.Tags;
@@ -34,7 +32,7 @@ public class ExNihiloCompat implements ICompatModule {
     }
 
     @Override
-    public void registerCraftingRecipe(RegistryEvent.Register<IRecipe> r) {
+    public void registerCraftingRecipe(FMLPostInitializationEvent r) {
         // String Mesh
         MinecraftRecipeManager.addShapedRecipe(
                 new ResourceLocation(Tags.MODID, "string_mesh"),

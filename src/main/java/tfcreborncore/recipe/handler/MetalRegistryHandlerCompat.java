@@ -87,7 +87,7 @@ public class MetalRegistryHandlerCompat implements ICompatModule {
     }
 
     @Override
-    public void registerCraftingRecipe(RegistryEvent.Register<IRecipe> r) {
+    public void registerCraftingRecipe(FMLPostInitializationEvent r) {
         // Metal Recipes
         for (Metal metal : TFCRegistries.METALS.getValuesCollection()) {
             // Find a block if it exists?

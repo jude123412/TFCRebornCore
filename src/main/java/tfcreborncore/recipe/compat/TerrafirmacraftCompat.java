@@ -31,7 +31,7 @@ public class TerrafirmacraftCompat implements ICompatModule {
     public void registerRecipeRemoval(FMLPostInitializationEvent r) {}
 
     @Override
-    public void registerCraftingRecipe(RegistryEvent.Register<IRecipe> r) {
+    public void registerCraftingRecipe(FMLPostInitializationEvent r) {
         // Fire Brick
         MinecraftRecipeManager.addShapelessRecipe(
                 new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shapeless/mold/brick/fire"),

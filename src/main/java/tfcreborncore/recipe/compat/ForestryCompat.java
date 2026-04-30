@@ -5,9 +5,7 @@ import static tfcreborncore.recipe.RecipeHelper.S;
 import java.util.Arrays;
 import java.util.List;
 
-import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 
 import tfcreborncore.recipe.ICompatModule;
@@ -35,7 +33,7 @@ public class ForestryCompat implements ICompatModule {
     }
 
     @Override
-    public void registerCraftingRecipe(RegistryEvent.Register<IRecipe> r) {
+    public void registerCraftingRecipe(FMLPostInitializationEvent r) {
         // Minecart with Bee House
         MinecraftRecipeManager.addShapedRecipe(
                 new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shaped/minecart/bee_house"),

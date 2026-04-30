@@ -37,7 +37,7 @@ public class StorageDrawersCompat implements ICompatModule {
     }
 
     @Override
-    public void registerCraftingRecipe(RegistryEvent.Register<IRecipe> r) {
+    public void registerCraftingRecipe(FMLPostInitializationEvent r) {
         // Upgrade Template
         MinecraftRecipeManager.addShapedRecipe(
                 new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shaped/upgrade_template"),

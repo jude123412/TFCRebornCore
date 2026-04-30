@@ -7,9 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import net.dries007.tfc.objects.inventory.ingredient.IIngredient;
-import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 
 import tfcreborncore.recipe.ICompatModule;
@@ -37,7 +35,7 @@ public class MinecraftCompat implements ICompatModule {
     }
 
     @Override
-    public void registerCraftingRecipe(RegistryEvent.Register<IRecipe> r) {}
+    public void registerCraftingRecipe(FMLPostInitializationEvent r) {}
 
     @Override
     public void registerTerrafirmacraftRecipes(FMLPostInitializationEvent r) {

@@ -41,6 +41,7 @@ public class MinecraftRecipeManager {
      * @param inputs The shaped crafting pattern and ingredient definitions.
      */
     public static void addShapedSkillRecipe(ResourceLocation name, ItemStack result, Object... inputs) {
+        IForgeRegistryModifiable<IRecipe> r = (IForgeRegistryModifiable<IRecipe>) ForgeRegistries.RECIPES;
         Object[] list = new Object[inputs.length + 1];
         list[0] = false;
         System.arraycopy(inputs, 0, list, 1, inputs.length);
@@ -51,7 +52,7 @@ public class MinecraftRecipeManager {
         ShapedSkillRecipe recipe = new ShapedSkillRecipe(name, result, primer);
         recipe.setRegistryName(name);
 
-        RECIPE_LIST.add(recipe);
+        r.register(recipe);
     }
 
     /**
@@ -68,6 +69,7 @@ public class MinecraftRecipeManager {
      * @param inputs The shaped crafting pattern and ingredient definitions.
      */
     public static void addShapedRecipe(ResourceLocation name, ItemStack result, Object... inputs) {
+        IForgeRegistryModifiable<IRecipe> r = (IForgeRegistryModifiable<IRecipe>) ForgeRegistries.RECIPES;
         Object[] list = new Object[inputs.length + 1];
         list[0] = false;
         System.arraycopy(inputs, 0, list, 1, inputs.length);
@@ -78,7 +80,7 @@ public class MinecraftRecipeManager {
         ShapedOreRecipe recipe = new ShapedOreRecipe(name, result, primer);
         recipe.setRegistryName(name);
 
-        RECIPE_LIST.add(recipe);
+        r.register(recipe);
     }
 
     /**
@@ -100,6 +102,7 @@ public class MinecraftRecipeManager {
      * @param inputs The shaped crafting pattern and ingredient definitions.
      */
     public static void addShapedDamageRecipe(ResourceLocation name, int damage, ItemStack result, Object... inputs) {
+        IForgeRegistryModifiable<IRecipe> r = (IForgeRegistryModifiable<IRecipe>) ForgeRegistries.RECIPES;
         Object[] list = new Object[inputs.length + 1];
         list[0] = false;
         System.arraycopy(inputs, 0, list, 1, inputs.length);
@@ -110,7 +113,7 @@ public class MinecraftRecipeManager {
         ShapedDamageRecipe recipe = new ShapedDamageRecipe(name, damage, result, primer);
         recipe.setRegistryName(name);
 
-        RECIPE_LIST.add(recipe);
+        r.register(recipe);
     }
 
     /**
@@ -124,10 +127,11 @@ public class MinecraftRecipeManager {
      * @param inputs The shapeless ingredient list for the recipe.
      */
     public static void addShapelessSkillRecipe(ResourceLocation name, ItemStack result, Object... inputs) {
+        IForgeRegistryModifiable<IRecipe> r = (IForgeRegistryModifiable<IRecipe>) ForgeRegistries.RECIPES;
         ShapelessSkillRecipe recipe = new ShapelessSkillRecipe(name, result, inputs);
         recipe.setRegistryName(name);
 
-        RECIPE_LIST.add(recipe);
+        r.register(recipe);
     }
 
     /**
@@ -141,10 +145,11 @@ public class MinecraftRecipeManager {
      * @param inputs The shapeless ingredient list for the recipe.
      */
     public static void addShapelessRecipe(ResourceLocation name, ItemStack result, Object... inputs) {
+        IForgeRegistryModifiable<IRecipe> r = (IForgeRegistryModifiable<IRecipe>) ForgeRegistries.RECIPES;
         ShapelessOreRecipe recipe = new ShapelessOreRecipe(name, result, inputs);
         recipe.setRegistryName(name);
 
-        RECIPE_LIST.add(recipe);
+        r.register(recipe);
     }
 
     /**
@@ -161,10 +166,11 @@ public class MinecraftRecipeManager {
      * @param inputs The shapeless ingredient list for the recipe.
      */
     public static void addShapelessDamageRecipe(ResourceLocation name, int damage, ItemStack result, Object... inputs) {
+        IForgeRegistryModifiable<IRecipe> r = (IForgeRegistryModifiable<IRecipe>) ForgeRegistries.RECIPES;
         ShapelessDamageRecipe recipe = new ShapelessDamageRecipe(name, damage, result, inputs);
         recipe.setRegistryName(name);
 
-        RECIPE_LIST.add(recipe);
+        r.register(recipe);
     }
 
     /**

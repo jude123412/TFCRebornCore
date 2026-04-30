@@ -27,7 +27,8 @@ public class MinecraftCompat implements ICompatModule {
         return Arrays.asList(
                 Mods.EX_NIHILO_CREATIO.ID,
                 Mods.IMMERSIVE_ENGINEERING.ID,
-                Mods.FORESTRY.ID);
+                Mods.FORESTRY.ID,
+                Mods.TFC_METALLUM.ID);
     }
 
     @Override
@@ -42,13 +43,13 @@ public class MinecraftCompat implements ICompatModule {
     public void registerTerrafirmacraftRecipes(FMLPostInitializationEvent r) {
         // Redstone Ingot Recycling
         TerrafirmacraftRecipeManager.addQuernRecipe(
-                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "redstone_ingot_recycling"),
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "quern/dust/redstone"),
                 IIngredient.of("ingotRedstone"),
                 RecipeHelper.getItemStack(Mods.MINECRAFT.ID, "redstone"));
 
         // Glowstone Ingot Recycling
         TerrafirmacraftRecipeManager.addQuernRecipe(
-                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "glowstone_ingot_recycling"),
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "quern/dust/glowstone"),
                 IIngredient.of("ingotGlowstone"),
                 RecipeHelper.getItemStack(Mods.MINECRAFT.ID, "glowstone_dust"));
 

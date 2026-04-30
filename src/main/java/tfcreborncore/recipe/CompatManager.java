@@ -13,7 +13,6 @@ import tfcreborncore.recipe.compat.ExNihiloCompat;
 import tfcreborncore.recipe.compat.ForestryCompat;
 import tfcreborncore.recipe.compat.MinecraftCompat;
 import tfcreborncore.recipe.compat.OpenGliderCompat;
-import tfcreborncore.recipe.compat.StorageDrawersCompat;
 import tfcreborncore.recipe.compat.TFCRebornCoreCompat;
 import tfcreborncore.recipe.compat.TFCTechCompat;
 import tfcreborncore.recipe.compat.TerrafirmacraftCompat;
@@ -33,7 +32,7 @@ public final class CompatManager {
         modules.add(new ExNihiloCompat());
         modules.add(new TFCTechCompat());
         modules.add(new MinecraftCompat());
-        modules.add(new StorageDrawersCompat());
+        // modules.add(new StorageDrawersCompat());
         modules.add(new BaubleliciousCompat());
         modules.add(new ThermalExpansionCompat());
         modules.add(new BinniesCompat());

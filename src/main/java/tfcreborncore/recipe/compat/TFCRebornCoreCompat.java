@@ -208,7 +208,7 @@ public class TFCRebornCoreCompat implements ICompatModule {
                 'R', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/redstone_resistor_part_c"));
 
         // Ash Brick
-        MinecraftRecipeManager.addShapedRecipe(
+        MinecraftRecipeManager.addShapelessRecipe(
                 new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shapeless/form/ingot/ash"),
                 RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/ash_brick"),
                 "dustAsh",
@@ -273,21 +273,21 @@ public class TFCRebornCoreCompat implements ICompatModule {
         // Graphite Powder
         TerrafirmacraftRecipeManager.addHeatTransformRecipe(
                 new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "heat/transform/graphite"),
-                RecipeHelper.getIIngredient(Mods.TFC_REBORN_CORE.ID, "item/synthetic_graphite_mix"),
+                RecipeHelper.getIIngredient(Mods.TFC_REBORN_CORE.ID, "regular/synthetic_graphite_mix"),
                 RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID, "powder/graphite"),
                 1599);
 
         // Ceramic Sheet
         TerrafirmacraftRecipeManager.addHeatTransformRecipe(
                 new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "heat/transform/ceramic_sheet"),
-                RecipeHelper.getIIngredient(Mods.TFC_REBORN_CORE.ID, "item/unfired_clay_sheet"),
+                RecipeHelper.getIIngredient(Mods.TFC_REBORN_CORE.ID, "regular/unfired_clay_sheet"),
                 RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/clay_sheet"),
                 1599);
 
         // Ceramic Insulator
         TerrafirmacraftRecipeManager.addHeatTransformRecipe(
                 new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "heat/transform/ceramic_insulator"),
-                RecipeHelper.getIIngredient(Mods.TFC_REBORN_CORE.ID, "item/unfired_ceramic_insulator"),
+                RecipeHelper.getIIngredient(Mods.TFC_REBORN_CORE.ID, "regular/unfired_ceramic_insulator"),
                 RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/ceramic_insulator"),
                 1599);
 
@@ -305,7 +305,7 @@ public class TFCRebornCoreCompat implements ICompatModule {
         TerrafirmacraftRecipeManager.addBarrelRecipe(
                 new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "barrel/transform/latex_coated_wood_sheet"),
                 RecipeHelper.getIIngredient("latex", 50),
-                RecipeHelper.getIIngredient(Mods.TFC_REBORN_CORE.ID, "item/wood_sheet"),
+                RecipeHelper.getIIngredient(Mods.TFC_REBORN_CORE.ID, "regular/wood_sheet"),
                 null,
                 RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/latex_coated_wood_sheet"),
                 8);
@@ -370,7 +370,7 @@ public class TFCRebornCoreCompat implements ICompatModule {
         TerrafirmacraftRecipeManager.addWeldingRecipe(
                 new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "anvil/welding/radiator_matrix"),
                 RecipeHelper.getIIngredient("ingotDoubleIron"),
-                RecipeHelper.getIIngredient(Mods.TFC_REBORN_CORE.ID, "item/radiator_piping", 0),
+                RecipeHelper.getIIngredient(Mods.TFC_REBORN_CORE.ID, "regular/radiator_piping", 0),
                 RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/radiator_matrix", 0),
                 Metal.Tier.TIER_II,
                 null);
@@ -457,91 +457,78 @@ public class TFCRebornCoreCompat implements ICompatModule {
         ImmersiveEngineeringRecipeManager.addCrusherRecipe(
                 "lumber",
                 RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/wood_powder"),
-                null,
                 1600);
 
         // Coal Powder (Lignite)
         ImmersiveEngineeringRecipeManager.addCrusherRecipe(
                 "gemLignite",
                 RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/coal_powder"),
-                null,
                 1600);
 
         // Coal Powder (Coal)
         ImmersiveEngineeringRecipeManager.addCrusherRecipe(
                 "gemCoal",
                 RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/coal_powder", 0, 2),
-                null,
                 1600);
 
         // Snow Powder
         ImmersiveEngineeringRecipeManager.addCrusherRecipe(
                 RecipeHelper.getItemStack(Mods.MINECRAFT.ID, "snow"),
                 RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/snow_powder", 0, 2),
-                null,
                 1600);
 
         // Obsidian Powder
         ImmersiveEngineeringRecipeManager.addCrusherRecipe(
                 RecipeHelper.getItemStack(Mods.MINECRAFT.ID, "obsidian"),
                 RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/obsidian_powder", 0, 2),
-                null,
                 3200);
 
         // Enderpearl Powder
         ImmersiveEngineeringRecipeManager.addCrusherRecipe(
                 "gemEnder",
                 RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/enderpearl_powder"),
-                null,
                 1600);
 
         // Certus Quartz Powder
         ImmersiveEngineeringRecipeManager.addCrusherRecipe(
                 "crystalCertusQuartz",
                 RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/certus_quartz_powder"),
-                null,
                 1600);
 
         // Pure Certus Quartz Powder
         ImmersiveEngineeringRecipeManager.addCrusherRecipe(
                 "crystalPureCertusQuartz",
                 RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/certus_quartz_powder"),
-                null,
                 1600);
 
         // Charged Certus Quartz Powder
         ImmersiveEngineeringRecipeManager.addCrusherRecipe(
                 RecipeHelper.getItemStack("appliedenergistics2", "material", 1),
                 RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/certus_quartz_powder"),
-                null,
                 1600);
 
         // Hematite Powder
         ImmersiveEngineeringRecipeManager.addCrusherRecipe(
                 "crushedHematite",
                 RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID, "powder/hematite"),
-                null,
                 1600);
 
         // Limonite Powder
         ImmersiveEngineeringRecipeManager.addCrusherRecipe(
                 "crushedLimonite",
                 RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID, "powder/limonite"),
-                null,
                 1600);
 
         // Malachite Powder
         ImmersiveEngineeringRecipeManager.addCrusherRecipe(
                 "crushedMalachite",
                 RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID, "powder/malachite"),
-                null,
                 1600);
 
         // Apatite Powder
         ImmersiveEngineeringRecipeManager.addCrusherRecipe(
                 "gemApatite",
                 RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/apatite_powder"),
-                null,
                 1600);
     }
 
@@ -674,12 +661,12 @@ public class TFCRebornCoreCompat implements ICompatModule {
                 new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "smeltery/recycle/electron_tube_housing"),
                 RecipeHelper.getFluidStack("glass", 250),
                 800,
-                RecipeHelper.getIIngredient(Mods.TFC_REBORN_CORE.ID, "item/electron_tube_housing"));
+                RecipeHelper.getIIngredient(Mods.TFC_REBORN_CORE.ID, "regular/electron_tube_housing"));
 
         TFCTechRecipeManager.addSmelteryRecipe(
                 new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "smeltery/recycle/glass_insulator"),
                 RecipeHelper.getFluidStack("glass", 250),
                 800,
-                RecipeHelper.getIIngredient(Mods.TFC_REBORN_CORE.ID, "item/glass_insulator"));
+                RecipeHelper.getIIngredient(Mods.TFC_REBORN_CORE.ID, "regular/glass_insulator"));
     }
 }

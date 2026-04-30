@@ -21,8 +21,7 @@ public class StorageDrawersCompat implements ICompatModule {
         return Arrays.asList(
                 Mods.STORAGE_DRAWERS.ID,
                 Mods.FRAMED_COMPACTING_DRAWERS.ID,
-                Mods.TFC_TECH.ID,
-                Mods.TERRAFIRMACRAFT.ID);
+                Mods.TFC_METALLUM.ID);
     }
 
     @Override

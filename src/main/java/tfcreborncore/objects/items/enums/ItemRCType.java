@@ -21,6 +21,11 @@ public enum ItemRCType {
     METAL_PRESS_LONG_ROD(Size.NORMAL, Weight.MEDIUM, false),
     METAL_PRESS_BOLT(Size.NORMAL, Weight.MEDIUM, false),
     METAL_PRESS_SCREW(Size.NORMAL, Weight.MEDIUM, false),
+    METAL_PRESS_NUGGET(Size.NORMAL, Weight.MEDIUM, false),
+    METAL_PRESS_DOUBLE_SHEET(Size.NORMAL, Weight.MEDIUM, false),
+    METAL_PRESS_STRIP(Size.NORMAL, Weight.MEDIUM, false),
+    METAL_PRESS_DOUBLE_INGOT(Size.NORMAL, Weight.MEDIUM, false),
+    METAL_PRESS_SHEET(Size.NORMAL, Weight.MEDIUM, false),
 
     // Circuit Board components
     WOOD_SHEET(Size.SMALL, Weight.MEDIUM, true),

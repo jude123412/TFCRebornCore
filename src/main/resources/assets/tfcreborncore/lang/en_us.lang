@@ -44,6 +44,11 @@ item.tfcreborncore.regular.metal_press_rackwheel.name=Metal Press Mold: Rackwhee
 item.tfcreborncore.regular.metal_press_long_rod.name=Metal Press Mold: Long Rod
 item.tfcreborncore.regular.metal_press_bolt.name=Metal Press Mold: Bolt
 item.tfcreborncore.regular.metal_press_screw.name=Metal Press Mold: Screw
+item.tfcreborncore.regular.metal_press_nugget.name=Metal Press Mold: Nugget
+item.tfcreborncore.regular.metal_press_double_sheet.name=Metal Press Mold: Double Sheet
+item.tfcreborncore.regular.metal_press_strip.name=Metal Press Mold: Strip
+item.tfcreborncore.regular.metal_press_double_ingot.name=Metal Press Mold: Double Ingot
+item.tfcreborncore.regular.metal_press_sheet.name=Metal Press Mold: Sheet
 
 # Circuit Board components
 item.tfcreborncore.regular.wood_sheet.name=Wood Sheet

@@ -2,7 +2,9 @@ package tfcreborncore.recipe.manager;
 
 import net.minecraft.item.ItemStack;
 
+import blusunrize.immersiveengineering.api.ComparableItemStack;
 import blusunrize.immersiveengineering.api.crafting.CrusherRecipe;
+import blusunrize.immersiveengineering.api.crafting.MetalPressRecipe;
 
 public class ImmersiveEngineeringRecipeManager {
 
@@ -56,5 +58,61 @@ public class ImmersiveEngineeringRecipeManager {
     public static void addCrusherRecipe(Object input, ItemStack primaryResult, Object[] secondaryResult, int energy) {
         CrusherRecipe recipe = new CrusherRecipe(primaryResult, input, energy).addToSecondaryOutput(secondaryResult);
         CrusherRecipe.recipeList.add(recipe);
+    }
+
+    /**
+     * Removes all Metal Press recipes.
+     * <p>
+     * This clears the internal {@link MetalPressRecipe#recipeList}, removing all
+     * default and mod‑added Metal Press recipes. Use this when replacing or
+     * rebuilding the entire Metal Press processing set.
+     */
+    public static void removeAllMetalPressRecipes() {
+        MetalPressRecipe.recipeList.clear();
+    }
+
+    /**
+     * Registers a new Metal Press recipe.
+     * <p>
+     * Metal Press recipes define how an input ingredient is shaped using a
+     * specific mold. This variant accepts a flexible input type, allowing either
+     * an {@link ItemStack}, an item or block instance, or an ore dictionary
+     * string. The method constructs a {@link MetalPressRecipe} using the provided
+     * input, output item, mold, and energy cost, then registers it into
+     * {@link MetalPressRecipe#recipeList} using the mold as the lookup key.
+     *
+     * @param input  The input ingredient, either an {@link ItemStack}, an item/block,
+     *               or an ore dictionary string.
+     * @param result The item produced by the Metal Press.
+     * @param mold   The mold required for the recipe.
+     * @param energy The energy cost required to process the recipe.
+     */
+    public static void addMetalPressRecipe(Object input, ItemStack result, ItemStack mold,
+                                           int energy) {
+        MetalPressRecipe recipe = new MetalPressRecipe(result, input, new ComparableItemStack(mold), energy);
+        MetalPressRecipe.recipeList.put(new ComparableItemStack(mold), recipe);
+    }
+
+    /**
+     * Registers a new Metal Press recipe with a specified input amount.
+     *
+     * This variant accepts a flexible input type—either an {@link ItemStack},
+     * an item or block instance, or an ore dictionary string—and applies an
+     * explicit input size to the recipe. The method constructs a
+     * {@link MetalPressRecipe} using the provided input, output item, mold,
+     * and energy cost, sets the required input amount, and registers the recipe
+     * into {@link MetalPressRecipe#recipeList} using the mold as the lookup key.
+     *
+     * @param input       The input ingredient, either an {@link ItemStack}, an item/block,
+     *                    or an ore dictionary string.
+     * @param inputAmount The required amount of the input ingredient.
+     * @param result      The item produced by the Metal Press.
+     * @param mold        The mold required for the recipe.
+     * @param energy      The energy cost required to process the recipe.
+     */
+    public static void addMetalPressRecipe(Object input, int inputAmount, ItemStack result, ItemStack mold,
+                                           int energy) {
+        MetalPressRecipe recipe = new MetalPressRecipe(result, input, new ComparableItemStack(mold), energy).setInputSize(inputAmount);
+        MetalPressRecipe.recipeList.put(new ComparableItemStack(mold), recipe);
     }
 }

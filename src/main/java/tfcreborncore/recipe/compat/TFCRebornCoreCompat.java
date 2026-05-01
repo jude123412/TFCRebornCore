@@ -62,6 +62,8 @@ public class TFCRebornCoreCompat implements ICompatModule {
         // Immersive Engineering
         // Crusher
         ImmersiveEngineeringRecipeManager.removeAllCrusherRecipes();
+        // Metal Press
+        ImmersiveEngineeringRecipeManager.removeAllMetalPressRecipes();
 
         // Forestry
         // Carpenter

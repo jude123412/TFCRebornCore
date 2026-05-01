@@ -27,6 +27,7 @@ import tfcreborncore.objects.items.enums.ItemRCToolType;
 import tfcreborncore.recipe.ICompatModule;
 import tfcreborncore.recipe.RecipeHelper;
 import tfcreborncore.recipe.enums.Mods;
+import tfcreborncore.recipe.manager.ImmersiveEngineeringRecipeManager;
 import tfcreborncore.recipe.manager.MinecraftRecipeManager;
 import tfcreborncore.recipe.manager.TerrafirmacraftRecipeManager;
 import tfctech.objects.items.metal.ItemTechMetal;
@@ -36,7 +37,7 @@ public class MetalRegistryHandlerCompat implements ICompatModule {
     @Override
     public List<String> dependencies() {
         return Arrays.asList(
-                Mods.TFC_METALLUM.ID);
+                Mods.IMMERSIVE_ENGINEERING.ID);
     }
 
     @Override
@@ -70,18 +71,29 @@ public class MetalRegistryHandlerCompat implements ICompatModule {
 
     @Override
     public void registerRecipeRemoval(FMLPostInitializationEvent r) {
-        for (Metal type : TFCRegistries.METALS.getValuesCollection()) {
+        for (Metal metal : TFCRegistries.METALS.getValuesCollection()) {
 
             // Remove Block Recipes if they exist
             for (ItemStack oreBlocks : OreDictionary
-                    .getOres("block" + RCItems.toPascalCase(type.getRegistryName().getPath()))) {
+                    .getOres("block" + RCItems.toPascalCase(metal.getRegistryName().getPath()))) {
                 if (!oreBlocks.isEmpty()) MinecraftRecipeManager.removeRecipeByOutput(oreBlocks);
             }
 
             // Remove Ingot Recipes if they exist
             for (ItemStack ingots : OreDictionary
-                    .getOres("ingot" + RCItems.toPascalCase(type.getRegistryName().getPath()))) {
+                    .getOres("ingot" + RCItems.toPascalCase(metal.getRegistryName().getPath()))) {
                 if (!ingots.isEmpty()) MinecraftRecipeManager.removeRecipeByOutput(ingots);
+            }
+
+            if (metal.isUsable()) {
+                MinecraftRecipeManager.removeRecipeByOutput(RecipeHelper.getItemStack(Mods.TFC_TECH.ID,
+                        "metal/" + metal.getRegistryName().getPath() + "_strip"));
+                MinecraftRecipeManager.removeRecipeByOutput(RecipeHelper.getItemStack(Mods.TFC_TECH.ID,
+                        "metal/" + metal.getRegistryName().getPath() + "_rod"));
+                MinecraftRecipeManager.removeRecipeByOutput(RecipeHelper.getItemStack(Mods.TFC_TECH.ID,
+                        "metal/" + metal.getRegistryName().getPath() + "_bolt"));
+                MinecraftRecipeManager.removeRecipeByOutput(RecipeHelper.getItemStack(Mods.TFC_TECH.ID,
+                        "metal/" + metal.getRegistryName().getPath() + "_screw"));
             }
         }
     }
@@ -207,7 +219,7 @@ public class MetalRegistryHandlerCompat implements ICompatModule {
                         metal.getTier(),
                         null);
 
-                // Ingot to Dust
+                // Dust
                 TerrafirmacraftRecipeManager.addQuernRecipe(
                         new ResourceLocation(Mods.TFC_REBORN_CORE.ID,
                                 "quern/" + metal.getRegistryName().getPath().toLowerCase() + "/dust"),
@@ -309,6 +321,104 @@ public class MetalRegistryHandlerCompat implements ICompatModule {
                     ForgeRule.DRAW_ANY,
                     ForgeRule.DRAW_ANY,
                     ForgeRule.HIT_NOT_LAST);
+        }
+    }
+
+    @Override
+    public void registerImmersiveEngineeringRecipes(FMLPostInitializationEvent r) {
+        for (Metal metal : TFCRegistries.METALS) {
+            String name = metal.getRegistryName().getPath();
+            if (metal.isUsable()) {
+                // Rackwheel Piece
+                ImmersiveEngineeringRecipeManager.addMetalPressRecipe(
+                        "ingot" + RCItems.toPascalCase(name),
+                        RecipeHelper.getItemStack(Mods.TFC_TECH.ID, "metal/" + name + "_rackwheel_piece"),
+                        RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/metal_press_rackwheel_piece"),
+                        1000);
+
+                // Rackwheel
+                ImmersiveEngineeringRecipeManager.addMetalPressRecipe(
+                        "ingot" + RCItems.toPascalCase(name), 4,
+                        RecipeHelper.getItemStack(Mods.TFC_TECH.ID, "metal/" + name + "_rackwheel"),
+                        RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/metal_press_rackwheel"),
+                        4000);
+
+                // Long Rod
+                ImmersiveEngineeringRecipeManager.addMetalPressRecipe(
+                        "ingot" + RCItems.toPascalCase(name),
+                        RecipeHelper.getItemStack(Mods.TFC_TECH.ID, "metal/" + name + "_long_rod"),
+                        RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/metal_press_long_rod"),
+                        1000);
+
+                // Bolt
+                ImmersiveEngineeringRecipeManager.addMetalPressRecipe(
+                        "ingot" + RCItems.toPascalCase(name),
+                        RecipeHelper.getItemStack(Mods.TFC_TECH.ID, "metal/" + name + "_bolt", 0, 4),
+                        RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/metal_press_bolt"),
+                        1000);
+
+                // Screw
+                ImmersiveEngineeringRecipeManager.addMetalPressRecipe(
+                        "ingot" + RCItems.toPascalCase(name),
+                        RecipeHelper.getItemStack(Mods.TFC_TECH.ID, "metal/" + name + "_screw", 0, 4),
+                        RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/metal_press_screw"),
+                        1000);
+
+                // Nugget
+                ImmersiveEngineeringRecipeManager.addMetalPressRecipe(
+                        "ingot" + RCItems.toPascalCase(name),
+                        RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID, "metal/nugget/" + name, 0, 10),
+                        RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/metal_press_nugget"),
+                        1000);
+
+                // Double Sheet
+                ImmersiveEngineeringRecipeManager.addMetalPressRecipe(
+                        "sheet" + RCItems.toPascalCase(name), 2,
+                        RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID, "metal/double_sheet/" + name),
+                        RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/metal_press_double_sheet"),
+                        2000);
+
+                // Strip
+                ImmersiveEngineeringRecipeManager.addMetalPressRecipe(
+                        "ingot" + RCItems.toPascalCase(name), 2,
+                        RecipeHelper.getItemStack(Mods.TFC_TECH.ID, "metal/" + name + "_strip", 0, 2),
+                        RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/metal_press_strip"),
+                        1000);
+
+                // Double Ingot
+                ImmersiveEngineeringRecipeManager.addMetalPressRecipe(
+                        "ingot" + RCItems.toPascalCase(name), 2,
+                        RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID, "metal/double_ingot/" + name),
+                        RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/metal_press_double_ingot"),
+                        2000);
+
+                // Sheet
+                ImmersiveEngineeringRecipeManager.addMetalPressRecipe(
+                        "ingotDouble" + RCItems.toPascalCase(name),
+                        RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID, "metal/sheet/" + name),
+                        RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/metal_press_sheet"),
+                        2000);
+
+                // Rod
+                ImmersiveEngineeringRecipeManager.addMetalPressRecipe(
+                        "ingot" + RCItems.toPascalCase(name),
+                        RecipeHelper.getItemStack(Mods.TFC_TECH.ID, "metal/" + name + "_rod", 0, 2),
+                        RecipeHelper.getItemStack(Mods.IMMERSIVE_ENGINEERING.ID, "mold", 2),
+                        1000);
+
+                // Wire
+                ImmersiveEngineeringRecipeManager.addMetalPressRecipe(
+                        "ingot" + RCItems.toPascalCase(name),
+                        RecipeHelper.getItemStack(Mods.TFC_TECH.ID, "metal/" + name + "_wire", 0, 2),
+                        RecipeHelper.getItemStack(Mods.IMMERSIVE_ENGINEERING.ID, "mold", 4),
+                        1000);
+
+                // Dust
+                ImmersiveEngineeringRecipeManager.addCrusherRecipe(
+                        "ingot" + RCItems.toPascalCase(name),
+                        RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID, "metal/dust/" + name),
+                        1600);
+            }
         }
     }
 }

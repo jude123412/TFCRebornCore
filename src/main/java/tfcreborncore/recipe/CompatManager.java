@@ -51,16 +51,11 @@ public final class CompatManager {
         }
     }
 
-    public static void loadCraftingRecipes(FMLPostInitializationEvent event) {
-        for (ICompatModule module : modules) {
-            if (module.areRecipesLoadable()) module.registerCraftingRecipe(event);
-        }
-    }
-
     public static void loadModuleRecipes(FMLPostInitializationEvent event) {
         for (ICompatModule module : modules) {
             if (module.areRecipesLoadable()) {
                 module.registerRecipeRemoval(event);
+                module.registerCraftingRecipe(event);
                 module.registerItemModification(event);
                 module.registerTerrafirmacraftRecipes(event);
                 module.registerExNihiloRecipes(event);

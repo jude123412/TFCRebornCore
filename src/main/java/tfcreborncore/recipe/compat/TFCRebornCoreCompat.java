@@ -75,7 +75,7 @@ public class TFCRebornCoreCompat implements ICompatModule {
     }
 
     @Override
-    public void registerCraftingRecipe(FMLPostInitializationEvent r) {
+    public void registerMinecraftRecipe(FMLPostInitializationEvent r) {
         // Wood Sheet
         MinecraftRecipeManager.addShapedRecipe(
                 new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shaped/wood_sheet"),

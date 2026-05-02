@@ -55,7 +55,7 @@ public final class CompatManager {
         for (ICompatModule module : modules) {
             if (module.areRecipesLoadable()) {
                 module.registerRecipeRemoval(event);
-                module.registerCraftingRecipe(event);
+                module.registerMinecraftRecipe(event);
                 module.registerItemModification(event);
                 module.registerTerrafirmacraftRecipes(event);
                 module.registerExNihiloRecipes(event);

@@ -32,7 +32,7 @@ public class ExNihiloCompat implements ICompatModule {
     }
 
     @Override
-    public void registerCraftingRecipe(FMLPostInitializationEvent r) {
+    public void registerMinecraftRecipe(FMLPostInitializationEvent r) {
         // String Mesh
         MinecraftRecipeManager.addShapedRecipe(
                 new ResourceLocation(Tags.MODID, "string_mesh"),

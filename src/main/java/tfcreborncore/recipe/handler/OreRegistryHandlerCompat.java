@@ -23,7 +23,7 @@ public class OreRegistryHandlerCompat implements ICompatModule {
     }
 
     @Override
-    public void registerCraftingRecipe(FMLPostInitializationEvent r) {
+    public void registerMinecraftRecipe(FMLPostInitializationEvent r) {
         for (OreProcessingTypes type : OreProcessingTypes.values()) {
             // Pellet
             MinecraftRecipeManager.addShapelessRecipe(

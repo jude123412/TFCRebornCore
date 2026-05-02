@@ -15,7 +15,7 @@ public interface ICompatModule {
 
     default void registerRecipeRemoval(FMLPostInitializationEvent r) {}
 
-    default void registerCraftingRecipe(FMLPostInitializationEvent r) {}
+    default void registerMinecraftRecipe(FMLPostInitializationEvent r) {}
 
     default void registerItemModification(FMLPostInitializationEvent r) {}
 

@@ -100,18 +100,16 @@ public class RCItems {
 
         ImmutableList.Builder<Item> metalItems = ImmutableList.builder();
         for (Metal metal : TFCRegistries.METALS) {
-            String metalName = metal.getRegistryName().getPath().toLowerCase();
-            String base = metal.isToolMetal() ? "metal/tool/head/" + metalName : "metal/" + metalName;
 
             for (ItemRCMetalType type : ItemRCMetalType.values()) {
-
-                String name = base + "_" + type.toString().toLowerCase();
+                String name = metal.getRegistryName().getPath().toLowerCase();
+                String base = "metal/" + type + "/" + name;
 
                 boolean shouldRegister = (type.isToolHead() && metal.isToolMetal()) ||
                         (!type.isToolHead() && metal.isUsable());
 
                 if (shouldRegister) {
-                    Item metalType = register(registry, name,
+                    Item metalType = register(registry, base,
                             ItemRCMetalType.Create(metal, type),
                             CreativeTabsRC.CT_ITEMS);
 
@@ -144,9 +142,10 @@ public class RCItems {
         for (Metal metal : TFCRegistries.METALS) {
             if (metal.isToolMetal()) {
                 for (ItemRCToolType type : ItemRCToolType.values()) {
-                    String base = "metal/tool/" + type + "/" + metal.getRegistryName().getPath().toLowerCase();
+                    String name = metal.getRegistryName().getPath().toLowerCase();
+                    String base = "metal/" + type + "/" + name;
 
-                    Item metalType = register(registry, base + "_" + type.toString().toLowerCase(),
+                    Item metalType = register(registry, base,
                             ItemRCToolType.Create(metal, type),
                             CreativeTabsRC.CT_ITEMS);
 
@@ -172,7 +171,7 @@ public class RCItems {
         for (Metal metal : TFCRegistries.METALS) {
             if (metal.isToolMetal()) {
 
-                String base = "metal/tool/universal_weapon/" + metal.getRegistryName().getPath().toLowerCase();
+                String base = "metal/universal_weapon/" + metal.getRegistryName().getPath().toLowerCase();
                 Item universalWeapon = register(registry, base,
                         new ItemRCUniversalWeapon(metal),
                         CreativeTabsRC.CT_ITEMS);

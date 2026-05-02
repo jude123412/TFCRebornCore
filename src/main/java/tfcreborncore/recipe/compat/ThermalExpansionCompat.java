@@ -38,7 +38,7 @@ public class ThermalExpansionCompat implements ICompatModule {
     }
 
     @Override
-    public void registerCraftingRecipe(FMLPostInitializationEvent r) {
+    public void registerMinecraftRecipe(FMLPostInitializationEvent r) {
         // Crescent Hammer
         MinecraftRecipeManager.addShapedRecipe(
                 new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shaped/crescent_hammer"),

@@ -35,7 +35,7 @@ public class MinecraftCompat implements ICompatModule {
     }
 
     @Override
-    public void registerCraftingRecipe(FMLPostInitializationEvent r) {}
+    public void registerMinecraftRecipe(FMLPostInitializationEvent r) {}
 
     @Override
     public void registerTerrafirmacraftRecipes(FMLPostInitializationEvent r) {

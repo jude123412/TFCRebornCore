@@ -33,7 +33,7 @@ public class BaubleliciousCompat implements ICompatModule {
     }
 
     @Override
-    public void registerCraftingRecipe(FMLPostInitializationEvent r) {
+    public void registerMinecraftRecipe(FMLPostInitializationEvent r) {
         // Amulet
         MinecraftRecipeManager.addShapelessDamageRecipe(
                 new ResourceLocation(Tags.MODID, "amulet"),

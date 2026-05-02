@@ -15,22 +15,13 @@ import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.oredict.OreDictionary;
 
-import tfcreborncore.Tags;
 import tfcreborncore.objects.RCItems;
-import tfcreborncore.objects.items.ItemRCAnyMetal;
-import tfcreborncore.objects.items.ItemRCMetal;
-import tfcreborncore.objects.items.ItemRCTool;
-import tfcreborncore.objects.items.ItemRCUniversalWeapon;
-import tfcreborncore.objects.items.enums.ItemRCAnyMetalType;
-import tfcreborncore.objects.items.enums.ItemRCMetalType;
-import tfcreborncore.objects.items.enums.ItemRCToolType;
 import tfcreborncore.recipe.ICompatModule;
 import tfcreborncore.recipe.RecipeHelper;
 import tfcreborncore.recipe.enums.Mods;
 import tfcreborncore.recipe.manager.ImmersiveEngineeringRecipeManager;
 import tfcreborncore.recipe.manager.MinecraftRecipeManager;
 import tfcreborncore.recipe.manager.TerrafirmacraftRecipeManager;
-import tfctech.objects.items.metal.ItemTechMetal;
 
 public class MetalRegistryHandlerCompat implements ICompatModule {
 
@@ -72,53 +63,55 @@ public class MetalRegistryHandlerCompat implements ICompatModule {
     @Override
     public void registerRecipeRemoval(FMLPostInitializationEvent r) {
         for (Metal metal : TFCRegistries.METALS.getValuesCollection()) {
+            String name = metal.getRegistryName().getPath();
 
             // Remove Block Recipes if they exist
             for (ItemStack oreBlocks : OreDictionary
-                    .getOres("block" + RCItems.toPascalCase(metal.getRegistryName().getPath()))) {
+                    .getOres("block" + RCItems.toPascalCase(name))) {
                 if (!oreBlocks.isEmpty()) MinecraftRecipeManager.removeRecipeByOutput(oreBlocks);
             }
 
             // Remove Ingot Recipes if they exist
             for (ItemStack ingots : OreDictionary
-                    .getOres("ingot" + RCItems.toPascalCase(metal.getRegistryName().getPath()))) {
+                    .getOres("ingot" + RCItems.toPascalCase(name))) {
                 if (!ingots.isEmpty()) MinecraftRecipeManager.removeRecipeByOutput(ingots);
             }
 
             if (metal.isUsable()) {
                 MinecraftRecipeManager.removeRecipeByOutput(RecipeHelper.getItemStack(Mods.TFC_TECH.ID,
-                        "metal/" + metal.getRegistryName().getPath() + "_strip"));
+                        "metal/" + name + "_strip"));
                 MinecraftRecipeManager.removeRecipeByOutput(RecipeHelper.getItemStack(Mods.TFC_TECH.ID,
-                        "metal/" + metal.getRegistryName().getPath() + "_rod"));
+                        "metal/" + name + "_rod"));
                 MinecraftRecipeManager.removeRecipeByOutput(RecipeHelper.getItemStack(Mods.TFC_TECH.ID,
-                        "metal/" + metal.getRegistryName().getPath() + "_bolt"));
+                        "metal/" + name + "_bolt"));
                 MinecraftRecipeManager.removeRecipeByOutput(RecipeHelper.getItemStack(Mods.TFC_TECH.ID,
-                        "metal/" + metal.getRegistryName().getPath() + "_screw"));
+                        "metal/" + name + "_screw"));
             }
         }
     }
 
     @Override
-    public void registerCraftingRecipe(FMLPostInitializationEvent r) {
+    public void registerMinecraftRecipe(FMLPostInitializationEvent r) {
         // Metal Recipes
         for (Metal metal : TFCRegistries.METALS.getValuesCollection()) {
+            String name = metal.getRegistryName().getPath();
+
             // Find a block if it exists?
             List<ItemStack> maybeBlock = OreDictionary
-                    .getOres("block" + RCItems.toPascalCase(metal.getRegistryName().getPath()));
+                    .getOres("block" + RCItems.toPascalCase(name));
 
-            // Add a block &
-            // uncraft recipe
+            // Add a block recipe
             if (!maybeBlock.isEmpty()) {
                 // Metal Block
                 MinecraftRecipeManager.addShapedDamageRecipe(
                         new ResourceLocation(Mods.TFC_REBORN_CORE.ID,
-                                "crafting/shaped/damage/metal_block/" + metal.getRegistryName().getPath()),
+                                "crafting/shaped/damage/metal/block/" + name),
                         8,
                         maybeBlock.get(0),
                         "III",
                         "IHI",
                         "III",
-                        'I', "ingot" + RCItems.toPascalCase(metal.getRegistryName().getPath()),
+                        'I', "ingot" + RCItems.toPascalCase(name),
                         'H', "hammer");
             }
 
@@ -126,51 +119,106 @@ public class MetalRegistryHandlerCompat implements ICompatModule {
             if (metal.isToolMetal()) {
                 // Excavator
                 MinecraftRecipeManager.addShapedSkillRecipe(
-                        new ResourceLocation(Tags.MODID,
-                                "crafting/shaped/skill/" + ItemRCToolType.EXCAVATOR + "/" + metal),
-                        ItemRCTool.get(metal, ItemRCToolType.EXCAVATOR).getDefaultInstance(),
+                        new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shaped/skill/metal/excavator/" + name),
+                        RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "metal/excavator/" + name),
                         "H",
                         "S",
                         'S', "stickWood",
-                        'H', ItemRCMetal.get(metal, ItemRCMetalType.EXCAVATOR_HEAD).getDefaultInstance());
+                        'H', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "metal/excavator_head/" + name));
 
                 // Mining Hammer
                 MinecraftRecipeManager.addShapedSkillRecipe(
-                        new ResourceLocation(Tags.MODID,
-                                "crafting/shaped/skill/" + ItemRCToolType.MINING_HAMMER + "/" + metal),
-                        ItemRCTool.get(metal, ItemRCToolType.MINING_HAMMER).getDefaultInstance(),
+                        new ResourceLocation(Mods.TFC_REBORN_CORE.ID,
+                                "crafting/shaped/skill/metal/mining_hammer" + name),
+                        RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "metal/mining_hammer/" + name),
                         "H",
                         "S",
                         'S', "stickWood",
                         'H',
-                        ItemRCMetal.get(metal, ItemRCMetalType.MINING_HAMMER_HEAD).getDefaultInstance());
+                        RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "metal/mining_hammer_head/" + name));
 
                 // Wire Cutter
                 MinecraftRecipeManager.addShapedSkillRecipe(
-                        new ResourceLocation(Tags.MODID,
-                                "crafting/shaped/skill/" + ItemRCToolType.WIRE_CUTTER + "/" + metal),
-                        ItemRCTool.get(metal, ItemRCToolType.WIRE_CUTTER).getDefaultInstance(),
+                        new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shaped/metal/wire_cutter/" + name),
+                        RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "metal/wire_cutter/" + name),
                         "HS",
                         "S ",
                         'S', "stickWood",
                         'H',
-                        ItemRCMetal.get(metal, ItemRCMetalType.WIRE_CUTTER_HEAD).getDefaultInstance());
+                        RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "metal/wire_cutter_head/" + name));
 
                 // Universal Weapon
                 MinecraftRecipeManager.addShapedSkillRecipe(
-                        new ResourceLocation(Tags.MODID, "crafting/shaped/skill/universal_weapon/" + metal),
-                        ItemRCUniversalWeapon.get(metal).getDefaultInstance(),
+                        new ResourceLocation(Mods.TFC_REBORN_CORE.ID,
+                                "crafting/shaped/skill/metal/universal_weapon/" + metal),
+                        RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "metal/universal_weapon/" + name),
                         "H",
                         "S",
                         'S', "stickWood",
-                        'H', ItemRCMetal.get(metal, ItemRCMetalType.UNIVERSAL_WEAPON_HEAD).getDefaultInstance());
+                        'H', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "metal/universal_weapon_head/" + name));
 
                 // Universal Weapon Head
                 MinecraftRecipeManager.addShapelessSkillRecipe(
-                        new ResourceLocation(Tags.MODID, "crafting/shapeless/skill/universal_weapon_head/" + metal),
-                        ItemRCMetal.get(metal, ItemRCMetalType.UNIVERSAL_WEAPON_HEAD).getDefaultInstance(),
+                        new ResourceLocation(Mods.TFC_REBORN_CORE.ID,
+                                "crafting/shapeless/skill/metal/universal_weapon_head/" + name),
+                        RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "metal/universal_weapon_head/" + name),
                         "gemAmethyst",
-                        ItemRCMetal.get(metal, ItemRCMetalType.UNFINISHED_UNIVERSAL_WEAPON_HEAD).getDefaultInstance());
+                        RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID,
+                                "metal/unfinished_universal_weapon_head/" + name));
+            }
+
+            if (metal.isUsable()) {
+                // Strip
+                MinecraftRecipeManager.addShapelessDamageRecipe(
+                        new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shapeless/metal/strip/" + name),
+                        1,
+                        RecipeHelper.getItemStack(Mods.TFC_TECH.ID, "metal/" + name + "_strip"),
+                        "chisel",
+                        "ingot" + RCItems.toPascalCase(name));
+
+                // Long Rod
+                MinecraftRecipeManager.addShapelessRecipe(
+                        new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shapeless/metal/long_rod/" + name),
+                        RecipeHelper.getItemStack(Mods.TFC_TECH.ID, "metal/" + name + "_long_rod"),
+                        "hammer",
+                        "stick" + RCItems.toPascalCase(name),
+                        "stick" + RCItems.toPascalCase(name));
+
+                // Rod
+                MinecraftRecipeManager.addShapelessRecipe(
+                        new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shapeless/metal/rod/" + name),
+                        RecipeHelper.getItemStack(Mods.TFC_TECH.ID, "metal/" + name + "_rod"),
+                        "saw",
+                        "ingot" + RCItems.toPascalCase(name));
+
+                // Bolt
+                MinecraftRecipeManager.addShapelessRecipe(
+                        new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shapeless/metal/bolt/" + name),
+                        RecipeHelper.getItemStack(Mods.TFC_TECH.ID, "metal/" + name + "_bolt"),
+                        "chisel",
+                        "stick" + RCItems.toPascalCase(name));
+
+                // Screw
+                MinecraftRecipeManager.addShapelessRecipe(
+                        new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shapeless/metal/screw/" + name),
+                        RecipeHelper.getItemStack(Mods.TFC_TECH.ID, "metal/" + name + "_screw"),
+                        "chisel",
+                        "bolt" + RCItems.toPascalCase(name),
+                        "bolt" + RCItems.toPascalCase(name));
+
+                // Wire
+                MinecraftRecipeManager.addShapelessRecipe(
+                        new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shapeless/metal/wire/" + name),
+                        RecipeHelper.getItemStack(Mods.TFC_TECH.ID, "metal/" + name + "_wire", 4, 2),
+                        "wireCutter",
+                        "sheet" + RCItems.toPascalCase(name));
+
+                // Nugget
+                MinecraftRecipeManager.addShapelessRecipe(
+                        new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shapeless/metal/nugget/" + name),
+                        RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID, "metal/nugget/" + name, 0, 5),
+                        "hammer",
+                        "ingot" + RCItems.toPascalCase(name));
             }
         }
     }
@@ -194,13 +242,13 @@ public class MetalRegistryHandlerCompat implements ICompatModule {
     public void registerTerrafirmacraftRecipes(FMLPostInitializationEvent r) {
         // Metal Processing
         for (Metal metal : TFCRegistries.METALS.getValuesCollection()) {
+            String name = metal.getRegistryName().getPath();
             if (metal.isUsable()) {
                 // Pipe Frame
                 TerrafirmacraftRecipeManager.addAnvilRecipe(
-                        new ResourceLocation(Mods.TFC_REBORN_CORE.ID,
-                                "anvil/working/pipe_frame/" + metal.getRegistryName().getPath().toLowerCase()),
-                        RecipeHelper.getIIngredient(ItemMetal.get(metal, Metal.ItemType.DOUBLE_INGOT)),
-                        RecipeHelper.getItemStack(ItemRCAnyMetal.get(metal, ItemRCAnyMetalType.PIPE_FRAME)),
+                        new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "anvil/working/pipe_frame/" + name),
+                        RecipeHelper.getIIngredient(Mods.TERRAFIRMACRAFT.ID, "metal/double_ingot/" + name),
+                        RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "metal/pipe_frame/" + name),
                         metal.getTier(),
                         null,
                         ForgeRule.DRAW_NOT_LAST,
@@ -209,20 +257,17 @@ public class MetalRegistryHandlerCompat implements ICompatModule {
 
                 // Rackwheel Half
                 TerrafirmacraftRecipeManager.addWeldingRecipe(
-                        new ResourceLocation(
-                                Mods.TFC_REBORN_CORE.ID,
-                                "anvil/welding/" + ItemRCMetalType.RACKWHEEL_HALF + "/" +
-                                        metal.getRegistryName().getPath().toLowerCase()),
-                        RecipeHelper.getIIngredient(ItemTechMetal.get(metal, ItemTechMetal.ItemType.RACKWHEEL_PIECE)),
-                        RecipeHelper.getIIngredient(ItemTechMetal.get(metal, ItemTechMetal.ItemType.RACKWHEEL_PIECE)),
-                        RecipeHelper.getItemStack(ItemRCMetal.get(metal, ItemRCMetalType.RACKWHEEL_HALF)),
+                        new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "anvil/welding/rackwheel_half/" + name),
+                        RecipeHelper.getIIngredient(Mods.TFC_TECH.ID, "metal/" + name + "_rackwheel_piece"),
+                        RecipeHelper.getIIngredient(Mods.TFC_TECH.ID, "metal/" + name + "_rackwheel_piece"),
+                        RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "metal/rackwheel_half/" + name),
                         metal.getTier(),
                         null);
 
                 // Dust
                 TerrafirmacraftRecipeManager.addQuernRecipe(
                         new ResourceLocation(Mods.TFC_REBORN_CORE.ID,
-                                "quern/" + metal.getRegistryName().getPath().toLowerCase() + "/dust"),
+                                "quern/" + name + "/dust"),
                         RecipeHelper.getIIngredient(ItemMetal.get(metal, Metal.ItemType.INGOT)),
                         RecipeHelper.getItemStack(ItemMetal.get(metal, Metal.ItemType.DUST)));
             }
@@ -230,12 +275,9 @@ public class MetalRegistryHandlerCompat implements ICompatModule {
             if (metal.isToolMetal()) {
                 // Wire Cutter Head
                 TerrafirmacraftRecipeManager.addAnvilRecipe(
-                        new ResourceLocation(
-                                Tags.MODID,
-                                "anvil/working/" + ItemRCMetalType.WIRE_CUTTER_HEAD +
-                                        metal.getRegistryName().getPath().toLowerCase()),
-                        RecipeHelper.getIIngredient(ItemMetal.get(metal, Metal.ItemType.INGOT)),
-                        RecipeHelper.getItemStack(ItemRCMetal.get(metal, ItemRCMetalType.WIRE_CUTTER_HEAD)),
+                        new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "anvil/working/wire_cutter_head/" + name),
+                        RecipeHelper.getIIngredient(Mods.TERRAFIRMACRAFT.ID, "metal/ingot/" + name),
+                        RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "metal/wire_cutter_head/" + name),
                         metal.getTier(),
                         null,
                         ForgeRule.BEND_ANY,
@@ -244,13 +286,11 @@ public class MetalRegistryHandlerCompat implements ICompatModule {
 
                 // Unfinished Universal Weapon Head
                 TerrafirmacraftRecipeManager.addAnvilRecipe(
-                        new ResourceLocation(
-                                Tags.MODID,
-                                "anvil/working/unfinished_universal_weapon_head" +
-                                        metal.getRegistryName().getPath().toLowerCase()),
-                        RecipeHelper.getIIngredient(ItemMetal.get(metal, Metal.ItemType.DOUBLE_INGOT)),
-                        RecipeHelper
-                                .getItemStack(ItemRCMetal.get(metal, ItemRCMetalType.UNFINISHED_UNIVERSAL_WEAPON_HEAD)),
+                        new ResourceLocation(Mods.TFC_REBORN_CORE.ID,
+                                "anvil/working/unfinished_universal_weapon_head/" + name),
+                        RecipeHelper.getIIngredient(Mods.TERRAFIRMACRAFT.ID, "metal/double_ingot/" + name),
+                        RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID,
+                                "metal/unfinished_universal_weapon_head/" + name),
                         metal.getTier(),
                         null,
                         ForgeRule.BEND_ANY,
@@ -261,61 +301,50 @@ public class MetalRegistryHandlerCompat implements ICompatModule {
             if (metal.isUsable() && metal.isToolMetal()) {
                 // Unfinished Mining Hammer Head
                 TerrafirmacraftRecipeManager.addWeldingRecipe(
-                        new ResourceLocation(
-                                Mods.TFC_REBORN_CORE.ID,
-                                "anvil/welding/" + ItemRCMetalType.UNFINISHED_MINING_HAMMER_HEAD + "/" +
-                                        metal.getRegistryName().getPath().toLowerCase()),
-                        RecipeHelper.getIIngredient(ItemMetal.get(metal, Metal.ItemType.DOUBLE_INGOT)),
-                        RecipeHelper.getIIngredient(ItemMetal.get(metal, Metal.ItemType.HAMMER_HEAD)),
+                        new ResourceLocation(Mods.TFC_REBORN_CORE.ID,
+                                "anvil/welding/unfinished_mining_hammer_head/" + name),
+                        RecipeHelper.getIIngredient(Mods.TERRAFIRMACRAFT.ID, "metal/double_ingot/" + name),
+                        RecipeHelper.getIIngredient(Mods.TERRAFIRMACRAFT.ID, "metal/hammer_head/" + name),
                         RecipeHelper
-                                .getItemStack(ItemRCMetal.get(metal, ItemRCMetalType.UNFINISHED_MINING_HAMMER_HEAD)),
+                                .getItemStack(Mods.TFC_REBORN_CORE.ID, "metal/unfinished_mining_hammer_head/" + name),
                         metal.getTier(),
                         SmithingSkill.Type.TOOLS);
 
                 // Mining Hammer Head
                 TerrafirmacraftRecipeManager.addWeldingRecipe(
-                        new ResourceLocation(
-                                Mods.TFC_REBORN_CORE.ID,
-                                "anvil/welding/" + ItemRCMetalType.MINING_HAMMER_HEAD + "/" +
-                                        metal.getRegistryName().getPath().toLowerCase()),
-                        RecipeHelper.getIIngredient(ItemMetal.get(metal, Metal.ItemType.DOUBLE_INGOT)),
-                        RecipeHelper
-                                .getIIngredient(ItemRCMetal.get(metal, ItemRCMetalType.UNFINISHED_MINING_HAMMER_HEAD)),
-                        RecipeHelper.getItemStack(ItemRCMetal.get(metal, ItemRCMetalType.MINING_HAMMER_HEAD)),
+                        new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "anvil/welding/mining_hammer_head/" + name),
+                        RecipeHelper.getIIngredient(Mods.TERRAFIRMACRAFT.ID, "metal/double_ingot/" + name),
+                        RecipeHelper.getIIngredient(Mods.TFC_REBORN_CORE.ID,
+                                "metal/unfinished_mining_hammer_head/" + name),
+                        RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "metal/mining_hammer_head/" + name),
                         metal.getTier(),
                         SmithingSkill.Type.TOOLS);
 
                 // Unfinished Excavator Head
                 TerrafirmacraftRecipeManager.addWeldingRecipe(
-                        new ResourceLocation(
-                                Mods.TFC_REBORN_CORE.ID,
-                                "anvil/welding/" + ItemRCMetalType.UNFINISHED_EXCAVATOR_HEAD + "/" +
-                                        metal.getRegistryName().getPath().toLowerCase()),
-                        RecipeHelper.getIIngredient(ItemMetal.get(metal, Metal.ItemType.INGOT)),
-                        RecipeHelper.getIIngredient(ItemMetal.get(metal, Metal.ItemType.SHOVEL_HEAD)),
-                        RecipeHelper.getItemStack(ItemRCMetal.get(metal, ItemRCMetalType.UNFINISHED_EXCAVATOR_HEAD)),
+                        new ResourceLocation(Mods.TFC_REBORN_CORE.ID,
+                                "anvil/welding/unfinished_excavator_head/" + name),
+                        RecipeHelper.getIIngredient(Mods.TERRAFIRMACRAFT.ID, "metal/ingot/" + name),
+                        RecipeHelper.getIIngredient(Mods.TERRAFIRMACRAFT.ID, "metal/shovel_head/" + name),
+                        RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "metal/unfinished_excavator_head/" + name),
                         metal.getTier(),
                         SmithingSkill.Type.TOOLS);
 
                 // Excavator Head
                 TerrafirmacraftRecipeManager.addWeldingRecipe(
-                        new ResourceLocation(
-                                Mods.TFC_REBORN_CORE.ID,
-                                "anvil/welding/" + ItemRCMetalType.EXCAVATOR_HEAD + "/" +
-                                        metal.getRegistryName().getPath().toLowerCase()),
-                        RecipeHelper.getIIngredient(ItemMetal.get(metal, Metal.ItemType.INGOT)),
-                        RecipeHelper.getIIngredient(ItemRCMetal.get(metal, ItemRCMetalType.UNFINISHED_EXCAVATOR_HEAD)),
-                        RecipeHelper.getItemStack(ItemRCMetal.get(metal, ItemRCMetalType.EXCAVATOR_HEAD)),
+                        new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "anvil/welding/excavator_head/" + name),
+                        RecipeHelper.getIIngredient(Mods.TERRAFIRMACRAFT.ID, "metal/ingot/" + name),
+                        RecipeHelper.getIIngredient(Mods.TFC_REBORN_CORE.ID, "metal/unfinished_excavator_head/" + name),
+                        RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "metal/excavator_head/" + name),
                         metal.getTier(),
                         SmithingSkill.Type.TOOLS);
             }
 
             // Electron Tube Base
             TerrafirmacraftRecipeManager.addAnvilRecipe(
-                    new ResourceLocation(Mods.TFC_REBORN_CORE.ID,
-                            "anvil/working/electron_tube_base/" + metal.getRegistryName().getPath().toLowerCase()),
-                    RecipeHelper.getIIngredient(ItemMetal.get(metal, Metal.ItemType.INGOT)),
-                    RecipeHelper.getItemStack(ItemRCAnyMetal.get(metal, ItemRCAnyMetalType.ELECTRON_TUBE_BASE)),
+                    new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "anvil/working/electron_tube_base/" + name),
+                    RecipeHelper.getIIngredient(Mods.TERRAFIRMACRAFT.ID, "metal/ingot/" + name),
+                    RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "metal/electron_tube_base/" + name),
                     metal.getTier(),
                     null,
                     ForgeRule.DRAW_ANY,
@@ -380,7 +409,7 @@ public class MetalRegistryHandlerCompat implements ICompatModule {
 
                 // Strip
                 ImmersiveEngineeringRecipeManager.addMetalPressRecipe(
-                        "ingot" + RCItems.toPascalCase(name), 2,
+                        "ingot" + RCItems.toPascalCase(name),
                         RecipeHelper.getItemStack(Mods.TFC_TECH.ID, "metal/" + name + "_strip", 0, 2),
                         RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/metal_press_strip"),
                         1000);
@@ -410,7 +439,7 @@ public class MetalRegistryHandlerCompat implements ICompatModule {
                 ImmersiveEngineeringRecipeManager.addMetalPressRecipe(
                         "ingot" + RCItems.toPascalCase(name),
                         RecipeHelper.getItemStack(Mods.TFC_TECH.ID, "metal/" + name + "_wire", 0, 2),
-                        RecipeHelper.getItemStack(Mods.IMMERSIVE_ENGINEERING.ID, "mold", 4),
+                        RecipeHelper.getItemStack(Mods.IMMERSIVE_ENGINEERING.ID, "mold", 2),
                         1000);
 
                 // Dust

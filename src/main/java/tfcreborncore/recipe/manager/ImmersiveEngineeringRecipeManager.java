@@ -112,7 +112,8 @@ public class ImmersiveEngineeringRecipeManager {
      */
     public static void addMetalPressRecipe(Object input, int inputAmount, ItemStack result, ItemStack mold,
                                            int energy) {
-        MetalPressRecipe recipe = new MetalPressRecipe(result, input, new ComparableItemStack(mold), energy).setInputSize(inputAmount);
+        MetalPressRecipe recipe = new MetalPressRecipe(result, input, new ComparableItemStack(mold), energy)
+                .setInputSize(inputAmount);
         MetalPressRecipe.recipeList.put(new ComparableItemStack(mold), recipe);
     }
 }

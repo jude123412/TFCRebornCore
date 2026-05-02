@@ -15,6 +15,7 @@ import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.oredict.OreDictionary;
 
+import tfcreborncore.Tags;
 import tfcreborncore.objects.RCItems;
 import tfcreborncore.recipe.ICompatModule;
 import tfcreborncore.recipe.RecipeHelper;
@@ -28,7 +29,7 @@ public class MetalRegistryHandlerCompat implements ICompatModule {
     @Override
     public List<String> dependencies() {
         return Arrays.asList(
-                Mods.IMMERSIVE_ENGINEERING.ID);
+                Mods.TFC_TECH.ID);
     }
 
     @Override
@@ -86,6 +87,8 @@ public class MetalRegistryHandlerCompat implements ICompatModule {
                         "metal/" + name + "_bolt"));
                 MinecraftRecipeManager.removeRecipeByOutput(RecipeHelper.getItemStack(Mods.TFC_TECH.ID,
                         "metal/" + name + "_screw"));
+                MinecraftRecipeManager.removeRecipeByOutput(
+                        RecipeHelper.getItemStack(Mods.TFC_TECH.ID, "metal/" + name + "_rackwheel"));
             }
         }
     }
@@ -255,6 +258,39 @@ public class MetalRegistryHandlerCompat implements ICompatModule {
                         ForgeRule.BEND_NOT_LAST,
                         ForgeRule.HIT_LAST);
 
+                // Rackwheel Piece
+                TerrafirmacraftRecipeManager.addAnvilRecipe(
+                        new ResourceLocation(Tags.MODID, "anvil/working/rackwheel_piece/" + name),
+                        RecipeHelper.getIIngredient(Mods.TERRAFIRMACRAFT.ID, "metal/ingot/" + name),
+                        RecipeHelper.getItemStack(Mods.TFC_TECH.ID, "metal/" + name + "_rackwheel_piece"),
+                        metal.getTier(),
+                        null,
+                        ForgeRule.UPSET_THIRD_LAST,
+                        ForgeRule.DRAW_SECOND_LAST,
+                        ForgeRule.UPSET_LAST);
+
+                // Rod
+                TerrafirmacraftRecipeManager.addAnvilRecipe(
+                        new ResourceLocation(Tags.MODID, "anvil/working/rod/" + name),
+                        RecipeHelper.getIIngredient(Mods.TERRAFIRMACRAFT.ID, "metal/ingot/" + name),
+                        RecipeHelper.getItemStack(Mods.TFC_TECH.ID, "metal/" + name + "_rod"),
+                        metal.getTier(),
+                        null,
+                        ForgeRule.HIT_THIRD_LAST,
+                        ForgeRule.DRAW_SECOND_LAST,
+                        ForgeRule.HIT_LAST);
+
+                // Strip
+                TerrafirmacraftRecipeManager.addAnvilRecipe(
+                        new ResourceLocation(Tags.MODID, "anvil/working/strip/" + name),
+                        RecipeHelper.getIIngredient(ItemMetal.get(metal, Metal.ItemType.INGOT)),
+                        RecipeHelper.getItemStack(Mods.TFC_TECH.ID, "metal/" + name + "_strip"),
+                        metal.getTier(),
+                        null,
+                        ForgeRule.HIT_ANY,
+                        ForgeRule.HIT_ANY,
+                        ForgeRule.SHRINK_ANY);
+
                 // Rackwheel Half
                 TerrafirmacraftRecipeManager.addWeldingRecipe(
                         new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "anvil/welding/rackwheel_half/" + name),
@@ -264,12 +300,21 @@ public class MetalRegistryHandlerCompat implements ICompatModule {
                         metal.getTier(),
                         null);
 
+                // Rackwheel
+                TerrafirmacraftRecipeManager.addWeldingRecipe(
+                        new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "anvil/welding/rackwheel/" + name),
+                        RecipeHelper.getIIngredient(Mods.TFC_REBORN_CORE.ID, "metal/rackwheel_half/" + name),
+                        RecipeHelper.getIIngredient(Mods.TFC_REBORN_CORE.ID, "metal/rackwheel_half/" + name),
+                        RecipeHelper.getItemStack(Mods.TFC_TECH.ID, "metal/" + name + "_rackwheel"),
+                        metal.getTier(),
+                        null);
+
                 // Dust
                 TerrafirmacraftRecipeManager.addQuernRecipe(
                         new ResourceLocation(Mods.TFC_REBORN_CORE.ID,
                                 "quern/" + name + "/dust"),
-                        RecipeHelper.getIIngredient(ItemMetal.get(metal, Metal.ItemType.INGOT)),
-                        RecipeHelper.getItemStack(ItemMetal.get(metal, Metal.ItemType.DUST)));
+                        RecipeHelper.getIIngredient(Mods.TERRAFIRMACRAFT.ID, "metal/ingot/" + name),
+                        RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID, "metal/dust/" + name));
             }
 
             if (metal.isToolMetal()) {

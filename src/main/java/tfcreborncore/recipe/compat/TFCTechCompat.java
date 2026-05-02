@@ -3,9 +3,7 @@ package tfcreborncore.recipe.compat;
 import java.util.Arrays;
 import java.util.List;
 
-import net.dries007.tfc.api.registries.TFCRegistries;
 import net.dries007.tfc.api.types.Metal;
-import net.dries007.tfc.objects.items.metal.ItemMetal;
 import net.dries007.tfc.util.forge.ForgeRule;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ResourceLocation;
@@ -13,15 +11,10 @@ import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.oredict.OreDictionary;
 
-import tfcreborncore.Tags;
-import tfcreborncore.objects.items.ItemRCMetal;
-import tfcreborncore.objects.items.enums.ItemRCMetalType;
 import tfcreborncore.recipe.ICompatModule;
 import tfcreborncore.recipe.RecipeHelper;
 import tfcreborncore.recipe.enums.Mods;
-import tfcreborncore.recipe.manager.MinecraftRecipeManager;
 import tfcreborncore.recipe.manager.TerrafirmacraftRecipeManager;
-import tfctech.objects.items.metal.ItemTechMetal;
 
 public class TFCTechCompat implements ICompatModule {
 
@@ -136,16 +129,7 @@ public class TFCTechCompat implements ICompatModule {
     }
 
     @Override
-    public void registerRecipeRemoval(FMLPostInitializationEvent r) {
-        // Metal Processing
-        for (Metal metal : TFCRegistries.METALS.getValuesCollection()) {
-            if (metal.isUsable()) {
-                // Rackwheel Recipe Removal
-                MinecraftRecipeManager.removeRecipeByOutput(
-                        RecipeHelper.getItemStack(ItemTechMetal.get(metal, ItemTechMetal.ItemType.RACKWHEEL)));
-            }
-        }
-    }
+    public void registerRecipeRemoval(FMLPostInitializationEvent r) {}
 
     @Override
     public void registerTerrafirmacraftRecipes(FMLPostInitializationEvent event) {
@@ -182,62 +166,5 @@ public class TFCTechCompat implements ICompatModule {
                 ForgeRule.BEND_ANY,
                 ForgeRule.BEND_ANY,
                 ForgeRule.BEND_ANY);
-
-        for (Metal metal : TFCRegistries.METALS.getValuesCollection()) {
-            if (metal.isUsable()) {
-                // Rackwheel Piece
-                TerrafirmacraftRecipeManager.addAnvilRecipe(
-                        new ResourceLocation(
-                                Tags.MODID,
-                                "anvil/working/" + ItemTechMetal.ItemType.RACKWHEEL_PIECE +
-                                        metal.getRegistryName().getPath().toLowerCase()),
-                        RecipeHelper.getIIngredient(ItemMetal.get(metal, Metal.ItemType.INGOT)),
-                        RecipeHelper.getItemStack(ItemTechMetal.get(metal, ItemTechMetal.ItemType.RACKWHEEL_PIECE)),
-                        metal.getTier(),
-                        null,
-                        ForgeRule.UPSET_THIRD_LAST,
-                        ForgeRule.DRAW_SECOND_LAST,
-                        ForgeRule.UPSET_LAST);
-
-                // Rod
-                TerrafirmacraftRecipeManager.addAnvilRecipe(
-                        new ResourceLocation(
-                                Tags.MODID,
-                                "anvil/working/" + ItemTechMetal.ItemType.ROD +
-                                        metal.getRegistryName().getPath().toLowerCase()),
-                        RecipeHelper.getIIngredient(ItemMetal.get(metal, Metal.ItemType.INGOT)),
-                        RecipeHelper.getItemStack(ItemTechMetal.get(metal, ItemTechMetal.ItemType.ROD)),
-                        metal.getTier(),
-                        null,
-                        ForgeRule.HIT_THIRD_LAST,
-                        ForgeRule.DRAW_SECOND_LAST,
-                        ForgeRule.HIT_LAST);
-
-                // Strip
-                TerrafirmacraftRecipeManager.addAnvilRecipe(
-                        new ResourceLocation(
-                                Tags.MODID,
-                                "anvil/working/" + ItemTechMetal.ItemType.STRIP +
-                                        metal.getRegistryName().getPath().toLowerCase()),
-                        RecipeHelper.getIIngredient(ItemMetal.get(metal, Metal.ItemType.INGOT)),
-                        RecipeHelper.getItemStack(ItemTechMetal.get(metal, ItemTechMetal.ItemType.STRIP)),
-                        metal.getTier(),
-                        null,
-                        ForgeRule.HIT_ANY,
-                        ForgeRule.HIT_ANY,
-                        ForgeRule.SHRINK_ANY);
-
-                // Rackwheel
-                TerrafirmacraftRecipeManager.addWeldingRecipe(
-                        new ResourceLocation(Mods.TFC_REBORN_CORE.ID,
-                                "anvil/welding/" + ItemTechMetal.ItemType.RACKWHEEL + "/" +
-                                        metal.getRegistryName().getPath().toLowerCase()),
-                        RecipeHelper.getIIngredient(ItemRCMetal.get(metal, ItemRCMetalType.RACKWHEEL_HALF)),
-                        RecipeHelper.getIIngredient(ItemRCMetal.get(metal, ItemRCMetalType.RACKWHEEL_HALF)),
-                        RecipeHelper.getItemStack(ItemTechMetal.get(metal, ItemTechMetal.ItemType.RACKWHEEL)),
-                        metal.getTier(),
-                        null);
-            }
-        }
     }
 }

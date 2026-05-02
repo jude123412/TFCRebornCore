@@ -24,7 +24,8 @@ public class ForestryCompat implements ICompatModule {
                 Mods.FORESTRY.ID,
                 Mods.IMMERSIVE_ENGINEERING.ID,
                 Mods.TFC_METALLUM.ID,
-                Mods.TFC_DECORATION.ID);
+                Mods.TFC_DECORATION.ID,
+                Mods.TFC_TECH.ID);
     }
 
     @Override
@@ -288,6 +289,43 @@ public class ForestryCompat implements ICompatModule {
                 "BB ",
                 "BBB",
                 'B', RecipeHelper.getItemStack(Mods.FORESTRY.ID, "ash_brick", 0));
+
+        // Genetic Filter
+        MinecraftRecipeManager.addShapedRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shaped/genetic_filter/propolis"),
+                RecipeHelper.getItemStack(Mods.FORESTRY.ID, "genetic_filter"),
+                "WGW",
+                "PBP",
+                "AGA",
+                'W', "plankWood",
+                'G', "gemNormal",
+                'P', RecipeHelper.getItemStack(Mods.FORESTRY.ID, "propolis"),
+                'B', "blockGlass",
+                'A', "gearAnyBronze");
+
+        MinecraftRecipeManager.addShapedRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shaped/genetic_filter/fruit"),
+                RecipeHelper.getItemStack(Mods.FORESTRY.ID, "genetic_filter"),
+                "WGW",
+                "PBP",
+                "AGA",
+                'W', "plankWood",
+                'G', "gemNormal",
+                'P', "fruitForestry",
+                'B', "blockGlass",
+                'A', "gearAnyBronze");
+
+        MinecraftRecipeManager.addShapedRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shaped/genetic_filter/caterpillar"),
+                RecipeHelper.getItemStack(Mods.FORESTRY.ID, "genetic_filter"),
+                "WGW",
+                "PBP",
+                "AGA",
+                'W', "plankWood",
+                'G', "gemNormal",
+                'P', RecipeHelper.getItemStack(Mods.FORESTRY.ID, "caterpillar_ge"),
+                'B', "blockGlass",
+                'A', "gearAnyBronze");
     }
 
     @Override

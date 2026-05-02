@@ -20,6 +20,9 @@ public enum ItemRCMetalType {
     WIRE_CUTTER_HEAD(100, Size.NORMAL, Weight.MEDIUM, true, true),
     UNFINISHED_UNIVERSAL_WEAPON_HEAD(200, Size.LARGE, Weight.MEDIUM, false, true),
     UNIVERSAL_WEAPON_HEAD(200, Size.LARGE, Weight.MEDIUM, true, true),
+    RING(25, Size.NORMAL, Weight.MEDIUM, true, false),
+    SMALL_SPRING(50, Size.NORMAL, Weight.MEDIUM, true, false),
+    SPRING(100, Size.NORMAL, Weight.MEDIUM, true, false),
     RACKWHEEL_HALF(200, Size.NORMAL, Weight.MEDIUM, true, false);
 
     // ---------------------------------------------------------------------

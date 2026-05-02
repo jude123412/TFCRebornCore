@@ -29,6 +29,9 @@ item.tfcreborncore.tool.universal_weapon.name=%s Universal Weapon
 item.tfcreborncore.metal.rackwheel_half.name=%s Rackwheel Half
 item.tfcreborncore.metal.electron_tube_base.name=%s Electron Tube Base
 item.tfcreborncore.metal.pipe_frame.name=%s Pipe Frame
+item.tfcreborncore.metal.ring.name=%s Ring
+item.tfcreborncore.metal.small_spring.name=Small %s Spring
+item.tfcreborncore.metal.spring.name=%s Spring
 
 # Creative Tabs
 itemGroup.tfcreborncore.items=TFC: Reborn Core Items
@@ -103,6 +106,7 @@ item.tfcreborncore.regular.unfired_ceramic_insulator.name=Unfired Ceramic Insula
 item.tfcreborncore.regular.ceramic_insulator.name=Ceramic Insulator
 item.tfcreborncore.regular.glass_insulator.name=Glass Insulator
 item.tfcreborncore.regular.ash_brick.name=Ash Brick
+item.tfcreborncore.regular.windup_trinket.name=Windup Trinket
 item.tfcreborncore.regular.slag.name=Slag
 item.tfcreborncore.regular.rich_slag.name=Rich Slag
 

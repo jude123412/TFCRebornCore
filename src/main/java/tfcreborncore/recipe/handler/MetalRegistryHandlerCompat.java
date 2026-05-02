@@ -5,7 +5,6 @@ import java.util.List;
 
 import net.dries007.tfc.api.registries.TFCRegistries;
 import net.dries007.tfc.api.types.Metal;
-import net.dries007.tfc.objects.items.metal.ItemMetal;
 import net.dries007.tfc.util.forge.ForgeRule;
 import net.dries007.tfc.util.skills.SmithingSkill;
 import net.minecraft.item.ItemStack;
@@ -283,13 +282,35 @@ public class MetalRegistryHandlerCompat implements ICompatModule {
                 // Strip
                 TerrafirmacraftRecipeManager.addAnvilRecipe(
                         new ResourceLocation(Tags.MODID, "anvil/working/strip/" + name),
-                        RecipeHelper.getIIngredient(ItemMetal.get(metal, Metal.ItemType.INGOT)),
+                        RecipeHelper.getIIngredient(Mods.TERRAFIRMACRAFT.ID, "metal/ingot/" + name),
                         RecipeHelper.getItemStack(Mods.TFC_TECH.ID, "metal/" + name + "_strip"),
                         metal.getTier(),
                         null,
                         ForgeRule.HIT_ANY,
                         ForgeRule.HIT_ANY,
                         ForgeRule.SHRINK_ANY);
+
+                // Ring
+                TerrafirmacraftRecipeManager.addAnvilRecipe(
+                        new ResourceLocation(Tags.MODID, "anvil/working/ring/" + name),
+                        RecipeHelper.getIIngredient(Mods.TFC_TECH.ID, "metal/" + name + "_rod"),
+                        RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "metal/ring/" + name),
+                        metal.getTier(),
+                        null,
+                        ForgeRule.BEND_ANY,
+                        ForgeRule.BEND_ANY,
+                        ForgeRule.SHRINK_NOT_LAST);
+
+                // Small Spring
+                TerrafirmacraftRecipeManager.addAnvilRecipe(
+                        new ResourceLocation(Tags.MODID, "anvil/working/small_spring/" + name),
+                        RecipeHelper.getIIngredient(Mods.TFC_TECH.ID, "metal/" + name + "_rod"),
+                        RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "metal/small_spring/" + name),
+                        metal.getTier(),
+                        null,
+                        ForgeRule.BEND_NOT_LAST,
+                        ForgeRule.SHRINK_ANY,
+                        ForgeRule.DRAW_LAST);
 
                 // Rackwheel Half
                 TerrafirmacraftRecipeManager.addWeldingRecipe(
@@ -306,6 +327,15 @@ public class MetalRegistryHandlerCompat implements ICompatModule {
                         RecipeHelper.getIIngredient(Mods.TFC_REBORN_CORE.ID, "metal/rackwheel_half/" + name),
                         RecipeHelper.getIIngredient(Mods.TFC_REBORN_CORE.ID, "metal/rackwheel_half/" + name),
                         RecipeHelper.getItemStack(Mods.TFC_TECH.ID, "metal/" + name + "_rackwheel"),
+                        metal.getTier(),
+                        null);
+
+                // Spring
+                TerrafirmacraftRecipeManager.addWeldingRecipe(
+                        new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "anvil/welding/spring/" + name),
+                        RecipeHelper.getIIngredient(Mods.TFC_REBORN_CORE.ID, "metal/small_spring/" + name),
+                        RecipeHelper.getIIngredient(Mods.TFC_REBORN_CORE.ID, "metal/small_spring/" + name),
+                        RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "metal/spring/" + name),
                         metal.getTier(),
                         null);
 

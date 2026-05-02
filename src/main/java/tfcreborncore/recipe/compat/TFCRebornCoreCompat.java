@@ -215,6 +215,21 @@ public class TFCRebornCoreCompat implements ICompatModule {
                 RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/ash_brick"),
                 "dustAsh",
                 "formIngot");
+
+        // Windup Trinket
+        MinecraftRecipeManager.addShapedRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shaped/windup_trinket"),
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/windup_trinket"),
+                "RSR",
+                "PGP",
+                "PLP",
+                'R', "ringGold",
+                'S', "stickGold",
+                'P', "sheetGold",
+                'G', "gearGold",
+                'L', "springGold"
+
+        );
     }
 
     @Override

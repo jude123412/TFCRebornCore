@@ -1,5 +1,7 @@
 package tfcreborncore.objects;
 
+import java.awt.*;
+
 import net.dries007.tfc.ConfigTFC;
 import net.dries007.tfc.api.registries.TFCRegistries;
 import net.dries007.tfc.api.types.Metal;
@@ -274,7 +276,7 @@ public class RCItems {
 
             IItemColor handler = (stack, tintIndex) -> {
                 if (tintIndex != 0) return 0xFFFFFF;
-                return color;
+                return new Color(color).brighter().getRGB();
             };
 
             event.getItemColors().registerItemColorHandler(handler, item);
@@ -292,7 +294,7 @@ public class RCItems {
 
             IItemColor handler = (stack, tintIndex) -> {
                 if (tintIndex != 0) return 0xFFFFFF;
-                return color;
+                return new Color(color).brighter().getRGB();
             };
 
             event.getItemColors().registerItemColorHandler(handler, item);
@@ -310,7 +312,7 @@ public class RCItems {
 
             IItemColor handler = (stack, tintIndex) -> {
                 if (tintIndex != 0) return 0xFFFFFF;
-                return color;
+                return new Color(color).brighter().getRGB();
             };
 
             event.getItemColors().registerItemColorHandler(handler, item);
@@ -328,7 +330,7 @@ public class RCItems {
 
             IItemColor handler = (stack, tintIndex) -> {
                 if (tintIndex != 0) return 0xFFFFFF;
-                return color;
+                return new Color(color).brighter().getRGB();
             };
 
             event.getItemColors().registerItemColorHandler(handler, item);
@@ -364,7 +366,7 @@ public class RCItems {
 
             IItemColor handler = (stack, tintIndex) -> {
                 if (tintIndex != 0) return 0xFFFFFF;
-                return color;
+                return new Color(color).brighter().getRGB();
             };
 
             event.getItemColors().registerItemColorHandler(handler, item);

@@ -78,6 +78,7 @@ public enum ItemRCType {
     CERAMIC_INSULATOR(Size.NORMAL, Weight.LIGHT, true),
     GLASS_INSULATOR(Size.NORMAL, Weight.LIGHT, true),
     ASH_BRICK(Size.SMALL, Weight.LIGHT, true),
+    WINDUP_TRINKET(Size.NORMAL, Weight.MEDIUM, false),
     SLAG(Size.VERY_SMALL, Weight.VERY_LIGHT, "crystalSlag", true),
     RICH_SLAG(Size.VERY_SMALL, Weight.VERY_LIGHT, "crystalSlagRich", true);
 

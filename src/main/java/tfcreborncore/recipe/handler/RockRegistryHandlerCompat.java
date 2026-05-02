@@ -11,6 +11,7 @@ import tfcreborncore.recipe.ICompatModule;
 import tfcreborncore.recipe.RecipeHelper;
 import tfcreborncore.recipe.enums.Mods;
 import tfcreborncore.recipe.manager.ForestryRecipeManager;
+import tfcreborncore.recipe.manager.ImmersiveEngineeringRecipeManager;
 
 public class RockRegistryHandlerCompat implements ICompatModule {
 
@@ -19,6 +20,31 @@ public class RockRegistryHandlerCompat implements ICompatModule {
         return Arrays.asList(
                 Mods.TFC_DECORATION.ID,
                 Mods.FORESTRY.ID);
+    }
+
+    @Override
+    public void registerImmersiveEngineeringRecipes(FMLPostInitializationEvent r) {
+        for (Rock rock : TFCRegistries.ROCKS) {
+            String name = rock.getRegistryName().getPath().toLowerCase();
+
+            // Cobble
+            ImmersiveEngineeringRecipeManager.addCrusherRecipe(
+                    RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID, "raw/" + name),
+                    RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID, "cobble/" + name),
+                    1600);
+
+            // Gravel
+            ImmersiveEngineeringRecipeManager.addCrusherRecipe(
+                    RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID, "cobble/" + name),
+                    RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID, "gravel/" + name),
+                    1600);
+
+            // Sand
+            ImmersiveEngineeringRecipeManager.addCrusherRecipe(
+                    RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID, "gravel/" + name),
+                    RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID, "sand/" + name),
+                    1600);
+        }
     }
 
     @Override

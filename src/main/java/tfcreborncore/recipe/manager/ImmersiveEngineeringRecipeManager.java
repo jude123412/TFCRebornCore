@@ -1,5 +1,6 @@
 package tfcreborncore.recipe.manager;
 
+import blusunrize.immersiveengineering.api.crafting.ArcFurnaceRecipe;
 import net.minecraft.item.ItemStack;
 
 import blusunrize.immersiveengineering.api.ComparableItemStack;
@@ -116,4 +117,39 @@ public class ImmersiveEngineeringRecipeManager {
                 .setInputSize(inputAmount);
         MetalPressRecipe.recipeList.put(new ComparableItemStack(mold), recipe);
     }
+
+    /**
+     * Removes all Arc Furnace recipes.
+     * <p>
+     * This clears the internal {@link ArcFurnaceRecipe#recipeList}, removing all
+     * default and mod‑added Arc Furnace recipes. Use this when replacing or
+     * rebuilding the entire Arc Furnace processing set.
+     */
+    public static void removeAllArcFurnaceRecipes() {
+        ArcFurnaceRecipe.recipeList.clear();
+    }
+
+    /**
+     * Registers a new Arc Furnace recipe.
+     * <p>
+     * Arc Furnace recipes define how an input ingredient is smelted or refined
+     * using optional additive items. This method constructs an
+     * {@link ArcFurnaceRecipe} using the provided input, additives, primary
+     * output, slag output, processing time, and per‑tick energy cost, then
+     * registers it into {@link ArcFurnaceRecipe#recipeList}.
+     *
+     * @param input          The main input ingredient, either an {@link ItemStack},
+     *                       an item/block, or an ore dictionary string.
+     * @param additives      Optional additive ingredients that modify the recipe.
+     * @param result         The primary output item produced by the Arc Furnace.
+     * @param slag           The slag byproduct produced by the recipe.
+     * @param time           The total processing time in ticks.
+     * @param energyPerTick  The energy consumed per tick while processing.
+     */
+    public static void addArcFurnaceRecipe(Object input, Object[] additives, ItemStack result,
+                                           ItemStack slag, int time, int energyPerTick) {
+        ArcFurnaceRecipe recipe = new ArcFurnaceRecipe(result, input, slag, time, energyPerTick, additives);
+        ArcFurnaceRecipe.recipeList.add(recipe);
+    }
+
 }

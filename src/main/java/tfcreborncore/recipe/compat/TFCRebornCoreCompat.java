@@ -34,7 +34,6 @@ public class TFCRebornCoreCompat implements ICompatModule {
     public List<String> dependencies() {
         return Arrays.asList(
                 Mods.EX_NIHILO_CREATIO.ID,
-                Mods.IMMERSIVE_ENGINEERING.ID,
                 Mods.TFC_METALLUM.ID,
                 Mods.TFC_TECH.ID,
                 Mods.FORESTRY.ID,
@@ -65,6 +64,8 @@ public class TFCRebornCoreCompat implements ICompatModule {
         ImmersiveEngineeringRecipeManager.removeAllCrusherRecipes();
         // Metal Press
         ImmersiveEngineeringRecipeManager.removeAllMetalPressRecipes();
+        // Arc Furnace
+        ImmersiveEngineeringRecipeManager.removeAllArcFurnaceRecipes();
 
         // Forestry
         // Carpenter

@@ -180,6 +180,38 @@ public class OreRegistryHandlerCompat implements ICompatModule {
                             0.35F
                     },
                     7000);
+
+            // Bar Arc Smelting
+            ImmersiveEngineeringRecipeManager.addArcFurnaceRecipe(
+                    RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/bar/" + type.getPrimaryName()),
+                    new Object[] {
+                            "dustFlux"
+                    },
+                    RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID, "metal/ingot/" + type.getProductB(), 0, 2),
+                    RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/rich_slag"),
+                    80,
+                    1600
+            );
+            ImmersiveEngineeringRecipeManager.addArcFurnaceRecipe(
+                    RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/bar/" + type.getPrimaryName()),
+                    new Object[] {
+                            "crystalSlagRich"
+                    },
+                    RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID, "metal/ingot/" + type.getProductB(), 0, 2),
+                    RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/slag"),
+                    80,
+                    1600
+            );
+            ImmersiveEngineeringRecipeManager.addArcFurnaceRecipe(
+                    RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/bar/" + type.getPrimaryName()),
+                    new Object[] {
+                            "gemCinnabar"
+                    },
+                    RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID, "metal/ingot/" + type.getProductB(), 0, 2),
+                    RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID, "metal/ingot/" + type.getProductC()),
+                    80,
+                    1600
+            );
         }
     }
 }

@@ -1,9 +1,9 @@
 package tfcreborncore.recipe.manager;
 
-import blusunrize.immersiveengineering.api.crafting.ArcFurnaceRecipe;
 import net.minecraft.item.ItemStack;
 
 import blusunrize.immersiveengineering.api.ComparableItemStack;
+import blusunrize.immersiveengineering.api.crafting.ArcFurnaceRecipe;
 import blusunrize.immersiveengineering.api.crafting.CrusherRecipe;
 import blusunrize.immersiveengineering.api.crafting.MetalPressRecipe;
 
@@ -138,18 +138,17 @@ public class ImmersiveEngineeringRecipeManager {
      * output, slag output, processing time, and per‑tick energy cost, then
      * registers it into {@link ArcFurnaceRecipe#recipeList}.
      *
-     * @param input          The main input ingredient, either an {@link ItemStack},
-     *                       an item/block, or an ore dictionary string.
-     * @param additives      Optional additive ingredients that modify the recipe.
-     * @param result         The primary output item produced by the Arc Furnace.
-     * @param slag           The slag byproduct produced by the recipe.
-     * @param time           The total processing time in ticks.
-     * @param energyPerTick  The energy consumed per tick while processing.
+     * @param input         The main input ingredient, either an {@link ItemStack},
+     *                      an item/block, or an ore dictionary string.
+     * @param additives     Optional additive ingredients that modify the recipe.
+     * @param result        The primary output item produced by the Arc Furnace.
+     * @param slag          The slag byproduct produced by the recipe.
+     * @param time          The total processing time in ticks.
+     * @param energyPerTick The energy consumed per tick while processing.
      */
     public static void addArcFurnaceRecipe(Object input, Object[] additives, ItemStack result,
                                            ItemStack slag, int time, int energyPerTick) {
         ArcFurnaceRecipe recipe = new ArcFurnaceRecipe(result, input, slag, time, energyPerTick, additives);
         ArcFurnaceRecipe.recipeList.add(recipe);
     }
-
 }

@@ -190,8 +190,7 @@ public class OreRegistryHandlerCompat implements ICompatModule {
                     RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID, "metal/ingot/" + type.getProductB(), 0, 2),
                     RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/rich_slag"),
                     80,
-                    1600
-            );
+                    1600);
             ImmersiveEngineeringRecipeManager.addArcFurnaceRecipe(
                     RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/bar/" + type.getPrimaryName()),
                     new Object[] {
@@ -200,8 +199,7 @@ public class OreRegistryHandlerCompat implements ICompatModule {
                     RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID, "metal/ingot/" + type.getProductB(), 0, 2),
                     RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/slag"),
                     80,
-                    1600
-            );
+                    1600);
             ImmersiveEngineeringRecipeManager.addArcFurnaceRecipe(
                     RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "ore/bar/" + type.getPrimaryName()),
                     new Object[] {
@@ -210,8 +208,18 @@ public class OreRegistryHandlerCompat implements ICompatModule {
                     RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID, "metal/ingot/" + type.getProductB(), 0, 2),
                     RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID, "metal/ingot/" + type.getProductC()),
                     80,
-                    1600
-            );
+                    1600);
+
+            // Dust Arc Smelting
+            ImmersiveEngineeringRecipeManager.addArcFurnaceRecipe(
+                    RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID, "metal/dust/" + type.getProductB()),
+                    new Object[] {
+                            "dustFlux"
+                    },
+                    RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID, "metal/ingot/" + type.getProductB()),
+                    RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/slag"),
+                    80,
+                    1600);
         }
     }
 }

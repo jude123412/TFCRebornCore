@@ -251,7 +251,7 @@
         },
         {
           "type": "item",
-          "name": "tfc:metal/chestplate/copper",
+          "name": "tfc:metal/greaves/copper",
           "weight": 40,
           "functions": [
             {

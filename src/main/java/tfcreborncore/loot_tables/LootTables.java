@@ -12,12 +12,12 @@ public enum LootTables {
 
     private final String location;
     private final String name;
-    private final Mods[] dependancies;
+    private final Mods[] dependencies;
 
-    LootTables(String location, String name, Mods... dependancies) {
+    LootTables(String location, String name, Mods... dependencies) {
         this.location = location;
         this.name = name;
-        this.dependancies = dependancies;
+        this.dependencies = dependencies;
     }
 
     public ResourceLocation getResourceLocation() {
@@ -25,7 +25,7 @@ public enum LootTables {
     }
 
     public boolean shouldRegister() {
-        for (Mods dep : dependancies) {
+        for (Mods dep : dependencies) {
             if (!Loader.isModLoaded(dep.ID)) {
                 return false;
             }

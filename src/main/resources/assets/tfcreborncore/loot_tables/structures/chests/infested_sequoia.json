@@ -198,12 +198,118 @@
         },
         {
           "type": "item",
-          "name": "tfcreborncore:metal/tool/universal_weapon/copper",
+          "name": "tfcreborncore:metal/universal_weapon/copper",
           "weight": 5,
           "functions": [
             {
               "function": "set_nbt",
-              "tag": "{display:{Name:\"§dxXjudeXx's Universal Weapon\"},ench:[{id:16,lvl:5s},{id:34,lvl:3s}]}"
+              "tag": "{display:{Name:\"§d§kxXjudeXx's Universal Weapon\"},ench:[{id:16,lvl:5s},{id:34,lvl:3s}]}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+    "name": "equipment_pool",
+    "rolls": 1,
+    "entries": [
+        {
+          "type": "item",
+          "name": "tfc:metal/helmet/copper",
+          "weight": 40,
+          "functions": [
+            {
+              "function": "set_damage",
+              "damage": {
+                "min": 0.1,
+                "max": 0.5
+              }
+            },
+            {
+              "function": "set_nbt",
+              "tag": "{display:{Name:\"§7Weathered Rain Protector\"}}"
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "tfc:metal/chestplate/copper",
+          "weight": 40,
+          "functions": [
+            {
+              "function": "set_damage",
+              "damage": {
+                "min": 0.1,
+                "max": 0.5
+              }
+            },
+            {
+              "function": "set_nbt",
+              "tag": "{display:{Name:\"§7Tired Chestplate\"}}"
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "tfc:metal/chestplate/copper",
+          "weight": 40,
+          "functions": [
+            {
+              "function": "set_damage",
+              "damage": {
+                "min": 0.1,
+                "max": 0.5
+              }
+            },
+            {
+              "function": "set_nbt",
+              "tag": "{display:{Name:\"§7Run Down Pants\"}}"
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "tfc:metal/boots/copper",
+          "weight": 40,
+          "functions": [
+            {
+              "function": "set_damage",
+              "damage": {
+                "min": 0.1,
+                "max": 0.5
+              }
+            },
+            {
+              "function": "set_nbt",
+              "tag": "{display:{Name:\"§7Leaky Boots\"}}"
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "tfcreborncore:regular/ingot_form",
+          "weight": 25,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 0,
+                "max": 1
+              }
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "tfcreborncore:regular/pellet_form",
+          "weight": 25,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 0,
+                "max": 1
+              }
             }
           ]
         }

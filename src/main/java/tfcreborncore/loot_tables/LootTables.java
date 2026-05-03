@@ -6,8 +6,8 @@ import tfcreborncore.recipe.enums.Mods;
 
 public enum LootTables {
 
-    INFESTED_SEQUOIA(Mods.TFC_REBORN_CORE.ID, "chests/infested_sequoia"),
-    PRIMITIVE_HUT(Mods.TFC_REBORN_CORE.ID, "chests/primitive_hut");
+    INFESTED_SEQUOIA(Mods.TFC_REBORN_CORE.ID, "structures/chests/infested_sequoia"),
+    PRIMITIVE_HUT(Mods.TFC_REBORN_CORE.ID, "structures/chests/primitive_hut");
 
     private final String location;
     private final String name;

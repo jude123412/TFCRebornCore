@@ -33,7 +33,11 @@ public class TFCRebornCore {
         LOGGER.info("I am " + Tags.MODNAME + " + at version " + Tags.VERSION);
 
         // Register Loot Tables
-        for (LootTables table : LootTables.values()) LootTableList.register(table.getResourceLocation());
+        for (LootTables table : LootTables.values()) {
+            if (table.shouldRegister()) {
+                LootTableList.register(table.getResourceLocation());
+            }
+        }
     }
 
     @SubscribeEvent

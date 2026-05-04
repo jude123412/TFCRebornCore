@@ -13,6 +13,7 @@ public class OreDictionaryLoader {
      * so they have to be registered before everything
      */
     public static void register() {
+        // Minecraft
         // GemEnder
         OreDictionary.registerOre("gemEnder",
                 RecipeHelper.getItemStack(Mods.MINECRAFT.ID, "ender_pearl"));
@@ -22,6 +23,19 @@ public class OreDictionaryLoader {
         // DustGunpowder
         OreDictionary.registerOre("dustGunpowder",
                 RecipeHelper.getItemStack(Mods.MINECRAFT.ID, "gunpowder"));
+
+        // Terrafirmacraft
+        // ClothLowQuality
+        OreDictionary.registerOre("clothLowQuality",
+                RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID, "crop/product/burlap_cloth"));
+        // ClothMediumQuality
+        OreDictionary.registerOre("clothMediumQuality",
+                RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID, "animal/product/wool_cloth"));
+        // ClothAnyMediumQuality
+        OreDictionary.registerOre("clothAnyMediumQuality",
+                RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID, "animal/product/wool_cloth"));
+        OreDictionary.registerOre("clothAnyMediumQuality",
+                RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID, "animal/product/silk_cloth"));
 
         if (Mods.FORESTRY.isModLoaded()) {
             // Sweetener
@@ -41,6 +55,9 @@ public class OreDictionaryLoader {
             // Category Grain
             OreDictionary.registerOre("categoryGrain", RecipeHelper.getItemStack(Mods.FORESTRY.ID, "fruits", 1));
             OreDictionary.registerOre("categoryGrain", RecipeHelper.getItemStack(Mods.FORESTRY.ID, "fruits", 2));
+            // Pollen
+            OreDictionary.registerOre("stickImpregnated",
+                    RecipeHelper.getItemStack(Mods.FORESTRY.ID, "oak_stick"));
         }
 
         if (Mods.TFC_TECH.isModLoaded()) {

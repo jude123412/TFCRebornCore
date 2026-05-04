@@ -22,7 +22,6 @@ public class ForestryCompat implements ICompatModule {
     public List<String> dependencies() {
         return Arrays.asList(
                 Mods.FORESTRY.ID,
-                Mods.IMMERSIVE_ENGINEERING.ID,
                 Mods.TFC_METALLUM.ID,
                 Mods.TFC_DECORATION.ID,
                 Mods.TFC_TECH.ID);
@@ -326,6 +325,26 @@ public class ForestryCompat implements ICompatModule {
                 'P', RecipeHelper.getItemStack(Mods.FORESTRY.ID, "caterpillar_ge"),
                 'B', "blockGlass",
                 'A', "gearAnyBronze");
+
+        // Untreated Frame
+        MinecraftRecipeManager.addShapedRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shaped/frame/untreated"),
+                RecipeHelper.getItemStack(Mods.FORESTRY.ID, "frame_untreated"),
+                "SSS",
+                "SCS",
+                "SSS",
+                'S', "stickWood",
+                'C', "clothLowQuality");
+
+        // Impregnated Frame
+        MinecraftRecipeManager.addShapedRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shaped/frame/impregnated"),
+                RecipeHelper.getItemStack(Mods.FORESTRY.ID, "frame_impregnated"),
+                "SSS",
+                "SCS",
+                "SSS",
+                'S', "stickWood",
+                'C', "clothMediumQuality");
     }
 
     @Override
@@ -670,9 +689,19 @@ public class ForestryCompat implements ICompatModule {
                 "S S",
                 'P', "plankWood",
                 'L', "lumber",
-                'S', "stickWood"
+                'S', "stickWood");
 
-        );
+        ForestryRecipeManager.addCarpenterRecipe(
+                2 * S,
+                RecipeHelper.getItemStack(Mods.FORESTRY.ID, "frame_impregnated"),
+                RecipeHelper.getItemStack(Mods.FORESTRY.ID, "frame_proven"),
+                RecipeHelper.getFluidStack("creosote", 1000),
+                "LLL",
+                "GCG",
+                "LLL",
+                'L', "lumberTreatedWood",
+                'G', "nuggetGold",
+                'C', "clothHighQuality");
 
         // Mouldy Wheat
         ForestryRecipeManager.addMoistenerFuelRecipe(

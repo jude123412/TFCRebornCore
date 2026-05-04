@@ -318,11 +318,20 @@ public class TerrafirmacraftRecipeManager {
      * output item, required step count, and the texture shown while the recipe
      * is in progress, then registers it into {@link TFCRegistries#LOOM}.
      *
+     * <p>
+     * <strong>Texture Requirements:</strong><br>
+     * The {@code inProgressTexture} must reference a valid PNG texture. The path
+     * should follow standard Minecraft texture conventions, for example:
+     *
+     * <pre>
+     * new ResourceLocation("minecraft", "textures/blocks/wool_colored_white.png");
+     * </pre>
+     *
      * @param regName           The unique registry name for the recipe.
      * @param input             The ingredient required to begin the weaving process.
      * @param output            The final item produced once all steps are completed.
      * @param steps             The number of weaving steps required to finish the recipe.
-     * @param inProgressTexture The texture displayed while the Loom is processing this recipe.
+     * @param inProgressTexture The PNG texture displayed while the Loom is processing this recipe.
      */
     public static void addLoomRecipe(ResourceLocation regName, IIngredient<ItemStack> input,
                                      ItemStack output, int steps, ResourceLocation inProgressTexture) {

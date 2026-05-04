@@ -344,7 +344,7 @@ public class ForestryCompat implements ICompatModule {
                 "SCS",
                 "SSS",
                 'S', "stickWood",
-                'C', "clothMediumQuality");
+                'C', "clothHighQuality");
     }
 
     @Override

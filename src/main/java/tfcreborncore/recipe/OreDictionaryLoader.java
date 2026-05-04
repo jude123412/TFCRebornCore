@@ -28,14 +28,6 @@ public class OreDictionaryLoader {
         // ClothLowQuality
         OreDictionary.registerOre("clothLowQuality",
                 RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID, "crop/product/burlap_cloth"));
-        // ClothMediumQuality
-        OreDictionary.registerOre("clothMediumQuality",
-                RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID, "animal/product/wool_cloth"));
-        // ClothAnyMediumQuality
-        OreDictionary.registerOre("clothAnyMediumQuality",
-                RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID, "animal/product/wool_cloth"));
-        OreDictionary.registerOre("clothAnyMediumQuality",
-                RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID, "animal/product/silk_cloth"));
 
         if (Mods.FORESTRY.isModLoaded()) {
             // Sweetener

@@ -326,6 +326,16 @@ public class ForestryCompat implements ICompatModule {
                 'B', "blockGlass",
                 'A', "gearAnyBronze");
 
+        // Habitat Locator
+        MinecraftRecipeManager.addShapedRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shaped/habitat_locator"),
+                RecipeHelper.getItemStack(Mods.FORESTRY.ID, "habitat_locator"),
+                " S ",
+                "SRS",
+                " S ",
+                'S', "sheetAnyBronze",
+                'R', "dustRedstone");
+
         // Untreated Frame
         MinecraftRecipeManager.addShapedRecipe(
                 new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shaped/frame/untreated"),
@@ -443,6 +453,14 @@ public class ForestryCompat implements ICompatModule {
                 null,
                 RecipeHelper.getItemStack(Mods.FORESTRY.ID, "fertilizer_bio"),
                 72);
+
+        // Silk Cloth
+        TerrafirmacraftRecipeManager.addLoomRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "loom/silky_wisp/silk_cloth"),
+                RecipeHelper.getIIngredient(Mods.FORESTRY.ID, "crafting_material", 2, 16),
+                RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID, "animal/product/silk_cloth"),
+                16,
+                new ResourceLocation(Mods.MINECRAFT.ID, "textures/blocks/wool_colored_white.png"));
     }
 
     @Override
@@ -691,6 +709,7 @@ public class ForestryCompat implements ICompatModule {
                 'L', "lumber",
                 'S', "stickWood");
 
+        // Proven Frame
         ForestryRecipeManager.addCarpenterRecipe(
                 2 * S,
                 RecipeHelper.getItemStack(Mods.FORESTRY.ID, "frame_impregnated"),
@@ -702,6 +721,48 @@ public class ForestryCompat implements ICompatModule {
                 'L', "lumberTreatedWood",
                 'G', "nuggetGold",
                 'C', "clothHighQuality");
+
+        // Apiarist Hat
+        ForestryRecipeManager.addCarpenterRecipe(
+                5 * S,
+                null,
+                RecipeHelper.getItemStack(Mods.FORESTRY.ID, "apiarist_helmet"),
+                RecipeHelper.getFluidStack("fresh_water", 1250),
+                "SSS",
+                "S S",
+                'S', "clothHighQuality");
+
+        // Apiarist Shirt
+        ForestryRecipeManager.addCarpenterRecipe(
+                8 * S,
+                null,
+                RecipeHelper.getItemStack(Mods.FORESTRY.ID, "apiarist_chest"),
+                RecipeHelper.getFluidStack("fresh_water", 2000),
+                "S S",
+                "SSS",
+                "SSS",
+                'S', "clothHighQuality");
+
+        // Apiarist Pants
+        ForestryRecipeManager.addCarpenterRecipe(
+                8 * S,
+                null,
+                RecipeHelper.getItemStack(Mods.FORESTRY.ID, "apiarist_legs"),
+                RecipeHelper.getFluidStack("fresh_water", 1750),
+                "SSS",
+                "S S",
+                "S S",
+                'S', "clothHighQuality");
+
+        // Apiarist Shoes
+        ForestryRecipeManager.addCarpenterRecipe(
+                8 * S,
+                null,
+                RecipeHelper.getItemStack(Mods.FORESTRY.ID, "apiarist_boots"),
+                RecipeHelper.getFluidStack("fresh_water", 2000),
+                "S S",
+                "S S",
+                'S', "clothHighQuality");
 
         // Mouldy Wheat
         ForestryRecipeManager.addMoistenerFuelRecipe(

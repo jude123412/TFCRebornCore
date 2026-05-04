@@ -9,6 +9,7 @@ import net.dries007.tfc.api.capability.heat.CapabilityItemHeat;
 import net.dries007.tfc.api.capability.heat.ItemHeatHandler;
 import net.dries007.tfc.api.capability.metal.CapabilityMetalItem;
 import net.dries007.tfc.api.capability.metal.MetalItemHandler;
+import net.dries007.tfc.api.recipes.LoomRecipe;
 import net.dries007.tfc.api.recipes.WeldingRecipe;
 import net.dries007.tfc.api.recipes.anvil.AnvilRecipe;
 import net.dries007.tfc.api.recipes.barrel.BarrelRecipe;
@@ -306,5 +307,26 @@ public class TerrafirmacraftRecipeManager {
         BarrelRecipeFluidMixing recipe = (BarrelRecipeFluidMixing) new BarrelRecipeFluidMixing(inputFluid1,
                 new IngredientFluidItem(inputFluid2), outputFluid, duration).setRegistryName(regName);
         TFCRegistries.BARREL.register(recipe);
+    }
+
+    /**
+     * Registers a new Loom recipe.
+     * <p>
+     * Loom recipes define how an input item is gradually processed into an output
+     * item over a series of weaving steps. This method constructs a
+     * {@link LoomRecipe} using the provided registry name, input ingredient,
+     * output item, required step count, and the texture shown while the recipe
+     * is in progress, then registers it into {@link TFCRegistries#LOOM}.
+     *
+     * @param regName           The unique registry name for the recipe.
+     * @param input             The ingredient required to begin the weaving process.
+     * @param output            The final item produced once all steps are completed.
+     * @param steps             The number of weaving steps required to finish the recipe.
+     * @param inProgressTexture The texture displayed while the Loom is processing this recipe.
+     */
+    public static void addLoomRecipe(ResourceLocation regName, IIngredient<ItemStack> input,
+                                     ItemStack output, int steps, ResourceLocation inProgressTexture) {
+        LoomRecipe recipe = new LoomRecipe(regName, input, output, steps, inProgressTexture);
+        TFCRegistries.LOOM.register(recipe);
     }
 }

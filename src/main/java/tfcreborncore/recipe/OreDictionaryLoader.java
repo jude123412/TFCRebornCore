@@ -47,7 +47,7 @@ public class OreDictionaryLoader {
             // Category Grain
             OreDictionary.registerOre("categoryGrain", RecipeHelper.getItemStack(Mods.FORESTRY.ID, "fruits", 1));
             OreDictionary.registerOre("categoryGrain", RecipeHelper.getItemStack(Mods.FORESTRY.ID, "fruits", 2));
-            // Pollen
+            // Impregnated Stick
             OreDictionary.registerOre("stickImpregnated",
                     RecipeHelper.getItemStack(Mods.FORESTRY.ID, "oak_stick"));
         }

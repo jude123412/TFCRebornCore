@@ -355,6 +355,37 @@ public class ForestryCompat implements ICompatModule {
                 "SSS",
                 'S', "stickWood",
                 'C', "clothHighQuality");
+
+        // Wax Cast
+        MinecraftRecipeManager.addShapedRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shaped/wax_cast"),
+                RecipeHelper.getItemStack(Mods.FORESTRY.ID, "wax_cast"),
+                "WWW",
+                "W W",
+                "WWW",
+                'W', "itemBeeswax");
+
+        // Scoop
+        MinecraftRecipeManager.addShapedRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shaped/scoop"),
+                RecipeHelper.getItemStack(Mods.FORESTRY.ID, "scoop"),
+                "SWS",
+                "SSS",
+                " S ",
+                'S', "stickWood",
+                'W', "clothHighQuality");
+
+        // Smoker
+        MinecraftRecipeManager.addShapedRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shaped/bee_smoker"),
+                RecipeHelper.getItemStack(Mods.FORESTRY.ID, "smoker"),
+                "LST",
+                "LFT",
+                "LTT",
+                'L', "leather",
+                'S', "stickWood",
+                'T', "sheetTin",
+                'F', "fireStarter");
     }
 
     @Override

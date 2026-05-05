@@ -50,10 +50,6 @@ dependencies {
     compileOnly rfg.deobf("curse.maven:ex-nihilo-0.4.7.2-274456:2817545") // Ex Nihilo 0.4.7.2
     // runtimeOnlyNonPublishable rfg.deobf("curse.maven:ex-nihilo-0.4.7.2-274456:2817545")
 
-    // Magneticraft Testing
-    compileOnly rfg.deobf("curse.maven:magneticraft-2.8.5-224808:3791484") // Magneticraft 2.8.5
-    // runtimeOnlyNonPublishable rfg.deobf("curse.maven:magneticraft-2.8.5-224808:3791484")
-
     // Forestry Testing
     compileOnly rfg.deobf("curse.maven:forestry-5.8.2.427-59751:7398359") // Forestry 5.8.2.427
     // runtimeOnlyNonPublishable rfg.deobf("curse.maven:forestry-5.8.2.427-59751:7398359")

@@ -764,6 +764,55 @@ public class ForestryCompat implements ICompatModule {
                 "S S",
                 'S', "clothHighQuality");
 
+        // Humus
+        ForestryRecipeManager.addCarpenterRecipe(
+                2 * S,
+                null,
+                RecipeHelper.getItemStack(Mods.FORESTRY.ID, "humus", 0, 8),
+                RecipeHelper.getFluidStack("fresh_water", 1000),
+                "DDD",
+                "DCD",
+                "DDD",
+                'D', "dirt",
+                'C', RecipeHelper.getItemStack(Mods.FORESTRY.ID, "fertilizer_bio"));
+        ForestryRecipeManager.addCarpenterRecipe(
+                2 * S,
+                null,
+                RecipeHelper.getItemStack(Mods.FORESTRY.ID, "humus", 0, 8),
+                RecipeHelper.getFluidStack("fresh_water", 1000),
+                "DDD",
+                "DCD",
+                "DDD",
+                'D', "dirt",
+                'C', RecipeHelper.getItemStack(Mods.FORESTRY.ID, "fertilizer_compound"));
+        ForestryRecipeManager.addCarpenterRecipe(
+                2 * S,
+                null,
+                RecipeHelper.getItemStack(Mods.FORESTRY.ID, "humus", 0, 8),
+                RecipeHelper.getFluidStack("fresh_water", 1000),
+                "DDD",
+                "DCD",
+                "DDD",
+                'D', "dirt",
+                'C', RecipeHelper.getItemStack(Mods.FORESTRY.ID, "mulch"));
+
+        // Database
+        ForestryRecipeManager.addCarpenterRecipe(
+                4 * S,
+                RecipeHelper.getItemStack(Mods.FORESTRY.ID, "portable_alyzer"),
+                RecipeHelper.getItemStack(Mods.FORESTRY.ID, "database"),
+                RecipeHelper.getFluidStack("seed.oil", 1000),
+                "SDS",
+                "ACB",
+                "LDL",
+                'S', "sheetAnyBronze",
+                'D', "dropRoyalJelly",
+                'A', RecipeHelper.getItemStack(Mods.FORESTRY.ID, "bee_chest"),
+                'C', RecipeHelper.getItemStack(Mods.FORESTRY.ID, "sturdy_machine"),
+                'B', RecipeHelper.getItemStack(Mods.FORESTRY.ID, "tree_chest"),
+                'L', "lumber"
+        );
+
         // Mouldy Wheat
         ForestryRecipeManager.addMoistenerFuelRecipe(
                 RecipeHelper.getItemStack(Mods.TERRAFIRMACRAFT.ID, "food/wheat"),

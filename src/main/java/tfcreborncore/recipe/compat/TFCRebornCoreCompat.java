@@ -82,18 +82,22 @@ public class TFCRebornCoreCompat implements ICompatModule {
         MinecraftRecipeManager.addShapedRecipe(
                 new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shaped/wood_sheet"),
                 RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/wood_sheet"),
-                " W ",
-                "WSW",
-                " W ",
-                'W', "dustWood",
-                'S', "slimeball");
+                "WW",
+                "WW",
+                'W', "dustWood");
+        MinecraftRecipeManager.addShapelessRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shaped/wood_sheet/alt"),
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/wood_sheet"),
+                "dustWood",
+                "dustWood",
+                "formSheet");
 
         // Ingot Form
         MinecraftRecipeManager.addShapedDamageRecipe(
                 new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shaped/form/ingot"),
                 1,
                 RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/ingot_form"),
-                "SK",
+                "SK ",
                 'S', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/latex_coated_wood_sheet"),
                 'K', "knife");
 
@@ -102,7 +106,16 @@ public class TFCRebornCoreCompat implements ICompatModule {
                 new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shaped/form/pellet"),
                 1,
                 RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/pellet_form"),
-                "KS",
+                "KS ",
+                'S', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/latex_coated_wood_sheet"),
+                'K', "knife");
+
+        // Sheet Form
+        MinecraftRecipeManager.addShapedDamageRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shaped/form/sheet"),
+                1,
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/sheet_form"),
+                " SK",
                 'S', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/latex_coated_wood_sheet"),
                 'K', "knife");
 
@@ -227,9 +240,32 @@ public class TFCRebornCoreCompat implements ICompatModule {
                 'S', "stickGold",
                 'P', "sheetGold",
                 'G', "gearGold",
-                'L', "springGold"
+                'L', "springGold");
 
-        );
+        // Beeswax Sheet
+        MinecraftRecipeManager.addShapedRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shaped/sheet/beeswax"),
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/beeswax_sheet"),
+                "WW",
+                "WW",
+                'W', "itemBeeswax");
+        MinecraftRecipeManager.addShapelessRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shaped/sheet/beeswax/alt"),
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/beeswax_sheet"),
+                "itemBeeswax",
+                "itemBeeswax",
+                "formSheet");
+
+        // Honeycomb Frame
+        MinecraftRecipeManager.addShapedRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shaped/frame/honeycomb"),
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/honeycomb_frame"),
+                "LWL",
+                "SWS",
+                "LWL",
+                'L', "lumber",
+                'W', "sheetBeeswax",
+                'S', "string");
     }
 
     @Override

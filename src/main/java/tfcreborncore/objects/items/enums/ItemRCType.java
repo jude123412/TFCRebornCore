@@ -27,9 +27,12 @@ public enum ItemRCType {
     METAL_PRESS_DOUBLE_INGOT(Size.NORMAL, Weight.MEDIUM, false),
     METAL_PRESS_SHEET(Size.NORMAL, Weight.MEDIUM, false),
 
+    // Non-Metal Material Items
+    WOOD_SHEET(Size.LARGE, Weight.LIGHT, "sheetWood", true),
+    LATEX_COATED_WOOD_SHEET(Size.LARGE, Weight.LIGHT, "sheetLatexWood", true),
+    BEESWAX_SHEET(Size.LARGE, Weight.LIGHT, "sheetBeeswax", true),
+
     // Circuit Board components
-    WOOD_SHEET(Size.SMALL, Weight.MEDIUM, true),
-    LATEX_COATED_WOOD_SHEET(Size.SMALL, Weight.MEDIUM, true),
     BASIC_CIRCUIT_BOARD(Size.SMALL, Weight.HEAVY, true),
     GOOD_CIRCUIT_BOARD(Size.SMALL, Weight.HEAVY, true),
 
@@ -65,6 +68,7 @@ public enum ItemRCType {
     // Wood Forms
     INGOT_FORM(Size.SMALL, Weight.MEDIUM, "formIngot", false, true),
     PELLET_FORM(Size.SMALL, Weight.MEDIUM, "formPellet", false, true),
+    SHEET_FORM(Size.SMALL, Weight.MEDIUM, "formSheet", false, true),
 
     // Misc
     UNFIRED_CLAY_SHEET(Size.NORMAL, Weight.LIGHT, true),
@@ -79,6 +83,7 @@ public enum ItemRCType {
     GLASS_INSULATOR(Size.NORMAL, Weight.LIGHT, true),
     ASH_BRICK(Size.SMALL, Weight.LIGHT, true),
     WINDUP_TRINKET(Size.NORMAL, Weight.MEDIUM, false),
+    HONEYCOMB_FRAME(Size.LARGE, Weight.MEDIUM, true),
     SLAG(Size.VERY_SMALL, Weight.VERY_LIGHT, "crystalSlag", true),
     RICH_SLAG(Size.VERY_SMALL, Weight.VERY_LIGHT, "crystalSlagRich", true);
 

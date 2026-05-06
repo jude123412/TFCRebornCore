@@ -53,9 +53,12 @@ item.tfcreborncore.regular.metal_press_strip.name=Metal Press Mold: Strip
 item.tfcreborncore.regular.metal_press_double_ingot.name=Metal Press Mold: Double Ingot
 item.tfcreborncore.regular.metal_press_sheet.name=Metal Press Mold: Sheet
 
-# Circuit Board components
+# Non-Metal Material Items
 item.tfcreborncore.regular.wood_sheet.name=Wood Sheet
 item.tfcreborncore.regular.latex_coated_wood_sheet.name=Latex Coated Wood Sheet
+item.tfcreborncore.regular.beeswax_sheet.name=Beeswax Sheet
+
+# Circuit Board components
 item.tfcreborncore.regular.basic_circuit_board.name=Basic Circuit Board
 item.tfcreborncore.regular.good_circuit_board.name=Good Circuit Board
 
@@ -93,6 +96,7 @@ item.tfcreborncore.regular.radiator_matrix.name=Radiator Matrix
 # Wood Form
 item.tfcreborncore.regular.ingot_form.name=Ingot Form
 item.tfcreborncore.regular.pellet_form.name=Pellet Form
+item.tfcreborncore.regular.sheet_form.name=Sheet Form
 
 # Misc
 item.tfcreborncore.regular.unfired_clay_sheet.name=Unfired Clay Sheet
@@ -107,6 +111,7 @@ item.tfcreborncore.regular.ceramic_insulator.name=Ceramic Insulator
 item.tfcreborncore.regular.glass_insulator.name=Glass Insulator
 item.tfcreborncore.regular.ash_brick.name=Ash Brick
 item.tfcreborncore.regular.windup_trinket.name=Windup Trinket
+item.tfcreborncore.regular.honeycomb_frame.name=Honeycomb Frame
 item.tfcreborncore.regular.slag.name=Slag
 item.tfcreborncore.regular.rich_slag.name=Rich Slag
 

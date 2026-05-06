@@ -386,6 +386,17 @@ public class ForestryCompat implements ICompatModule {
                 'S', "stickWood",
                 'T', "sheetTin",
                 'F', "fireStarter");
+
+        // Bee House
+        MinecraftRecipeManager.addShapedRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shaped/bee_house"),
+                RecipeHelper.getItemStack(Mods.FORESTRY.ID, "bee_house"),
+                "LSL",
+                "FFF",
+                "LLL",
+                'L', "lumber",
+                'S', "string",
+                'F', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/honeycomb_frame"));
     }
 
     @Override
@@ -877,6 +888,19 @@ public class ForestryCompat implements ICompatModule {
                 'C', RecipeHelper.getItemStack(Mods.FORESTRY.ID, "sturdy_machine"),
                 'B', RecipeHelper.getItemStack(Mods.FORESTRY.ID, "tree_chest"),
                 'L', "lumber");
+
+        // Apiary
+        ForestryRecipeManager.addCarpenterRecipe(
+                4 * S,
+                RecipeHelper.getItemStack(Mods.FORESTRY.ID, "bee_house"),
+                RecipeHelper.getItemStack(Mods.FORESTRY.ID, "apiary"),
+                RecipeHelper.getFluidStack("creosote", 250),
+                "LLL",
+                "FCF",
+                "LLL",
+                'L', "lumber",
+                'F', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/honeycomb_frame"),
+                'C', RecipeHelper.getItemStack(Mods.FORESTRY.ID, "impregnated_casing"));
 
         // Mouldy Wheat
         ForestryRecipeManager.addMoistenerFuelRecipe(

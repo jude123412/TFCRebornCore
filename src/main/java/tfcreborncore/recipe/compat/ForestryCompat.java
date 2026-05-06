@@ -5,11 +5,14 @@ import static tfcreborncore.recipe.RecipeHelper.S;
 import java.util.Arrays;
 import java.util.List;
 
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 
 import tfcreborncore.recipe.ICompatModule;
 import tfcreborncore.recipe.RecipeHelper;
+import tfcreborncore.recipe.enums.ForestryFarmTypes;
 import tfcreborncore.recipe.enums.Mods;
 import tfcreborncore.recipe.manager.ForestryRecipeManager;
 import tfcreborncore.recipe.manager.MinecraftRecipeManager;
@@ -901,6 +904,93 @@ public class ForestryCompat implements ICompatModule {
                 'L', "lumber",
                 'F', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/honeycomb_frame"),
                 'C', RecipeHelper.getItemStack(Mods.FORESTRY.ID, "impregnated_casing"));
+
+        for (ForestryFarmTypes type : ForestryFarmTypes.values()) {
+            /*
+             * Please forgive me for creating an
+             * enum to handle these recipes xD
+             */
+            ItemStack output = RecipeHelper.getItemStack(Mods.FORESTRY.ID, "ffarm");
+            NBTTagCompound tag = new NBTTagCompound();
+            tag.setInteger("FarmBlock", type.ordinal());
+            output.setTagCompound(tag);
+
+            // Farm Block
+            ForestryRecipeManager.addCarpenterRecipe(
+                    S,
+                    null,
+                    output,
+                    RecipeHelper.getFluidStack("latex", 50),
+                    "SBS",
+                    "LEL",
+                    'S', "sheetCopper",
+                    'B', type.getInput(),
+                    'L', "lumber",
+                    'E', RecipeHelper.getItemStack(Mods.FORESTRY.ID, "thermionic_tubes", 1));
+
+            ItemStack input = RecipeHelper.getItemStack(Mods.FORESTRY.ID, "ffarm");
+            output = RecipeHelper.getItemStack(Mods.FORESTRY.ID, "ffarm", 2);
+            input.setTagCompound(tag);
+            output.setTagCompound(tag);
+
+            // Farm Gearbox
+            ForestryRecipeManager.addCarpenterRecipe(
+                    S,
+                    null,
+                    output,
+                    null,
+                    " F ",
+                    "GGG",
+                    'F', input,
+                    'G', "gearTin");
+
+            output = RecipeHelper.getItemStack(Mods.FORESTRY.ID, "ffarm", 3);
+            output.setTagCompound(tag);
+
+            // Farm Hatch
+            ForestryRecipeManager.addCarpenterRecipe(
+                    S,
+                    null,
+                    output,
+                    null,
+                    " F ",
+                    "GTG",
+                    'F', input,
+                    'G', "gearTin",
+                    'T', "trapdoorWood");
+
+            output = RecipeHelper.getItemStack(Mods.FORESTRY.ID, "ffarm", 4);
+            input.setTagCompound(tag);
+            output.setTagCompound(tag);
+
+            // Farm Valve
+            ForestryRecipeManager.addCarpenterRecipe(
+                    S,
+                    null,
+                    output,
+                    null,
+                    " F ",
+                    "BGB",
+                    'F', input,
+                    'G', "gearTin",
+                    'B', "blockGlass");
+
+            output = RecipeHelper.getItemStack(Mods.FORESTRY.ID, "ffarm", 5);
+            input.setTagCompound(tag);
+            output.setTagCompound(tag);
+
+            // Farm Control
+            ForestryRecipeManager.addCarpenterRecipe(
+                    S,
+                    null,
+                    output,
+                    null,
+                    " F ",
+                    "DTD",
+                    'F', input,
+                    'D', "dustRedstone",
+                    'T', RecipeHelper.getItemStack(Mods.FORESTRY.ID, "thermionic_tubes", 4));
+        }
 
         // Mouldy Wheat
         ForestryRecipeManager.addMoistenerFuelRecipe(

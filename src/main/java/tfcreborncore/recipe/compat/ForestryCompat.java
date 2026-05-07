@@ -5,8 +5,6 @@ import static tfcreborncore.recipe.RecipeHelper.S;
 import java.util.Arrays;
 import java.util.List;
 
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 
@@ -17,6 +15,7 @@ import tfcreborncore.recipe.enums.Mods;
 import tfcreborncore.recipe.manager.ForestryRecipeManager;
 import tfcreborncore.recipe.manager.MinecraftRecipeManager;
 import tfcreborncore.recipe.manager.TerrafirmacraftRecipeManager;
+import tfcreborncore.recipe.manager.builders.NBTItemStackBuilder;
 import tfcreborncore.recipe.manager.builders.TFCFoodBuilder;
 
 public class ForestryCompat implements ICompatModule {
@@ -910,16 +909,12 @@ public class ForestryCompat implements ICompatModule {
              * Please forgive me for creating an
              * enum to handle these recipes xD
              */
-            ItemStack output = RecipeHelper.getItemStack(Mods.FORESTRY.ID, "ffarm");
-            NBTTagCompound tag = new NBTTagCompound();
-            tag.setInteger("FarmBlock", type.ordinal());
-            output.setTagCompound(tag);
-
             // Farm Block
             ForestryRecipeManager.addCarpenterRecipe(
                     S,
                     null,
-                    output,
+                    new NBTItemStackBuilder().setItem(Mods.FORESTRY.ID, "ffarm").setNBT("FarmBlock", type.ordinal())
+                            .build(),
                     RecipeHelper.getFluidStack("latex", 50),
                     "SBS",
                     "LEL",
@@ -928,66 +923,62 @@ public class ForestryCompat implements ICompatModule {
                     'L', "lumber",
                     'E', RecipeHelper.getItemStack(Mods.FORESTRY.ID, "thermionic_tubes", 1));
 
-            ItemStack input = RecipeHelper.getItemStack(Mods.FORESTRY.ID, "ffarm");
-            output = RecipeHelper.getItemStack(Mods.FORESTRY.ID, "ffarm", 2);
-            input.setTagCompound(tag);
-            output.setTagCompound(tag);
-
             // Farm Gearbox
             ForestryRecipeManager.addCarpenterRecipe(
                     S,
                     null,
-                    output,
+                    new NBTItemStackBuilder().setItem(Mods.FORESTRY.ID, "ffarm").setMeta(2)
+                            .setNBT("FarmBlock", type.ordinal()).build(),
                     null,
                     " F ",
                     "GGG",
-                    'F', input,
+                    'F',
+                    new NBTItemStackBuilder().setItem(Mods.FORESTRY.ID, "ffarm").setNBT("FarmBlock", type.ordinal())
+                            .build(),
                     'G', "gearTin");
-
-            output = RecipeHelper.getItemStack(Mods.FORESTRY.ID, "ffarm", 3);
-            output.setTagCompound(tag);
 
             // Farm Hatch
             ForestryRecipeManager.addCarpenterRecipe(
                     S,
                     null,
-                    output,
+                    new NBTItemStackBuilder().setItem(Mods.FORESTRY.ID, "ffarm").setMeta(3)
+                            .setNBT("FarmBlock", type.ordinal()).build(),
                     null,
                     " F ",
                     "GTG",
-                    'F', input,
+                    'F',
+                    new NBTItemStackBuilder().setItem(Mods.FORESTRY.ID, "ffarm").setNBT("FarmBlock", type.ordinal())
+                            .build(),
                     'G', "gearTin",
                     'T', "trapdoorWood");
-
-            output = RecipeHelper.getItemStack(Mods.FORESTRY.ID, "ffarm", 4);
-            input.setTagCompound(tag);
-            output.setTagCompound(tag);
 
             // Farm Valve
             ForestryRecipeManager.addCarpenterRecipe(
                     S,
                     null,
-                    output,
+                    new NBTItemStackBuilder().setItem(Mods.FORESTRY.ID, "ffarm").setMeta(4)
+                            .setNBT("FarmBlock", type.ordinal()).build(),
                     null,
                     " F ",
                     "BGB",
-                    'F', input,
+                    'F',
+                    new NBTItemStackBuilder().setItem(Mods.FORESTRY.ID, "ffarm").setNBT("FarmBlock", type.ordinal())
+                            .build(),
                     'G', "gearTin",
                     'B', "blockGlass");
-
-            output = RecipeHelper.getItemStack(Mods.FORESTRY.ID, "ffarm", 5);
-            input.setTagCompound(tag);
-            output.setTagCompound(tag);
 
             // Farm Control
             ForestryRecipeManager.addCarpenterRecipe(
                     S,
                     null,
-                    output,
+                    new NBTItemStackBuilder().setItem(Mods.FORESTRY.ID, "ffarm").setMeta(5)
+                            .setNBT("FarmBlock", type.ordinal()).build(),
                     null,
                     " F ",
                     "DTD",
-                    'F', input,
+                    'F',
+                    new NBTItemStackBuilder().setItem(Mods.FORESTRY.ID, "ffarm").setNBT("FarmBlock", type.ordinal())
+                            .build(),
                     'D', "dustRedstone",
                     'T', RecipeHelper.getItemStack(Mods.FORESTRY.ID, "thermionic_tubes", 4));
         }

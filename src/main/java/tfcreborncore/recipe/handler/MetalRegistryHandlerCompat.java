@@ -544,7 +544,7 @@ public class MetalRegistryHandlerCompat implements ICompatModule {
                 ImmersiveEngineeringRecipeManager.addMetalPressRecipe(
                         "sheet" + RCItems.toPascalCase(name),
                         RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID,
-                                "metal/cylinder/" + RCItems.toPascalCase(name)),
+                                "metal/cylinder/" + name),
                         RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/metal_press_cylinder"),
                         2000);
 

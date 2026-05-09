@@ -167,18 +167,6 @@ public class TFCRebornCoreCompat implements ICompatModule {
                 "dustCoal",
                 "dustWood");
 
-        // Brass Piston
-        MinecraftRecipeManager.addShapedRecipe(
-                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shaped/brass_piston"),
-                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/brass_piston"),
-                " B ",
-                "ISI",
-                "IMI",
-                'B', "sheetBrass",
-                'I', "ingotBrass",
-                'S', "stickLongBrass",
-                'M', RecipeHelper.getItemStack("tfc", "brass_mechanisms"));
-
         // Nickel-Plated Capacitor Cell
         MinecraftRecipeManager.addShapedRecipe(
                 new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shaped/nickel_plated_capacitor_cell"),
@@ -426,6 +414,15 @@ public class TFCRebornCoreCompat implements ICompatModule {
                 RecipeHelper.getIIngredient(Mods.TFC_REBORN_CORE.ID, "regular/radiator_piping", 0),
                 RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/radiator_matrix", 0),
                 Metal.Tier.TIER_II,
+                null);
+
+        // Engine Core
+        TerrafirmacraftRecipeManager.addWeldingRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "anvil/welding/engine_core"),
+                RecipeHelper.getIIngredient("cylinderCobalt"),
+                RecipeHelper.getIIngredient(Mods.TFC_REBORN_CORE.ID, "metal/piston/brass"),
+                RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/engine_core"),
+                Metal.Tier.TIER_III,
                 null);
 
         // Wood Powder

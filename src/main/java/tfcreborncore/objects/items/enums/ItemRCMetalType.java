@@ -23,6 +23,8 @@ public enum ItemRCMetalType {
     RING(25, Size.NORMAL, Weight.MEDIUM, true, false),
     SMALL_SPRING(50, Size.NORMAL, Weight.MEDIUM, true, false),
     SPRING(100, Size.NORMAL, Weight.MEDIUM, true, false),
+    CYLINDER(200, Size.LARGE, Weight.LIGHT, true, false),
+    PISTON(550, Size.LARGE, Weight.LIGHT, true, false),
     RACKWHEEL_HALF(200, Size.NORMAL, Weight.MEDIUM, true, false);
 
     // ---------------------------------------------------------------------

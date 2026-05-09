@@ -26,6 +26,7 @@ public enum ItemRCType {
     METAL_PRESS_STRIP(Size.NORMAL, Weight.MEDIUM, false),
     METAL_PRESS_DOUBLE_INGOT(Size.NORMAL, Weight.MEDIUM, false),
     METAL_PRESS_SHEET(Size.NORMAL, Weight.MEDIUM, false),
+    METAL_PRESS_CYLINDER(Size.NORMAL, Weight.MEDIUM, false),
 
     // Non-Metal Material Items
     WOOD_SHEET(Size.LARGE, Weight.LIGHT, "sheetWood", true),
@@ -61,7 +62,6 @@ public enum ItemRCType {
     REDSTONE_RESISTOR_PART_B(Size.SMALL, Weight.LIGHT, DefaultMetals.REDSTONE, 10, true, true),
     REDSTONE_RESISTOR_PART_C(Size.SMALL, Weight.LIGHT, DefaultMetals.REDSTONE, 10, true, true),
     REDSTONE_RESISTOR(Size.VERY_SMALL, Weight.MEDIUM, DefaultMetals.REDSTONE, 30, true, true),
-    BRASS_PISTON(Size.VERY_LARGE, Weight.HEAVY, DefaultMetals.BRASS, 750, true, true),
     RADIATOR_PIPING(Size.SMALL, Weight.MEDIUM, DefaultMetals.WROUGHT_IRON, 100, true, true),
     RADIATOR_MATRIX(Size.NORMAL, Weight.MEDIUM, DefaultMetals.WROUGHT_IRON, 300, true, true),
 
@@ -84,6 +84,7 @@ public enum ItemRCType {
     ASH_BRICK(Size.SMALL, Weight.LIGHT, true),
     WINDUP_TRINKET(Size.NORMAL, Weight.MEDIUM, false),
     HONEYCOMB_FRAME(Size.LARGE, Weight.MEDIUM, true),
+    ENGINE_CORE(Size.LARGE, Weight.MEDIUM, true),
     SLAG(Size.VERY_SMALL, Weight.VERY_LIGHT, "crystalSlag", true),
     RICH_SLAG(Size.VERY_SMALL, Weight.VERY_LIGHT, "crystalSlagRich", true);
 

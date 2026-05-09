@@ -32,6 +32,8 @@ item.tfcreborncore.metal.pipe_frame.name=%s Pipe Frame
 item.tfcreborncore.metal.ring.name=%s Ring
 item.tfcreborncore.metal.small_spring.name=Small %s Spring
 item.tfcreborncore.metal.spring.name=%s Spring
+item.tfcreborncore.metal.cylinder.name=%s Cylinder
+item.tfcreborncore.metal.piston.name=%s Piston
 
 # Creative Tabs
 itemGroup.tfcreborncore.items=TFC: Reborn Core Items
@@ -52,6 +54,7 @@ item.tfcreborncore.regular.metal_press_double_sheet.name=Metal Press Mold: Doubl
 item.tfcreborncore.regular.metal_press_strip.name=Metal Press Mold: Strip
 item.tfcreborncore.regular.metal_press_double_ingot.name=Metal Press Mold: Double Ingot
 item.tfcreborncore.regular.metal_press_sheet.name=Metal Press Mold: Sheet
+item.tfcreborncore.regular.metal_press_cylinder.name=Metal Press Mold: Cylinder
 
 # Non-Metal Material Items
 item.tfcreborncore.regular.wood_sheet.name=Wood Sheet
@@ -68,7 +71,6 @@ item.tfcreborncore.regular.redstone_electron_tube.name=Redstone Electron Tube
 
 # Heavy components
 item.tfcreborncore.regular.rf_control_circuit.name=RF Control Circuit
-item.tfcreborncore.regular.brass_piston.name=Brass Piston
 
 # Fuels
 item.tfcreborncore.regular.lignite_coke.name=Lignite Coke
@@ -112,6 +114,7 @@ item.tfcreborncore.regular.glass_insulator.name=Glass Insulator
 item.tfcreborncore.regular.ash_brick.name=Ash Brick
 item.tfcreborncore.regular.windup_trinket.name=Windup Trinket
 item.tfcreborncore.regular.honeycomb_frame.name=Honeycomb Frame
+item.tfcreborncore.regular.engine_core.name=Engine Core
 item.tfcreborncore.regular.slag.name=Slag
 item.tfcreborncore.regular.rich_slag.name=Rich Slag
 

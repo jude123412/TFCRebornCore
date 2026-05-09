@@ -170,6 +170,18 @@ public class MetalRegistryHandlerCompat implements ICompatModule {
             }
 
             if (metal.isUsable()) {
+                // Piston
+                MinecraftRecipeManager.addShapedRecipe(
+                        new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shaped/metal/piston/" + name),
+                        RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "metal/piston/" + name),
+                        " S ",
+                        "RLR",
+                        " C ",
+                        'S', "sheet" + RCItems.toPascalCase(name),
+                        'R', "ring" + RCItems.toPascalCase(name),
+                        'L', "stickLong" + RCItems.toPascalCase(name),
+                        'C', "cylinder" + RCItems.toPascalCase(name));
+
                 // Strip
                 MinecraftRecipeManager.addShapelessDamageRecipe(
                         new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shapeless/metal/strip/" + name),
@@ -311,6 +323,17 @@ public class MetalRegistryHandlerCompat implements ICompatModule {
                         ForgeRule.BEND_NOT_LAST,
                         ForgeRule.SHRINK_ANY,
                         ForgeRule.DRAW_LAST);
+
+                // Cylinder
+                TerrafirmacraftRecipeManager.addAnvilRecipe(
+                        new ResourceLocation(Tags.MODID, "anvil/working/cylinder/" + name),
+                        RecipeHelper.getIIngredient("sheet" + RCItems.toPascalCase(name)),
+                        RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "metal/cylinder/" + name),
+                        metal.getTier(),
+                        null,
+                        ForgeRule.BEND_ANY,
+                        ForgeRule.BEND_ANY,
+                        ForgeRule.BEND_ANY);
 
                 // Rackwheel Half
                 TerrafirmacraftRecipeManager.addWeldingRecipe(
@@ -516,6 +539,14 @@ public class MetalRegistryHandlerCompat implements ICompatModule {
                         RecipeHelper.getItemStack(Mods.TFC_TECH.ID, "metal/" + name + "_wire", 0, 2),
                         RecipeHelper.getItemStack(Mods.IMMERSIVE_ENGINEERING.ID, "mold", 2),
                         1000);
+
+                // Cylinder
+                ImmersiveEngineeringRecipeManager.addMetalPressRecipe(
+                        "sheet" + RCItems.toPascalCase(name),
+                        RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID,
+                                "metal/cylinder/" + RCItems.toPascalCase(name)),
+                        RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/metal_press_cylinder"),
+                        2000);
 
                 // Dust
                 ImmersiveEngineeringRecipeManager.addCrusherRecipe(

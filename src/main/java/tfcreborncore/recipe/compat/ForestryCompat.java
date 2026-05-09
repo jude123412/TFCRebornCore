@@ -399,6 +399,42 @@ public class ForestryCompat implements ICompatModule {
                 'L', "lumber",
                 'S', "string",
                 'F', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/honeycomb_frame"));
+
+        // Peat-fired Engine
+        MinecraftRecipeManager.addShapedRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shaped/engine/peat"),
+                RecipeHelper.getItemStack(Mods.FORESTRY.ID, "engine_peat"),
+                "SSS",
+                " C ",
+                "GTG",
+                'S', "sheetMagnesiumDiboride",
+                'C', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/engine_core"),
+                'G', "gearMagnesiumDiboride",
+                'T', "fireStarter");
+
+        // Biogas Engine
+        MinecraftRecipeManager.addShapedRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shaped/engine/biogas"),
+                RecipeHelper.getItemStack(Mods.FORESTRY.ID, "engine_biogas"),
+                "SSS",
+                " C ",
+                "GTG",
+                'S', "sheetBronze",
+                'C', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/engine_core"),
+                'G', "gearBronze",
+                'T', "fireStarter");
+
+        // Clockwork Engine
+        MinecraftRecipeManager.addShapedRecipe(
+                new ResourceLocation(Mods.TFC_REBORN_CORE.ID, "crafting/shaped/engine/clockwork"),
+                RecipeHelper.getItemStack(Mods.FORESTRY.ID, "engine_clockwork"),
+                "SSS",
+                " C ",
+                "GTG",
+                'S', "sheetGold",
+                'C', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/engine_core"),
+                'G', "gearGold",
+                'T', RecipeHelper.getItemStack(Mods.TFC_REBORN_CORE.ID, "regular/windup_trinket"));
     }
 
     @Override
@@ -913,7 +949,7 @@ public class ForestryCompat implements ICompatModule {
             ForestryRecipeManager.addCarpenterRecipe(
                     S,
                     null,
-                    new NBTItemStackBuilder().setItem(Mods.FORESTRY.ID, "ffarm").setNBT("FarmBlock", type.ordinal())
+                    new NBTItemStackBuilder(Mods.FORESTRY.ID, "ffarm").setNBT("FarmBlock", type.ordinal())
                             .build(),
                     RecipeHelper.getFluidStack("latex", 50),
                     "SBS",
@@ -927,13 +963,13 @@ public class ForestryCompat implements ICompatModule {
             ForestryRecipeManager.addCarpenterRecipe(
                     S,
                     null,
-                    new NBTItemStackBuilder().setItem(Mods.FORESTRY.ID, "ffarm").setMeta(2)
+                    new NBTItemStackBuilder(Mods.FORESTRY.ID, "ffarm").setMeta(2)
                             .setNBT("FarmBlock", type.ordinal()).build(),
                     null,
                     " F ",
                     "GGG",
                     'F',
-                    new NBTItemStackBuilder().setItem(Mods.FORESTRY.ID, "ffarm").setNBT("FarmBlock", type.ordinal())
+                    new NBTItemStackBuilder(Mods.FORESTRY.ID, "ffarm").setNBT("FarmBlock", type.ordinal())
                             .build(),
                     'G', "gearTin");
 
@@ -941,13 +977,13 @@ public class ForestryCompat implements ICompatModule {
             ForestryRecipeManager.addCarpenterRecipe(
                     S,
                     null,
-                    new NBTItemStackBuilder().setItem(Mods.FORESTRY.ID, "ffarm").setMeta(3)
+                    new NBTItemStackBuilder(Mods.FORESTRY.ID, "ffarm").setMeta(3)
                             .setNBT("FarmBlock", type.ordinal()).build(),
                     null,
                     " F ",
                     "GTG",
                     'F',
-                    new NBTItemStackBuilder().setItem(Mods.FORESTRY.ID, "ffarm").setNBT("FarmBlock", type.ordinal())
+                    new NBTItemStackBuilder(Mods.FORESTRY.ID, "ffarm").setNBT("FarmBlock", type.ordinal())
                             .build(),
                     'G', "gearTin",
                     'T', "trapdoorWood");
@@ -956,13 +992,13 @@ public class ForestryCompat implements ICompatModule {
             ForestryRecipeManager.addCarpenterRecipe(
                     S,
                     null,
-                    new NBTItemStackBuilder().setItem(Mods.FORESTRY.ID, "ffarm").setMeta(4)
+                    new NBTItemStackBuilder(Mods.FORESTRY.ID, "ffarm").setMeta(4)
                             .setNBT("FarmBlock", type.ordinal()).build(),
                     null,
                     " F ",
                     "BGB",
                     'F',
-                    new NBTItemStackBuilder().setItem(Mods.FORESTRY.ID, "ffarm").setNBT("FarmBlock", type.ordinal())
+                    new NBTItemStackBuilder(Mods.FORESTRY.ID, "ffarm").setNBT("FarmBlock", type.ordinal())
                             .build(),
                     'G', "gearTin",
                     'B', "blockGlass");
@@ -971,13 +1007,13 @@ public class ForestryCompat implements ICompatModule {
             ForestryRecipeManager.addCarpenterRecipe(
                     S,
                     null,
-                    new NBTItemStackBuilder().setItem(Mods.FORESTRY.ID, "ffarm").setMeta(5)
+                    new NBTItemStackBuilder(Mods.FORESTRY.ID, "ffarm").setMeta(5)
                             .setNBT("FarmBlock", type.ordinal()).build(),
                     null,
                     " F ",
                     "DTD",
                     'F',
-                    new NBTItemStackBuilder().setItem(Mods.FORESTRY.ID, "ffarm").setNBT("FarmBlock", type.ordinal())
+                    new NBTItemStackBuilder(Mods.FORESTRY.ID, "ffarm").setNBT("FarmBlock", type.ordinal())
                             .build(),
                     'D', "dustRedstone",
                     'T', RecipeHelper.getItemStack(Mods.FORESTRY.ID, "thermionic_tubes", 4));

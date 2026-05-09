@@ -9,16 +9,15 @@ import net.minecraftforge.fml.common.registry.ForgeRegistries;
 
 public class NBTItemStackBuilder {
 
-    private String namespace;
-    private String path;
+    private final String namespace;
+    private final String path;
     private int meta = 0;
     private int size = 1;
     private NBTTagCompound nbt;
 
-    public NBTItemStackBuilder setItem(String namespace, String path) {
+    public NBTItemStackBuilder(String namespace, String path) {
         this.namespace = namespace;
         this.path = path;
-        return this;
     }
 
     public NBTItemStackBuilder setMeta(int meta) {
